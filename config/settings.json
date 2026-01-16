@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh:*)",
+      "Bash(ssh-keyscan:*)",
+      "Bash(~/.ssh/known_hosts)",
+      "Bash(chmod:*)",
+      "Bash(curl:*)",
+      "Bash(~/bin/jq:*)",
+      "Bash(bash:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "model": "opus",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -c \"Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('Claude needs you')\"",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "powershell.exe -ExecutionPolicy Bypass -Command \"$env:CLAUDE_PROJECT_DIR = '%CLAUDE_PROJECT_DIR%'; & 'C:\\Users\\david\\.claude\\hooks\\notify-slack.ps1'\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "powershell.exe -ExecutionPolicy Bypass -NoProfile -File C:\\Users\\david\\.claude\\statusline.ps1"
+  }
+}
