@@ -286,8 +286,6 @@ $cwd = $data.cwd
 $model = if ($data.model.display_name) { $data.model.display_name } else { "Claude" }
 $ctx_pct = $data.context_window.remaining_percentage
 $ctx_size = $data.context_window.context_window_size
-$total_input = $data.context_window.total_input_tokens
-$total_output = $data.context_window.total_output_tokens
 $cost = if ($data.cost.total_cost_usd) { $data.cost.total_cost_usd } else { 0 }
 $lines_added = if ($data.cost.total_lines_added) { $data.cost.total_lines_added } else { 0 }
 $lines_removed = if ($data.cost.total_lines_removed) { $data.cost.total_lines_removed } else { 0 }
@@ -305,8 +303,8 @@ if ($cwd -and (Test-Path $cwd -ErrorAction SilentlyContinue)) {
 }
 
 $ctx_color = if ($ctx_pct -lt 20) { $RED } elseif ($ctx_pct -lt 40) { $YELLOW } else { $GREEN }
-$used_k = [math]::Round(($total_input + $total_output) / 1000)
 $total_k = [math]::Round($ctx_size / 1000)
+$used_k = [math]::Round($total_k * (100 - $ctx_pct) / 100)
 $context = "${ctx_color}${ctx_pct}%${RESET} ${DIM}${used_k}k/${total_k}k${RESET}"
 
 $cost_str = ""
@@ -338,14 +336,14 @@ In `C:\Users\david\.claude\settings.json`, add:
 
 The status line displays:
 ```
-~/Projects/claude-code-setup master | Opus 4.5 ctx:68% 184k/200k $7.48 +194/-101
+~/Projects/claude-code-setup master | Opus 4.5 ctx:68% 64k/200k $7.48 +194/-101
 ```
 
 - **Directory** (cyan) - shortened path
 - **Git branch** (magenta) - when in a repo
 - **Model name**
 - **Context remaining** (color-coded: green >40%, yellow 20-40%, red <20%)
-- **Token usage** - e.g., 184k/200k
+- **Context usage** - e.g., 118k/200k (calculated from remaining %)
 - **Session cost** - e.g., $7.48
 - **Lines changed** - +added/-removed
 
@@ -368,7 +366,176 @@ The status line displays:
 
 ---
 
-## Part 6: Troubleshooting
+## Part 6: Ralph Wiggum Technique (Autonomous Loops)
+
+The Ralph Wiggum technique enables Claude to work autonomously on tasks for extended periods, iterating until completion without human intervention.
+
+### What It Does
+
+Named after The Simpsons character, Ralph is simply a bash loop that repeatedly feeds a prompt to Claude Code. This allows Claude to:
+
+- Work on complex tasks for hours without supervision
+- Self-correct by reading its own previous work and git history
+- Iterate until tests pass or success criteria are met
+
+### Setup on P520
+
+**1. Create a project directory:**
+```bash
+mkdir -p ~/projects/ralph-task
+cd ~/projects/ralph-task
+```
+
+**2. Create your PROMPT.md file:**
+```bash
+cat > PROMPT.md << 'EOF'
+# Task: Build a REST API for todos
+
+## Requirements
+- CRUD endpoints (GET, POST, PUT, DELETE /todos)
+- Input validation (title required, max 200 chars)
+- Unit tests with >80% coverage
+- README with API documentation
+
+## Process
+1. Check current state of the project
+2. Identify what's missing or broken
+3. Implement the next piece
+4. Run tests
+5. If tests fail, fix them
+6. Commit working changes
+
+## Completion
+When ALL requirements are met and tests pass, create a file called DONE.txt with "COMPLETE"
+EOF
+```
+
+**3. Run the Ralph loop:**
+```bash
+while [ ! -f DONE.txt ]; do cat PROMPT.md | claude --dangerously-skip-permissions; sleep 2; done
+```
+
+### The Core Loop Explained
+
+```bash
+while [ ! -f DONE.txt ]; do    # Loop until DONE.txt exists
+  cat PROMPT.md |              # Read the prompt
+  claude --dangerously-skip-permissions;  # Pipe to Claude
+  sleep 2;                     # Brief pause between iterations
+done
+```
+
+**Safety:** The loop stops when Claude creates `DONE.txt`. You can also:
+- Press `Ctrl+C` to stop manually
+- Add a timeout: `timeout 2h bash -c 'while ...'`
+- Add iteration limit (see Advanced section)
+
+### Example PROMPT.md for Fixing Tests
+
+```markdown
+# Task: Fix all failing tests
+
+## Process
+1. Run: npm test
+2. Read the error output
+3. Fix the failing test or the code it tests
+4. Run tests again
+5. Repeat until all pass
+
+## Completion
+When ALL tests pass, create DONE.txt containing "ALL TESTS PASSING"
+```
+
+### Advanced: Iteration Limit
+
+```bash
+#!/bin/bash
+MAX_ITERATIONS=20
+COUNT=0
+
+while [ ! -f DONE.txt ] && [ $COUNT -lt $MAX_ITERATIONS ]; do
+  echo "=== Iteration $((COUNT+1))/$MAX_ITERATIONS ==="
+  cat PROMPT.md | claude --dangerously-skip-permissions
+  COUNT=$((COUNT+1))
+  sleep 2
+done
+
+if [ -f DONE.txt ]; then
+  echo "Task completed!"
+else
+  echo "Max iterations reached. Check progress manually."
+fi
+```
+
+Save as `ralph.sh` and run with `chmod +x ralph.sh && ./ralph.sh`
+
+### Best Practices
+
+**1. Clear completion criteria** - Claude needs to know exactly when it's done:
+```markdown
+## Completion
+When all tests pass AND coverage >80%, create DONE.txt
+```
+
+**2. Incremental goals** - Break large tasks into phases:
+```markdown
+## Phases
+Phase 1: Set up project structure
+Phase 2: Implement core functionality
+Phase 3: Add tests
+Phase 4: Documentation
+
+Create PHASE1_DONE.txt, PHASE2_DONE.txt, etc. as you complete each.
+Final: Create DONE.txt when all phases complete.
+```
+
+**3. Include verification steps** in your prompt:
+```markdown
+Before marking complete:
+- Run `npm test` - all must pass
+- Run `npm run lint` - no errors
+- Run `npm run build` - must succeed
+```
+
+**4. Use for tasks with automatic verification** (tests, linters, builds) rather than tasks requiring human judgment.
+
+### When to Use Ralph
+
+**Good for:**
+- Well-defined tasks with clear success criteria
+- Getting tests to pass
+- Greenfield projects you can walk away from
+- Tasks with automatic verification
+
+**Not good for:**
+- Tasks requiring design decisions
+- Production debugging
+- Tasks with unclear success criteria
+- One-shot operations
+
+### Running Ralph Overnight on P520
+
+Since P520 runs 24/7 in a tmux session:
+
+```bash
+# Start a new tmux window for Ralph
+tmux new-window -t claude -n ralph
+
+# Navigate to project and start Ralph
+cd ~/projects/my-task
+./ralph.sh
+
+# Detach and let it run: Ctrl+a then d
+# Check back later: ssh claude, then Ctrl+a then n (next window)
+```
+
+### Reference
+
+- Original technique: https://ghuntley.com/ralph/
+
+---
+
+## Part 7: Troubleshooting
 
 ### SSH "Network is unreachable" (Mobile)
 
@@ -402,7 +569,7 @@ sudo npm install -g @anthropic-ai/claude-code
 
 ---
 
-## Files Reference
+## Part 8: Files Reference
 
 ### P520 (Ubuntu)
 
@@ -439,5 +606,6 @@ The setup provides:
 - **Persistent sessions** - disconnect and reconnect without losing state
 - **Secure connections** via Tailscale mesh VPN
 - **Rich status line** showing context, cost, and changes
+- **Ralph Wiggum technique** for autonomous overnight tasks
 
 All three devices connect to the **same tmux session**, so you can start work on your laptop and continue on your phone with full context preserved.

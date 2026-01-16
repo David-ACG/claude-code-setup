@@ -6,8 +6,6 @@ $cwd = $data.cwd
 $model = if ($data.model.display_name) { $data.model.display_name } else { "Claude" }
 $ctx_pct = $data.context_window.remaining_percentage
 $ctx_size = $data.context_window.context_window_size
-$total_input = $data.context_window.total_input_tokens
-$total_output = $data.context_window.total_output_tokens
 $cost = if ($data.cost.total_cost_usd) { $data.cost.total_cost_usd } else { 0 }
 $lines_added = if ($data.cost.total_lines_added) { $data.cost.total_lines_added } else { 0 }
 $lines_removed = if ($data.cost.total_lines_removed) { $data.cost.total_lines_removed } else { 0 }
@@ -25,8 +23,8 @@ if ($cwd -and (Test-Path $cwd -ErrorAction SilentlyContinue)) {
 }
 
 $ctx_color = if ($ctx_pct -lt 20) { $RED } elseif ($ctx_pct -lt 40) { $YELLOW } else { $GREEN }
-$used_k = [math]::Round(($total_input + $total_output) / 1000)
 $total_k = [math]::Round($ctx_size / 1000)
+$used_k = [math]::Round($total_k * (100 - $ctx_pct) / 100)
 $context = "${ctx_color}${ctx_pct}%${RESET} ${DIM}${used_k}k/${total_k}k${RESET}"
 
 $cost_str = ""
