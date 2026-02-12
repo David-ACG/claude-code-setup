@@ -189,7 +189,7 @@ schtasks /delete /tn "Linear Reminder" /f
 | Pipeline | `C:\Projects\1_gwthpipeline520` | `David-ACG/gwthpipeline520` | Python, Docker, Qdrant |
 | Website | `C:\Projects\gwthtest2026-520` | `David-ACG/gwth-prod` | Next.js 15, PostgreSQL |
 
-## Fix-All-Issues Workflow (`/fix-all-issues`)
+## Fix-All-Linear-Issues Workflow (`/fix-all-linear-issues`)
 
 For batch-fixing all open `claude`-labeled issues in one session. Works in both projects.
 
@@ -199,7 +199,7 @@ For batch-fixing all open `claude`-labeled issues in one session. Works in both 
 You                                     Claude Code
 +-------------------+                   +----------------------------+
 | Create issues in  |                   |                            |
-| Linear, label     |                   |  /fix-all-issues           |
+| Linear, label     |                   |  /fix-all-linear-issues     |
 | them "claude"     |                   |       |                    |
 |                   |                   |  Phase 1 (Interactive):    |
 |                   |   <-------------- |  - Reads all open issues   |
