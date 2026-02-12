@@ -189,6 +189,60 @@ schtasks /delete /tn "Linear Reminder" /f
 | Pipeline | `C:\Projects\1_gwthpipeline520` | `David-ACG/gwthpipeline520` | Python, Docker, Qdrant |
 | Website | `C:\Projects\gwthtest2026-520` | `David-ACG/gwth-prod` | Next.js 15, PostgreSQL |
 
+## Fix-All-Issues Workflow (`/fix-all-issues`)
+
+For batch-fixing all open `claude`-labeled issues in one session. Works in both projects.
+
+### How It Works
+
+```
+You                                     Claude Code
++-------------------+                   +----------------------------+
+| Create issues in  |                   |                            |
+| Linear, label     |                   |  /fix-all-issues           |
+| them "claude"     |                   |       |                    |
+|                   |                   |  Phase 1 (Interactive):    |
+|                   |   <-------------- |  - Reads all open issues   |
+|                   |   asks questions  |  - Analyzes codebase       |
+|                   |   if unclear      |  - Writes plan to docs/    |
+|                   |                   |  - Presents plan           |
+| Review plan,      |                   |       |                    |
+| approve or adjust | --------------->  |  Phase 2 (Autonomous):     |
+|                   |                   |  - Fixes each issue        |
+|                   |                   |  - Runs tests (3 retries)  |
+|                   |                   |  - Commits per issue       |
+|                   |                   |  - Pushes to master        |
+|                   |                   |  - Waits for deploy        |
+|                   |                   |  - Runs acceptance tests   |
+|                   |                   |  - Writes report to docs/  |
+|                   |   <-------------- |  - Updates Linear: Done    |
++-------------------+                   +----------------------------+
+```
+
+### Project-Aware
+
+The command auto-detects which project it's running in:
+
+| Project | Test Command | Deploy URL | Acceptance Tests |
+|---------|-------------|------------|-----------------|
+| Pipeline | `python -m pytest tests/ -m "not acceptance"` | :8088 | `tests/test_playwright_acceptance.py` |
+| Website | `npm test` | :3000 | `npm run test:e2e` |
+
+### Artifacts
+
+| File | Purpose |
+|------|---------|
+| `docs/fix-plan-YYYY-MM-DD.md` | Execution plan (written in Phase 1) |
+| `docs/fix-report-YYYY-MM-DD.md` | Results report (written in Phase 2) |
+
+### Safety Rules
+- 3-strike rule per issue (3 test failures = skip)
+- 2-strike rule for deploy (2 acceptance failures = stop)
+- Never force-pushes, always reverts on failure
+- Documents everything in fix report
+
+---
+
 ## What We Learned
 
 1. **Headless AI coding doesn't work well for complex projects** — it lacks visual
