@@ -58,10 +58,23 @@ TASK — Execute the following prompt completely. Do not ask questions. Do not s
 $CONTENT"
 
     if claude --dangerously-skip-permissions "$PROMPT"; then
-        mv "$FILE" "$TESTING/$NAME"
-        echo ""
-        echo "MOVED $NAME -> 2_testing"
-        COMPLETED=$((COMPLETED + 1))
+        # The prompt may have self-moved the file (per kanban Gate 4 in
+        # ~/.claude/rules/03-kanban-gates.md). Handle both cases gracefully so
+        # `set -e` doesn't kill the runner before subsequent prompts.
+        if [ -f "$FILE" ]; then
+            mv "$FILE" "$TESTING/$NAME"
+            echo ""
+            echo "MOVED $NAME -> 2_testing"
+            COMPLETED=$((COMPLETED + 1))
+        elif [ -f "$TESTING/$NAME" ]; then
+            echo ""
+            echo "ALREADY MOVED (by prompt) $NAME -> 2_testing"
+            COMPLETED=$((COMPLETED + 1))
+        else
+            echo ""
+            echo "WARNING: $NAME not found in 1_planning OR 2_testing — agent may have failed silently"
+            FAILED=$((FAILED + 1))
+        fi
     else
         echo ""
         echo "FAILED $NAME (leaving in 1_planning)"
