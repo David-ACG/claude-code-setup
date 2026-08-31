@@ -127,6 +127,15 @@ if (Test-Path $netKey) {
     Say "  Removed persistent mapping record HKCU\Network\$DriveLetter."
 }
 
+# By default a drive mapped in the normal session is INVISIBLE to elevated
+# processes (and vice versa) - they get separate drive namespaces. The logon
+# task correctly runs non-elevated, so without this any elevated tool would
+# see no P: at all. Takes effect after a reboot.
+$pol = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
+if (-not (Test-Path $pol)) { New-Item -Path $pol -Force | Out-Null }
+Set-ItemProperty -Path $pol -Name EnableLinkedConnections -Value 1 -Type DWord
+Say "  EnableLinkedConnections = 1 (elevated apps see $Drive too, after reboot)." Green
+
 # Stop the "Restoring Network Connections" dialog blocking logon.
 $np = 'HKLM:\SYSTEM\CurrentControlSet\Control\NetworkProvider'
 if (-not (Test-Path $np)) { New-Item -Path $np -Force | Out-Null }
@@ -317,19 +326,40 @@ if (-not $registered) { exit 1 }
 
 # --- verify now ---------------------------------------------------------------
 Head "Verifying"
-Start-ScheduledTask -TaskName $taskName
-Start-Sleep -Seconds 8
-for ($i = 0; $i -lt 12 -and -not (Test-Path "$Drive\"); $i++) { Start-Sleep -Seconds 5 }
 
-if (Test-Path "$Drive\") {
-    Say ""
-    Say "SUCCESS - $Drive is mapped:" Green
-    cmd.exe /c "net use $Drive" | Where-Object { $_ -match '\S' } | ForEach-Object { Say "  $_" }
-    Say ""
-    Say "Reboot to confirm: no 'Restoring Network Connections' dialog, and $Drive" Green
-    Say "appears on its own ~20s after you log in. Log: $logf" Green
-} else {
-    Say ""
-    Say "$Drive did not map. Check the log: $logf" Red
-    Say "Most likely the Samba password was wrong - re-run this script." Yellow
+# CANNOT use Test-Path "$Drive\" here: this shell is elevated, the task runs
+# non-elevated, and until EnableLinkedConnections takes effect at the next
+# reboot the two sessions have separate drive namespaces. A successful mapping
+# is genuinely invisible from here. The mapper's own log is the truth.
+$before = if (Test-Path $logf) { (Get-Item $logf).Length } else { 0 }
+
+Start-ScheduledTask -TaskName $taskName
+Say "  Task started; waiting for it to report (up to 90s)..."
+
+$line = $null
+for ($i = 0; $i -lt 30 -and -not $line; $i++) {
+    Start-Sleep -Seconds 3
+    if ((Test-Path $logf) -and (Get-Item $logf).Length -gt $before) {
+        $line = Get-Content $logf -Tail 1
+    }
 }
+
+Say ""
+if ($line -match 'mapped') {
+    Say "SUCCESS - the task mapped the drive:" Green
+    Say "  $line" Green
+    Say ""
+    Say "$Drive will NOT be visible in this elevated window until you reboot." Yellow
+    Say "Check a NORMAL (non-elevated) Explorer or PowerShell - it is there now." Yellow
+} elseif ($line) {
+    Say "The task ran but did not map the drive:" Red
+    Say "  $line" Red
+    Say "If it says 'no SMB target reachable', Tailscale was down. Otherwise the" Yellow
+    Say "stored credential was rejected - re-run without -TaskOnly to re-enter it." Yellow
+} else {
+    Say "The task did not write to its log within 90s." Yellow
+    Say "Inspect it manually:  Get-Content '$logf' -Tail 20" Yellow
+}
+Say ""
+Say "Real proof is a reboot: no 'Restoring Network Connections' dialog, and" Green
+Say "$Drive present ~20s after login. Log: $logf" Green
