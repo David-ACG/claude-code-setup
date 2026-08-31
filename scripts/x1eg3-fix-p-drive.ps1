@@ -51,14 +51,18 @@ if (-not $isAdmin) {
 }
 Say "Running as $env:USERNAME (elevated)." Green
 
-# The credential vault and the drive letter are BOTH per-user. If the UAC prompt
-# switched to a different admin account, everything below would land in the wrong
-# profile and silently do nothing useful.
-if ($env:USERNAME -ne $SambaUser) {
+# The Windows account and the Samba account are deliberately different things:
+# the drive letter and credential vault belong to the Windows user ($env:USERNAME,
+# e.g. 'ducce'), while the share authenticates as $SambaUser ('david'). Only a UAC
+# prompt that switched to a DIFFERENT Windows profile is a problem - that would
+# put the mapping somewhere David never sees.
+Say "  Windows profile receiving the mapping : $env:USERDOMAIN\$env:USERNAME"
+Say "  Samba account used to authenticate    : $SambaUser"
+if ($env:USERNAME -in @('Administrator', 'Admin', 'DefaultAccount')) {
     Say ""
-    Say "WARNING: you are '$env:USERNAME' but the drive belongs to '$SambaUser'." Yellow
-    Say "Credentials and drive letters are per-user, so this would fix the wrong" Yellow
-    Say "profile. Open PowerShell from David's own account and elevate from there." Yellow
+    Say "WARNING: '$env:USERNAME' looks like a separate admin account, not David's" Yellow
+    Say "everyday profile. Drive letters are per-profile, so P: would appear only" Yellow
+    Say "here. Re-run from David's own account and elevate when prompted." Yellow
     $go = Read-Host "  Continue anyway? (y/N)"
     if ($go -ne 'y') { exit 1 }
 }
