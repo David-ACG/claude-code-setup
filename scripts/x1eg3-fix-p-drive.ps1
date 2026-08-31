@@ -32,7 +32,9 @@ param(
     [string]$HostShort   = 'hlab',
     [string]$HostFqdn    = 'hlab.taila51191.ts.net',
     [string]$HostIp      = '100.79.248.39',
-    [string]$SambaUser   = 'david'
+    [string]$SambaUser   = 'david',
+    # Re-run only the scheduled-task step (skips the password prompt).
+    [switch]$TaskOnly
 )
 
 $ErrorActionPreference = 'Stop'
@@ -66,6 +68,12 @@ if ($env:USERNAME -in @('Administrator', 'Admin', 'DefaultAccount')) {
     $go = Read-Host "  Continue anyway? (y/N)"
     if ($go -ne 'y') { exit 1 }
 }
+
+# Steps 1-4 are the one-time system fixes. -TaskOnly skips them so a failed
+# task registration can be retried without re-entering the password.
+if ($TaskOnly) { Say ""; Say "-TaskOnly: skipping steps 1-4 (system fixes already applied)." Yellow }
+
+if (-not $TaskOnly) {
 
 # --- 1. make Tailscale come up at boot, not at login -------------------------
 Head "1/6  Ensuring Tailscale connects before login"
@@ -109,7 +117,7 @@ if ($ddc -eq 1) {
 # --- 3. tear down the broken persistent mapping ------------------------------
 Head "3/6  Removing the broken persistent P: mapping"
 
-cmd.exe /c "net use $Drive /delete /y" | Out-Null
+cmd.exe /c "net use $Drive /delete /y >nul 2>&1" | Out-Null
 Say "  Dropped any existing $Drive mapping."
 
 # Kill the persistent-mapping records so the logon restore never runs again.
@@ -149,6 +157,8 @@ foreach ($t in @($HostShort, $HostFqdn, $HostIp)) {
 }
 $plain = $null
 [GC]::Collect()
+
+} # end of -TaskOnly skip block
 
 # --- 5. install the local mapper script --------------------------------------
 Head "5/6  Installing the mapper script"
@@ -191,7 +201,7 @@ for ($i = 0; $i -lt 36 -and -not $live; $i++) {
 
 if (-not $live) { L 'no SMB target reachable after 180s - tailnet down?'; exit 1 }
 
-cmd.exe /c "net use __DRIVE__ /delete /y" | Out-Null
+cmd.exe /c "net use __DRIVE__ /delete /y >nul 2>&1" | Out-Null
 $unc = "\\" + $live + "\__SHARE__"
 $out = cmd.exe /c "net use __DRIVE__ `"$unc`" /persistent:no" 2>&1
 if (Test-Path '__DRIVE__\') { L "mapped __DRIVE__ -> $unc" }
@@ -215,47 +225,95 @@ Head "6/6  Registering the logon task"
 $taskName = 'Map P520Projects'
 Unregister-ScheduledTask -TaskName $taskName -Confirm:$false -ErrorAction SilentlyContinue
 
-$me = "$env:USERDOMAIN\$env:USERNAME"
+$me   = "$env:USERDOMAIN\$env:USERNAME"
+$taskArgs = "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$mapper`""
 
-$action = New-ScheduledTaskAction -Execute 'powershell.exe' `
-    -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$mapper`""
+# Registered from raw XML rather than the *-ScheduledTask* cmdlets. To repeat
+# forever the schema wants <Repetition> with an Interval and NO Duration; the
+# cmdlets cannot express that - [TimeSpan]::MaxValue serialises to
+# P99999999DT23H59M59S, which Task Scheduler rejects outright.
+$xml = @"
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>Maps $Drive to \\$HostShort\$Share once Tailscale is up. Replaces the persistent mapping, which raced the tunnel at boot.</Description>
+  </RegistrationInfo>
+  <Triggers>
+    <LogonTrigger>
+      <Enabled>true</Enabled>
+      <UserId>$me</UserId>
+      <Delay>PT20S</Delay>
+      <Repetition>
+        <Interval>PT5M</Interval>
+        <StopAtDurationEnd>false</StopAtDurationEnd>
+      </Repetition>
+    </LogonTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="Author">
+      <UserId>$me</UserId>
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>false</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT10M</ExecutionTimeLimit>
+    <Priority>7</Priority>
+  </Settings>
+  <Actions Context="Author">
+    <Exec>
+      <Command>powershell.exe</Command>
+      <Arguments>$taskArgs</Arguments>
+    </Exec>
+  </Actions>
+</Task>
+"@
 
-# One logon trigger, delayed 20s so Tailscale wins the race, repeating every
-# 5 minutes so a dropped tunnel re-maps itself instead of leaving a dead letter.
-$trigger = New-ScheduledTaskTrigger -AtLogOn -User $me
-$trigger.Delay = 'PT20S'
-
-# Indefinite repetition is rejected on some builds. It is a nice-to-have (it
-# re-maps after a Tailscale drop), so degrade to logon-only rather than losing
-# the whole task, which is what actually fixes the boot failure.
+$registered = $false
 try {
-    $trigger.Repetition = (New-ScheduledTaskTrigger -Once -At (Get-Date) `
-        -RepetitionInterval (New-TimeSpan -Minutes 5) `
-        -RepetitionDuration ([TimeSpan]::MaxValue)).Repetition
-    Say "  Trigger: at logon (+20s) and every 5 min thereafter."
+    Register-ScheduledTask -TaskName $taskName -Xml $xml -Force | Out-Null
+    $registered = $true
+    Say "  Registered '$taskName' - at logon (+20s), then every 5 min." Green
 } catch {
-    Say "  Trigger: at logon (+20s) only - 5-min repeat unsupported here." Yellow
+    Say "  XML registration failed: $($_.Exception.Message)" Yellow
+    Say "  Falling back to a logon-only task (no 5-minute self-heal)..." Yellow
+
+    # Fallback: drop the repetition entirely. Mapping at logon is the part that
+    # actually fixes the boot failure; the repeat only recovers a mid-session
+    # Tailscale drop, which a logoff/logon also fixes.
+    try {
+        $action  = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument $taskArgs
+        $trigger = New-ScheduledTaskTrigger -AtLogOn -User $me
+        $trigger.Delay = 'PT20S'
+        $principal = New-ScheduledTaskPrincipal -UserId $me -LogonType Interactive -RunLevel Limited
+        $settings  = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries `
+            -DontStopIfGoingOnBatteries -StartWhenAvailable `
+            -ExecutionTimeLimit (New-TimeSpan -Minutes 10) -MultipleInstances IgnoreNew
+        Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger `
+            -Principal $principal -Settings $settings -Force | Out-Null
+        $registered = $true
+        Say "  Registered '$taskName' - at logon (+20s) only." Green
+    } catch {
+        Say "  FAILED to register the task: $($_.Exception.Message)" Red
+        Say "  Map manually meanwhile:  net use $Drive \\$HostFqdn\$Share /persistent:no" Yellow
+    }
 }
-
-# Interactive token: drive letters are per-session, so SYSTEM would be useless.
-$principal = New-ScheduledTaskPrincipal -UserId $me `
-    -LogonType Interactive -RunLevel Limited
-
-$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries `
-    -DontStopIfGoingOnBatteries -StartWhenAvailable `
-    -ExecutionTimeLimit (New-TimeSpan -Minutes 10) `
-    -MultipleInstances IgnoreNew
-
-try {
-    Register-ScheduledTask -TaskName $taskName -Action $action `
-        -Trigger $trigger -Principal $principal -Settings $settings `
-        -Description 'Maps P: to \\hlab\P520Projects once Tailscale is up. Replaces the persistent mapping, which raced the tunnel at boot.' | Out-Null
-    Say "  Registered scheduled task '$taskName'." Green
-} catch {
-    Say "  FAILED to register the task: $($_.Exception.Message)" Red
-    Say "  Map manually meanwhile:  net use P: \\$HostFqdn\$Share /persistent:no" Yellow
-    exit 1
-}
+if (-not $registered) { exit 1 }
 
 # --- verify now ---------------------------------------------------------------
 Head "Verifying"
