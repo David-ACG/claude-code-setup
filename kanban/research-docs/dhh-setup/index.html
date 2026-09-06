@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DHH's 16-agent setup vs your P520</title>
+<style>
+:root{
+  --bg:#f6f4ef; --panel:#ffffff; --ink:#1d1b17; --muted:#5f5b52; --line:#e1ddd3;
+  --accent:#1f5f8b; --accent-ink:#ffffff; --good:#2a7a4b; --warn:#a2611a; --bad:#a53b2f;
+  --good-bg:#e6f3ea; --warn-bg:#fbeedc; --bad-bg:#f8e3df; --code:#eeebe3;
+  --radius:10px; --max:1080px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161513; --panel:#1f1d1a; --ink:#ebe7df; --muted:#a39d91; --line:#33302a;
+    --accent:#6fb1e0; --accent-ink:#0f1d28; --good:#7fcf9c; --warn:#e2a95c; --bad:#e58a7d;
+    --good-bg:#1d2f24; --warn-bg:#33271a; --bad-bg:#36211d; --code:#2a2723;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161513; --panel:#1f1d1a; --ink:#ebe7df; --muted:#a39d91; --line:#33302a;
+  --accent:#6fb1e0; --accent-ink:#0f1d28; --good:#7fcf9c; --warn:#e2a95c; --bad:#e58a7d;
+  --good-bg:#1d2f24; --warn-bg:#33271a; --bad-bg:#36211d; --code:#2a2723;
+}
+*{box-sizing:border-box}
+html{color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:var(--max);margin:0 auto;padding:32px 22px 80px}
+header h1{font-size:2rem;line-height:1.15;margin:0 0 8px;letter-spacing:-.01em}
+header p.lede{font-size:1.1rem;color:var(--muted);margin:0 0 6px;max-width:70ch}
+header .meta{font-size:.9rem;color:var(--muted)}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 8px}
+nav.toc a{font-size:.9rem;text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:6px 11px;border-radius:6px;color:var(--ink)}
+nav.toc a:hover{border-color:var(--accent)}
+section{margin-top:44px}
+h2{font-size:1.45rem;margin:0 0 6px;letter-spacing:-.01em}
+h2 + p.q{color:var(--muted);margin:0 0 16px;font-style:italic}
+h3{font-size:1.08rem;margin:26px 0 8px}
+.answer{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:var(--radius);padding:16px 18px;margin:0 0 18px}
+.answer strong:first-child{display:block;font-size:1.02rem;margin-bottom:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:14px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.card h4{margin:0 0 6px;font-size:1rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;padding:2px 8px;border-radius:4px;margin-left:6px;vertical-align:middle}
+.tag.good{background:var(--good-bg);color:var(--good)} .tag.warn{background:var(--warn-bg);color:var(--warn)} .tag.bad{background:var(--bad-bg);color:var(--bad)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:620px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{font-weight:600;background:var(--code)}
+tr:last-child td{border-bottom:0}
+td.num{white-space:nowrap}
+code{font:.88em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:1px 5px;border-radius:4px}
+pre{background:var(--code);padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:.86rem;line-height:1.45}
+pre code{background:none;padding:0}
+ul,ol{padding-left:22px} li{margin:4px 0}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;font-size:.93rem}
+.step b{display:block;margin-bottom:4px}
+.step small{color:var(--muted)}
+.note{color:var(--muted);font-size:.9rem}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:.88rem}
+.diagram{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin:14px 0;overflow-x:auto}
+.diagram svg{display:block;min-width:640px;width:100%;height:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>DHH's 16-agent setup, translated to your P520</h1>
+  <p class="lede">What he actually runs, what you already have, whether a KVM and Herdr earn their place, and how to use Codex a lot more without it dragging the laptop down.</p>
+  <div class="meta">Research 6 Sep 2026 · source: Lex Clips "DHH's new setup for programming with AI" (12:42) from Lex Fridman #501 · facts checked on hlab the same day · <a href="../youtube/2026-09-06_dhh-s-new-setup-for-programming-with-ai-terminal-16-agents/research.html">video research page (verified claims, chapters, transcript)</a> · <a href="transcript_4Xg1AE6Uu1k.md">timestamped transcript</a> · <a href="https://lexfridman.com/dhh-2-transcript/">full episode transcript</a></div>
+  <nav class="toc">
+    <a href="#tldr">Short version</a>
+    <a href="#dhh">What DHH described</a>
+    <a href="#you">What you have today</a>
+    <a href="#kvm">KVM: advantages and costs</a>
+    <a href="#herdr">Should you use Herdr?</a>
+    <a href="#workflow">The desktop-app workflow</a>
+    <a href="#codex">Codex without the drag</a>
+    <a href="#costs">All costs</a>
+    <a href="#next">Next steps</a>
+  </nav>
+</header>
+
+<section id="tldr">
+  <h2>The short version</h2>
+  <div class="grid">
+    <div class="card"><h4>You already have the shape of it <span class="tag good">verified</span></h4><p>Claude Code Desktop runs its engine on hlab. The Codex desktop app on x1eg3 is <em>already</em> SSH-connected to hlab: its app-server has been running there for two days. The agents are not on the laptop.</p></div>
+    <div class="card"><h4>The slowdown is not Codex compute <span class="tag warn">two causes</span></h4><p>It is the ChatGPT/Codex Windows app shell (documented process-scan and git.exe storms plus Defender load, even when idle) and the laptop's own Thunderbolt fault loop.</p></div>
+    <div class="card"><h4>Herdr: no, not as your cockpit <span class="tag bad">terminal only</span></h4><p>It is tmux rewritten in Rust with an agent-state sidebar and a ding. One host per client, no GUI. Both desktop apps already give you per-session state, worktrees and finish notifications.</p></div>
+    <div class="card"><h4>KVM: insurance, not throughput <span class="tag warn">optional</span></h4><p>A GL.iNet Comet PoE plus ATX board (about £125) joins your tailnet and rescues a hung or unbootable P520 from anywhere. It adds zero agents.</p></div>
+    <div class="card"><h4>The real lesson is parallelism + a ding <span class="tag good">do this</span></h4><p>The P520 can host 16 agent sessions itself. What is missing is a notification that reaches you anywhere and one view of "who needs me". That is hooks in both tools, not hardware.</p></div>
+  </div>
+</section>
+
+<section id="dhh">
+  <h2>What DHH described in the clip</h2>
+  <p class="q">Paraphrased from the 12-minute Lex Clips cut; timestamps refer to the clip.</p>
+  <div class="tablewrap"><table>
+    <tr><th style="width:150px">Element</th><th>What he said</th><th style="width:30%">Relevance to you</th></tr>
+    <tr><td>Mental shift (1:00–2:50)</td><td>Programming with agents moves from single-threaded "flow" to parallel processing. Waiting for one agent feels unproductive, so he runs a handful and stays busy making decisions and unblocking them.</td><td>The argument for more parallel sessions, regardless of tooling.</td></tr>
+    <tr><td>Cockpit (2:50–4:25)</td><td>Terminal only. Started with tmux panes and tabs, then moved to Herdr: "tmux plus agent notifications", a ding when an agent is done or needs a decision, and tracking of working vs not. He runs one Herdr per machine.</td><td>He explicitly rejects the Claude Code and Codex apps. You explicitly chose them.</td></tr>
+    <tr><td>Hardware (4:25–6:20)</td><td>Bought GL.iNet Comet KVMs. Plug HDMI and USB into a machine, open a web page, log in once, and control it. Connected four mini PCs from his closet this way.</td><td>His "more cores" were more machines. Your P520 has 16 threads and 125 GB on its own.</td></tr>
+    <tr><td>Network (5:15–6:00)</td><td>Tailscale makes every machine in Malibu and Copenhagen look local from his phone with no firewall holes. It lowers the friction of adding compute.</td><td>You already run this (hlab.taila51191.ts.net).</td></tr>
+    <tr><td>Scale (6:20–8:20)</td><td>Four to five machines with about three agents each, roughly 16 threads at today's agent speed. Output went from tens of hand-written lines an hour to hundreds, while he disowns lines of code as a metric.</td><td>In the full episode he runs Claude in the top pane and Codex below it.</td></tr>
+    <tr><td>Review (8:20–9:10)</td><td>Neovim as a project browser plus lazygit. He tried hunk for diffs but wants the untouched surrounding context, so Neovim wins.</td><td>Your equivalent is the Desktop diff view and Codex PR review.</td></tr>
+    <tr><td>OS (9:10–12:20)</td><td>Linux, because agents love the Unix philosophy: everything is a config file or a CLI tool. Mac and WSL are worse; WSL "is a sandbox".</td><td>Your agents already live on Ubuntu. The laptop is only a screen.</td></tr>
+  </table></div>
+</section>
+
+<section id="you">
+  <h2>What you have today</h2>
+  <p class="q">Checked on hlab on 6 Sep 2026.</p>
+  <div class="diagram">
+  <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="x1eg3 laptop connected over Tailscale to hlab where Claude and Codex engines run">
+    <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--muted)"/></marker></defs>
+    <rect x="20" y="60" width="230" height="180" rx="10" fill="var(--panel)" stroke="var(--line)"/>
+    <text x="135" y="88" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">x1eg3 (Windows laptop)</text>
+    <text x="135" y="115" text-anchor="middle" font-size="12.5" fill="var(--muted)">Claude Code Desktop  (UI only)</text>
+    <text x="135" y="136" text-anchor="middle" font-size="12.5" fill="var(--muted)">ChatGPT / Codex app  (UI only)</text>
+    <text x="135" y="164" text-anchor="middle" font-size="12" fill="var(--bad)">app shell scanning + Defender</text>
+    <text x="135" y="182" text-anchor="middle" font-size="12" fill="var(--bad)">Thunderbolt fault loop</text>
+    <text x="135" y="222" text-anchor="middle" font-size="11.5" fill="var(--muted)">100.114.161.65</text>
+    <line x1="250" y1="150" x2="410" y2="150" stroke="var(--muted)" stroke-width="2" marker-end="url(#arr)"/>
+    <text x="330" y="138" text-anchor="middle" font-size="12" fill="var(--ink)">Tailscale (WireGuard)</text>
+    <text x="330" y="170" text-anchor="middle" font-size="11.5" fill="var(--muted)">SSH, direct connection</text>
+    <rect x="415" y="30" width="465" height="240" rx="10" fill="var(--panel)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="647" y="58" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">hlab = ThinkStation P520 (Ubuntu)</text>
+    <text x="647" y="78" text-anchor="middle" font-size="12" fill="var(--muted)">Xeon W-2145 8c/16t · 125 GB RAM · RTX 3090 + 3060 · 2.5 TB free</text>
+    <rect x="435" y="95" width="205" height="70" rx="8" fill="var(--code)"/>
+    <text x="537" y="118" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)">Claude Code engine</text>
+    <text x="537" y="136" text-anchor="middle" font-size="11" fill="var(--muted)">~/.claude/remote/ccd-cli/*</text>
+    <text x="537" y="152" text-anchor="middle" font-size="11" fill="var(--muted)">worktree per session</text>
+    <rect x="655" y="95" width="205" height="70" rx="8" fill="var(--code)"/>
+    <text x="757" y="118" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)">codex app-server</text>
+    <text x="757" y="136" text-anchor="middle" font-size="11" fill="var(--muted)">spawned by the Codex app over SSH</text>
+    <text x="757" y="152" text-anchor="middle" font-size="11" fill="var(--muted)">worktree per thread</text>
+    <rect x="435" y="180" width="425" height="34" rx="8" fill="var(--code)"/>
+    <text x="647" y="202" text-anchor="middle" font-size="12" fill="var(--ink)">Claude Code → codex exec  (today's delegation pattern)</text>
+    <text x="647" y="240" text-anchor="middle" font-size="12" fill="var(--warn)">missing: a ding that reaches you anywhere, and one "who needs me" view</text>
+    <text x="647" y="258" text-anchor="middle" font-size="11.5" fill="var(--muted)">missing: out-of-band recovery if the box hangs (the KVM question)</text>
+  </svg>
+  </div>
+  <div class="tablewrap"><table>
+    <tr><th style="width:170px">Item</th><th>Fact</th></tr>
+    <tr><td>Claude Code</td><td>Desktop app on x1eg3 with an SSH environment on hlab. Engine and server processes live under <code>~/.claude/remote/</code> on hlab. Every Desktop session gets its own git worktree. Hooks are shared between CLI and Desktop.</td></tr>
+    <tr><td>Codex</td><td>The Codex desktop app on x1eg3 has an SSH host configured for hlab. Its bootstrap script started <code>codex app-server</code> on hlab with a forwarded SSH agent; the process has been up about two days. CLI on hlab is 0.144.1 (latest 0.153.4, which makes GPT-6 Astra the default). Config uses GPT-5.6 Sol at high effort, priority tier.</td></tr>
+    <tr><td>Delegation</td><td>Claude Code on hlab calls Codex for specific pieces of work. This costs the laptop nothing.</td></tr>
+    <tr><td>Tailnet</td><td>hlab, x1eg3, acg-proxmox1, an X1 Gen 7, p53 (offline 68 days), Pixel 9 Pro. 36 Tailscale-served HTTPS ports in use on hlab.</td></tr>
+    <tr><td>Laptop</td><td>x1eg3 has a Titan Ridge Thunderbolt controller in a continuous fault loop (about 37 driver events a minute, USB host controller in an error state). This slows the whole machine independently of any app.</td></tr>
+    <tr><td>Out-of-band</td><td>Lenovo lists the P520 as vPro with Intel AMT 11 and the ME device is present on hlab. Whether AMT is provisioned is unverified. AMT's remote screen needs Intel integrated graphics, which this Xeon lacks, so AMT can only ever give power control and a serial console here.</td></tr>
+  </table></div>
+</section>
+
+<section id="kvm">
+  <h2>KVM over IP: advantages and costs</h2>
+  <p class="q">"I want a similar KVM/IP setup with my P520 using the Tailscale I am already using. What are the advantages? What are the costs?"</p>
+  <div class="answer"><strong>Advantage: it works when nothing else does.</strong> Everything you use today is in-band: it needs the kernel, networking, tailscaled and sshd alive on the P520. A KVM is a fake monitor plus fake keyboard with its own network stack. The GL.iNet Comet runs Tailscale itself, so it becomes its own tailnet node and is reachable from the laptop even when the P520's Tailscale is dead. It gives you the BIOS screen, GRUB, a hung box, a reinstall from a mounted ISO, and a hard reset or cold power-on through the ATX header. It adds no agent capacity at all.</div>
+
+  <h3>When it actually earns its keep</h3>
+  <ul>
+    <li>The box hangs or wedges on memory: hard reset via the ATX board and watch it POST.</li>
+    <li>A kernel or NVIDIA driver update leaves it at GRUB rescue, an initramfs prompt, a fsck question or emergency mode.</li>
+    <li>Networking or Tailscale itself breaks on the host, which removes every in-band path at once.</li>
+    <li>BIOS changes, firmware updates, Secure Boot toggles, "power on after AC loss".</li>
+    <li>Cold power-on after a power cut when Wake-on-LAN does not fire.</li>
+  </ul>
+  <p>Honest estimate for a headless dev server on a home LAN: a handful of uses a year. Today each of those means waiting until you are home or asking someone to press the button and describe the screen. With a Comet it is a two-minute fix from the laptop wherever you are, and risky remote work such as driver upgrades becomes safe to do while travelling. Cheaper partial cover: a smart plug on the tailnet plus "power on after AC loss" in the BIOS gives you the hard-reboot half for about £10 with no screen.</p>
+
+  <h3>GL.iNet Comet, what DHH bought</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Model</th><th class="num">UK price (6 Sep 2026)</th><th>Notes</th></tr>
+    <tr><td>Comet GL-RM1 (V2)</td><td class="num">about £96</td><td>4K@30 capture, USB-C HID, 30 to 60 ms latency, powered by 5 V/2 A USB-C (not a USB-PD charger). Small eMMC, so bring a USB stick for ISOs.</td></tr>
+    <tr><td><strong>Comet PoE GL-RM1PE</strong> <span class="tag good">recommended</span></td><td class="num">about £107</td><td>ARM64, 32 GB storage (fits an Ubuntu ISO), PoE or USB-C power, faster file transfer. Widely used with Tailscale; ServeTheHome buys them for exactly that.</td></tr>
+    <tr><td>Comet Pro GL-RM10</td><td class="num">£172.99 (verified)</td><td>Wi-Fi 6, touchscreen, HDMI passthrough, no PoE. Only if there is no spare Ethernet run to the P520.</td></tr>
+    <tr><td>ATX board GL-ATXPC</td><td class="num">about £13 to £16</td><td>Wires to the motherboard front-panel header: power on from fully off, reset, forced power-off. Recommended over Wake-on-LAN. A stick-on Fingerbot (about £25) presses the physical button if you prefer not to open the case.</td></tr>
+  </table></div>
+  <ul>
+    <li><strong>Tailscale on the Comet:</strong> Apps Center, Tailscale, bind once with your account, then open <code>https://glkvm.taila51191.ts.net</code> from any device. No GL.iNet cloud account is needed. Keep the ARM64 units; the old ARM32 V1 was broken by a Tailscale release for a day in Oct 2025.</li>
+    <li><strong>Virtual media:</strong> read-only ISO mount at BIOS level plus a read-write virtual USB drive. EDID presets mean no HDMI dummy plug is needed.</li>
+    <li><strong>Nits:</strong> it pings public DNS and STUN servers even in local-only use, and the UI is a closed fork of PiKVM.</li>
+  </ul>
+
+  <h3>Alternatives</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Device</th><th class="num">UK price</th><th>Tailscale</th><th>Trade-off</th></tr>
+    <tr><td>JetKVM (PoE revision)</td><td class="num">$119 + $20 ATX, sold out; eBay about £130</td><td>Install script</td><td>Best UI and open-source app, but 1080p only, 100 Mbps, no audio, and hard to buy in the UK right now.</td></tr>
+    <tr><td>Sipeed NanoKVM Lite / Full / Pro</td><td class="num">about £45 / £70 / unpriced</td><td>Pro preinstalled</td><td>Cheapest, but slow MJPEG on the small models and a poor security record (hard-coded secrets, an auth-bypass CVE fixed in 2026). Only behind an isolated VLAN.</td></tr>
+    <tr><td>PiKVM V4 Mini / Plus</td><td class="num">£225 / £315, in stock</td><td>Official package</td><td>Fully open, ATX board included, IPMI emulation. The reference design at twice the Comet's price.</td></tr>
+    <tr><td>TinyPilot Voyager 3</td><td class="num">about £340, sold out</td><td>One click</td><td>Business polish at a premium; same raw capability as PiKVM.</td></tr>
+    <tr><td>Intel AMT on the P520</td><td class="num">£0</td><td>Via the host LAN</td><td>Power control and a serial console only, since this Xeon has no integrated graphics. Needs one visit to the BIOS to enable. Worth turning on as a free second layer, not a KVM substitute.</td></tr>
+  </table></div>
+
+  <h3>Cost of ownership for one machine</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Option</th><th>Parts</th><th class="num">Total</th></tr>
+    <tr><td><strong>Comet PoE + ATX board</strong></td><td>KVM, ATX board, PoE from a switch port or a £15 injector, or the included USB-C supply. Cables are in the box. No dummy plug.</td><td class="num"><strong>£120 to £145</strong></td></tr>
+    <tr><td>Comet GL-RM1 V2 + ATX</td><td>KVM plus ATX board</td><td class="num">about £111</td></tr>
+    <tr><td>PiKVM V4 Mini</td><td>All-in</td><td class="num">£225</td></tr>
+    <tr><td>NanoKVM Full</td><td>Includes ATX</td><td class="num">about £70</td></tr>
+    <tr><td>Intel AMT only</td><td>Power and serial console</td><td class="num">£0</td></tr>
+  </table></div>
+  <p class="note">Prices for the RM1, RM1PE and ATX board come from search snippets because GL.iNet's store renders prices in JavaScript. The £172.99 Comet Pro price was verified on the UK site.</p>
+</section>
+
+<section id="herdr">
+  <h2>Should you use Herdr?</h2>
+  <p class="q">"Should I use Herdr given I am doing a lot of design work and finding the UIs far easier than the CLI in Warp?"</p>
+  <div class="answer"><strong>No, not as your cockpit.</strong> Herdr is a terminal multiplexer, tmux rewritten in Rust, with a sidebar that marks each pane working, blocked, idle or done and plays a sound. It is free and well made, but it is terminal-only, one host per client, and it would cost you the voice input, paste, split view, dispatch and phone surfaces of the desktop apps in exchange for a state sidebar you already have. Keep it in reserve for one narrow job on hlab, described below.</div>
+
+  <div class="grid">
+    <div class="card"><h4>What it is</h4><p>herdr.dev, Apache-2.0, free, no account or telemetry, single 10 MB Rust binary for Linux, macOS and Windows. Made by Can Celik (Herdr Inc., YC F26). Not a 37signals project; DHH contributes config PRs and Omarchy 4 ships it.</p></div>
+    <div class="card"><h4>How it knows an agent is blocked</h4><p>Claude Code hooks where available (authoritative), otherwise pattern manifests matched against the bottom of the screen. 21 agents detected including Claude Code, Codex, Gemini CLI and Kiro CLI.</p></div>
+    <div class="card"><h4>Multi-machine reality</h4><p>One client attaches to exactly one server. <code>herdr --remote user@host</code> streams a remote server's UI back. There is no multi-host view yet; the maintainer calls it top priority but it needs a rewrite. DHH's "multiple Herdr setups" means one per mini PC.</p></div>
+    <div class="card"><h4>GUI options</h4><p>None official. Community web and phone front-ends exist (Herdr Studio, Collie as a PWA over Tailscale serve, Moshi on iOS).</p></div>
+  </div>
+
+  <h3>Herdr's features mapped to what you already have</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Herdr gives DHH</th><th>You get it from</th></tr>
+    <tr><td>A pane per agent with working / blocked / done state</td><td>Claude Code Desktop sidebar filtered by status, with an OS notification when a session you are not looking at finishes. Codex app thread list with attention indicators and system notifications on finish or approval.</td></tr>
+    <tr><td>A git worktree per agent</td><td>Both apps create one per session or thread automatically.</td></tr>
+    <tr><td>Detach and reattach across disconnects</td><td>The Desktop engine on hlab keeps running through a dropped SSH link, sleep or quitting the app. The Codex app-server likewise.</td></tr>
+    <tr><td>The ding</td><td>Missing today. Fixed with hooks, see the workflow section.</td></tr>
+    <tr><td>One view across Claude and Codex</td><td>Missing today, and Herdr only has it for one host inside a terminal. A small page on your board can do it cross-tool.</td></tr>
+  </table></div>
+
+  <h3>The one place Herdr could still earn a spot</h3>
+  <p>On hlab only, as the persistence layer for headless and overnight runs instead of tmux. It is tmux with a state API: a small script subscribed to its socket events can push blocked and done events into ntfy, Telegram or the launch board. Revisit when Herdr ships its multi-host view or when a second agent machine appears.</p>
+</section>
+
+<section id="workflow">
+  <h2>The workflow with Claude Code Desktop and Codex Desktop</h2>
+  <p class="q">"What would the workflow look like if I used Claude Code Desktop and Codex Desktop instead of Herdr?"</p>
+  <div class="answer"><strong>Claude Code Desktop stays the cockpit. Codex is a second workforce reached two ways. One notification bus on hlab is the ding.</strong> The parts DHH gets from Herdr map onto features the two apps already have; the only new wiring is hooks that post to one channel so it does not matter which app started a session or which device you are holding.</div>
+
+  <div class="flow">
+    <div class="step"><b>1. Open the cockpit</b>Claude Code Desktop, hlab environment. Ctrl+N per task; each lands in its own worktree. Start four to eight.<br><small>Split view with Ctrl+click for two at once.</small></div>
+    <div class="step"><b>2. Delegate to Codex</b>Any bounded chunk (a migration, test scaffolding, a refactor) goes to Codex from inside the Claude session, so Codex threads multiply with no second GUI.<br><small>Today's pattern, kept and scaled.</small></div>
+    <div class="step"><b>3. Talk to Codex directly</b>For design work where you want Codex in front of you, use the light path from the next section: VS Code Remote-SSH with the Codex extension, or the app with its scanning triggers removed.</div>
+    <div class="step"><b>4. Get the ding</b>Hooks in both tools post blocked and done events to ntfy or Telegram. Claude's mobile push covers permission prompts when Remote Control is on.<br><small>Approve from the phone or come back to the Desktop.</small></div>
+    <div class="step"><b>5. Review and ship</b>Desktop diff view for Claude sessions, Codex PR review for Codex threads, then the ship ledger for anything visible.</div>
+  </div>
+
+  <h3>The wiring, all on hlab, nothing on the laptop</h3>
+  <ul>
+    <li><strong>Claude Code hooks</strong> (shared by CLI and Desktop): a Notification hook on <code>permission_prompt</code>, <code>idle_prompt</code>, <code>agent_needs_input</code> and <code>agent_completed</code>, plus a Stop hook, each posting a one-line message to an ntfy topic served over Tailscale or to Telegram.</li>
+    <li><strong>Codex hooks</strong> in <code>~/.codex/hooks.json</code>: PermissionRequest, Stop, SubagentStop and Interrupt events, run async, posting to the same endpoint. Codex's older notify setting only fires on turn completion, so use hooks.</li>
+    <li><strong>Phone steering:</strong> run <code>claude remote-control --spawn worktree --capacity 8</code> inside tmux on hlab. Those sessions show up in the Claude web and mobile apps with a green dot and push "action required" notifications. Codex Remote pairs the phone to the Codex app by QR for the same on that side.</li>
+    <li><strong>Channels:</strong> Claude Code's Telegram channel plugin relays permission prompts into Telegram so you can approve without opening anything.</li>
+    <li><strong>Who needs me:</strong> short term, the Desktop sidebar filtered by status plus the ntfy feed. Medium term, a small page on the launch board that reads both hook feeds. That page is Herdr's sidebar, cross-tool and in the browser.</li>
+  </ul>
+</section>
+
+<section id="codex">
+  <h2>Using Codex much more without the laptop drag</h2>
+  <p class="q">"Codex is slowing down my laptop enormously … I want to start using Codex more, but don't want all the issues of it slowing down my laptop."</p>
+  <div class="answer"><strong>The agent is already on hlab. The drag comes from the Windows app shell and from the laptop itself.</strong> OpenAI's own issue tracker documents the unified ChatGPT/Codex app on Windows running process-inventory scans about 26 times a minute and spawning hundreds of git and console processes a minute for repo discovery, which produced system-wide input lag; Defender adds 5 to 17 percent CPU while the app is open and exclusions do not help. Separately, x1eg3's Thunderbolt controller is in a fault loop. Neither is fixed by moving compute, because the compute has already moved.</div>
+
+  <h3>Where the slowdown comes from</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Cause</th><th>Evidence</th><th>Still applies when the agent is remote?</th></tr>
+    <tr><td>App main process scanning: WMI process inventories and git.exe / conhost.exe storms for repo discovery</td><td>openai/codex discussion 29949 and issue 29911; no fix through the 26.707 releases</td><td>Probably yes, since it is app-shell behaviour. Unverified for remote-only projects.</td></tr>
+    <tr><td>Defender reacting to that activity</td><td>issues 33711, 30527, 30721</td><td>Yes</td></tr>
+    <tr><td>Windows sandbox ACL traversal and WSL2 file stat storms</td><td>issues 30084, 26149, 25715</td><td>No, only for local or WSL agents</td></tr>
+    <tr><td>Electron renderer animations</td><td>issue 10885</td><td>Yes</td></tr>
+    <tr><td>x1eg3 Thunderbolt fault loop</td><td>Diagnosed 2 Sep 2026 on the laptop</td><td>Independent of Codex; fix with Lenovo Thunderbolt firmware, driver and BIOS updates</td></tr>
+  </table></div>
+
+  <h3>Options ranked for you</h3>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Option</th><th>GUI</th><th>Compute on hlab</th><th>Laptop cost</th><th>State</th></tr>
+    <tr><td>1</td><td><strong>Keep delegating from Claude Code</strong> and scale it with hooks and worktrees</td><td>Claude Desktop</td><td>All</td><td>None</td><td>Works today</td></tr>
+    <tr><td>2</td><td><strong>VS Code Remote-SSH to hlab with the Codex extension</strong>: the extension host and Codex run on hlab</td><td>VS Code sidebar</td><td>All</td><td>VS Code only</td><td>Works for many; some loading-hang reports whose main cause (shared socket permissions) does not apply to a single-user box</td></tr>
+    <tr><td>3</td><td><strong>ChatGPT app with SSH host</strong>, which is what is connected now, with the triggers removed: never open a multi-repo parent folder as a project, delete empty .git folders, disable the VS Code Codex extension while the app is open, keep the app updated</td><td>Full app</td><td>Agent: all</td><td>App shell + Defender</td><td>GA; shell cost remains</td></tr>
+    <tr><td>4</td><td>Codex Linux desktop app on hlab with the window streamed (xrdp, or Sunshine and Moonlight over Tailscale)</td><td>Full app</td><td>All</td><td>Video decode</td><td>Linux preview since 13 Aug 2026; untested as a streamed setup</td></tr>
+    <tr><td>5</td><td>Codex cloud tasks in the browser</td><td>Browser</td><td>None; runs in OpenAI's sandbox on a GitHub repo</td><td>None</td><td>GA; shares plan usage</td></tr>
+    <tr><td>6</td><td>Phone: Codex Remote pairing, Claude Remote Control</td><td>Mobile</td><td>All</td><td>None</td><td>GA</td></tr>
+  </table></div>
+  <p><strong>Recommendation:</strong> 1 as the default, 2 as the interactive GUI when you want Codex in front of you, 3 only for Codex-app-only features such as PR review, automations and multi-repo projects. Fix the Thunderbolt fault regardless; it is dragging everything.</p>
+
+  <h3>Models and plan limits (Sep 2026)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Model</th><th>Use it for</th><th class="num">API $ per 1M in / out</th><th class="num">Plus, local messages per 5 h</th><th class="num">Pro 5x</th></tr>
+    <tr><td>GPT-6 Astra (3 Sep 2026, 1M context)</td><td>Hard design and reasoning</td><td class="num">10 / 50</td><td class="num">5 to 45</td><td class="num">25 to 225</td></tr>
+    <tr><td>GPT-5.6 Sol (your current default)</td><td>General work at high effort</td><td class="num">4 / 20</td><td class="num">10 to 100</td><td class="num">50 to 500</td></tr>
+    <tr><td>GPT-5.6 Terra</td><td>Everyday default</td><td class="num">2 / 12</td><td class="num">25 to 200</td><td class="num">125 to 1,000</td></tr>
+    <tr><td>GPT-5.6 Luna</td><td>Bulk mechanical tasks</td><td class="num">0.20 / 1.20</td><td class="num">250 to 2,000</td><td class="num">1,250 to 10,000</td></tr>
+  </table></div>
+  <p class="note">Codex CLI, app, IDE extension and cloud are all included in ChatGPT plans and draw from one pool. GPT-5.5 and 5.4 were retired from Codex on 31 Aug 2026. hlab's CLI is 0.144.1 and should go to 0.153.4 for Astra as default and the newer hooks.</p>
+</section>
+
+<section id="costs">
+  <h2>All the costs in one place</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Item</th><th>Cost</th><th>Needed?</th></tr>
+    <tr><td>Herdr</td><td>Free, Apache-2.0</td><td>No</td></tr>
+    <tr><td>hunk diff viewer</td><td>Free, MIT</td><td>Optional, terminal only</td></tr>
+    <tr><td>Tailscale</td><td>Already running; personal plan is free</td><td>No change</td></tr>
+    <tr><td>Comet PoE + ATX board</td><td>£120 to £145 once</td><td>Optional insurance</td></tr>
+    <tr><td>Extra machines</td><td>£0; the P520 can host 16 sessions and acg-proxmox1 is already on the tailnet if VM "cores" are ever wanted</td><td>No</td></tr>
+    <tr><td>Codex plan</td><td>Plus $20, Pro 5x $100, Pro 20x $200 a month; API overage per the table above</td><td>Depends on Astra volume</td></tr>
+    <tr><td>Claude plan</td><td>Desktop Code tab, Remote Control, Channels and Dispatch are on Pro and Max</td><td>Already have</td></tr>
+    <tr><td>VS Code + Remote-SSH + Codex extension</td><td>Free</td><td>If option 2</td></tr>
+  </table></div>
+</section>
+
+<section id="next">
+  <h2>Next steps, in order</h2>
+  <ol>
+    <li>Fix the x1eg3 Thunderbolt fault (Lenovo Thunderbolt firmware, driver and BIOS via System Update). This is dragging the laptop whatever you run.</li>
+    <li>On hlab: upgrade Codex CLI to 0.153.4, add the ntfy or Telegram hooks for both Claude Code and Codex, and turn on Claude's mobile push under Remote Control.</li>
+    <li>Set the Codex model mix: Astra for hard problems, Sol for general, Luna for bulk. Keep delegating from Claude Code by default.</li>
+    <li>Trial VS Code Remote-SSH with the Codex extension for direct Codex sessions. Only open the Windows Codex app for its exclusive features, and never point it at a folder of many repos.</li>
+    <li>Decide on the Comet PoE plus ATX board. Buy it only if the P520 must survive unattended while you travel. Enable Intel AMT in the BIOS for free power control either way.</li>
+    <li>Leave Herdr alone. Revisit if it gains a multi-host view or if a second agent machine appears.</li>
+  </ol>
+</section>
+
+<footer>
+  Written for the Claude Code session record as <a href="https://github.com/David-ACG/claude-code-setup/blob/master/kanban/1_planning/RESEARCH_2026-09-06_dhh-herdr-kvm-tailscale-setup.md">RESEARCH_2026-09-06_dhh-herdr-kvm-tailscale-setup.md</a> (full source list there). Facts about hlab, the tailnet and the running Codex and Claude processes were checked on the machine on 6 Sep 2026. Prices are UK, seen the same day, and several GL.iNet figures come from search snippets rather than the store page.
+</footer>
+</div>
+</body>
+</html>

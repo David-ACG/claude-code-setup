@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DHH&#x27;s new setup for programming with AI - terminal, 16 agents, Herdr, Tailscale</title>
+<style>
+:root{--bg:#f7f6f2;--card:#ffffff;--ink:#1c1b18;--muted:#6b675e;--line:#e6e2d8;--accent:#8a3b12;--accent-soft:#fbeee4;--code:#f1efe9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+header.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:start;padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:28px}
+header.hero h1{font-size:2rem;line-height:1.2;margin:0 0 10px;letter-spacing:-.01em}
+header.hero .meta{color:var(--muted);font-size:.95rem;display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
+header.hero .meta span b{color:var(--ink);font-weight:600}
+header.hero img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+header.hero .thumb{position:relative}
+header.hero .thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;background:rgba(0,0,0,.35);color:#fff;border-radius:10px;opacity:0;transition:opacity .15s}
+header.hero .thumb:hover .play{opacity:1}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:0 0 28px;font-size:.95rem}
+nav.toc strong{display:block;margin-bottom:6px}
+nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid;margin:2px 0}
+article h2{font-size:1.45rem;margin:40px 0 12px;padding-top:8px;border-top:1px solid var(--line);letter-spacing:-.01em}
+article h2:first-child{border-top:0;margin-top:0}
+article h3{font-size:1.12rem;margin:26px 0 8px}
+article h4{font-size:1rem;margin:20px 0 6px}
+article p{margin:0 0 14px}
+article ul,article ol{padding-left:26px;margin:0 0 16px}article li{margin:4px 0}
+article blockquote{margin:16px 0;padding:10px 18px;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;color:#3a2a1e}
+article blockquote p{margin:0}
+article code{font:.9em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:1px 5px;border-radius:4px}
+article pre{background:#1f1e1b;color:#f2efe8;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+article pre code{background:none;padding:0;color:inherit}
+.tablewrap{overflow-x:auto;margin:0 0 18px}
+table{border-collapse:collapse;width:100%;font-size:.93rem;background:var(--card)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#f0ede6}
+a.ts{font:.82em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:4px;white-space:nowrap}
+details.transcript{margin-top:44px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+details.transcript summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:1.05rem}
+details.transcript .body{padding:4px 22px 18px;font-size:.95rem;color:#2b2925}
+details.transcript h4{margin:22px 0 8px;font-size:1rem}
+details.transcript p{margin:0 0 12px}
+footer{margin-top:48px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:720px){header.hero{grid-template-columns:1fr}header.hero .thumb{order:-1}nav.toc ol{columns:1}.wrap{padding:20px 16px 60px}}
+@media print{details.transcript{display:none}nav.toc{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <h1>DHH&#x27;s new setup for programming with AI - terminal, 16 agents, Herdr, Tailscale</h1>
+    <p class="meta"><span>Channel <b><a href="https://www.youtube.com/channel/UCJIfeSCssxSC_Dhc5s7woww" target="_blank" rel="noopener">Lex Clips</a></b></span><span>Published <b>2026-09-04</b></span><span>Length <b>12:42</b></span><span>Views <b>92,400</b></span><span>Researched <b>2026-09-06</b></span><span>Focus <b>David&#x27;s P520 + Tailscale: KVM/IP setup, Herdr vs Claude Code Desktop + Codex Desktop, using Codex more without slowing the laptop</b></span></p>
+    <p><a href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k" target="_blank" rel="noopener">https://www.youtube.com/watch?v=4Xg1AE6Uu1k</a></p>
+  </div>
+  <a class="thumb" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi_webp/4Xg1AE6Uu1k/sddefault.webp" alt=""><span class="play">Open on YouTube</span></a>
+</header>
+<nav class='toc'><strong>On this page</strong><ol><li><a href="#summary">Summary</a></li><li><a href="#key-takeaways">Key takeaways</a></li><li><a href="#who-this-is-for-and-why-it-matters">Who this is for and why it matters</a></li><li><a href="#chapter-by-chapter">Chapter by chapter</a></li><li><a href="#claims-and-verification">Claims and verification</a></li><li><a href="#tools-products-and-people-mentioned">Tools, products and people mentioned</a></li><li><a href="#what-has-changed-since-the-video-was-published">What has changed since the video was published</a></li><li><a href="#related-material-worth-reading">Related material worth reading</a></li><li><a href="#open-questions-and-caveats">Open questions and caveats</a></li></ol></nav>
+<article>
+<h2 id="summary">Summary</h2>
+<p>A 12-minute Lex Clips cut from Lex Fridman Podcast #501 (26 Aug 2026) in which David Heinemeier Hansson explains how his programming setup changed once he started working with coding agents. He argues that agents turn programming from single-threaded flow into parallel processing, so the tooling has to show many agents at once and tell you when one needs you. His stack is terminal-only: Herdr (a tmux-like multiplexer with agent-state tracking and a notification bell), one Herdr per machine, four to five mini PCs put on his Tailscale network with GL.iNet Comet KVM boxes, about 16 agent threads in total, Neovim and lazygit for review, and Linux because agents work best with config files and CLI tools. Research verdict: every product and mechanism he names checks out and is current; the setup is a good fit for a terminal-first Linux user and a poor fit for David, who already runs both agents on hlab from GUI desktop apps and whose remaining gaps are notification and out-of-band recovery, not hardware. The decision write-up for David's questions is in <a href="../../../1_planning/RESEARCH_2026-09-06_dhh-herdr-kvm-tailscale-setup.md">RESEARCH_2026-09-06_dhh-herdr-kvm-tailscale-setup.md</a> and the readable page at https://hlab.taila51191.ts.net:9459/dhh-setup/.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Agents are "at once both too fast and too slow", so waiting on one agent feels useless; run a handful in parallel and spend your time making decisions and unblocking them <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=91s" target="_blank" rel="noopener">1:31</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=136s" target="_blank" rel="noopener">2:16</a>.</li>
+<li>The tool change that matters is a multiplexer that tracks agent state and rings when an agent is done or blocked. DHH moved from tmux to Herdr for exactly that <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=227s" target="_blank" rel="noopener">3:47</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=237s" target="_blank" rel="noopener">3:57</a>.</li>
+<li>Herdr does not span machines: DHH runs "multiple Herdr setups running on individual machines" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=261s" target="_blank" rel="noopener">4:21</a>. Verified: Herdr's client attaches to one server; a multi-host view is still an open request.</li>
+<li>More agent threads came from more machines, not a bigger one: four closet mini PCs, each with a GL.iNet Comet KVM, all on Tailscale, roughly 16 threads <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=285s" target="_blank" rel="noopener">4:45</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=367s" target="_blank" rel="noopener">6:07</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=395s" target="_blank" rel="noopener">6:35</a>. For David, the P520 alone has the headroom for that thread count because agent sessions are API-bound.</li>
+<li>Tailscale is the enabler: every machine in Malibu and Copenhagen looks local from his phone with no firewall changes <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=322s" target="_blank" rel="noopener">5:22</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=332s" target="_blank" rel="noopener">5:32</a>. David already has this.</li>
+<li>The Comet's appeal is friction: plug in HDMI and USB, open a web page, log in once, control the box <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=292s" target="_blank" rel="noopener">4:52</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=306s" target="_blank" rel="noopener">5:06</a>. Verified, and the Comet runs Tailscale on the device itself.</li>
+<li>Review moved to Neovim as a project browser plus lazygit; hunk shows only the changeset while he wants surrounding context <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=502s" target="_blank" rel="noopener">8:22</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=526s" target="_blank" rel="noopener">8:46</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=537s" target="_blank" rel="noopener">8:57</a>.</li>
+<li>Linux wins for agents because "everything in Linux is either a config file or a CLI tool" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=579s" target="_blank" rel="noopener">9:39</a>; the Mac's GUI-only configuration and WSL's sandboxing are the counterexamples <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=648s" target="_blank" rel="noopener">10:48</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=705s" target="_blank" rel="noopener">11:45</a>.</li>
+<li>He disowns lines of code as a metric while using it as shorthand for the jump from tens to hundreds of lines an hour <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=447s" target="_blank" rel="noopener">7:27</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=461s" target="_blank" rel="noopener">7:41</a>.</li>
+</ul>
+<h2 id="who-this-is-for-and-why-it-matters">Who this is for and why it matters</h2>
+<p>The audience is working programmers deciding how to organise a day spent supervising several coding agents, and Linux-curious developers weighing Omarchy-style setups. Prerequisites are comfort with a terminal, tmux-style multiplexing and SSH; DHH assumes all three. The clip is opinion and workflow, not a tutorial, so the value is in the mental model (parallel supervision, notification-driven attention) rather than in any command.</p>
+<p>For David the connection is direct. He supervises Claude Code and Codex on the P520 from a Windows laptop over Tailscale, wants to use Codex much more, and is weighing a KVM. The research below confirms that his current architecture already matches DHH's on the points that count (agents on Linux, mesh network, worktree per session) and that the parts he lacks are the ding and out-of-band recovery. The GWTH angle is indirect: more parallel sessions with reliable notification would raise throughput on the launch board, but nothing here changes lesson content.</p>
+<h2 id="chapter-by-chapter">Chapter by chapter</h2>
+<h3 id="tslink3x0c03knilst-from-textmate-to-agents"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=3s" target="_blank" rel="noopener">0:03</a> From TextMate to agents</h3>
+<p>Lex asks how the setup changed. DHH used TextMate for almost twenty years from 2005, was forced out only by the move to Linux, and then by "agentic engineering", a term he says he hates; both settle on calling it programming <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=40s" target="_blank" rel="noopener">0:40</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=53s" target="_blank" rel="noopener">0:53</a>. Programming with agents "requires a different tool set" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=54s" target="_blank" rel="noopener">0:54</a>.</p>
+<h3 id="tslink64x1c04knilst-single-thread-flow-versus-parallel-processing"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=64s" target="_blank" rel="noopener">1:04</a> Single-thread flow versus parallel processing</h3>
+<p>Hand-written code meant one problem at a time, and that immersion "was actually the portal to flow" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=81s" target="_blank" rel="noopener">1:21</a>. Agents break it because they answer neither instantly nor slowly enough to ignore, so "you have to let the agent cook" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=108s" target="_blank" rel="noopener">1:48</a>. Sitting and waiting "feels actually like you're a little bit useless" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=124s" target="_blank" rel="noopener">2:04</a>.</p>
+<h3 id="tslink136x2c16knilst-throwing-more-resources-at-it"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=136s" target="_blank" rel="noopener">2:16</a> Throwing more resources at it</h3>
+<p>His first agentic phase ran one agent and left him unconvinced. The fix was the scaling-law instinct: run a handful, and you are back in a flow state because you are constantly deciding, unblocking an agent that has a question, or handing out the next task <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=154s" target="_blank" rel="noopener">2:34</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=167s" target="_blank" rel="noopener">2:47</a>. He began with tmux panes and splits, "a terminal with tabs" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=178s" target="_blank" rel="noopener">2:58</a>.</p>
+<h3 id="tslink186x3c06knilst-still-the-terminal"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=186s" target="_blank" rel="noopener">3:06</a> Still the terminal</h3>
+<p>Asked whether he uses the Claude Code app or the Codex app, he says he loves that "this agent revolution was kicked off in the terminal" and that the modern terminal is "a beautiful place to be" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=193s" target="_blank" rel="noopener">3:13</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=208s" target="_blank" rel="noopener">3:28</a>. This is the explicit rejection of GUI cockpits.</p>
+<h3 id="tslink218x3c38knilst-herdr"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=218s" target="_blank" rel="noopener">3:38</a> Herdr</h3>
+<p>Once agents run on several machines, "tmux alone is not enough to keep track of it", so he switched to Herdr, "essentially tmux plus agent notifications" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=227s" target="_blank" rel="noopener">3:47</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=237s" target="_blank" rel="noopener">3:57</a>. It rings when an agent is done or needs something and tracks working versus not <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=244s" target="_blank" rel="noopener">4:04</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=258s" target="_blank" rel="noopener">4:18</a>. He runs multiple Herdr setups, one per machine <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=261s" target="_blank" rel="noopener">4:21</a>. He jokes about whether the human is master or servant <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=251s" target="_blank" rel="noopener">4:11</a>.</p>
+<h3 id="tslink266x4c26knilst-sixteen-cores-glinet-comet-kvms"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=266s" target="_blank" rel="noopener">4:26</a> Sixteen cores: GL.iNet Comet KVMs</h3>
+<p>About a month before recording he decided one machine was not fast enough, "like I've discovered multi-core programming, but I only have two cores" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=276s" target="_blank" rel="noopener">4:36</a>, and bought GL.iNet Comet KVMs. Plug in HDMI and USB, go to a web page, log in once, and the box is controllable <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=292s" target="_blank" rel="noopener">4:52</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=306s" target="_blank" rel="noopener">5:06</a>.</p>
+<h3 id="tslink316x5c16knilst-tailscale"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=316s" target="_blank" rel="noopener">5:16</a> Tailscale</h3>
+<p>The other revolution of the year: WireGuard networks. Tailscale turns all his computers into one local network wherever he is; from his phone he reaches the Malibu and Copenhagen offices as if sitting next to the machines, "without having to punch holes in a firewall" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=326s" target="_blank" rel="noopener">5:26</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=345s" target="_blank" rel="noopener">5:45</a>. It "decreases the friction it takes to get new compute online" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=351s" target="_blank" rel="noopener">5:51</a>.</p>
+<h3 id="tslink358x5c58knilst-the-closet"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=358s" target="_blank" rel="noopener">5:58</a> The closet</h3>
+<p>He connected four mini PCs from earlier experiments, each with a Comet, and controlled them all with Herdr <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=367s" target="_blank" rel="noopener">6:07</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=378s" target="_blank" rel="noopener">6:18</a>. He maxed out at about four to five machines running three agents each, roughly 16 threads, fewer as agents get faster <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=388s" target="_blank" rel="noopener">6:28</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=395s" target="_blank" rel="noopener">6:35</a>.</p>
+<h3 id="tslink407x6c47knilst-delirious-and-the-lines-of-code-caveat"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=407s" target="_blank" rel="noopener">6:47</a> Delirious, and the lines-of-code caveat</h3>
+<p>He describes going from excited to "delirious" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=412s" target="_blank" rel="noopener">6:52</a>, compares current bandwidth to dial-up <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=420s" target="_blank" rel="noopener">7:00</a>, and estimates hand-written output at 20 to 30 lines an hour against hundreds now <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=447s" target="_blank" rel="noopener">7:27</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=453s" target="_blank" rel="noopener">7:33</a>. He then disowns the metric: lines of code is "a stupid metric", and the right question is "what did you build?" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=465s" target="_blank" rel="noopener">7:45</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=478s" target="_blank" rel="noopener">7:58</a>.</p>
+<h3 id="tslink502x8c22knilst-review-neovim-lazygit-hunk"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=502s" target="_blank" rel="noopener">8:22</a> Review: Neovim, lazygit, hunk</h3>
+<p>Still Neovim, but as a project browser and a way to open lazygit for the change log <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=507s" target="_blank" rel="noopener">8:27</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=510s" target="_blank" rel="noopener">8:30</a>. GitHub's PR view would be nicer if faster <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=519s" target="_blank" rel="noopener">8:39</a>. hunk produces nice diffs but shows only the change set; when reviewing agent output he wants to see the untouched neighbouring file that maybe should have changed, so Neovim wins <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=526s" target="_blank" rel="noopener">8:46</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=537s" target="_blank" rel="noopener">8:57</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=548s" target="_blank" rel="noopener">9:08</a>.</p>
+<h3 id="tslink551x9c11knilst-linux-and-the-unix-philosophy"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=551s" target="_blank" rel="noopener">9:11</a> Linux and the Unix philosophy</h3>
+<p>Everything runs on Linux. Agents "love the Unix philosophy": individual tools invoked from the command line; no major OS does this as well as Linux, where "it's either a config file or a CLI tool" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=560s" target="_blank" rel="noopener">9:20</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=579s" target="_blank" rel="noopener">9:39</a>. The irony: Linux's old drawback is now its selling point <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=596s" target="_blank" rel="noopener">9:56</a>.</p>
+<h3 id="tslink607x10c07knilst-stuck-with-a-mac"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=607s" target="_blank" rel="noopener">10:07</a> Stuck with a Mac</h3>
+<p>Four months earlier he arrived somewhere expecting a Linux box and found a Mac mini. Homebrew is "the missing package manager" and has become good <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=636s" target="_blank" rel="noopener">10:36</a>, but Raycast has no config file you can script; you export from the GUI and carry the file on a USB key, and default key bindings cannot be automated <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=653s" target="_blank" rel="noopener">10:53</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=673s" target="_blank" rel="noopener">11:13</a>. Lex counters that there are ways; DHH: "Not good ones. I looked. I tried hard." <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=684s" target="_blank" rel="noopener">11:24</a></p>
+<h3 id="tslink687x11c27knilst-lexs-windows-and-wsl-detour"><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=687s" target="_blank" rel="noopener">11:27</a> Lex's Windows and WSL detour</h3>
+<p>Lex uses Windows for Adobe Premiere and WSL for Linux; both agree WSL "is a sandbox" and agents need Linux "unleashed" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=705s" target="_blank" rel="noopener">11:45</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=710s" target="_blank" rel="noopener">11:50</a>. Lex has woken up to Omarchy-style config-file setups and finds many apps lacking them; DHH says people build the app themselves, but "they're hacks. You don't have to live like this, Lex." <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=734s" target="_blank" rel="noopener">12:14</a> <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=740s" target="_blank" rel="noopener">12:20</a></p>
+<h2 id="claims-and-verification">Claims and verification</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Claim (timestamp)</th>
+<th>Status</th>
+<th>Evidence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Herdr is "tmux plus agent notifications" that rings when an agent is done or needs a decision <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=237s" target="_blank" rel="noopener">3:57</a></td>
+<td>Verified</td>
+<td>Herdr is a Rust terminal multiplexer with per-pane agent state (working, blocked, idle, done) and notifications on done and blocked; detection via agent hooks or screen manifests</td>
+<td><a href="https://herdr.dev/docs/agents/">Herdr docs: agents</a>, <a href="https://herdr.dev/docs/configuration/">configuration</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>He runs multiple Herdr setups, one per machine <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=261s" target="_blank" rel="noopener">4:21</a></td>
+<td>Verified</td>
+<td>One Herdr client attaches to exactly one server; <code>herdr --remote user@host</code> is a thin client to one remote; multi-host view is Discussion #515, "top priority" but unshipped</td>
+<td><a href="https://herdr.dev/docs/persistence-remote/">persistence and remote</a>, <a href="https://github.com/herdrdev/herdr/discussions/515">discussion 515</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>GL.iNet Comet: plug HDMI and USB in, open a web page, log in once, control the computer <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=292s" target="_blank" rel="noopener">4:52</a></td>
+<td>Verified</td>
+<td>Comet GL-RM1 is a KVM-over-IP box with HDMI capture and USB HID emulation, a local web UI, and optional Tailscale, ZeroTier or GL.iNet cloud remote access</td>
+<td><a href="https://docs.gl-inet.com/kvm/en/">GL.iNet KVM docs</a>, <a href="https://docs.gl-inet.com/kvm/en/faq/remote_access_via_tailscale/">remote access via Tailscale</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Tailscale makes all your computers one local network anywhere without firewall changes <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=326s" target="_blank" rel="noopener">5:26</a></td>
+<td>Verified</td>
+<td>Tailscale builds a WireGuard mesh with NAT traversal; the Comet itself can join the tailnet</td>
+<td><a href="https://docs.gl-inet.com/kvm/en/faq/remote_access_via_tailscale/">Tailscale on the Comet</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Four to five machines with about three agents each, about 16 threads <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=395s" target="_blank" rel="noopener">6:35</a></td>
+<td>Verified as his report</td>
+<td>Consistent with the Lex Fridman episode page summary and his July 2026 "server closet is growing" tweet; not independently measurable</td>
+<td><a href="https://finance.biggo.com/podcast/24748b357b42d559">episode page summary</a>, <a href="https://x.com/dhh/status/2078247687128809812">DHH tweet</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Herdr is what he uses "as of late" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=234s" target="_blank" rel="noopener">3:54</a> and Omarchy has it [context]</td>
+<td>Verified</td>
+<td>DHH tweeted on 9 Aug 2026 that Herdr ships in Omarchy 4 "Quattro"; Omarchy opens it with Super+Ctrl+Return</td>
+<td><a href="https://x.com/dhh/status/2086539415682224565">DHH tweet</a>, <a href="https://codetocloud.io/blog/omarchy-4-quattro-whats-new/">Omarchy 4 notes</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>hunk "produces diffs in a really nice way" but shows only the change set <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=528s" target="_blank" rel="noopener">8:48</a></td>
+<td>Verified</td>
+<td>hunk is a review-first TUI diff viewer for agent changesets with <code>hunk diff --watch</code>; it renders hunks, not whole files</td>
+<td><a href="https://www.hunk.dev/">hunk.dev</a>, <a href="https://github.com/modem-dev/hunk">repo</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Homebrew is "the missing package manager for the Mac" <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=638s" target="_blank" rel="noopener">10:38</a></td>
+<td>Verified</td>
+<td>Homebrew's own tagline</td>
+<td><a href="https://brew.sh/">brew.sh</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Raycast has no config file; you must export from the GUI <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=653s" target="_blank" rel="noopener">10:53</a></td>
+<td>Partly true</td>
+<td>Raycast settings are exported and imported via the app; there is no plain-text config for keybindings, though extensions and scripts are files. Unverified whether the export can be scripted</td>
+<td>Unverified</td>
+</tr>
+<tr>
+<td>10</td>
+<td>WSL "is a sandbox" and not good Linux for agents <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=705s" target="_blank" rel="noopener">11:45</a></td>
+<td>Partly true</td>
+<td>WSL2 is a lightweight VM with its own kernel; agents run fine inside it, but cross-filesystem access to <code>/mnt/c</code> is slow and OpenAI documents WSL2 stat storms for Codex; OpenAI's own advice is to keep repos inside the WSL filesystem</td>
+<td><a href="https://learn.chatgpt.com/docs/windows/wsl">Codex on WSL</a>, <a href="https://github.com/openai/codex/issues/26149">openai/codex 26149</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>He does not use the Claude Code app or the Codex app <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=190s" target="_blank" rel="noopener">3:10</a></td>
+<td>Verified as stated</td>
+<td>Both apps exist and run sessions in worktrees with notifications; his choice is preference, not capability</td>
+<td><a href="https://code.claude.com/docs/en/desktop">Claude Code desktop</a>, <a href="https://learn.chatgpt.com/docs/app">Codex app</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Agents work best on Linux because everything is a config file or CLI tool <a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&amp;t=579s" target="_blank" rel="noopener">9:39</a></td>
+<td>Opinion, plausible</td>
+<td>No benchmark; consistent with both vendors documenting Linux and macOS as primary and Windows as later ports (Codex Windows app March 2026, Linux preview Aug 2026)</td>
+<td><a href="https://learn.chatgpt.com/docs/changelog">Codex changelog</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Full episode context: he runs Claude in the top pane and Codex below inside Herdr</td>
+<td>Verified</td>
+<td>Stated at 02:43:27 in the full episode transcript</td>
+<td><a href="https://lexfridman.com/dhh-2-transcript/">Lex transcript</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Herdr is free and open</td>
+<td>Verified</td>
+<td>Apache-2.0 since July 2026 (AGPL before), no account, no telemetry; Herdr Inc. joined Y Combinator F26 and plans paid features above the runtime</td>
+<td><a href="https://herdr.dev/blog/herdr-is-joining-y-combinator/">Herdr YC post</a>, <a href="https://github.com/herdrdev/herdr">repo</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tools-products-and-people-mentioned">Tools, products and people mentioned</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>What it is</th>
+<th>Role in the video</th>
+<th>Current status (as of 2026-09-06)</th>
+<th>Official link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Herdr</td>
+<td>Rust terminal multiplexer with agent-state sidebar and notifications</td>
+<td>His cockpit, one per machine</td>
+<td>Apache-2.0, free, Linux/macOS/Windows; ~35.7k GitHub stars; no multi-host view yet</td>
+<td>https://herdr.dev/</td>
+</tr>
+<tr>
+<td>tmux</td>
+<td>Terminal multiplexer</td>
+<td>His previous cockpit</td>
+<td>Stable; Herdr reimplements its model</td>
+<td>https://github.com/tmux/tmux</td>
+</tr>
+<tr>
+<td>GL.iNet Comet (GL-RM1 / RM1PE / RM10)</td>
+<td>KVM-over-IP box with on-device Tailscale</td>
+<td>Puts closet mini PCs online</td>
+<td>RM1 V2 ~£96, RM1PE ~£107, RM10 £172.99 UK; ATX power board $15.99</td>
+<td>https://www.gl-inet.com/en-gb/products/gl-rm1</td>
+</tr>
+<tr>
+<td>Tailscale</td>
+<td>WireGuard mesh VPN</td>
+<td>Makes all machines local</td>
+<td>Personal plan free; runs on the Comet, on hlab and on x1eg3 already</td>
+<td>https://tailscale.com/</td>
+</tr>
+<tr>
+<td>Neovim</td>
+<td>Editor</td>
+<td>Project browser and review</td>
+<td>Stable</td>
+<td>https://neovim.io/</td>
+</tr>
+<tr>
+<td>lazygit</td>
+<td>Terminal git UI</td>
+<td>Change log review</td>
+<td>Stable</td>
+<td>https://github.com/jesseduffield/lazygit</td>
+</tr>
+<tr>
+<td>hunk</td>
+<td>TUI diff viewer for agent changesets</td>
+<td>Tried for review</td>
+<td>MIT, ~9.1k stars, Omarchy 4 default with <code>hunk diff --watch</code></td>
+<td>https://www.hunk.dev/</td>
+</tr>
+<tr>
+<td>Omarchy</td>
+<td>DHH's Arch-based Linux distribution</td>
+<td>Implied home of the setup</td>
+<td>Version 4 "Quattro" ships Herdr and hunk</td>
+<td>https://omarchy.org/</td>
+</tr>
+<tr>
+<td>Claude Code app</td>
+<td>Anthropic desktop app running Claude Code sessions</td>
+<td>Rejected by DHH</td>
+<td>Windows and macOS; SSH environments run the engine on a remote Linux box; worktree per session</td>
+<td>https://code.claude.com/docs/en/desktop</td>
+</tr>
+<tr>
+<td>Codex app</td>
+<td>OpenAI agent app, merged into the unified ChatGPT desktop app 2026-07-09</td>
+<td>Rejected by DHH</td>
+<td>Windows since 2026-03-05, Linux preview 2026-08-13; SSH hosts run <code>codex app-server</code> remotely</td>
+<td>https://learn.chatgpt.com/docs/app</td>
+</tr>
+<tr>
+<td>Homebrew</td>
+<td>macOS package manager</td>
+<td>Praised</td>
+<td>Stable</td>
+<td>https://brew.sh/</td>
+</tr>
+<tr>
+<td>Raycast</td>
+<td>macOS launcher</td>
+<td>Criticised for GUI-only config</td>
+<td>Current</td>
+<td>https://www.raycast.com/</td>
+</tr>
+<tr>
+<td>WSL</td>
+<td>Windows Subsystem for Linux</td>
+<td>Lex's Linux; called a sandbox</td>
+<td>WSL2 current; WSL1 dropped by Codex</td>
+<td>https://learn.microsoft.com/windows/wsl/</td>
+</tr>
+<tr>
+<td>TextMate</td>
+<td>macOS editor</td>
+<td>Twenty years of history</td>
+<td>Maintained, open source</td>
+<td>https://macromates.com/</td>
+</tr>
+<tr>
+<td>David Heinemeier Hansson</td>
+<td>Rails creator, 37signals CTO, Omarchy author</td>
+<td>Speaker</td>
+<td>Lex Fridman #501, 26 Aug 2026</td>
+<td>https://lexfridman.com/dhh-2/</td>
+</tr>
+<tr>
+<td>Can (Ogulcan) Celik</td>
+<td>Herdr author, Herdr Inc. (YC F26)</td>
+<td>Not named; builds the tool</td>
+<td>Solo developer, incorporated Aug 2026</td>
+<td>https://github.com/ogulcancelik</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-has-changed-since-the-video-was-published">What has changed since the video was published</h2>
+<ul>
+<li>Nothing material in the two days since the clip's 4 Sep 2026 upload; the interview was recorded around late August 2026.</li>
+<li>Since the recording: Codex CLI 0.153.4 (4 Sep 2026) made GPT-6 Astra (released 3 Sep 2026) the default model in its picker, and GPT-5.5 and 5.4 were retired from Codex on 31 Aug 2026. Source: <a href="https://learn.chatgpt.com/docs/changelog">Codex changelog</a>, <a href="https://learn.chatgpt.com/docs/models">Codex models</a>.</li>
+<li>Herdr's licence changed from AGPL to Apache-2.0 in July 2026 and the company joined YC in August 2026; older articles still say AGPL. Source: <a href="https://herdr.dev/blog/herdr-is-joining-y-combinator/">Herdr YC post</a>.</li>
+<li>GL.iNet added the four-port Comet X (GL-RM4PE, $279.99, June 2026) for people who, like DHH, put several boxes online. Source: <a href="https://www.gl-inet.com/en-us/products/gl-rm4pe">GL.iNet Comet X</a>.</li>
+<li>Anthropic's Claude Code gained an agent view (<code>claude agents</code>), background sessions, Channels for Telegram and Discord, and Remote Control server mode with per-session worktrees, which together cover Herdr's use case for Claude sessions without a terminal multiplexer. Source: <a href="https://code.claude.com/docs/en/agent-view">agent view</a>, <a href="https://code.claude.com/docs/en/remote-control">remote control</a>, <a href="https://code.claude.com/docs/en/channels">channels</a>.</li>
+</ul>
+<h2 id="related-material-worth-reading">Related material worth reading</h2>
+<ul>
+<li><a href="https://lexfridman.com/dhh-2-transcript/">Lex Fridman #501 full transcript</a>: the surrounding five hours, including the Claude-above-Codex pane detail at 02:43:27.</li>
+<li><a href="https://herdr.dev/docs/agents/">Herdr docs: agents</a> and <a href="https://herdr.dev/docs/persistence-remote/">persistence and remote</a>: how state detection and the single-server remote model actually work.</li>
+<li><a href="https://github.com/herdrdev/herdr/discussions/515">Herdr multi-host discussion #515</a>: the maintainer on why multiple remote servers are not supported yet.</li>
+<li><a href="https://docs.gl-inet.com/kvm/en/faq/remote_access_via_tailscale/">GL.iNet: remote access via Tailscale</a> and <a href="https://docs.gl-inet.com/kvm/en/user_guide/gl-atx-board/">ATX board guide</a>: the two pages that make the Comet a full out-of-band tool.</li>
+<li><a href="https://www.servethehome.com/gl-inet-comet-poe-4k-remote-kvm-review-gl-rm1pe/">ServeTheHome Comet PoE review</a>: independent test, privacy nits, and why they buy them for Tailscale.</li>
+<li><a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/kvmonaplatformwithdiscretegraphics.htm">Intel: AMT KVM needs integrated graphics</a>: why the P520's vPro cannot replace a KVM box.</li>
+<li><a href="https://code.claude.com/docs/en/desktop#ssh-sessions">Claude Code desktop: SSH sessions</a> and <a href="https://learn.chatgpt.com/docs/remote-connections">Codex remote connections</a>: the GUI equivalents of DHH's SSH-into-the-closet workflow.</li>
+<li><a href="https://github.com/openai/codex/discussions/29949">openai/codex discussion 29949</a>: the documented Windows app-shell scanning that makes laptops lag.</li>
+<li><a href="https://codetocloud.io/blog/omarchy-4-quattro-whats-new/">Omarchy 4 "Quattro" notes</a>: how DHH's distribution packages Herdr and hunk.</li>
+<li><a href="https://github.com/modem-dev/hunk">hunk</a>: the diff tool he mentions, with its agent-notes sidecar.</li>
+</ul>
+<h2 id="open-questions-and-caveats">Open questions and caveats</h2>
+<ul>
+<li>The clip omits how DHH hands work to each machine and merges results; the full episode does not describe a git or worktree strategy across boxes.</li>
+<li>Whether the "16 threads" ceiling was API rate limits, his attention, or CPU is not stated. For a single P520 the binding limit is plan usage and attention, not cores.</li>
+<li>Herdr's screen-manifest detection for agents without hooks is heuristic; "blocked" can be missed or false. Claude Code's hooks are the authoritative path.</li>
+<li>Prices for the GL.iNet RM1, RM1PE and ATX board in GBP come from search snippets because the store renders prices with JavaScript; only the Comet Pro price was verified on the page.</li>
+<li>Whether AMT is provisioned on the P520 is unverified; from the laptop, an answer at <code>http://192.168.178.50:16992</code> would confirm it.</li>
+<li>DHH's Raycast criticism is partly a matter of taste; the export path exists, scriptability is what he wants.</li>
+<li>Everything he says about GUI apps being the wrong cockpit is preference. Both vendor apps now offer the state, worktree and notification features he attributes to Herdr, for their own agent only.</li>
+</ul>
+</article>
+<details class='transcript'><summary>Full transcript (click a timestamp to open the video there)</summary><div class='body'><p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=3s" target="_blank" rel="noopener">0:03</a> I got to ask you about uh how is your setup uh programming setup changed? So, keyboard, voice, what&#x27;s the IDE? &gt;&gt; It&#x27;s crazy to think about now, but yeah, I used TextMate for almost 20 years. I used TextMate starting in 2005, I think. I helped get the first version out, and then I just wasn&#x27;t interested. I wasn&#x27;t in the market for an alternative. And it wasn&#x27;t until the switch to Linux that I was forced out of my habitat. And now, with the switch to What are we calling it? Agentic engineering? I [ __ ] hate that term. We got to come up with something that sounds as plain as programming, but encapsulates the fact that it&#x27;s with agents. But, &gt;&gt; I still think it should be called programming. &gt;&gt; let&#x27;s just call it programming. &gt;&gt; Yeah. &gt;&gt; The programming with agents requires a different tool set. It really does. And the main change here is that you&#x27;re going from single-thread programming in your head to parallel processing.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=70s" target="_blank" rel="noopener">1:10</a> When I was writing code, chiseling it by hand in TextMate or even Neovim uh not that long ago, I would just focus on one problem at the time. And I would methodically work my way through it, and that was actually the portal to flow. The portal to flow was deep immersion into a single problem, see it through to the end. &gt;&gt; Mhm. &gt;&gt; That&#x27;s not how it works with agents. In part, because the agents are at once both too fast and too slow. They don&#x27;t give you an immediate reply on something that you asked them to do that&#x27;s the same as typing on a keyboard. So, you have to let the agent cook &gt;&gt; Mhm. &gt;&gt; for a bit. And therefore, you realize, well, if I just sit around waiting for them, first of all, that doesn&#x27;t feel productive. Even if the agent, just one of them can be highly productive, it does not feel productive, it doesn&#x27;t feel good. It feels actually like you&#x27;re a little bit useless. &gt;&gt; Mhm.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=127s" target="_blank" rel="noopener">2:07</a> &gt;&gt; And maybe I had a moment when the first agentic moment was there and we I was running mostly one agent at a time where I felt like I don&#x27;t know about this. But you can solve a lot of hard problems by just throwing more resources at it. This is the whole scaling law of AI itself, right? That if you paralyze these things and you&#x27;re not running one agent, but you&#x27;re running a handful, you can feel like you&#x27;re in a flow state because you&#x27;re constantly doing programming work in the sense that you&#x27;re making decisions and you&#x27;re helping either unblock an agent because it has a question about which direction to take or you&#x27;re ready for a new task. And to do that, you need a different setup. I started first doing it in tmux and just having separate panes and having separate splits. Basically, a terminal with tabs is a good way to think about you open a bunch of tabs. I think most humans know exactly how that works. They don&#x27;t work in just one tab.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=186s" target="_blank" rel="noopener">3:06</a> &gt;&gt; So, uh still sticking to the terminal CLI. &gt;&gt; Absolutely. &gt;&gt; So, you&#x27;re not using cloud code app or the codex app or the &gt;&gt; I love the fact that this agent revolution was kicked off in the terminal because I was already a huge fan of TUI&#x27;s, terminal user interfaces, and the terminal in general. That feels like a a really [clears throat] nice place to be. It&#x27;s a beautiful place to be. The modern terminal is just a good looking place to work. So, &gt;&gt; &gt;&gt; I like that. And um and then this fact of having multiple agents, especially once it&#x27;s not just multiple agents running on your own machine, but you start running multiple machines. Now, tmux alone is not enough to keep track of it. And that&#x27;s why as of late I&#x27;ve switched to this thing called Herder. And Herder&#x27;s essentially team mugs plus agent notifications. So, whenever your agent is done or needs something for you, it goes ding. A little a little bell telling you it&#x27;s ready for its human uh Is it Is it master or servant? I&#x27;m not quite sure always.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=254s" target="_blank" rel="noopener">4:15</a> &gt;&gt; &gt;&gt; But, it is ready for a decision. And it also keeps track of these Is it is it working or not? So, I have this Herder set up. I have multiple Herder setups actually running on individual machines. I went on this crazy phase just about a month ago realizing that doing this work on a single machine is not fast enough. It&#x27;s like I&#x27;ve discovered multi-core programming, but I only have two cores. I&#x27;m like, what if I had 16 cores? What if I had 32 cores? What if I had 64 cores? So, I instantly went out and I bought these amazing KVMs called gli.net comets. &gt;&gt; Mhm. &gt;&gt; And what they do is it&#x27;s this little box. You plug in HDMI, you plug in USB, and connect it to the computer. It&#x27;s like a KVM. So, KVM is a a remote way of controlling computer. But, what&#x27;s special about this is just how easy it was. You connect this thing in, you go to a webpage, log in once at one password. Now, this thing can hop on your Telnet.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=315s" target="_blank" rel="noopener">5:16</a> &gt;&gt; Mhm. &gt;&gt; This has been the other revolution of the last year for me. It&#x27;s discovering these WireGuard networks. Tailscale is essentially turning all the computers you have into a local network wherever you are. &gt;&gt; Mhm. &gt;&gt; Like right now on my phone, I have direct access to all the computers in my Malibu office. I also have access to all my computers in my Copenhagen office. And I can treat them as though I sat right next to them without having to punch holes in a firewall or set up complicated VPNs and what this does is it just decreases the friction it takes to get new compute online. So, as soon as I discovered this, I looked in my closet and I realized I had a bunch of mini PCs from prior experiments. I just said, &quot;What if I just connected all of them?&quot; And I just connected four of the computers in a closet. They all had their little comment and suddenly I could run agents on more computers at the same time and I could control them all with Herder.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=380s" target="_blank" rel="noopener">6:20</a> And it did get to a point where I maxed out my own processing power. That I think at about What do I want to put it? About four to five machines running I don&#x27;t know, three agents. I have about 16 threads. That&#x27;s what I can run. And the faster the agents run, of course, the fewer threads I can run. But at the current pace I can run about 16 threads. &gt;&gt; &gt;&gt; At at full acceleration. And that&#x27;s part of why I&#x27;ve gone from just being excited about the agent moment to being delirious. Because I think I should say some of it is a little assaulting and again, we&#x27;re on we&#x27;re on the dial-up bandwidth wise with our computer. I mean, it&#x27;s actually hilarious. So, you think of I&#x27;m sitting here a year ago, right? I&#x27;m chiseling my code. I&#x27;m writing my lines. And over the course of like an hour, I will have written one beautiful controller, one beautiful model. Like that&#x27;s one file. And I really worked on it, right? So, maybe there&#x27;s 60 lines left. So, maybe my bandwidth at this moment is like 30 lines an hour. I think that&#x27;s even high. Maybe it&#x27;s 20 lines an hour.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=451s" target="_blank" rel="noopener">7:31</a> Now I&#x27;m running 16 threads. I&#x27;m producing at sometimes hundreds of lines of hour or or hundreds of lines of code per hour. Now, let me pause myself there for a hot moment. I hate that metric, right? Like lines of code is a stupid metric in general to measure these things, and I think it&#x27;s right from someone in the programming community to ridicule the AI psychosis when everyone talks about the number of lines of code they&#x27;re writing, and then you ask them, &quot;What did you build?&quot; And then like, &quot;Well, I didn&#x27;t And then no good answer comes out, right? It&#x27;s just a nice shorthand &gt;&gt; It is a nice shorthand. It is a representation and encapsulation of &gt;&gt; how much output that&#x27;s coming out. Now, whether that output is good or bad is not a referendum on that. But, I was producing and producing so much more now, right? And therefore, I&#x27;m able to keep all these threads going. So, that&#x27;s the setup. It&#x27;s still Neovim, but at this point we&#x27;re not writing a lot of code. So, I&#x27;m using Neovim as a project browser, and then as a way to kick off lazy get to see the change log for what&#x27;s there. And even that, I&#x27;d say if GitHub was a little faster at showing you your pull request, the web is probably actually a nicer place to do that.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=525s" target="_blank" rel="noopener">8:46</a> I don&#x27;t know. There&#x27;s also this other tool I&#x27;ve been playing with a bit called hunk, which just produces diffs in a really nice way. So, you could look at that, too. But, I find that when I look at hunk, I only see the change set. And when I&#x27;m reviewing output from an agent, I often want to see the surrounding context. Oh, yeah, so it changed this file, but actually, what do we have in this other file that wasn&#x27;t touched, but maybe should have been touched? So, that&#x27;s why I still like Neovim as a way of doing it. Um, but it&#x27;s all happening, by the way, of course, in Emacs. So, it&#x27;s all happening on Linux. And this was the other major breakthrough with agents. Agents love the Unix philosophy. It loves individual tools that it can invoke through the command line. And there is no operating system on Earth of the majors. I&#x27;m counting three here: Mac, Windows, Linux, that works as well with that mechanism as Linux. Everything is in Linux it&#x27;s either a config file or a CLI tool.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=586s" target="_blank" rel="noopener">9:47</a> Now, that was its main drawback 5 minutes ago. This was the reason people didn&#x27;t like Linux. It&#x27;s like it&#x27;s all config files and CLI tools. &gt;&gt; Mhm. &gt;&gt; What great irony that the universe has played it upon us that now the drawbacks of Linux 5 minutes ago are now it&#x27;s major selling points. This is one of the things I thought I was stuck for a weekend with a Mac uh 4 months ago. I thought I had a computer the place I was going that was a Linux machine so I didn&#x27;t bring my laptop and I I found out when I arrived I only had a Mac Mini. So, I was going to make the best of a bad situation here and uh set up my Mac in some of the ways I&#x27;ve been thinking about with um with Linux. And you can actually do a lot now. Homebrew has gotten really quite good. Homebrew is the missing package manager for the Mac and no one has done more to move the Mac forward in terms of ease of setup. But, still something as simple as Raycast, I don&#x27;t know if you&#x27;ve used that. That&#x27;s the &gt;&gt; Yep.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=653s" target="_blank" rel="noopener">10:54</a> &gt;&gt; There&#x27;s no config file that you can just access. You have to go into the GUI, export a file, then take that file, I don&#x27;t know, in your freaking backpack on a USB key. &gt;&gt; Mhm. &gt;&gt; And then you can import it somewhere else. You cannot automate the entire setup of your machine. You can&#x27;t automate at all the configuration of Mac&#x27;s default key bindings. That has to be a manual process where you&#x27;re clicking with a mouse like a caveman to set up your machine. &gt;&gt; I mean, there&#x27;s ways around it. &gt;&gt; Not good ones. I looked. I tried hard. &gt;&gt; So, here&#x27;s here&#x27;s my been my journey. Obviously, I&#x27;m a Linux person, but because of Adobe Premiere, Adobe products, I&#x27;m also a Windows person. So, often times I would use WSL, Windows Subsystem for Linux. So, Linux inside Windows, which is in the agentic era, is not a good kind of Linux cuz it&#x27;s just &gt;&gt; It&#x27;s a sandbox. &gt;&gt; It&#x27;s a sandbox and you want the Linux to be unleashed to be able to do everything.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=4Xg1AE6Uu1k&t=710s" target="_blank" rel="noopener">11:50</a> &gt;&gt; Correct. &gt;&gt; And so, I have now woken up to things like Grey Cat and have you know, I&#x27;m a keyboard person. Where is the config file? Can I Can I Can I basically do everything where an agent can can set everything up for me and save the configuration so I can replicate across systems and everything is automated. And so, I had to ask a lot of those questions and a lot of them are missing. &gt;&gt; have good answers. &gt;&gt; But often times you could actually just build the app yourself. &gt;&gt; But they&#x27;re a hacks. &gt;&gt; They&#x27;re hacks. &gt;&gt; They&#x27;re hacks. You don&#x27;t have to live like this, Lex.</p></div></details>
+<footer>Transcript via TranscriptAPI.com. Research compiled by Claude Code on 2026-09-06; verify prices and version numbers against the linked official sources before relying on them.</footer>
+</div>
+</body>
+</html>

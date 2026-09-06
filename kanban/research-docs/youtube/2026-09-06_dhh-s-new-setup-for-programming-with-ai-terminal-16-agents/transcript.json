@@ -1,0 +1,1839 @@
+{
+ "video_id": "4Xg1AE6Uu1k",
+ "language": "en",
+ "transcript": [
+  {
+   "text": "I got to ask you about uh how is your",
+   "start": 3.0,
+   "duration": 4.2
+  },
+  {
+   "text": "setup uh",
+   "start": 5.24,
+   "duration": 5.08
+  },
+  {
+   "text": "programming setup changed? So,",
+   "start": 7.2,
+   "duration": 5.36
+  },
+  {
+   "text": "keyboard, voice,",
+   "start": 10.32,
+   "duration": 3.84
+  },
+  {
+   "text": "what's the IDE?",
+   "start": 12.56,
+   "duration": 3.32
+  },
+  {
+   "text": ">> It's crazy to think about now, but yeah,",
+   "start": 14.16,
+   "duration": 4.96
+  },
+  {
+   "text": "I used TextMate for almost 20 years. I",
+   "start": 15.88,
+   "duration": 5.96
+  },
+  {
+   "text": "used TextMate starting in",
+   "start": 19.12,
+   "duration": 5.12
+  },
+  {
+   "text": "2005, I think. I helped get the first",
+   "start": 21.84,
+   "duration": 4.32
+  },
+  {
+   "text": "version out, and then I just wasn't",
+   "start": 24.24,
+   "duration": 4.44
+  },
+  {
+   "text": "interested. I wasn't in the market for",
+   "start": 26.16,
+   "duration": 5.24
+  },
+  {
+   "text": "an alternative. And it wasn't until",
+   "start": 28.68,
+   "duration": 6.0
+  },
+  {
+   "text": "the switch to Linux that I was forced",
+   "start": 31.4,
+   "duration": 7.16
+  },
+  {
+   "text": "out of my habitat. And now, with the",
+   "start": 34.68,
+   "duration": 6.2
+  },
+  {
+   "text": "switch to",
+   "start": 38.56,
+   "duration": 3.64
+  },
+  {
+   "text": "What are we calling it? Agentic",
+   "start": 40.88,
+   "duration": 3.72
+  },
+  {
+   "text": "engineering? I [ __ ] hate that term.",
+   "start": 42.2,
+   "duration": 3.68
+  },
+  {
+   "text": "We got to come up with something that",
+   "start": 44.6,
+   "duration": 4.36
+  },
+  {
+   "text": "sounds as plain as programming, but",
+   "start": 45.88,
+   "duration": 4.72
+  },
+  {
+   "text": "encapsulates the fact that it's with",
+   "start": 48.96,
+   "duration": 2.52
+  },
+  {
+   "text": "agents. But,",
+   "start": 50.6,
+   "duration": 1.96
+  },
+  {
+   "text": ">> I still think it should be called",
+   "start": 51.48,
+   "duration": 1.56
+  },
+  {
+   "text": "programming.",
+   "start": 52.56,
+   "duration": 1.56
+  },
+  {
+   "text": ">> let's just call it programming.",
+   "start": 53.04,
+   "duration": 1.72
+  },
+  {
+   "text": ">> Yeah.",
+   "start": 54.12,
+   "duration": 2.84
+  },
+  {
+   "text": ">> The programming with agents requires a",
+   "start": 54.76,
+   "duration": 4.6
+  },
+  {
+   "text": "different tool set. It really does. And",
+   "start": 56.96,
+   "duration": 7.12
+  },
+  {
+   "text": "the main change here is that",
+   "start": 59.36,
+   "duration": 6.88
+  },
+  {
+   "text": "you're going from single-thread",
+   "start": 64.08,
+   "duration": 4.24
+  },
+  {
+   "text": "programming in your head to parallel",
+   "start": 66.24,
+   "duration": 4.08
+  },
+  {
+   "text": "processing.",
+   "start": 68.32,
+   "duration": 4.48
+  },
+  {
+   "text": "When I was writing code, chiseling it by",
+   "start": 70.32,
+   "duration": 5.52
+  },
+  {
+   "text": "hand in TextMate or even Neovim",
+   "start": 72.8,
+   "duration": 5.4
+  },
+  {
+   "text": "uh not that long ago, I would just focus",
+   "start": 75.84,
+   "duration": 4.4
+  },
+  {
+   "text": "on one problem at the time. And I would",
+   "start": 78.2,
+   "duration": 3.64
+  },
+  {
+   "text": "methodically work my way through it, and",
+   "start": 80.24,
+   "duration": 3.6
+  },
+  {
+   "text": "that was actually the portal to flow.",
+   "start": 81.84,
+   "duration": 3.88
+  },
+  {
+   "text": "The portal to flow was",
+   "start": 83.84,
+   "duration": 3.08
+  },
+  {
+   "text": "deep",
+   "start": 85.72,
+   "duration": 3.6
+  },
+  {
+   "text": "immersion into a single problem, see it",
+   "start": 86.92,
+   "duration": 3.44
+  },
+  {
+   "text": "through to the end.",
+   "start": 89.32,
+   "duration": 2.44
+  },
+  {
+   "text": ">> Mhm.",
+   "start": 90.36,
+   "duration": 3.72
+  },
+  {
+   "text": ">> That's not how it works with agents. In",
+   "start": 91.76,
+   "duration": 5.72
+  },
+  {
+   "text": "part, because the agents are at once",
+   "start": 94.08,
+   "duration": 5.76
+  },
+  {
+   "text": "both too fast and too slow. They don't",
+   "start": 97.48,
+   "duration": 4.92
+  },
+  {
+   "text": "give you an immediate",
+   "start": 99.84,
+   "duration": 5.36
+  },
+  {
+   "text": "reply on something that you asked them",
+   "start": 102.4,
+   "duration": 5.64
+  },
+  {
+   "text": "to do that's the same as typing on a",
+   "start": 105.2,
+   "duration": 5.2
+  },
+  {
+   "text": "keyboard. So, you have to let the agent",
+   "start": 108.04,
+   "duration": 3.12
+  },
+  {
+   "text": "cook",
+   "start": 110.4,
+   "duration": 1.0
+  },
+  {
+   "text": ">> Mhm.",
+   "start": 111.16,
+   "duration": 1.8
+  },
+  {
+   "text": ">> for a bit.",
+   "start": 111.4,
+   "duration": 4.4
+  },
+  {
+   "text": "And therefore, you realize, well,",
+   "start": 112.96,
+   "duration": 4.64
+  },
+  {
+   "text": "if I just sit around waiting for them,",
+   "start": 115.8,
+   "duration": 3.44
+  },
+  {
+   "text": "first of all, that doesn't feel",
+   "start": 117.6,
+   "duration": 4.2
+  },
+  {
+   "text": "productive. Even if the agent, just one",
+   "start": 119.24,
+   "duration": 3.8
+  },
+  {
+   "text": "of them can be highly productive, it",
+   "start": 121.8,
+   "duration": 2.2
+  },
+  {
+   "text": "does not feel productive, it doesn't",
+   "start": 123.04,
+   "duration": 2.12
+  },
+  {
+   "text": "feel good. It feels actually like you're",
+   "start": 124.0,
+   "duration": 2.36
+  },
+  {
+   "text": "a little bit useless.",
+   "start": 125.16,
+   "duration": 1.88
+  },
+  {
+   "text": ">> Mhm.",
+   "start": 126.36,
+   "duration": 4.28
+  },
+  {
+   "text": ">> And maybe I had a moment when the first",
+   "start": 127.04,
+   "duration": 5.68
+  },
+  {
+   "text": "agentic moment was there and we I was",
+   "start": 130.64,
+   "duration": 3.48
+  },
+  {
+   "text": "running mostly one agent at a time where",
+   "start": 132.72,
+   "duration": 2.8
+  },
+  {
+   "text": "I felt like",
+   "start": 134.12,
+   "duration": 2.839
+  },
+  {
+   "text": "I don't know about this.",
+   "start": 135.52,
+   "duration": 4.28
+  },
+  {
+   "text": "But you can solve a lot of hard problems",
+   "start": 136.959,
+   "duration": 3.601
+  },
+  {
+   "text": "by",
+   "start": 139.8,
+   "duration": 2.84
+  },
+  {
+   "text": "just throwing more resources at it. This",
+   "start": 140.56,
+   "duration": 5.0
+  },
+  {
+   "text": "is the whole scaling law of AI itself,",
+   "start": 142.64,
+   "duration": 6.48
+  },
+  {
+   "text": "right? That if you paralyze these things",
+   "start": 145.56,
+   "duration": 4.96
+  },
+  {
+   "text": "and you're not running one agent, but",
+   "start": 149.12,
+   "duration": 3.08
+  },
+  {
+   "text": "you're running a handful,",
+   "start": 150.52,
+   "duration": 3.68
+  },
+  {
+   "text": "you can",
+   "start": 152.2,
+   "duration": 4.28
+  },
+  {
+   "text": "feel like you're in a flow state because",
+   "start": 154.2,
+   "duration": 5.16
+  },
+  {
+   "text": "you're constantly doing",
+   "start": 156.48,
+   "duration": 4.28
+  },
+  {
+   "text": "programming work in the sense that",
+   "start": 159.36,
+   "duration": 3.28
+  },
+  {
+   "text": "you're making decisions and you're",
+   "start": 160.76,
+   "duration": 3.68
+  },
+  {
+   "text": "helping either unblock an agent because",
+   "start": 162.64,
+   "duration": 2.76
+  },
+  {
+   "text": "it has a",
+   "start": 164.44,
+   "duration": 2.6
+  },
+  {
+   "text": "question about which direction to take",
+   "start": 165.4,
+   "duration": 3.64
+  },
+  {
+   "text": "or you're ready for a new task. And to",
+   "start": 167.04,
+   "duration": 4.72
+  },
+  {
+   "text": "do that, you need a different setup. I",
+   "start": 169.04,
+   "duration": 5.48
+  },
+  {
+   "text": "started first doing it in tmux and just",
+   "start": 171.76,
+   "duration": 4.64
+  },
+  {
+   "text": "having separate panes",
+   "start": 174.52,
+   "duration": 4.439
+  },
+  {
+   "text": "and having separate splits. Basically, a",
+   "start": 176.4,
+   "duration": 4.4
+  },
+  {
+   "text": "terminal with tabs is a good way to",
+   "start": 178.959,
+   "duration": 3.241
+  },
+  {
+   "text": "think about you open a bunch of tabs. I",
+   "start": 180.8,
+   "duration": 3.84
+  },
+  {
+   "text": "think most humans know exactly how that",
+   "start": 182.2,
+   "duration": 4.2
+  },
+  {
+   "text": "works. They don't work in just one tab.",
+   "start": 184.64,
+   "duration": 4.04
+  },
+  {
+   "text": ">> So, uh still sticking to the terminal",
+   "start": 186.4,
+   "duration": 3.08
+  },
+  {
+   "text": "CLI.",
+   "start": 188.68,
+   "duration": 1.52
+  },
+  {
+   "text": ">> Absolutely.",
+   "start": 189.48,
+   "duration": 2.8
+  },
+  {
+   "text": ">> So, you're not using cloud code app or",
+   "start": 190.2,
+   "duration": 3.64
+  },
+  {
+   "text": "the codex app or the",
+   "start": 192.28,
+   "duration": 4.52
+  },
+  {
+   "text": ">> I love the fact that this agent",
+   "start": 193.84,
+   "duration": 4.399
+  },
+  {
+   "text": "revolution was kicked off in the",
+   "start": 196.8,
+   "duration": 3.12
+  },
+  {
+   "text": "terminal because I was already a huge",
+   "start": 198.239,
+   "duration": 4.881
+  },
+  {
+   "text": "fan of TUI's, terminal user interfaces,",
+   "start": 199.92,
+   "duration": 5.08
+  },
+  {
+   "text": "and the terminal in general. That feels",
+   "start": 203.12,
+   "duration": 3.399
+  },
+  {
+   "text": "like a",
+   "start": 205.0,
+   "duration": 3.08
+  },
+  {
+   "text": "a really [clears throat] nice place to",
+   "start": 206.519,
+   "duration": 3.081
+  },
+  {
+   "text": "be. It's a beautiful place to be. The",
+   "start": 208.08,
+   "duration": 4.36
+  },
+  {
+   "text": "modern terminal is just a good looking",
+   "start": 209.6,
+   "duration": 4.587
+  },
+  {
+   "text": "place to work. So,",
+   "start": 212.44,
+   "duration": 2.04
+  },
+  {
+   "text": ">> [laughter]",
+   "start": 214.187,
+   "duration": 1.653
+  },
+  {
+   "text": ">> I like that.",
+   "start": 214.48,
+   "duration": 2.96
+  },
+  {
+   "text": "And um",
+   "start": 215.84,
+   "duration": 2.96
+  },
+  {
+   "text": "and then",
+   "start": 217.44,
+   "duration": 3.68
+  },
+  {
+   "text": "this fact of having multiple agents,",
+   "start": 218.8,
+   "duration": 4.439
+  },
+  {
+   "text": "especially once it's not just multiple",
+   "start": 221.12,
+   "duration": 4.08
+  },
+  {
+   "text": "agents running on your own machine, but",
+   "start": 223.239,
+   "duration": 4.28
+  },
+  {
+   "text": "you start running multiple machines.",
+   "start": 225.2,
+   "duration": 6.56
+  },
+  {
+   "text": "Now, tmux alone is not enough to keep",
+   "start": 227.519,
+   "duration": 7.001
+  },
+  {
+   "text": "track of it. And that's why as of late",
+   "start": 231.76,
+   "duration": 3.92
+  },
+  {
+   "text": "I've switched to this thing called",
+   "start": 234.52,
+   "duration": 2.56
+  },
+  {
+   "text": "Herder.",
+   "start": 235.68,
+   "duration": 4.68
+  },
+  {
+   "text": "And Herder's essentially team mugs plus",
+   "start": 237.08,
+   "duration": 5.72
+  },
+  {
+   "text": "agent notifications. So, whenever your",
+   "start": 240.36,
+   "duration": 3.8
+  },
+  {
+   "text": "agent is done or needs something for",
+   "start": 242.8,
+   "duration": 3.96
+  },
+  {
+   "text": "you, it goes ding.",
+   "start": 244.16,
+   "duration": 5.28
+  },
+  {
+   "text": "A little a little bell telling you it's",
+   "start": 246.76,
+   "duration": 4.72
+  },
+  {
+   "text": "ready for its human uh",
+   "start": 249.44,
+   "duration": 4.16
+  },
+  {
+   "text": "Is it Is it master or servant? I'm not",
+   "start": 251.48,
+   "duration": 3.317
+  },
+  {
+   "text": "quite sure always.",
+   "start": 253.6,
+   "duration": 1.44
+  },
+  {
+   "text": ">> [laughter]",
+   "start": 254.797,
+   "duration": 3.203
+  },
+  {
+   "text": ">> But, it is ready for a decision. And it",
+   "start": 255.04,
+   "duration": 4.84
+  },
+  {
+   "text": "also keeps track of these Is it is it",
+   "start": 258.0,
+   "duration": 3.519
+  },
+  {
+   "text": "working or not? So, I have this Herder",
+   "start": 259.88,
+   "duration": 4.44
+  },
+  {
+   "text": "set up. I have multiple Herder setups",
+   "start": 261.519,
+   "duration": 5.241
+  },
+  {
+   "text": "actually running on individual machines.",
+   "start": 264.32,
+   "duration": 4.48
+  },
+  {
+   "text": "I went on this crazy",
+   "start": 266.76,
+   "duration": 4.44
+  },
+  {
+   "text": "phase just about a month ago realizing",
+   "start": 268.8,
+   "duration": 3.28
+  },
+  {
+   "text": "that",
+   "start": 271.2,
+   "duration": 3.96
+  },
+  {
+   "text": "doing this work on a single machine is",
+   "start": 272.08,
+   "duration": 4.839
+  },
+  {
+   "text": "not fast enough. It's like I've",
+   "start": 275.16,
+   "duration": 3.36
+  },
+  {
+   "text": "discovered multi-core programming, but I",
+   "start": 276.919,
+   "duration": 3.641
+  },
+  {
+   "text": "only have two cores. I'm like, what if I",
+   "start": 278.52,
+   "duration": 4.16
+  },
+  {
+   "text": "had 16 cores? What if I had 32 cores?",
+   "start": 280.56,
+   "duration": 4.48
+  },
+  {
+   "text": "What if I had 64 cores? So, I instantly",
+   "start": 282.68,
+   "duration": 5.28
+  },
+  {
+   "text": "went out and I bought these amazing",
+   "start": 285.04,
+   "duration": 5.6
+  },
+  {
+   "text": "KVMs called gli.net",
+   "start": 287.96,
+   "duration": 3.52
+  },
+  {
+   "text": "comets.",
+   "start": 290.64,
+   "duration": 1.4
+  },
+  {
+   "text": ">> Mhm.",
+   "start": 291.48,
+   "duration": 2.12
+  },
+  {
+   "text": ">> And what they do is it's this little",
+   "start": 292.04,
+   "duration": 5.76
+  },
+  {
+   "text": "box. You plug in HDMI, you plug in",
+   "start": 293.6,
+   "duration": 6.04
+  },
+  {
+   "text": "USB, and connect it to the computer.",
+   "start": 297.8,
+   "duration": 4.28
+  },
+  {
+   "text": "It's like a KVM. So, KVM is a a remote",
+   "start": 299.64,
+   "duration": 4.44
+  },
+  {
+   "text": "way of controlling computer. But, what's",
+   "start": 302.08,
+   "duration": 4.44
+  },
+  {
+   "text": "special about this is just how easy it",
+   "start": 304.08,
+   "duration": 4.6
+  },
+  {
+   "text": "was. You connect this thing in, you go",
+   "start": 306.52,
+   "duration": 5.399
+  },
+  {
+   "text": "to a webpage, log in once at one",
+   "start": 308.68,
+   "duration": 5.2
+  },
+  {
+   "text": "password. Now, this thing can hop on",
+   "start": 311.919,
+   "duration": 3.0
+  },
+  {
+   "text": "your",
+   "start": 313.88,
+   "duration": 1.8
+  },
+  {
+   "text": "Telnet.",
+   "start": 314.919,
+   "duration": 1.401
+  },
+  {
+   "text": ">> Mhm.",
+   "start": 315.68,
+   "duration": 2.88
+  },
+  {
+   "text": ">> This has been the other revolution of",
+   "start": 316.32,
+   "duration": 6.12
+  },
+  {
+   "text": "the last year for me. It's discovering",
+   "start": 318.56,
+   "duration": 6.32
+  },
+  {
+   "text": "these WireGuard networks.",
+   "start": 322.44,
+   "duration": 4.2
+  },
+  {
+   "text": "Tailscale",
+   "start": 324.88,
+   "duration": 4.52
+  },
+  {
+   "text": "is essentially turning all the computers",
+   "start": 326.64,
+   "duration": 4.92
+  },
+  {
+   "text": "you have into a local network wherever",
+   "start": 329.4,
+   "duration": 2.68
+  },
+  {
+   "text": "you are.",
+   "start": 331.56,
+   "duration": 0.92
+  },
+  {
+   "text": ">> Mhm.",
+   "start": 332.08,
+   "duration": 2.24
+  },
+  {
+   "text": ">> Like right now on my phone, I have",
+   "start": 332.48,
+   "duration": 5.08
+  },
+  {
+   "text": "direct access to all the computers in my",
+   "start": 334.32,
+   "duration": 5.68
+  },
+  {
+   "text": "Malibu office. I also have access to all",
+   "start": 337.56,
+   "duration": 5.04
+  },
+  {
+   "text": "my computers in my Copenhagen office.",
+   "start": 340.0,
+   "duration": 4.44
+  },
+  {
+   "text": "And I can treat them as though I sat",
+   "start": 342.6,
+   "duration": 3.24
+  },
+  {
+   "text": "right next to them",
+   "start": 344.44,
+   "duration": 2.96
+  },
+  {
+   "text": "without having to punch holes in a",
+   "start": 345.84,
+   "duration": 5.48
+  },
+  {
+   "text": "firewall or set up complicated VPNs and",
+   "start": 347.4,
+   "duration": 6.56
+  },
+  {
+   "text": "what this does is it just decreases the",
+   "start": 351.32,
+   "duration": 5.16
+  },
+  {
+   "text": "friction it takes to get new compute",
+   "start": 353.96,
+   "duration": 4.96
+  },
+  {
+   "text": "online. So,",
+   "start": 356.48,
+   "duration": 4.0
+  },
+  {
+   "text": "as soon as I discovered this, I looked",
+   "start": 358.92,
+   "duration": 3.2
+  },
+  {
+   "text": "in my closet and I realized I had a",
+   "start": 360.48,
+   "duration": 4.12
+  },
+  {
+   "text": "bunch of mini PCs from prior",
+   "start": 362.12,
+   "duration": 3.96
+  },
+  {
+   "text": "experiments. I just said, \"What if I",
+   "start": 364.6,
+   "duration": 3.16
+  },
+  {
+   "text": "just connected all of them?\"",
+   "start": 366.08,
+   "duration": 3.24
+  },
+  {
+   "text": "And I just connected four of the",
+   "start": 367.76,
+   "duration": 3.96
+  },
+  {
+   "text": "computers in a closet. They all had",
+   "start": 369.32,
+   "duration": 5.44
+  },
+  {
+   "text": "their little comment and suddenly I",
+   "start": 371.72,
+   "duration": 5.24
+  },
+  {
+   "text": "could run agents on more computers at",
+   "start": 374.76,
+   "duration": 4.04
+  },
+  {
+   "text": "the same time and I could control them",
+   "start": 376.96,
+   "duration": 3.52
+  },
+  {
+   "text": "all with Herder.",
+   "start": 378.8,
+   "duration": 4.119
+  },
+  {
+   "text": "And it did get to a point where I maxed",
+   "start": 380.48,
+   "duration": 5.72
+  },
+  {
+   "text": "out my own processing power. That I",
+   "start": 382.919,
+   "duration": 5.881
+  },
+  {
+   "text": "think at about",
+   "start": 386.2,
+   "duration": 4.32
+  },
+  {
+   "text": "What do I want to put it? About four to",
+   "start": 388.8,
+   "duration": 4.72
+  },
+  {
+   "text": "five machines running",
+   "start": 390.52,
+   "duration": 5.04
+  },
+  {
+   "text": "I don't know, three agents. I have about",
+   "start": 393.52,
+   "duration": 4.399
+  },
+  {
+   "text": "16 threads. That's what I can run. And",
+   "start": 395.56,
+   "duration": 3.84
+  },
+  {
+   "text": "the faster the agents run, of course,",
+   "start": 397.919,
+   "duration": 3.081
+  },
+  {
+   "text": "the fewer threads I can run. But at the",
+   "start": 399.4,
+   "duration": 4.084
+  },
+  {
+   "text": "current pace I can run about 16 threads.",
+   "start": 401.0,
+   "duration": 2.64
+  },
+  {
+   "text": ">> [laughter]",
+   "start": 403.484,
+   "duration": 2.676
+  },
+  {
+   "text": ">> At at full acceleration.",
+   "start": 403.64,
+   "duration": 4.0
+  },
+  {
+   "text": "And",
+   "start": 406.16,
+   "duration": 4.04
+  },
+  {
+   "text": "that's part of why I've gone from just",
+   "start": 407.64,
+   "duration": 5.12
+  },
+  {
+   "text": "being excited about the agent moment to",
+   "start": 410.2,
+   "duration": 4.24
+  },
+  {
+   "text": "being delirious.",
+   "start": 412.76,
+   "duration": 2.76
+  },
+  {
+   "text": "Because",
+   "start": 414.44,
+   "duration": 2.68
+  },
+  {
+   "text": "I think I should say some of it is a",
+   "start": 415.52,
+   "duration": 2.84
+  },
+  {
+   "text": "little",
+   "start": 417.12,
+   "duration": 3.24
+  },
+  {
+   "text": "assaulting and again,",
+   "start": 418.36,
+   "duration": 4.28
+  },
+  {
+   "text": "we're on we're on the dial-up bandwidth",
+   "start": 420.36,
+   "duration": 4.72
+  },
+  {
+   "text": "wise with our computer. I mean,",
+   "start": 422.64,
+   "duration": 4.279
+  },
+  {
+   "text": "it's actually hilarious. So, you think",
+   "start": 425.08,
+   "duration": 3.76
+  },
+  {
+   "text": "of I'm sitting here a year ago, right?",
+   "start": 426.919,
+   "duration": 3.881
+  },
+  {
+   "text": "I'm chiseling my code. I'm writing my",
+   "start": 428.84,
+   "duration": 4.44
+  },
+  {
+   "text": "lines. And over the course of like an",
+   "start": 430.8,
+   "duration": 5.52
+  },
+  {
+   "text": "hour, I will have written one beautiful",
+   "start": 433.28,
+   "duration": 4.92
+  },
+  {
+   "text": "controller, one beautiful model. Like",
+   "start": 436.32,
+   "duration": 3.56
+  },
+  {
+   "text": "that's one file.",
+   "start": 438.2,
+   "duration": 3.48
+  },
+  {
+   "text": "And I really worked on it, right? So,",
+   "start": 439.88,
+   "duration": 4.039
+  },
+  {
+   "text": "maybe there's 60 lines left. So, maybe",
+   "start": 441.68,
+   "duration": 5.6
+  },
+  {
+   "text": "my bandwidth at this moment is like",
+   "start": 443.919,
+   "duration": 4.921
+  },
+  {
+   "text": "30 lines an hour. I think that's even",
+   "start": 447.28,
+   "duration": 4.0
+  },
+  {
+   "text": "high. Maybe it's 20 lines an hour.",
+   "start": 448.84,
+   "duration": 5.0
+  },
+  {
+   "text": "Now I'm running 16 threads.",
+   "start": 451.28,
+   "duration": 4.84
+  },
+  {
+   "text": "I'm producing at sometimes hundreds of",
+   "start": 453.84,
+   "duration": 4.88
+  },
+  {
+   "text": "lines of hour or or hundreds of lines of",
+   "start": 456.12,
+   "duration": 5.44
+  },
+  {
+   "text": "code per hour. Now,",
+   "start": 458.72,
+   "duration": 4.04
+  },
+  {
+   "text": "let me pause myself there for a hot",
+   "start": 461.56,
+   "duration": 3.76
+  },
+  {
+   "text": "moment. I hate that metric, right? Like",
+   "start": 462.76,
+   "duration": 4.76
+  },
+  {
+   "text": "lines of code is a stupid metric in",
+   "start": 465.32,
+   "duration": 3.96
+  },
+  {
+   "text": "general to measure these things, and I",
+   "start": 467.52,
+   "duration": 4.44
+  },
+  {
+   "text": "think it's right from someone in the",
+   "start": 469.28,
+   "duration": 5.0
+  },
+  {
+   "text": "programming community to ridicule the AI",
+   "start": 471.96,
+   "duration": 4.72
+  },
+  {
+   "text": "psychosis when everyone talks about the",
+   "start": 474.28,
+   "duration": 4.32
+  },
+  {
+   "text": "number of lines of code they're writing,",
+   "start": 476.68,
+   "duration": 3.0
+  },
+  {
+   "text": "and then you ask them, \"What did you",
+   "start": 478.6,
+   "duration": 3.88
+  },
+  {
+   "text": "build?\" And then like, \"Well, I didn't",
+   "start": 479.68,
+   "duration": 4.12
+  },
+  {
+   "text": "And then no good answer comes out,",
+   "start": 482.48,
+   "duration": 3.08
+  },
+  {
+   "text": "right? It's just a nice shorthand",
+   "start": 483.8,
+   "duration": 3.52
+  },
+  {
+   "text": ">> It is a nice shorthand. It is a",
+   "start": 485.56,
+   "duration": 4.24
+  },
+  {
+   "text": "representation and encapsulation of",
+   "start": 487.32,
+   "duration": 4.32
+  },
+  {
+   "text": ">> how much output that's coming out. Now,",
+   "start": 489.8,
+   "duration": 4.28
+  },
+  {
+   "text": "whether that output is good or bad",
+   "start": 491.64,
+   "duration": 4.32
+  },
+  {
+   "text": "is not a referendum on that. But, I was",
+   "start": 494.08,
+   "duration": 3.72
+  },
+  {
+   "text": "producing and producing so much more",
+   "start": 495.96,
+   "duration": 4.08
+  },
+  {
+   "text": "now, right? And therefore, I'm able to",
+   "start": 497.8,
+   "duration": 4.52
+  },
+  {
+   "text": "keep all these threads going. So,",
+   "start": 500.04,
+   "duration": 4.879
+  },
+  {
+   "text": "that's the setup. It's still Neovim, but",
+   "start": 502.32,
+   "duration": 4.2
+  },
+  {
+   "text": "at this point",
+   "start": 504.919,
+   "duration": 2.921
+  },
+  {
+   "text": "we're not writing a lot of code. So, I'm",
+   "start": 506.52,
+   "duration": 4.12
+  },
+  {
+   "text": "using Neovim as a project browser, and",
+   "start": 507.84,
+   "duration": 5.24
+  },
+  {
+   "text": "then as a way to kick off lazy get to",
+   "start": 510.64,
+   "duration": 6.32
+  },
+  {
+   "text": "see the change log for what's there. And",
+   "start": 513.08,
+   "duration": 6.399
+  },
+  {
+   "text": "even that, I'd say",
+   "start": 516.96,
+   "duration": 4.44
+  },
+  {
+   "text": "if GitHub was a little faster at showing",
+   "start": 519.479,
+   "duration": 3.721
+  },
+  {
+   "text": "you your pull request, the web is",
+   "start": 521.4,
+   "duration": 3.4
+  },
+  {
+   "text": "probably actually a nicer place to do",
+   "start": 523.2,
+   "duration": 2.6
+  },
+  {
+   "text": "that.",
+   "start": 524.8,
+   "duration": 2.08
+  },
+  {
+   "text": "I don't know. There's also this other",
+   "start": 525.8,
+   "duration": 2.96
+  },
+  {
+   "text": "tool I've been playing with a bit called",
+   "start": 526.88,
+   "duration": 5.16
+  },
+  {
+   "text": "hunk, which just produces diffs in a",
+   "start": 528.76,
+   "duration": 5.079
+  },
+  {
+   "text": "really nice way. So, you could look at",
+   "start": 532.04,
+   "duration": 3.16
+  },
+  {
+   "text": "that, too. But, I find that when I look",
+   "start": 533.839,
+   "duration": 3.961
+  },
+  {
+   "text": "at hunk, I only see the change set. And",
+   "start": 535.2,
+   "duration": 4.96
+  },
+  {
+   "text": "when I'm reviewing output from an agent,",
+   "start": 537.8,
+   "duration": 3.92
+  },
+  {
+   "text": "I often want to see the surrounding",
+   "start": 540.16,
+   "duration": 3.48
+  },
+  {
+   "text": "context. Oh, yeah, so it changed this",
+   "start": 541.72,
+   "duration": 3.16
+  },
+  {
+   "text": "file, but actually, what do we have in",
+   "start": 543.64,
+   "duration": 3.04
+  },
+  {
+   "text": "this other file that wasn't touched, but",
+   "start": 544.88,
+   "duration": 3.6
+  },
+  {
+   "text": "maybe should have been touched? So,",
+   "start": 546.68,
+   "duration": 3.64
+  },
+  {
+   "text": "that's why I still like Neovim as a way",
+   "start": 548.48,
+   "duration": 3.24
+  },
+  {
+   "text": "of doing it.",
+   "start": 550.32,
+   "duration": 3.28
+  },
+  {
+   "text": "Um, but it's all happening, by the way,",
+   "start": 551.72,
+   "duration": 3.76
+  },
+  {
+   "text": "of course, in Emacs. So, it's all",
+   "start": 553.6,
+   "duration": 3.6
+  },
+  {
+   "text": "happening on Linux. And this was the",
+   "start": 555.48,
+   "duration": 4.64
+  },
+  {
+   "text": "other major breakthrough with agents.",
+   "start": 557.2,
+   "duration": 6.6
+  },
+  {
+   "text": "Agents love the Unix philosophy. It",
+   "start": 560.12,
+   "duration": 6.52
+  },
+  {
+   "text": "loves individual tools that it can",
+   "start": 563.8,
+   "duration": 4.88
+  },
+  {
+   "text": "invoke through the command line. And",
+   "start": 566.64,
+   "duration": 5.36
+  },
+  {
+   "text": "there is no operating system on Earth",
+   "start": 568.68,
+   "duration": 5.52
+  },
+  {
+   "text": "of the majors. I'm counting three here:",
+   "start": 572.0,
+   "duration": 5.88
+  },
+  {
+   "text": "Mac, Windows, Linux, that works as well",
+   "start": 574.2,
+   "duration": 5.76
+  },
+  {
+   "text": "with that",
+   "start": 577.88,
+   "duration": 4.48
+  },
+  {
+   "text": "mechanism as Linux. Everything is in",
+   "start": 579.96,
+   "duration": 5.96
+  },
+  {
+   "text": "Linux it's either a config file or a CLI",
+   "start": 582.36,
+   "duration": 4.56
+  },
+  {
+   "text": "tool.",
+   "start": 585.92,
+   "duration": 3.12
+  },
+  {
+   "text": "Now, that was its main drawback 5",
+   "start": 586.92,
+   "duration": 4.24
+  },
+  {
+   "text": "minutes ago. This was the reason people",
+   "start": 589.04,
+   "duration": 4.04
+  },
+  {
+   "text": "didn't like Linux. It's like it's all",
+   "start": 591.16,
+   "duration": 4.16
+  },
+  {
+   "text": "config files and CLI tools.",
+   "start": 593.08,
+   "duration": 2.92
+  },
+  {
+   "text": ">> Mhm.",
+   "start": 595.32,
+   "duration": 3.4
+  },
+  {
+   "text": ">> What great irony",
+   "start": 596.0,
+   "duration": 4.72
+  },
+  {
+   "text": "that the universe has played it upon us",
+   "start": 598.72,
+   "duration": 4.92
+  },
+  {
+   "text": "that now the drawbacks of Linux 5",
+   "start": 600.72,
+   "duration": 5.12
+  },
+  {
+   "text": "minutes ago are now it's major selling",
+   "start": 603.64,
+   "duration": 3.72
+  },
+  {
+   "text": "points.",
+   "start": 605.84,
+   "duration": 2.92
+  },
+  {
+   "text": "This is one of the things I thought I",
+   "start": 607.36,
+   "duration": 6.0
+  },
+  {
+   "text": "was stuck for a weekend with a Mac",
+   "start": 608.76,
+   "duration": 6.36
+  },
+  {
+   "text": "uh 4 months ago.",
+   "start": 613.36,
+   "duration": 3.2
+  },
+  {
+   "text": "I thought I had a computer the place I",
+   "start": 615.12,
+   "duration": 2.6
+  },
+  {
+   "text": "was going",
+   "start": 616.56,
+   "duration": 2.72
+  },
+  {
+   "text": "that was a Linux machine so I didn't",
+   "start": 617.72,
+   "duration": 3.32
+  },
+  {
+   "text": "bring my laptop and I",
+   "start": 619.28,
+   "duration": 4.0
+  },
+  {
+   "text": "I found out when I arrived I only had a",
+   "start": 621.04,
+   "duration": 3.44
+  },
+  {
+   "text": "Mac Mini.",
+   "start": 623.28,
+   "duration": 2.32
+  },
+  {
+   "text": "So,",
+   "start": 624.48,
+   "duration": 2.36
+  },
+  {
+   "text": "I was going to make the best of a bad",
+   "start": 625.6,
+   "duration": 5.12
+  },
+  {
+   "text": "situation here and uh set up my Mac in",
+   "start": 626.84,
+   "duration": 5.2
+  },
+  {
+   "text": "some of the ways I've been thinking",
+   "start": 630.72,
+   "duration": 2.8
+  },
+  {
+   "text": "about with",
+   "start": 632.04,
+   "duration": 2.64
+  },
+  {
+   "text": "um",
+   "start": 633.52,
+   "duration": 2.8
+  },
+  {
+   "text": "with Linux. And you can actually do a",
+   "start": 634.68,
+   "duration": 3.52
+  },
+  {
+   "text": "lot now. Homebrew has gotten really",
+   "start": 636.32,
+   "duration": 3.84
+  },
+  {
+   "text": "quite good. Homebrew is the missing",
+   "start": 638.2,
+   "duration": 5.12
+  },
+  {
+   "text": "package manager for the Mac and no one",
+   "start": 640.16,
+   "duration": 5.52
+  },
+  {
+   "text": "has done more to move the Mac forward in",
+   "start": 643.32,
+   "duration": 5.08
+  },
+  {
+   "text": "terms of ease of setup. But,",
+   "start": 645.68,
+   "duration": 4.76
+  },
+  {
+   "text": "still something as simple as Raycast, I",
+   "start": 648.4,
+   "duration": 3.12
+  },
+  {
+   "text": "don't know if you've used that. That's",
+   "start": 650.44,
+   "duration": 1.36
+  },
+  {
+   "text": "the",
+   "start": 651.52,
+   "duration": 2.12
+  },
+  {
+   "text": ">> Yep.",
+   "start": 651.8,
+   "duration": 3.88
+  },
+  {
+   "text": ">> There's no config file that you can just",
+   "start": 653.64,
+   "duration": 4.56
+  },
+  {
+   "text": "access. You have to go into the GUI,",
+   "start": 655.68,
+   "duration": 5.72
+  },
+  {
+   "text": "export a file, then take that file, I",
+   "start": 658.2,
+   "duration": 4.96
+  },
+  {
+   "text": "don't know, in your freaking backpack on",
+   "start": 661.4,
+   "duration": 2.96
+  },
+  {
+   "text": "a USB key.",
+   "start": 663.16,
+   "duration": 2.04
+  },
+  {
+   "text": ">> Mhm.",
+   "start": 664.36,
+   "duration": 2.28
+  },
+  {
+   "text": ">> And then you can import it somewhere",
+   "start": 665.2,
+   "duration": 3.24
+  },
+  {
+   "text": "else. You cannot automate the entire",
+   "start": 666.64,
+   "duration": 3.32
+  },
+  {
+   "text": "setup of your machine. You can't",
+   "start": 668.44,
+   "duration": 5.28
+  },
+  {
+   "text": "automate at all the configuration of",
+   "start": 669.96,
+   "duration": 6.6
+  },
+  {
+   "text": "Mac's default key bindings. That has to",
+   "start": 673.72,
+   "duration": 4.4
+  },
+  {
+   "text": "be a manual process where you're",
+   "start": 676.56,
+   "duration": 4.48
+  },
+  {
+   "text": "clicking with a mouse like a caveman",
+   "start": 678.12,
+   "duration": 4.08
+  },
+  {
+   "text": "to set up your machine.",
+   "start": 681.04,
+   "duration": 3.08
+  },
+  {
+   "text": ">> I mean, there's ways around it.",
+   "start": 682.2,
+   "duration": 5.0
+  },
+  {
+   "text": ">> Not good ones. I looked. I tried hard.",
+   "start": 684.12,
+   "duration": 5.68
+  },
+  {
+   "text": ">> So, here's here's my been my journey.",
+   "start": 687.2,
+   "duration": 4.44
+  },
+  {
+   "text": "Obviously, I'm a Linux person, but",
+   "start": 689.8,
+   "duration": 3.36
+  },
+  {
+   "text": "because of Adobe Premiere, Adobe",
+   "start": 691.64,
+   "duration": 3.32
+  },
+  {
+   "text": "products, I'm also a Windows person. So,",
+   "start": 693.16,
+   "duration": 4.68
+  },
+  {
+   "text": "often times I would use WSL, Windows",
+   "start": 694.96,
+   "duration": 5.36
+  },
+  {
+   "text": "Subsystem for Linux. So, Linux inside",
+   "start": 697.84,
+   "duration": 4.84
+  },
+  {
+   "text": "Windows, which is in the agentic era, is",
+   "start": 700.32,
+   "duration": 4.8
+  },
+  {
+   "text": "not a good kind of Linux cuz it's just",
+   "start": 702.68,
+   "duration": 3.4
+  },
+  {
+   "text": ">> It's a sandbox.",
+   "start": 705.12,
+   "duration": 3.08
+  },
+  {
+   "text": ">> It's a sandbox and you want the Linux to",
+   "start": 706.08,
+   "duration": 3.32
+  },
+  {
+   "text": "be unleashed to be able to do",
+   "start": 708.2,
+   "duration": 1.88
+  },
+  {
+   "text": "everything.",
+   "start": 709.4,
+   "duration": 1.16
+  },
+  {
+   "text": ">> Correct.",
+   "start": 710.08,
+   "duration": 3.2
+  },
+  {
+   "text": ">> And so, I have now woken up to things",
+   "start": 710.56,
+   "duration": 4.64
+  },
+  {
+   "text": "like Grey Cat and have",
+   "start": 713.28,
+   "duration": 3.72
+  },
+  {
+   "text": "you know, I'm a keyboard person. Where",
+   "start": 715.2,
+   "duration": 5.36
+  },
+  {
+   "text": "is the config file? Can I Can I",
+   "start": 717.0,
+   "duration": 5.84
+  },
+  {
+   "text": "Can I basically do everything where an",
+   "start": 720.56,
+   "duration": 4.84
+  },
+  {
+   "text": "agent can can set everything up for me",
+   "start": 722.84,
+   "duration": 4.08
+  },
+  {
+   "text": "and save the configuration so I can",
+   "start": 725.4,
+   "duration": 3.16
+  },
+  {
+   "text": "replicate across systems and everything",
+   "start": 726.92,
+   "duration": 4.44
+  },
+  {
+   "text": "is automated. And so, I had to ask a lot",
+   "start": 728.56,
+   "duration": 4.08
+  },
+  {
+   "text": "of those questions and a lot of them are",
+   "start": 731.36,
+   "duration": 1.84
+  },
+  {
+   "text": "missing.",
+   "start": 732.64,
+   "duration": 1.36
+  },
+  {
+   "text": ">> have good answers.",
+   "start": 733.2,
+   "duration": 3.32
+  },
+  {
+   "text": ">> But often times you could actually just",
+   "start": 734.0,
+   "duration": 4.28
+  },
+  {
+   "text": "build the app yourself.",
+   "start": 736.52,
+   "duration": 2.8
+  },
+  {
+   "text": ">> But they're a hacks.",
+   "start": 738.28,
+   "duration": 1.76
+  },
+  {
+   "text": ">> They're hacks.",
+   "start": 739.32,
+   "duration": 1.84
+  },
+  {
+   "text": ">> They're hacks. You don't have to live",
+   "start": 740.04,
+   "duration": 4.0
+  },
+  {
+   "text": "like this, Lex.",
+   "start": 741.16,
+   "duration": 2.88
+  }
+ ],
+ "metadata": {
+  "title": "DHH's new setup for programming with AI - terminal, 16 agents, Herdr, Tailscale | Lex Fridman",
+  "author_name": "Lex Clips",
+  "author_url": "https://www.youtube.com/channel/UCJIfeSCssxSC_Dhc5s7woww",
+  "thumbnail_url": "https://i.ytimg.com/vi_webp/4Xg1AE6Uu1k/sddefault.webp"
+ },
+ "length_seconds": 762,
+ "lengthText": "12:42"
+}
