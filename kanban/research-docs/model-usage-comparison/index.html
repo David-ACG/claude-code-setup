@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude vs Codex Usage Tools</title>
+<style>
+:root{--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--line:#e4e3df;--s1:#2a78d6;--s2:#eb6834;--card:#fff;--hdr:#f4f3f0;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1a1a19;--ink:#fff;--ink2:#c3c2b7;--line:#33332f;--s1:#3987e5;--s2:#d95926;--card:#222220;--hdr:#2a2a28}}
+:root[data-theme=dark]{--bg:#1a1a19;--ink:#fff;--ink2:#c3c2b7;--line:#33332f;--s1:#3987e5;--s2:#d95926;--card:#222220;--hdr:#2a2a28}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:32px 24px 80px}
+h1{font-size:30px;line-height:1.2;margin:0 0 8px;letter-spacing:-.01em}
+h2{font-size:21px;margin:44px 0 12px;padding-top:12px;border-top:1px solid var(--line)}
+.meta{color:var(--ink2);font-size:14px;margin:0 0 28px}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{background:var(--hdr);font-weight:600;position:sticky;top:0}
+td:first-child{font-weight:600;white-space:nowrap}
+a{color:var(--s1)}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px 8px;margin:18px 0}
+.fig h3{margin:0 0 2px;font-size:15px}
+.fig .sub{margin:0 0 10px;color:var(--ink2);font-size:13px}
+.legend{display:flex;gap:18px;font-size:13px;color:var(--ink2);margin:6px 0 4px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.chart{width:100%;height:auto;display:block}
+.chart .grid{stroke:var(--line);stroke-width:1} .chart .axis{stroke:var(--ink2);stroke-width:1}
+.chart .tick{fill:var(--ink2);font-size:12px} .chart .val{fill:var(--ink);font-size:11px}
+.chart .s1{fill:var(--s1)} .chart .s2{fill:var(--s2)}
+.chart rect:hover{opacity:.8}
+.tldr{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:18px 0}
+.tldr div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.tldr b{display:block;margin-bottom:4px} .tldr span{color:var(--ink2);font-size:13px}
+blockquote{margin:0;padding:8px 14px;border-left:3px solid var(--line);color:var(--ink2)}
+ol li,ul li{margin:4px 0}
+</style></head>
+<body><main>
+<h1>Comparing Claude Code and Codex subscriptions: usage, cost and quality tools</h1>
+<p class="meta">Research date 2026-09-11. Checked on hlab: Claude Max 20x, ChatGPT Pro Lite (Codex), Claude Code 2.1.263, Codex CLI 0.154.0, ccusage 20.0.17. Source: <a href="research.md">research.md</a>.</p>
+
+<div class="tldr">
+<div><b>Usage and cost</b><span>ccusage (installed, covers both) for API-equivalent spend. CodexBar CLI or RateTray for live 5-hour / weekly quota on both.</span></div>
+<div><b>Quality on public tasks</b><span>Artificial Analysis Coding Agent Index scores the real products with $ per task. Terminal-Bench 4.0 is the hardest current board.</span></div>
+<div><b>Quality on your own tasks</b><span>openbench runs Claude Code and Codex on your tasks with your subscription logins. coder_eval is the simplest YAML A/B.</span></div>
+</div>
+
+<div class="fig">
+<h3>API-equivalent spend on this machine, by month</h3>
+<p class="sub">ccusage, list prices, hlab only. Sep* is 11 days. About 95 percent of tokens are cache reads, so absolute values are inflated; the ratio is fair.</p>
+<div class="legend"><span><i style="background:var(--s1)"></i>Claude Code (Max 20x, $200/mo)</span><span><i style="background:var(--s2)"></i>Codex (Pro Lite)</span></div>
+<svg class="chart" viewBox="0 0 640 300" role="img" aria-label="API-equivalent spend per month, Claude Code vs Codex">
+<line x1="56" x2="624" y1="256.0" y2="256.0" class="grid"/><text x="48" y="260.0" class="tick" text-anchor="end">$0k</text>
+<line x1="56" x2="624" y1="188.6" y2="188.6" class="grid"/><text x="48" y="192.6" class="tick" text-anchor="end">$2k</text>
+<line x1="56" x2="624" y1="121.1" y2="121.1" class="grid"/><text x="48" y="125.1" class="tick" text-anchor="end">$4k</text>
+<line x1="56" x2="624" y1="53.7" y2="53.7" class="grid"/><text x="48" y="57.7" class="tick" text-anchor="end">$6k</text>
+<rect class="s1" x="68.0" y="157.6" width="59.0" height="98.4" rx="4"><title>Jun 2026 Claude Code: $2,919</title></rect>
+<rect class="s1" x="68.0" y="161.6" width="59.0" height="94.4"/>
+<text x="97.5" y="151.6" class="val" text-anchor="middle">$2,919</text>
+<rect class="s2" x="129.0" y="242.4" width="59.0" height="13.6" rx="4"><title>Jun 2026 Codex: $402</title></rect>
+<rect class="s2" x="129.0" y="246.4" width="59.0" height="9.6"/>
+<text x="158.5" y="236.4" class="val" text-anchor="middle">$402</text>
+<text x="128.0" y="274" class="tick" text-anchor="middle">Jun</text>
+<rect class="s1" x="210.0" y="49.4" width="59.0" height="206.6" rx="4"><title>Jul 2026 Claude Code: $6,127</title></rect>
+<rect class="s1" x="210.0" y="53.4" width="59.0" height="202.6"/>
+<text x="239.5" y="43.4" class="val" text-anchor="middle">$6,127</text>
+<rect class="s2" x="271.0" y="232.0" width="59.0" height="24.0" rx="4"><title>Jul 2026 Codex: $711</title></rect>
+<rect class="s2" x="271.0" y="236.0" width="59.0" height="20.0"/>
+<text x="300.5" y="226.0" class="val" text-anchor="middle">$711</text>
+<text x="270.0" y="274" class="tick" text-anchor="middle">Jul</text>
+<rect class="s1" x="352.0" y="166.6" width="59.0" height="89.4" rx="4"><title>Aug 2026 Claude Code: $2,653</title></rect>
+<rect class="s1" x="352.0" y="170.6" width="59.0" height="85.4"/>
+<text x="381.5" y="160.6" class="val" text-anchor="middle">$2,653</text>
+<rect class="s2" x="413.0" y="245.7" width="59.0" height="10.3" rx="4"><title>Aug 2026 Codex: $306</title></rect>
+<rect class="s2" x="413.0" y="249.7" width="59.0" height="6.3"/>
+<text x="442.5" y="239.7" class="val" text-anchor="middle">$306</text>
+<text x="412.0" y="274" class="tick" text-anchor="middle">Aug</text>
+<rect class="s1" x="494.0" y="169.1" width="59.0" height="86.9" rx="4"><title>Sep* 2026 Claude Code: $2,577</title></rect>
+<rect class="s1" x="494.0" y="173.1" width="59.0" height="82.9"/>
+<text x="523.5" y="163.1" class="val" text-anchor="middle">$2,577</text>
+<rect class="s2" x="555.0" y="202.4" width="59.0" height="53.6" rx="4"><title>Sep* 2026 Codex: $1,591</title></rect>
+<rect class="s2" x="555.0" y="206.4" width="59.0" height="49.6"/>
+<text x="584.5" y="196.4" class="val" text-anchor="middle">$1,591</text>
+<text x="554.0" y="274" class="tick" text-anchor="middle">Sep*</text>
+<line x1="56" x2="624" y1="256" y2="256" class="axis"/></svg>
+</div>
+
+<p>Research date: 2026-09-11. Machine checked: hlab (Claude Max 20x, ChatGPT "Pro Lite" Codex plan, Claude Code 2.1.263, Codex CLI 0.154.0, ccusage 20.0.17).
+Browser page: https://hlab.taila51191.ts.net:9459/model-usage-comparison/</p>
+<h2>Short answer</h2>
+<p>There is no single app that measures <strong>quality, cost and usage</strong> across both subscriptions. The space splits into three layers, and you need one tool from each:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Question it answers</th>
+<th>Best pick for David</th>
+<th>Runner-up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Usage / cost</td>
+<td>How many tokens did I burn, what would that have cost on the API, how much of my 5-hour / weekly allowance is left?</td>
+<td><strong>ccusage</strong> (already installed, covers both) for spend + <strong>CodexBar CLI</strong> or <strong>RateTray</strong> for live quota % on both</td>
+<td>tokscale, AI Usage Tracker</td>
+</tr>
+<tr>
+<td>Quality on public tasks</td>
+<td>Which model/agent is better in general this month?</td>
+<td><strong>Artificial Analysis Coding Agent Index</strong> (scores the actual products Claude Code and Codex, with $/task) + <strong>Terminal-Bench 4.0</strong></td>
+<td>Arena Code leaderboard, Vals.ai</td>
+</tr>
+<tr>
+<td>Quality on MY tasks</td>
+<td>Which one solves my GWTH tickets better and cheaper?</td>
+<td><strong>openbench</strong> (runs Claude Code and Codex on your own tasks using your subscription logins, reports pass rate, time, tokens, confidence intervals)</td>
+<td>UiPath coder_eval (simplest YAML A/B), promptfoo (needs API keys)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Only one tool claims to measure output <em>quality</em> from everyday sessions: <strong>Blume</strong> (closed source, price undisclosed, tracks correction rate, steering frequency and "frustration"). Everything else measures tokens and money.</p>
+<h2>What this machine says right now</h2>
+<p>API-equivalent spend computed by ccusage from local session logs (list prices; roughly 95 percent of tokens are cache reads, so the true value is lower, but the ratio between the two vendors is fair).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Claude Code (Max 20x, $200)</th>
+<th>Codex (Pro Lite)</th>
+<th>Claude models seen</th>
+<th>Codex models seen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>$2,919</td>
+<td>$402</td>
+<td>Fable 5, Opus 4.8, Sonnet 4.6, Haiku 4.5</td>
+<td>GPT-5.5</td>
+</tr>
+<tr>
+<td>2026-07</td>
+<td>$6,127</td>
+<td>$711</td>
+<td>+ Opus 5, Sonnet 5</td>
+<td>GPT-5.5, GPT-5.6 Sol</td>
+</tr>
+<tr>
+<td>2026-08</td>
+<td>$2,653</td>
+<td>$306</td>
+<td>Fable 5, Opus 5, Sonnet 4.6, Haiku 4.5</td>
+<td>GPT-5.5, GPT-5.6 Sol</td>
+</tr>
+<tr>
+<td>2026-09 (11 days)</td>
+<td>$2,577</td>
+<td>$1,591</td>
+<td>+ Fable 5.1</td>
+<td>+ GPT-5.6 Luna, Terra, GPT-6 Astra</td>
+</tr>
+</tbody>
+</table></div>
+<p>Live quota (Codex app-server RPC <code>account/rateLimits/read</code>): weekly window 79 percent used, no 5-hour window on this plan. Claude's OAuth usage endpoint answered but the local token had expired, so the Claude weekly percent was not read. Claude Code's built-in <code>/usage</code> shows it.</p>
+<p>These figures cover hlab only. Sessions on x1eg3 and P53 are not counted unless their logs are pooled (ccusage supports comma-separated <code>CLAUDE_CONFIG_DIR</code> and <code>CODEX_HOME</code>).</p>
+<h2>Layer 1: usage and cost trackers</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Claude</th>
+<th>Codex</th>
+<th>Measures</th>
+<th>Cost signal</th>
+<th>Quality signal</th>
+<th>Install</th>
+<th>Maintained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/ryoppippi/ccusage">ccusage</a> (<code>ccusage codex</code> for Codex)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Tokens per day/week/month/session/5h block, 19 agents</td>
+<td>API-equivalent $ (LiteLLM prices)</td>
+<td>No</td>
+<td><code>npx ccusage@latest</code>, <code>ccusage codex monthly</code></td>
+<td>18.5k stars, v20.0.20 2026-08-15</td>
+</tr>
+<tr>
+<td><a href="https://github.com/junhoyeo/tokscale">tokscale</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Tokens per model/client/workspace, TUI + web graphs</td>
+<td>Yes</td>
+<td>Partial (LLM session summaries)</td>
+<td><code>npx tokscale@latest</code></td>
+<td>5.4k stars, v4.15.1 2026-09-03</td>
+</tr>
+<tr>
+<td><a href="https://github.com/steipete/CodexBar">CodexBar</a> (macOS; <a href="https://github.com/babakarto/CodexBar-Win">Windows port</a>)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Live official 5h/weekly % + reset countdown, 65 providers; <code>codexbar</code> CLI has Linux builds</td>
+<td>Local-log $</td>
+<td>No</td>
+<td><code>brew install --cask codexbar</code></td>
+<td>21.3k stars, v0.59.0 2026-09-11</td>
+</tr>
+<tr>
+<td><a href="https://ratetray.nowrap.net/">RateTray</a> (Windows)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>5h/weekly % as tray icons</td>
+<td>No</td>
+<td>No</td>
+<td>RateTray.exe (.NET 9)</td>
+<td>1 star, MIT</td>
+</tr>
+<tr>
+<td><a href="https://github.com/tddworks/ClaudeBar">ClaudeBar</a> (macOS)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Quota %, notifications, iPhone Live Activity</td>
+<td>No</td>
+<td>No</td>
+<td>brew cask</td>
+<td>1.5k stars, 2026-09-09</td>
+</tr>
+<tr>
+<td><a href="https://meterbar.dev/">MeterBar</a> (macOS 26)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Quota windows, local only</td>
+<td>No</td>
+<td>No</td>
+<td>brew cask</td>
+<td>8 stars</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor">Claude-Code-Usage-Monitor</a></td>
+<td>Yes</td>
+<td><strong>No</strong></td>
+<td>Live 5h burn rate, predictions</td>
+<td>Per-model $</td>
+<td>No</td>
+<td><code>uv tool install claude-monitor</code></td>
+<td>8.7k stars, v4.0.0 2026-06-27</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sculptdotfun/viberank">viberank</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Leaderboard of ccusage output, subscription calculator</td>
+<td>ccusage $</td>
+<td>No</td>
+<td><code>npx viberank-cli</code></td>
+<td>116 stars</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jarrodwatts/claude-hud">claude-hud</a> / <a href="https://github.com/sirmalloc/ccstatusline">ccstatusline</a></td>
+<td>Yes</td>
+<td>No</td>
+<td>Statusline context %, 5h/7d bars, session $</td>
+<td>Session $</td>
+<td>No</td>
+<td>plugin / npx</td>
+<td>27.9k / 12.8k stars</td>
+</tr>
+<tr>
+<td><a href="https://github.com/658jjh/claude-usage-tracker">AI Usage Tracker</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Per-project $ across 10 tools, heatmaps</td>
+<td>Yes</td>
+<td>No</td>
+<td>build from source (macOS)</td>
+<td>59 stars</td>
+</tr>
+<tr>
+<td><a href="https://github.com/yelog/vibebar">VibeBar</a> (macOS)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Session state, tokens, est. $</td>
+<td>Yes</td>
+<td>No</td>
+<td>brew cask</td>
+<td>30 stars, 2026-04</td>
+</tr>
+<tr>
+<td><a href="https://github.com/YUHAO-corn/codex-usage-dashboard">codex-usage-dashboard</a></td>
+<td>No</td>
+<td>Yes</td>
+<td>Codex tokens/$ dashboard</td>
+<td>Estimate</td>
+<td>No</td>
+<td>pipx</td>
+<td>14 stars</td>
+</tr>
+<tr>
+<td><a href="https://github.com/PixelPaw-Labs/codex-trace">codex-trace</a></td>
+<td>No</td>
+<td>Yes</td>
+<td>Turn-by-turn session viewer with tokens</td>
+<td>No</td>
+<td>No</td>
+<td>Docker</td>
+<td>103 stars</td>
+</tr>
+<tr>
+<td><a href="https://www.raycast.com/thuggyduck/agent-usage">Raycast Agent Usage</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Live quotas for 19 agents</td>
+<td>No</td>
+<td>No</td>
+<td>Raycast Store</td>
+<td>3.3k installs</td>
+</tr>
+<tr>
+<td><a href="https://sessionwatcher.com/codex">SessionWatcher</a> (paid)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Menu-bar quota %, pace, 7-day chart</td>
+<td>Yes</td>
+<td>No</td>
+<td>$14.99 bundle</td>
+<td>proprietary</td>
+</tr>
+<tr>
+<td><a href="https://blume.codes/">Blume</a> (paid, closed)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Tokens <strong>plus correction rate, steering, frustration</strong></td>
+<td>Yes</td>
+<td><strong>Yes</strong></td>
+<td>download</td>
+<td>unverified</td>
+</tr>
+<tr>
+<td>Built-in Claude Code <code>/usage</code>, <code>/insights</code></td>
+<td>Yes</td>
+<td>-</td>
+<td>5h + weekly bars, attribution by skill/subagent/MCP, session $; <code>/insights</code> writes a friction report to <code>~/.claude/usage-data/report.html</code></td>
+<td>Session $</td>
+<td>Qualitative</td>
+<td>built in</td>
+<td>official</td>
+</tr>
+<tr>
+<td>Built-in Codex <code>/status</code>, <a href="https://chatgpt.com/codex/settings/usage">usage page</a></td>
+<td>-</td>
+<td>Yes</td>
+<td>Remaining % of 5h and weekly, credits</td>
+<td>No</td>
+<td>No</td>
+<td>built in</td>
+<td>official</td>
+</tr>
+</tbody>
+</table></div>
+<p>Data sources confirmed on hlab: Claude writes <code>~/.claude/projects/&lt;project&gt;/*.jsonl</code> with per-message <code>usage</code> (2.7 GB here). Codex writes <code>~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl</code> with cumulative <code>token_count</code> events that now carry the <code>rate_limits</code> block inline (3,463 files, 8.5 GB here), plus <code>state_5.sqlite</code>.</p>
+<p>Programmatic quota reads: Anthropic <code>GET https://api.anthropic.com/api/oauth/usage</code> with the OAuth token from <code>~/.claude/.credentials.json</code> (undocumented, 429s unless a <code>claude-code/&lt;ver&gt;</code> User-Agent is sent and polling is 180 s or slower). Codex: <code>codex app-server</code> JSON-RPC <code>account/rateLimits/read</code> (marked experimental).</p>
+<h2>Layer 2: public quality leaderboards (Claude 5 family vs Codex models)</h2>
+<p>Note: the "GPT-5.x-codex" line ended with GPT-5.3-Codex. Codex now runs GPT-5.6 Sol/Terra/Luna (July 2026) and GPT-6 Astra (default since 2026-09-04).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Leaderboard</th>
+<th>Method</th>
+<th>Claude side</th>
+<th>Codex side</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://artificialanalysis.ai/agents/coding-agents">Artificial Analysis Coding Agent Index</a></td>
+<td>Runs the real products (Claude Code, Codex) on DeepSWE, TB 4.0, SWE-Atlas; reports $/task and time</td>
+<td>Claude Code + Fable 5.1 (max) <strong>62.2</strong>; Opus 5 (max) 59.7</td>
+<td>Codex + GPT-6 Astra (max) <strong>61.6</strong>; Sol (max) 54.6</td>
+<td>Dead heat at the top; Opus 5 is 2 to 3 points behind at 60 to 75 percent of the per-task price</td>
+</tr>
+<tr>
+<td><a href="https://www.tbench.ai/leaderboard/terminal-bench/2.0">Terminal-Bench 4.0</a> (reset 2026-08-29)</td>
+<td>66 hardened terminal tasks, Harbor</td>
+<td>Fable 5.1 <strong>57.9 ±3.8</strong> (#1), Opus 5 51.8, Sonnet 5 12.4</td>
+<td>GPT-6 Astra 57.7 to 58.2, Sol 37.3</td>
+<td>Inside error bars</td>
+</tr>
+<tr>
+<td><a href="https://benchlm.ai/benchmarks/valsterminalbench21">Terminal-Bench 2.1 (Vals, 2026-09-10)</a></td>
+<td>89 tasks, Terminus 2 harness</td>
+<td>Fable 5.1 85.0, Opus 5 84.6, Haiku 4.5 43.8</td>
+<td>Astra <strong>87.3</strong>, Sol 85.8</td>
+<td>Near saturated</td>
+</tr>
+<tr>
+<td><a href="https://arena.ai/leaderboard/code">Arena Code leaderboard</a> (2026-09-08)</td>
+<td>Human pairwise preference on front-end builds</td>
+<td>fable-5.1-max 1764 (#2), opus-5-max 1688</td>
+<td>gpt-6-astra-max <strong>1796</strong> (#1)</td>
+<td>Astra leads by about 30 Elo</td>
+</tr>
+<tr>
+<td><a href="https://www.vals.ai/benchmarks/swebench">SWE-bench Verified (Vals)</a></td>
+<td>500 GitHub issues</td>
+<td>Opus 5 <strong>97.0</strong></td>
+<td>Sol 96.2 (vendor); OpenAI withdrew Feb 2026</td>
+<td>Saturated</td>
+</tr>
+<tr>
+<td><a href="https://labs.scale.com/leaderboard/swe_bench_pro_public">SWE-bench Pro (Scale SEAL)</a></td>
+<td>731 harder instances</td>
+<td>Vendor: Fable 5.1 81.2; standardised board has no Claude 5 entries yet</td>
+<td>Vendor: Sol 64.6; OpenAI disputes the benchmark</td>
+<td>Stale / disputed</td>
+</tr>
+<tr>
+<td><a href="https://metr.org/time-horizons/">METR time horizons</a></td>
+<td>Task length at 50 percent success</td>
+<td>No Opus 5 / Fable 5 numbers</td>
+<td>No Sol / Astra numbers</td>
+<td>Not useful for current models</td>
+</tr>
+<tr>
+<td><a href="https://aider.chat/docs/leaderboards/">Aider Polyglot</a>, <a href="https://livecodebench.github.io/leaderboard.html">LiveCodeBench</a></td>
+<td>Exercise-style</td>
+<td>Not updated for 2026 models</td>
+<td>Same</td>
+<td>Skip</td>
+</tr>
+<tr>
+<td><a href="https://composio.dev/content/claude-code-vs-openai-codex">Composio Golden Eval, 2026-08-18</a></td>
+<td>47 MCP workflows</td>
+<td>Fable 5 + Claude Code 47/47, 277k tokens avg</td>
+<td>Sol + Codex 45/47, 224k tokens</td>
+<td>Codex cheaper, Claude completes more</td>
+</tr>
+</tbody>
+</table></div>
+<p>Consistent pattern in the 2026 write-ups (<a href="https://www.firecrawl.dev/blog/claude-code-vs-codex">Firecrawl</a>, <a href="https://composio.dev/content/claude-code-vs-openai-codex">Composio</a>, <a href="https://www.cloudzero.com/blog/codex-vs-claude-code/">CloudZero</a>): Codex uses 1.4 to 4 times fewer tokens per task; Claude Code finishes slightly more tasks and writes more complete first drafts. On a subscription the token gap shows up as how fast you hit the weekly cap, not as dollars.</p>
+<h2>Layer 3: run head-to-head on your own tasks</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Runs Claude Code</th>
+<th>Runs Codex</th>
+<th>Measures</th>
+<th>Setup</th>
+<th>Licence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/minghinmatthewlam/openbench">openbench</a></td>
+<td>Yes (isolated config dir)</td>
+<td>Yes (+ pi, opencode, cursor)</td>
+<td>Pass/fail via checker script, wall clock, fresh-token cost, Wilson 95% CIs</td>
+<td>Medium: <code>obench init</code> scaffolds Harbor tasks, <code>obench run suite.toml</code></td>
+<td>MIT, 133 stars. <strong>Only tool documented to run on subscription OAuth logins</strong></td>
+</tr>
+<tr>
+<td><a href="https://github.com/uipath/coder_eval">UiPath coder_eval</a></td>
+<td>Yes</td>
+<td>Yes (<code>[codex]</code> extra)</td>
+<td>Sandboxed YAML tasks, weighted 0 to 1 scores, A/B experiment layer</td>
+<td>Medium: <code>uv tool install "coder-eval[codex]"</code></td>
+<td>Apache-2.0, 128 stars</td>
+</tr>
+<tr>
+<td><a href="https://www.promptfoo.dev/docs/guides/test-agent-skills/">promptfoo</a></td>
+<td>Yes (<code>anthropic:claude-agent-sdk</code>)</td>
+<td>Yes (<code>openai:codex-sdk</code>)</td>
+<td>Assertions, LLM rubric, cost, latency, web diff UI</td>
+<td>Low: one YAML</td>
+<td>MIT, 25k stars. Expects API keys</td>
+</tr>
+<tr>
+<td><a href="https://www.tbench.ai/">Harbor / TB 4.0 tasks</a></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Same methodology as the public board</td>
+<td>High: Docker + Harbor</td>
+<td>OSS</td>
+</tr>
+<tr>
+<td><a href="https://langfuse.com/resources/engineering/coding-agent-tracing">Langfuse coding-agent tracing</a></td>
+<td>Yes (Stop hook)</td>
+<td>Yes (Codex plugin hooks)</td>
+<td>Per-session tokens, $, every tool call</td>
+<td>Low</td>
+<td>OSS. Observability only, no scoring</td>
+</tr>
+<tr>
+<td><a href="https://www.braintrust.dev/">Braintrust</a></td>
+<td>Yes (headless sessions)</td>
+<td>Not documented</td>
+<td>Trajectory scoring</td>
+<td>Medium</td>
+<td>Commercial</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TribeAI/claude-evals">TribeAI/claude-evals</a></td>
+<td>Yes</td>
+<td>No</td>
+<td>50-case golden set, sweep Opus/Sonnet/Haiku</td>
+<td>Low</td>
+<td>Apache-2.0. Claude-only, good for Fable vs Opus vs Sonnet</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Cross-model second-opinion plugins (quality via disagreement)</h2>
+<ul>
+<li><strong><a href="https://github.com/openai/codex-plugin-cc">openai/codex-plugin-cc</a></strong> (official OpenAI, 33k stars): <code>/codex:review</code>, <code>/codex:adversarial-review</code>, <code>/codex:rescue</code>, <code>/codex:setup --enable-review-gate</code>. Uses your ChatGPT login and counts against Codex limits. Install: <code>/plugin marketplace add openai/codex-plugin-cc</code>, <code>/plugin install codex@openai-codex</code>, <code>/codex:setup</code>.</li>
+<li><a href="https://github.com/hamelsmu/claude-review-loop">hamelsmu/claude-review-loop</a> (725 stars): Claude implements, Stop hook spawns up to 4 parallel Codex reviewers.</li>
+<li><a href="https://github.com/cathrynlavery/codex-skill">cathrynlavery/codex-skill</a>, <a href="https://github.com/boyand/codex-review">boyand/codex-review</a>, <a href="https://github.com/zeikar/hyperclaude">zeikar/hyperclaude</a>, <a href="https://github.com/drewburchfield/braintrust">drewburchfield/braintrust</a> (also runs from inside Codex).</li>
+<li>Reverse direction: no official Anthropic plugin for Codex. Only shell-out skills calling <code>claude -p</code>.</li>
+<li>Related in-flight ship on the board: <code>claudex-cockpit</code> (cross-model review in the cockpit, deferred).</li>
+</ul>
+<h2>Subscription prices and limits (Sept 2026)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Price</th>
+<th>5-hour window</th>
+<th>Weekly</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Pro</td>
+<td>$20</td>
+<td>base allowance, shared claude.ai + Claude Code</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>Claude Max 5x</td>
+<td>$100</td>
+<td>5x Pro</td>
+<td>yes, plus model-specific cap</td>
+<td>Claude Code 5h limits doubled 2026-05-06; permanent +25 percent weekly from 2026-09-14 (community-reported)</td>
+</tr>
+<tr>
+<td>Claude Max 20x</td>
+<td>$200</td>
+<td>20x Pro</td>
+<td>yes</td>
+<td>David's plan</td>
+</tr>
+<tr>
+<td>ChatGPT Plus</td>
+<td>$20</td>
+<td>Astra 5 to 45 msgs, Sol 10 to 100, Terra 25 to 200, Luna 250 to 2,000</td>
+<td>may apply</td>
+<td>5h cap re-enabled 2026-08-25</td>
+</tr>
+<tr>
+<td>ChatGPT Pro 5x</td>
+<td>$100</td>
+<td>Astra 25 to 225, Sol 50 to 500</td>
+<td>may apply</td>
+<td>5h limit off for Pro tiers "for the upcoming months"</td>
+</tr>
+<tr>
+<td>ChatGPT Pro 20x</td>
+<td>$200</td>
+<td>Astra 100 to 900, Sol 200 to 2,000</td>
+<td>may apply</td>
+<td></td>
+</tr>
+<tr>
+<td>ChatGPT Pro Lite</td>
+<td>unpublished</td>
+<td>none (<code>secondary: null</code>)</td>
+<td>weekly only</td>
+<td>David's plan per the app-server RPC</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources: <a href="https://claude.com/pricing">claude.com/pricing</a>, <a href="https://support.claude.com/en/articles/11049741-what-is-the-max-plan">Max plan help</a>, <a href="https://learn.chatgpt.com/docs/pricing">learn.chatgpt.com pricing</a>, <a href="https://9to5mac.com/2026/08/24/openai-restores-5-hour-codex-and-work-limits-for-chatgpt-plus-users/">9to5Mac 2026-08-24</a>. Anthropic's pricing page and OpenAI's limits help article blocked automated fetches, so message counts come from secondary pages.</p>
+<h2>Gaps nobody fills</h2>
+<ol>
+<li>No tool joins "API-equivalent $ per month" with "percent of weekly allowance actually used" for both vendors on one screen. ccusage has the $ side, CodexBar and RateTray have the % side.</li>
+<li>API-equivalent $ overstates real cost: about 95 percent of tokens are cache reads priced at list rate, with no correction for the 1-hour cache TTL or fast-mode multipliers. The Claude:Codex ratio is still meaningful.</li>
+<li>Quality from everyday sessions is unmeasured except by Blume (closed). Nothing counts commits or PRs shipped per subscription.</li>
+<li>Both quota APIs are undocumented; every monitor is one header change from breaking.</li>
+<li>Multi-device blind spot: local-log tools see one machine only.</li>
+<li>Standardised boards lag one generation (Scale SEAL, METR, Aider, LiveCodeBench have no Claude 5 or GPT-5.6/Astra entries).</li>
+<li>Subscription-login support in eval harnesses is documented only for openbench.</li>
+</ol>
+<h2>Not verified</h2>
+<p><code>codex_usage</code> Rust crate and usages.pro (403), solux-dev VS Code extension (empty page), markhudsonn/raycast-llm-usage (404), RateTray and SessionWatcher release dates, Blume pricing and metric definitions, the July 2026 Codex 5-hour-window removal/restore story, morphllm's TB 2.1 figures (429), the claim that OpenAI retracted its SWE-bench Pro recommendation for Astra.</p>
+</main></body></html>
