@@ -7,8 +7,17 @@
 # every session on this box, including judgement work and every overnight job,
 # to the alternative provider. Here they live only in this process.
 #
-# Hooks, beads, skills and subagents are unaffected: a hook is a local shell
-# command and does not know or care which endpoint the request goes to.
+# IMPORTANT, measured 2026-09-12 and not what the theory predicts: Claude Code
+# will not authenticate to a third-party endpoint while an OAuth session
+# exists. ANTHROPIC_AUTH_TOKEN, ANTHROPIC_API_KEY and apiKeyHelper are all
+# ignored in favour of the stored subscription credentials (401 from the
+# provider). The only documented way through is CLAUDE_CODE_SIMPLE=1, which
+# also SKIPS HOOKS, LSP, plugin sync, auto-memory and CLAUDE.md discovery.
+#
+# So beads would silently drop from enforced to absent. This wrapper puts it
+# back deterministically: it runs `bd ready` itself and injects the result via
+# --append-system-prompt, which is the compensation route the --bare docs
+# point at. Tool use is unaffected, so the agent can still run bd normally.
 #
 #   claude-alt glm  [args...]     GLM-5.3 via z.ai
 #   claude-alt list
@@ -56,13 +65,40 @@ case "$PROVIDER" in
         export ANTHROPIC_DEFAULT_SONNET_MODEL="glm-5.3"
         export ANTHROPIC_DEFAULT_HAIKU_MODEL="glm-5.3-flash"
         export API_TIMEOUT_MS="3000000"
-        # An inherited ANTHROPIC_API_KEY would outrank the auth token.
-        unset ANTHROPIC_API_KEY
+        # Simple mode reads ANTHROPIC_API_KEY, never AUTH_TOKEN or OAuth.
+        export ANTHROPIC_API_KEY="$ZAI_API_KEY"
+        export CLAUDE_CODE_SIMPLE=1
+        unset ANTHROPIC_AUTH_TOKEN
+        # Claude Code does not know GLM, so it cannot infer the context window
+        # and would otherwise append a [1m] suffix that z.ai rejects as an
+        # unknown model. Pin both.
+        export CLAUDE_CODE_MAX_CONTEXT_TOKENS=200000
+        set -- --model glm-5.3 "$@"
         BANNER="GLM-5.3 via z.ai"
         ;;
     *)
         echo "Unknown provider: $PROVIDER" >&2; usage >&2; exit 1 ;;
 esac
 
+# --- beads, rebuilt by hand because simple mode skips the SessionStart hook ---
+EXTRA=()
+PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
+if [[ -d "$PROJECT_DIR/.beads" ]] && command -v bd >/dev/null 2>&1; then
+    READY="$(cd "$PROJECT_DIR" && bd ready --limit 15 2>/dev/null || true)"
+    if [[ -n "$READY" ]]; then
+        EXTRA+=(--append-system-prompt "This repo tracks work in bd (beads), the \
+only task tracker here: do not use TodoWrite, TaskCreate or markdown TODO lists. \
+Consult bd before acting and record work with it (bd ready / bd show <id> / bd \
+create / bd close). You are running under an alternative model provider, so the \
+usual session-start hook did not fire and this is your beads context instead:
+
+$READY")
+        echo "[claude-alt] injected $(printf '%s' "$READY" | grep -c '^.') lines of bd ready (hooks are off in this mode)" >&2
+    fi
+fi
+if [[ -f "$PROJECT_DIR/CLAUDE.md" ]]; then
+    EXTRA+=(--add-dir "$PROJECT_DIR")
+fi
+
 echo "[claude-alt] $BANNER  (this session only; plain 'claude' is unchanged)" >&2
-exec claude "$@"
+exec claude "${EXTRA[@]}" "$@"
