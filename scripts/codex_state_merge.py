@@ -19,6 +19,7 @@ existing local row is never overwritten. state_5.sqlite is backed up first.
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import shutil
 import sqlite3
@@ -46,11 +47,116 @@ def columns(conn: sqlite3.Connection) -> list[str]:
     return [r[1] for r in conn.execute("pragma table_info(threads)")]
 
 
+def session_meta(path: Path) -> dict:
+    """First line of a rollout is a session_meta record. Returns its payload."""
+    try:
+        with path.open(encoding="utf-8", errors="replace") as fh:
+            head = json.loads(fh.readline())
+    except Exception:
+        return {}
+    if head.get("type") != "session_meta":
+        return {}
+    return head.get("payload", {})
+
+
+def first_user_text(path: Path, limit: int = 60) -> str:
+    """Earliest user message in a rollout, used as the recovered title."""
+    try:
+        with path.open(encoding="utf-8", errors="replace") as fh:
+            for i, line in enumerate(fh):
+                if i > limit:
+                    break
+                try:
+                    rec = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                payload = rec.get("payload", {})
+                if payload.get("role") != "user":
+                    continue
+                for part in payload.get("content", []):
+                    text = part.get("text")
+                    if text:
+                        return text.strip()
+    except Exception:
+        pass
+    return ""
+
+
+def adopt(dst: sqlite3.Connection, on_disk: dict[str, Path],
+          have: set[str], dst_cols: list[str], apply: bool) -> int:
+    """Rebuild threads rows from rollout headers for threads with no metadata."""
+    orphans = {tid: p for tid, p in on_disk.items() if tid not in have}
+    if not orphans:
+        return 0
+    print(f"\nOrphan rollouts with no metadata anywhere: {len(orphans)}")
+    rows = []
+    for tid, path in sorted(orphans.items()):
+        meta = session_meta(path)
+        if not meta:
+            print(f"  {tid[:8]}  skipped, no session_meta header")
+            continue
+        text = first_user_text(path)
+        title = " ".join(text.split())[:200]
+        stamp = meta.get("timestamp") or ""
+        try:
+            epoch = int(datetime.fromisoformat(stamp.replace("Z", "+00:00")).timestamp())
+        except Exception:
+            epoch = int(path.stat().st_mtime)
+        row = {
+            "id": tid,
+            "rollout_path": str(path),
+            "created_at": epoch,
+            "updated_at": epoch,
+            "recency_at": epoch,
+            "created_at_ms": epoch * 1000,
+            "updated_at_ms": epoch * 1000,
+            "recency_at_ms": epoch * 1000,
+            "source": meta.get("source") or "vscode",
+            "model_provider": meta.get("model_provider") or "openai",
+            "cwd": meta.get("cwd") or "",
+            "title": title or "(recovered session)",
+            "first_user_message": text[:2000],
+            "preview": title[:200],
+            "sandbox_policy": '{"type":"disabled"}',
+            "approval_mode": "never",
+            "history_mode": "paginated",
+            "memory_mode": "enabled",
+            "cli_version": meta.get("cli_version") or "",
+            "originator": meta.get("originator"),
+            "has_user_event": 1 if text else 0,
+            "archived": 1 if "archived_sessions" in path.parts else 0,
+        }
+        # Older rollouts store some header fields as objects rather than
+        # strings (session_meta "source" is a dict in some builds), and sqlite
+        # will not bind those. Flatten anything that is not a scalar.
+        clean = {}
+        for k, v in row.items():
+            if k not in dst_cols:
+                continue
+            if isinstance(v, (dict, list)):
+                v = json.dumps(v, separators=(",", ":"))
+            clean[k] = v
+        rows.append(clean)
+        print(f"  {tid[:8]}  {(title or '(no user text)')[:62]}")
+    if not apply or not rows:
+        return len(rows)
+    for row in rows:
+        cols = ",".join(f'"{c}"' for c in row)
+        marks = ",".join("?" for _ in row)
+        dst.execute(f"insert or ignore into threads ({cols}) values ({marks})",
+                    list(row.values()))
+    dst.commit()
+    return len(rows)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("source", type=Path, help="the other machine's state_5.sqlite")
     ap.add_argument("--apply", action="store_true", help="write (default: report only)")
+    ap.add_argument("--adopt-orphans", action="store_true",
+                    help="also rebuild rows for rollouts that have no metadata on "
+                         "either machine, from the rollout's own session_meta header")
     args = ap.parse_args()
 
     if not args.source.exists():
@@ -102,10 +208,13 @@ def main() -> int:
             if cwd:
                 print(f"            {cwd}")
 
+    if args.adopt_orphans and not args.apply:
+        adopt(dst, on_disk, have, dst_cols, False)
+
     if not args.apply:
         print("\nReport only. Re-run with --apply to import.")
         return 0
-    if not candidates:
+    if not candidates and not args.adopt_orphans:
         print("\nNothing to import.")
         return 0
 
@@ -115,6 +224,8 @@ def main() -> int:
     shutil.copy2(STATE, backup)
     print(f"\nBacked up {STATE.name} to {backup}")
 
+    if not candidates:
+        print("\nNo new metadata rows; continuing to orphan adoption.")
     placeholders = ",".join("?" for _ in shared)
     collist = ",".join(f'"{c}"' for c in shared)
     inserted = 0
@@ -133,6 +244,13 @@ def main() -> int:
     dst.commit()
     print(f"Inserted {inserted} threads rows (rollout_path rewritten to local paths)")
     print(f"Local threads rows now    : {dst.execute('select count(*) from threads').fetchone()[0]}")
+
+    if args.adopt_orphans:
+        n = adopt(dst, on_disk, have | {r["id"] for r in candidates}, dst_cols, True)
+        if n:
+            print(f"Rebuilt {n} orphan rows from their rollout headers")
+            print(f"Local threads rows now    : "
+                  f"{dst.execute('select count(*) from threads').fetchone()[0]}")
 
     print("\nProjecting into paginated thread history...")
     proc = subprocess.run(["codex", "migrate-rollouts", "--apply"],
