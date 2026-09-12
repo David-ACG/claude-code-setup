@@ -3,6 +3,19 @@
 Research date: 2026-09-11. Machine checked: hlab (Claude Max 20x, ChatGPT "Pro Lite" Codex plan, Claude Code 2.1.263, Codex CLI 0.154.0, ccusage 20.0.17).
 Browser page: https://hlab.taila51191.ts.net:9459/model-usage-comparison/
 
+## You already own most of this
+
+The board's **[/usage page](https://hlab.taila51191.ts.net:8101/usage)** (GWTH-launch-plan, bead gwth-launch-44p, built 2026-07-12) already does the cross-subscription job: live Claude and Codex quota windows with burn rate and pace, a 24-hour utilisation history, per-model daily API-equivalent value for each vendor, a monthly value ledger expressed as a multiple of plan cost, and a frontier-model watch. Do not rebuild it.
+
+Two of its feeds had died silently:
+
+| Feed | State found 2026-09-12 | Cause | Status |
+|---|---|---|---|
+| Value ledger (`daily_burn`) | frozen at 2026-07-12 | nightly cron ran a bare `ccusage`; cron's PATH omits `~/.local/bin`, so every run died with `FileNotFoundError` | **fixed** and backfilled to 2026-06-05 (commit f5e7b05) |
+| Claude quota lane | frozen at 2026-07-25, 48 days stale | `~/.claude/.credentials.json` on hlab has an expired token and an empty refresh token, because desktop-app sessions keep the OAuth token on the client and never write that file on hlab | **needs David**: run `claude` on hlab and `/login` |
+
+The Codex quota lane is healthy. The page is honest about the staleness rather than hiding it, so the Claude bars read 0 to 2 percent and are labelled as frozen.
+
 ## Short answer
 
 There is no single app that measures **quality, cost and usage** across both subscriptions. The space splits into three layers, and you need one tool from each:

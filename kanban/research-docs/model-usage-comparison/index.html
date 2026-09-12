@@ -37,7 +37,7 @@ ol li,ul li{margin:4px 0}
 </style></head>
 <body><main>
 <h1>Comparing Claude Code and Codex subscriptions: usage, cost and quality tools</h1>
-<p class="meta">Research date 2026-09-11. Checked on hlab: Claude Max 20x, ChatGPT Pro Lite (Codex), Claude Code 2.1.263, Codex CLI 0.154.0, ccusage 20.0.17. Source: <a href="research.md">research.md</a>.</p>
+<p class="meta">Research 2026-09-11, updated 2026-09-12. Checked on hlab: Claude Max 20x, ChatGPT Pro Lite (Codex), Claude Code 2.1.263, Codex CLI 0.154.0, ccusage 20.0.17. Source: <a href="research.md">research.md</a>. Live page: <a href="https://hlab.taila51191.ts.net:8101/usage">board /usage</a>.</p>
 
 <div class="tldr">
 <div><b>Usage and cost</b><span>ccusage (installed, covers both) for API-equivalent spend. CodexBar CLI or RateTray for live 5-hour / weekly quota on both.</span></div>
@@ -47,7 +47,7 @@ ol li,ul li{margin:4px 0}
 
 <div class="fig">
 <h3>API-equivalent spend on this machine, by month</h3>
-<p class="sub">ccusage, list prices, hlab only. Sep* is 11 days. About 95 percent of tokens are cache reads, so absolute values are inflated; the ratio is fair.</p>
+<p class="sub">ccusage, list prices, hlab only. Sep* is 12 days. About 95 percent of tokens are cache reads, so absolute values are inflated; the ratio is fair.</p>
 <div class="legend"><span><i style="background:var(--s1)"></i>Claude Code (Max 20x, $200/mo)</span><span><i style="background:var(--s2)"></i>Codex (Pro Lite)</span></div>
 <svg class="chart" viewBox="0 0 640 300" role="img" aria-label="API-equivalent spend per month, Claude Code vs Codex">
 <line x1="56" x2="624" y1="256.0" y2="256.0" class="grid"/><text x="48" y="260.0" class="tick" text-anchor="end">$0k</text>
@@ -75,18 +75,46 @@ ol li,ul li{margin:4px 0}
 <rect class="s2" x="413.0" y="249.7" width="59.0" height="6.3"/>
 <text x="442.5" y="239.7" class="val" text-anchor="middle">$306</text>
 <text x="412.0" y="274" class="tick" text-anchor="middle">Aug</text>
-<rect class="s1" x="494.0" y="169.1" width="59.0" height="86.9" rx="4"><title>Sep* 2026 Claude Code: $2,577</title></rect>
-<rect class="s1" x="494.0" y="173.1" width="59.0" height="82.9"/>
-<text x="523.5" y="163.1" class="val" text-anchor="middle">$2,577</text>
-<rect class="s2" x="555.0" y="202.4" width="59.0" height="53.6" rx="4"><title>Sep* 2026 Codex: $1,591</title></rect>
-<rect class="s2" x="555.0" y="206.4" width="59.0" height="49.6"/>
-<text x="584.5" y="196.4" class="val" text-anchor="middle">$1,591</text>
+<rect class="s1" x="494.0" y="169.0" width="59.0" height="87.0" rx="4"><title>Sep* 2026 Claude Code: $2,581</title></rect>
+<rect class="s1" x="494.0" y="173.0" width="59.0" height="83.0"/>
+<text x="523.5" y="163.0" class="val" text-anchor="middle">$2,581</text>
+<rect class="s2" x="555.0" y="201.5" width="59.0" height="54.5" rx="4"><title>Sep* 2026 Codex: $1,616</title></rect>
+<rect class="s2" x="555.0" y="205.5" width="59.0" height="50.5"/>
+<text x="584.5" y="195.5" class="val" text-anchor="middle">$1,616</text>
 <text x="554.0" y="274" class="tick" text-anchor="middle">Sep*</text>
 <line x1="56" x2="624" y1="256" y2="256" class="axis"/></svg>
 </div>
 
 <p>Research date: 2026-09-11. Machine checked: hlab (Claude Max 20x, ChatGPT "Pro Lite" Codex plan, Claude Code 2.1.263, Codex CLI 0.154.0, ccusage 20.0.17).
 Browser page: https://hlab.taila51191.ts.net:9459/model-usage-comparison/</p>
+<h2>You already own most of this</h2>
+<p>The board's <strong><a href="https://hlab.taila51191.ts.net:8101/usage">/usage page</a></strong> (GWTH-launch-plan, bead gwth-launch-44p, built 2026-07-12) already does the cross-subscription job: live Claude and Codex quota windows with burn rate and pace, a 24-hour utilisation history, per-model daily API-equivalent value for each vendor, a monthly value ledger expressed as a multiple of plan cost, and a frontier-model watch. Do not rebuild it.</p>
+<p>Two of its feeds had died silently:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Feed</th>
+<th>State found 2026-09-12</th>
+<th>Cause</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value ledger (<code>daily_burn</code>)</td>
+<td>frozen at 2026-07-12</td>
+<td>nightly cron ran a bare <code>ccusage</code>; cron's PATH omits <code>~/.local/bin</code>, so every run died with <code>FileNotFoundError</code></td>
+<td><strong>fixed</strong> and backfilled to 2026-06-05 (commit f5e7b05)</td>
+</tr>
+<tr>
+<td>Claude quota lane</td>
+<td>frozen at 2026-07-25, 48 days stale</td>
+<td><code>~/.claude/.credentials.json</code> on hlab has an expired token and an empty refresh token, because desktop-app sessions keep the OAuth token on the client and never write that file on hlab</td>
+<td><strong>needs David</strong>: run <code>claude</code> on hlab and <code>/login</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The Codex quota lane is healthy. The page is honest about the staleness rather than hiding it, so the Claude bars read 0 to 2 percent and are labelled as frozen.</p>
 <h2>Short answer</h2>
 <p>There is no single app that measures <strong>quality, cost and usage</strong> across both subscriptions. The space splits into three layers, and you need one tool from each:</p>
 <div class="tw"><table>
