@@ -32,6 +32,7 @@ from pathlib import Path
 
 CODEX = Path.home() / ".codex"
 SESSIONS = CODEX / "sessions"
+ARCHIVED = CODEX / "archived_sessions"
 BACKUPS = CODEX / "history-merge-backups"
 
 # rollout-2026-05-11T16-55-46-019e17f7-58d0-73b0-96d6-f19be9e5d6f1.jsonl
@@ -68,7 +69,21 @@ def collect(source: Path, workdir: Path) -> Path:
         out = workdir / source.stem
         out.mkdir(parents=True, exist_ok=True)
         with zipfile.ZipFile(source) as zf:
-            zf.extractall(out)
+            for info in zf.infolist():
+                # PowerShell's Compress-Archive writes Windows separators into
+                # the entry names, so extractall() would create single files
+                # literally called "sessions\2026\05\rollout-....jsonl".
+                # Normalise, and refuse anything that escapes the target dir.
+                rel = info.filename.replace("\\", "/")
+                if info.is_dir() or rel.endswith("/"):
+                    continue
+                dest = (out / rel).resolve()
+                if not str(dest).startswith(str(out.resolve())):
+                    print(f"  skipping unsafe entry: {info.filename}", file=sys.stderr)
+                    continue
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                with zf.open(info) as src_fh, dest.open("wb") as out_fh:
+                    shutil.copyfileobj(src_fh, out_fh)
         return out
     raise SystemExit(f"Not a directory or .zip: {source}")
 
@@ -120,6 +135,7 @@ def main() -> int:
 
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     incoming: dict[str, Path] = {}
+    archived_ids: set[str] = set()
     skipped = 0
     unparsed = 0
 
@@ -141,11 +157,17 @@ def main() -> int:
                     skipped += 1
                     continue
                 incoming[thread] = path
+                # A session the other machine had archived stays archived here.
+                # Restoring them as active would flood the resume picker with
+                # threads that were deliberately tidied away.
+                if "archived_sessions" in path.parts:
+                    archived_ids.add(thread)
             print(f"  {source.name}: {found} rollouts")
 
         print(f"\nAlready present, skipped : {skipped}")
         print(f"Unrecognised filenames   : {unparsed}")
-        print(f"New threads to import    : {len(incoming)}")
+        print(f"New threads to import    : {len(incoming)}"
+              f"  ({len(archived_ids)} of them archived on the source machine)")
 
         if incoming:
             origins: dict[str, int] = {}
@@ -171,17 +193,25 @@ def main() -> int:
         print(f"\nBacked up thread history to {backup}")
 
         copied = 0
+        copied_archived = 0
         for thread, path in incoming.items():
-            day = ROLLOUT.match(path.name).group("ts")
-            year, month, dayn = day.split("-")
-            dest_dir = SESSIONS / year / month / dayn
+            if thread in archived_ids:
+                dest_dir = ARCHIVED
+            else:
+                day = ROLLOUT.match(path.name).group("ts")
+                year, month, dayn = day.split("-")
+                dest_dir = SESSIONS / year / month / dayn
             dest_dir.mkdir(parents=True, exist_ok=True)
             dest = dest_dir / path.name
             if dest.exists():          # belt and braces: never overwrite
                 continue
             shutil.copy2(path, dest)
-            copied += 1
-        print(f"Copied {copied} rollout files into {SESSIONS}")
+            if thread in archived_ids:
+                copied_archived += 1
+            else:
+                copied += 1
+        print(f"Copied {copied} active rollouts into {SESSIONS}")
+        print(f"Copied {copied_archived} archived rollouts into {ARCHIVED}")
 
     print("\nProjecting into paginated thread history...")
     report = migrate(apply=True)

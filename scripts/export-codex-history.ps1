@@ -62,7 +62,12 @@ Copy-Item -LiteralPath $sessions -Destination (Join-Path $staging "sessions") -R
 if (Test-Path -LiteralPath $archived) {
     Copy-Item -LiteralPath $archived -Destination (Join-Path $staging "archived_sessions") -Recurse -Force
 }
-foreach ($extra in @("session_index.jsonl", "installation_id")) {
+# state_5.sqlite carries the threads table: title, cwd, model, archived flag
+# and git context. Without it codex migrate-rollouts refuses the imported
+# rollouts with "missing its SQLite metadata", so it is not optional.
+foreach ($extra in @("session_index.jsonl", "installation_id",
+                     "state_5.sqlite", "state_5.sqlite-wal", "state_5.sqlite-shm",
+                     "thread_history_1.sqlite")) {
     $p = Join-Path $codex $extra
     if (Test-Path -LiteralPath $p) { Copy-Item -LiteralPath $p -Destination $staging -Force }
 }
