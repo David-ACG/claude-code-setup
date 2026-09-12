@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# claude-alt - run Claude Code against a third-party Anthropic-compatible
+# endpoint, for ONE session only.
+#
+# The point of the wrapper: ANTHROPIC_BASE_URL and friends in
+# ~/.claude/settings.json are GLOBAL. Setting them there would silently send
+# every session on this box, including judgement work and every overnight job,
+# to the alternative provider. Here they live only in this process.
+#
+# Hooks, beads, skills and subagents are unaffected: a hook is a local shell
+# command and does not know or care which endpoint the request goes to.
+#
+#   claude-alt glm  [args...]     GLM-5.3 via z.ai
+#   claude-alt list
+#
+# Keys are read from ~/.config/gwth-models.env (chmod 600, never committed):
+#   ZAI_API_KEY=...
+#   OPENROUTER_API_KEY=...
+
+set -euo pipefail
+
+ENV_FILE="${GWTH_MODELS_ENV:-$HOME/.config/gwth-models.env}"
+PROVIDER="${1:-}"; shift || true
+
+usage() {
+    cat <<'USAGE'
+usage: claude-alt <provider> [claude args...]
+
+providers:
+  glm    GLM-5.3 and glm-5.3-flash via https://api.z.ai/api/anthropic
+                                        (needs ZAI_API_KEY)
+
+Keys live in ~/.config/gwth-models.env. Plain `claude` is untouched and stays
+on your Anthropic subscription.
+USAGE
+}
+
+case "$PROVIDER" in
+    ""|-h|--help|list) usage; exit 0 ;;
+esac
+
+if [[ ! -f "$ENV_FILE" ]]; then
+    echo "No key file at $ENV_FILE" >&2
+    echo "Create it with 'ZAI_API_KEY=...' and chmod 600." >&2
+    exit 1
+fi
+# shellcheck disable=SC1090
+set -a; . "$ENV_FILE"; set +a
+
+case "$PROVIDER" in
+    glm)
+        : "${ZAI_API_KEY:?ZAI_API_KEY is not set in $ENV_FILE}"
+        export ANTHROPIC_BASE_URL="https://api.z.ai/api/anthropic"
+        export ANTHROPIC_AUTH_TOKEN="$ZAI_API_KEY"
+        export ANTHROPIC_DEFAULT_OPUS_MODEL="glm-5.3"
+        export ANTHROPIC_DEFAULT_SONNET_MODEL="glm-5.3"
+        export ANTHROPIC_DEFAULT_HAIKU_MODEL="glm-5.3-flash"
+        export API_TIMEOUT_MS="3000000"
+        # An inherited ANTHROPIC_API_KEY would outrank the auth token.
+        unset ANTHROPIC_API_KEY
+        BANNER="GLM-5.3 via z.ai"
+        ;;
+    *)
+        echo "Unknown provider: $PROVIDER" >&2; usage >&2; exit 1 ;;
+esac
+
+echo "[claude-alt] $BANNER  (this session only; plain 'claude' is unchanged)" >&2
+exec claude "$@"
