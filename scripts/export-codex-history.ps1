@@ -9,6 +9,8 @@
 param(
     [string]$RemoteHost = "hlab",
     [string]$RemoteDir  = "/home/david/codex-history-import",
+    [string]$DrivePath  = "P:\codex-history-import",
+    [switch]$ViaDrive,
     [switch]$CountOnly
 )
 
@@ -73,11 +75,25 @@ Compress-Archive -Path (Join-Path $staging "*") -DestinationPath $zip -Compressi
 $zipMb = [math]::Round((Get-Item -LiteralPath $zip).Length / 1MB, 1)
 Write-Host "Archive is $zipMb MB."
 
-Write-Host "Copying to ${RemoteHost}:${RemoteDir} ..."
-ssh $RemoteHost "mkdir -p '$RemoteDir'"
-if ($LASTEXITCODE -ne 0) { throw "ssh to $RemoteHost failed. Check 'ssh $RemoteHost' works from this laptop." }
-scp $zip "${RemoteHost}:${RemoteDir}/"
-if ($LASTEXITCODE -ne 0) { throw "scp to $RemoteHost failed." }
+if ($ViaDrive) {
+    # Fallback for laptops where ssh to the P520 does not work. The mapped
+    # drive reaches the same machine over Samba, so nothing else changes.
+    Write-Host "Copying over the mapped drive to $DrivePath ..."
+    if (-not (Test-Path -LiteralPath $DrivePath)) {
+        New-Item -ItemType Directory -Path $DrivePath -Force | Out-Null
+    }
+    Copy-Item -LiteralPath $zip -Destination $DrivePath -Force
+} else {
+    Write-Host "Copying to ${RemoteHost}:${RemoteDir} ..."
+    ssh $RemoteHost "mkdir -p '$RemoteDir'"
+    if ($LASTEXITCODE -ne 0) {
+        throw "ssh to $RemoteHost failed. Re-run with -ViaDrive to use the mapped drive instead."
+    }
+    scp $zip "${RemoteHost}:${RemoteDir}/"
+    if ($LASTEXITCODE -ne 0) {
+        throw "scp to $RemoteHost failed. Re-run with -ViaDrive to use the mapped drive instead."
+    }
+}
 
 Remove-Item -LiteralPath $staging -Recurse -Force
 Write-Host ""
