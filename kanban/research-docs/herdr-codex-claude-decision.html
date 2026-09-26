@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Herdr decision brief — Codex + Claude</title>
+  <style>
+    :root { --bg:#0d1117; --card:#161b22; --card2:#1d2430; --line:#30363d; --ink:#e6edf3; --ink2:#c9d1d9; --muted:#8b949e; --blue:#58a6ff; --green:#3fb950; --amber:#d29922; --red:#f85149; --purple:#a371f7; --codex:#2ea884; }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+    a{color:var(--blue)} button{font:inherit} svg{max-width:100%;height:auto} code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .shell{width:min(1180px,calc(100% - 32px));margin:auto}.hero{padding:64px 0 34px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 85% 15%,rgba(46,168,132,.16),transparent 32%),radial-gradient(circle at 10% 0,rgba(88,166,255,.12),transparent 28%)}
+    .eyebrow{color:var(--codex);font:700 12px/1.3 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}.hero h1{font-size:clamp(36px,6vw,74px);line-height:1.02;letter-spacing:-.045em;max-width:930px;margin:14px 0 22px}.lede{max-width:840px;color:var(--ink2);font-size:clamp(18px,2vw,23px)}
+    .verdict{display:grid;grid-template-columns:auto 1fr;gap:16px;margin-top:28px;padding:18px 20px;border:1px solid rgba(63,185,80,.48);border-radius:12px;background:rgba(63,185,80,.08)}.verdict-mark{font-size:25px;color:var(--green)}
+    nav{position:sticky;top:0;z-index:5;background:rgba(13,17,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}nav .shell{display:flex;gap:18px;overflow:auto;padding-top:12px;padding-bottom:12px}nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font:600 12px ui-monospace,monospace}nav a:hover{color:var(--ink)}
+    main{padding:42px 0 80px}section{scroll-margin-top:62px;margin:0 0 64px}h2{font-size:clamp(27px,4vw,42px);letter-spacing:-.035em;margin:0 0 10px}h3{font-size:20px;margin:0 0 10px}.sub{color:var(--muted);max-width:800px;margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}.card{grid-column:span 4;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}.card.wide{grid-column:span 6}.card.full{grid-column:1/-1}.card p:last-child{margin-bottom:0}.tag{display:inline-flex;padding:4px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font:650 11px ui-monospace,monospace}.tag.good{color:var(--green);border-color:rgba(63,185,80,.45)}.tag.warn{color:var(--amber);border-color:rgba(210,153,34,.45)}
+    .role{border-top:3px solid var(--blue)}.role.claude{border-color:var(--purple)}.role.herdr{border-color:var(--amber)}.role.evidence{border-color:var(--green)}.role h3{margin-top:13px}.role .job{color:var(--muted);font-size:14px}
+    .figure{background:linear-gradient(180deg,var(--card),rgba(22,27,34,.55));border:1px solid var(--line);border-radius:16px;padding:18px}.figure figcaption{color:var(--muted);font-size:13px;margin-top:10px}
+    .good-text{color:var(--green)}.warn-text{color:var(--amber)}.bad-text{color:var(--red)}.muted{color:var(--muted)}
+    ul{padding-left:20px}li+li{margin-top:7px}.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}.panel.adv{border-top:3px solid var(--green)}.panel.risk{border-top:3px solid var(--red)}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:800px;background:var(--card)}th,td{text-align:left;padding:14px 13px;border-bottom:1px solid var(--line);vertical-align:top}th{position:sticky;top:0;background:var(--card2);color:var(--muted);font:650 11px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.05em}tr.recommended td{background:rgba(46,168,132,.075)}.score{letter-spacing:1px;color:var(--blue);white-space:nowrap}.option{font-weight:750}.why{font-size:13px;color:var(--muted);margin-top:4px}
+    .steps{counter-reset:step;display:grid;gap:10px}.step{counter-increment:step;display:grid;grid-template-columns:42px 1fr;gap:13px;align-items:start;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:10px}.step:before{content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(46,168,132,.15);color:var(--codex);font:800 14px ui-monospace,monospace}.step strong{display:block;margin-bottom:2px}.step span{color:var(--muted);font-size:14px}
+    .callout{border-left:4px solid var(--amber);background:rgba(210,153,34,.08);padding:16px 18px;border-radius:0 10px 10px 0}.callout strong{color:var(--amber)}
+    details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0 16px}details+details{margin-top:10px}summary{cursor:pointer;padding:15px 0;font-weight:700}details>div{color:var(--ink2);padding:0 0 16px}
+    .sources{font-size:14px}.sources li{overflow-wrap:anywhere}.footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:13px}
+    @media(max-width:820px){.card,.card.wide{grid-column:1/-1}.split{grid-template-columns:1fr}.hero{padding-top:42px}.verdict{grid-template-columns:1fr}.shell{width:min(100% - 22px,1180px)}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <div class="eyebrow">Decision brief · 19 September 2026</div>
+      <h1>Herdr should be the control room, not the crew.</h1>
+      <p class="lede">Keep Codex planning and independently judging the work. Keep Claude Code building and self-checking it. Pilot Herdr underneath them for persistent terminals, live status, session recovery, and agent control.</p>
+      <div class="verdict"><div class="verdict-mark">✓</div><div><strong>Recommendation: a bounded Herdr pilot.</strong><br><span class="muted">Do not replace Beads, the GWTH cockpit, Codex, Claude Code, worktrees, or evidence-based QA.</span></div></div>
+    </div>
+  </header>
+  <nav><div class="shell"><a href="#roles">Roles</a><a href="#flow">Workflow</a><a href="#visibility">Visibility</a><a href="#tradeoffs">Trade-offs</a><a href="#options">Options</a><a href="#pilot">Pilot</a><a href="#sources">Sources</a></div></nav>
+  <main class="shell">
+    <section id="roles">
+      <h2>One layer, one job</h2>
+      <p class="sub">The biggest failure mode would be asking Herdr to become a model, task tracker, QA gate, and project dashboard. Its value is narrower and cleaner.</p>
+      <div class="grid">
+        <article class="card role"><span class="tag">Authority</span><h3>Codex</h3><p class="job">Plan · orchestrate · independently inspect · decide whether evidence is enough.</p></article>
+        <article class="card role claude"><span class="tag">Builder</span><h3>Claude Code</h3><p class="job">Implement · test · self-review · return a structured evidence report.</p></article>
+        <article class="card role herdr"><span class="tag">Substrate</span><h3>Herdr</h3><p class="job">Host terminals · retain sessions · show coarse state · prompt, wait, and read.</p></article>
+        <article class="card role evidence"><span class="tag">Truth</span><h3>Git + tests + previews</h3><p class="job">Prove what changed and whether it works. A green “done” badge is not proof.</p></article>
+        <article class="card role evidence"><span class="tag">Memory</span><h3>Beads</h3><p class="job">Remain the durable queue, dependency graph, status record, and handoff memory.</p></article>
+        <article class="card role"><span class="tag">Decision surface</span><h3>GWTH cockpit</h3><p class="job">Keep project priority, questions, reviews, approvals, and shipping state human-readable.</p></article>
+      </div>
+    </section>
+
+    <section id="flow">
+      <h2>Where Herdr fits</h2>
+      <p class="sub">It improves supervision and recovery in the middle of the loop. It does not define intent or certify the result.</p>
+      <figure class="figure">
+        <svg viewBox="0 0 1040 380" role="img" aria-labelledby="flow-title flow-desc">
+          <title id="flow-title">Recommended Codex, Herdr, and Claude workflow</title><desc id="flow-desc">David directs Codex. Codex controls named Herdr panes for a Claude implementer, a Codex reviewer, and deterministic checks. Beads and evidence remain authoritative.</desc>
+          <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker></defs>
+          <g fill="none" stroke="currentColor" stroke-width="2" color="#58a6ff" marker-end="url(#arrow)"><path d="M160 85 H330"/><path d="M510 85 H690"/><path d="M840 125 V184"/><path d="M690 232 H560"/><path d="M430 232 H305"/></g>
+          <g id="human"><title>David sets intent and reviews decisions</title><rect x="30" y="40" width="130" height="90" rx="12" fill="#161b22" stroke="#30363d"/><text x="95" y="80" fill="#e6edf3" text-anchor="middle" font-size="19" font-weight="700">David</text><text x="95" y="104" fill="#8b949e" text-anchor="middle" font-size="12">intent + approval</text></g>
+          <g id="codex"><title>Codex plans, orchestrates and independently reviews</title><rect x="330" y="28" width="180" height="114" rx="12" fill="#132b27" stroke="#2ea884"/><text x="420" y="72" fill="#e6edf3" text-anchor="middle" font-size="20" font-weight="700">Codex</text><text x="420" y="98" fill="#8b949e" text-anchor="middle" font-size="12">contract + orchestration</text><text x="420" y="116" fill="#8b949e" text-anchor="middle" font-size="12">independent verdict</text></g>
+          <g id="herdr"><title>Herdr is the persistent terminal and control layer</title><rect x="690" y="28" width="300" height="114" rx="12" fill="#2b2517" stroke="#d29922"/><text x="840" y="68" fill="#e6edf3" text-anchor="middle" font-size="20" font-weight="700">Herdr</text><text x="840" y="94" fill="#c9d1d9" text-anchor="middle" font-size="12">panes · state · scrollback · sessions</text><text x="840" y="113" fill="#c9d1d9" text-anchor="middle" font-size="12">prompt · wait · read · notify</text></g>
+          <g id="worker"><title>Claude implements and self-reviews in an isolated worktree</title><rect x="690" y="184" width="300" height="96" rx="12" fill="#241d35" stroke="#a371f7"/><text x="840" y="222" fill="#e6edf3" text-anchor="middle" font-size="19" font-weight="700">Claude implementer</text><text x="840" y="249" fill="#8b949e" text-anchor="middle" font-size="12">worktree · build · test · self-QA</text></g>
+          <g id="checks"><title>Deterministic checks provide evidence</title><rect x="430" y="184" width="130" height="96" rx="12" fill="#18271c" stroke="#3fb950"/><text x="495" y="222" fill="#e6edf3" text-anchor="middle" font-size="17" font-weight="700">Evidence</text><text x="495" y="247" fill="#8b949e" text-anchor="middle" font-size="12">diff · tests</text></g>
+          <g id="beads"><title>Beads and the cockpit retain authoritative state</title><rect x="55" y="184" width="250" height="96" rx="12" fill="#161b22" stroke="#30363d"/><text x="180" y="222" fill="#e6edf3" text-anchor="middle" font-size="18" font-weight="700">Beads + cockpit</text><text x="180" y="247" fill="#8b949e" text-anchor="middle" font-size="12">priority · state · approval · handoff</text></g>
+          <text x="520" y="344" fill="#8b949e" text-anchor="middle" font-size="13">Herdr carries the work. Evidence proves it. Codex judges it. Beads remembers it.</text>
+        </svg>
+        <figcaption>The recommended topology. Arrows show the main control/evidence loop, not every message.</figcaption>
+      </figure>
+    </section>
+
+    <section id="visibility">
+      <h2>What “more insight” really means</h2>
+      <div class="split">
+        <div class="panel adv"><h3>Herdr can expose</h3><ul><li>Live and recent terminal output</li><li>Prompts, permission dialogs, and visible blockers</li><li>Working, blocked, done, idle, or unknown state</li><li>Session identities and retained scrollback</li><li>Notifications and SSH-resilient background work</li><li>Programmatic prompt, wait, read, and focus controls</li></ul></div>
+        <div class="panel risk"><h3>Herdr cannot establish</h3><ul><li>A model’s private chain-of-thought</li><li>That “done” means correct</li><li>That Claude’s self-review was independent or complete</li><li>Conflict-free parallel edits without worktrees</li><li>An immutable task-to-diff-to-test audit trail</li><li>A security boundary between same-user processes</li></ul></div>
+      </div>
+      <div class="callout" style="margin-top:16px"><strong>A better target than watching thoughts:</strong> observe the contract, actions, diff, tests, self-review findings, independent findings, and final verdict.</div>
+    </section>
+
+    <section id="tradeoffs">
+      <h2>Why use it — and why not</h2>
+      <div class="grid">
+        <article class="card wide"><span class="tag good">Advantages</span><h3>Less terminal hunting</h3><p>Named agents, roll-up state, jump-to-pane navigation, and notifications make long-running work much easier to supervise.</p></article>
+        <article class="card wide"><span class="tag warn">Disadvantage</span><h3>Another control plane</h3><p>Configuration, updates, logs, keybindings, and failure modes become part of the operating environment.</p></article>
+        <article class="card wide"><span class="tag good">Advantages</span><h3>Vendor-neutral continuity</h3><p>Claude and Codex keep their native CLIs, sessions, subscriptions, and different strengths. Herdr does not force one model family.</p></article>
+        <article class="card wide"><span class="tag warn">Disadvantage</span><h3>State is advisory</h3><p>Claude and Codex lifecycle state is currently inferred from the visible screen. An unfamiliar prompt may look idle rather than blocked.</p></article>
+        <article class="card wide"><span class="tag good">Advantages</span><h3>Automation seam</h3><p>The CLI and local socket API are a practical bridge from Codex or the GWTH cockpit to real persistent agent sessions.</p></article>
+        <article class="card wide"><span class="tag warn">Disadvantage</span><h3>Parallelism amplifies mistakes</h3><p>Without contracts and worktrees, more agents mean more collisions, stale assumptions, port conflicts, duplicated effort, and spend.</p></article>
+      </div>
+    </section>
+
+    <section id="options">
+      <h2>Options at a glance</h2>
+      <p class="sub">Directional scores for this Linux-first, cross-model GWTH workflow. Five dots is stronger; setup cost is inverted, so five means expensive.</p>
+      <div class="table-wrap"><table><thead><tr><th>Option</th><th>Visibility</th><th>Cross-model control</th><th>Durable audit</th><th>Setup cost</th><th>Decision</th></tr></thead><tbody>
+        <tr><td><div class="option">Improve the existing cockpit</div><div class="why">Use Claude JSONL transcripts and the current prompt log.</div></td><td class="score">●●○○○</td><td class="score">●●●○○</td><td class="score">●●●●○</td><td class="score">●○○○○</td><td>Best if history is the only need.</td></tr>
+        <tr class="recommended"><td><div class="option good-text">Herdr + Codex + Claude</div><div class="why">A substrate below the tools already working well.</div></td><td class="score">●●●●○</td><td class="score">●●●●●</td><td class="score">●●●○○</td><td class="score">●●●○○</td><td><strong class="good-text">Recommended pilot</strong></td></tr>
+        <tr><td><div class="option">Agent Deck</div><div class="why">More opinionated tmux-based agent command centre.</div></td><td class="score">●●●●○</td><td class="score">●●●●○</td><td class="score">●●●○○</td><td class="score">●●●○○</td><td>Best alternative if worktree/session features dominate.</td></tr>
+        <tr><td><div class="option">cmux / cmux TUI</div><div class="why">Polished macOS app plus cross-platform terminal multiplexer.</div></td><td class="score">●●●●○</td><td class="score">●●●●○</td><td class="score">●●○○○</td><td class="score">●●●○○</td><td>Attractive UI; weaker fit for hlab-first control.</td></tr>
+        <tr><td><div class="option">Claude agent teams</div><div class="why">Independent Claude sessions with shared tasks.</div></td><td class="score">●●●○○</td><td class="score">●○○○○</td><td class="score">●●○○○</td><td class="score">●●○○○</td><td>Use selectively inside Claude, not as the whole stack.</td></tr>
+        <tr><td><div class="option">Custom SDK controller</div><div class="why">Maximum tracing and policy control, maximum engineering.</div></td><td class="score">●●●●●</td><td class="score">●●●●●</td><td class="score">●●●●●</td><td class="score bad-text">●●●●●</td><td>Premature today.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section id="pilot">
+      <h2>A deliberately small pilot</h2>
+      <p class="sub">Five reversible, non-deployment tasks are enough to learn whether Herdr removes real friction.</p>
+      <div class="steps">
+        <div class="step"><div><strong>Pin and install on hlab</strong><span>Use a stable published binary. Keep the current workflow intact as the rollback path.</span></div></div>
+        <div class="step"><div><strong>Start with three panes</strong><span>Claude implementer, Codex reviewer, and deterministic checks. Add roles only when evidence justifies them.</span></div></div>
+        <div class="step"><div><strong>Isolate every implementation</strong><span>One worktree and bounded task contract per bead. Herdr is not conflict isolation.</span></div></div>
+        <div class="step"><div><strong>Require two QA layers</strong><span>Claude self-QA before handoff; Codex reruns proportionate checks from the contract and repository state.</span></div></div>
+        <div class="step"><div><strong>Measure supervision, not novelty</strong><span>Track time-to-notice blockers, complete evidence reports, collisions, model usage, and whether David finds the view clearer.</span></div></div>
+      </div>
+      <div class="grid" style="margin-top:16px"><article class="card wide"><span class="tag good">Success</span><h3>Keep it when…</h3><p>Blocked sessions surface sooner, terminal switching falls, evidence quality holds, and the combined Herdr/cockpit view is easier to understand.</p></article><article class="card wide"><span class="tag warn">Stop</span><h3>Narrow it when…</h3><p>Status is often wrong, orchestration glue is brittle, worktree discipline worsens, or live monitoring consumes more attention than evidence review.</p></article></div>
+    </section>
+
+    <section>
+      <h2>Questions the pilot must answer</h2>
+      <details open><summary>Is Herdr actually the missing piece?</summary><div>Possibly. If David mainly wants a post-hoc account of Claude’s activity, the current JSONL transcript parser and cockpit are closer to the answer. Herdr earns its place only if live supervision, session persistence, and control matter.</div></details>
+      <details><summary>Would Codex and Claude Code still be used?</summary><div>Yes. Herdr has no model. It runs the installed CLIs and gives people or other agents a better way to operate them.</div></details>
+      <details><summary>Should Claude also QA itself?</summary><div>Yes, as a first line. Require a diff review, tests, and explicit risks. Keep the final QA independent: Codex should judge the task contract and evidence, not merely approve Claude’s narrative.</div></details>
+      <details><summary>Should Herdr replace the GWTH cockpit?</summary><div>No. Herdr knows live terminal state. The cockpit and Beads know project meaning, priority, approvals, and shipping state. Feed Herdr state into the cockpit later if the pilot succeeds.</div></details>
+    </section>
+
+    <section id="sources" class="sources">
+      <h2>Evidence</h2><p class="sub">Primary sources accessed 19 September 2026. The full Markdown brief contains local-code evidence and the detailed rationale.</p>
+      <div class="grid"><article class="card wide"><h3>Herdr</h3><ul><li><a href="https://herdr.dev/docs/">Documentation</a></li><li><a href="https://herdr.dev/docs/agents/">Agent detection and state</a></li><li><a href="https://herdr.dev/docs/agent-automation/">Agent automation</a></li><li><a href="https://herdr.dev/docs/socket-api/">Socket API</a></li><li><a href="https://github.com/herdrdev/herdr">Source and licence</a></li></ul></article><article class="card wide"><h3>Alternatives and agent behavior</h3><ul><li><a href="https://github.com/asheshgoplani/agent-deck">Agent Deck</a></li><li><a href="https://cmux.com/docs/tui">cmux TUI</a></li><li><a href="https://code.claude.com/docs/en/features-overview">Claude Code features</a></li><li><a href="https://code.claude.com/docs/en/claude-directory">Claude transcript data</a></li><li><a href="herdr-codex-claude-decision.md">Full Markdown research brief</a></li></ul></article></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell"><span class="mono">gwth-launch-1k1r</span> · Research artifact · Design matched to the GWTH cockpit tokens.</div></footer>
+</body>
+</html>

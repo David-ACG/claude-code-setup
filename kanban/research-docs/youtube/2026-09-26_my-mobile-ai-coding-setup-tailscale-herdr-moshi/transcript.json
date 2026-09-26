@@ -1,0 +1,994 @@
+{
+ "video_id": "9-tOItWRaiw",
+ "language": "en",
+ "transcript": [
+  {
+   "text": "Okay, I wanted to make a quick video",
+   "start": 1.36,
+   "duration": 5.04
+  },
+  {
+   "text": "going more in-depth on",
+   "start": 3.76,
+   "duration": 5.28
+  },
+  {
+   "text": "uh my actual terminal setup because like",
+   "start": 6.4,
+   "duration": 3.68
+  },
+  {
+   "text": "someone asked me to make a video",
+   "start": 9.04,
+   "duration": 3.72
+  },
+  {
+   "text": "explaining it. So, uh the first part of",
+   "start": 10.08,
+   "duration": 4.4
+  },
+  {
+   "text": "the setup is this thing called Herder.",
+   "start": 12.76,
+   "duration": 4.2
+  },
+  {
+   "text": "Um it's running inside of my terminal.",
+   "start": 14.48,
+   "duration": 4.08
+  },
+  {
+   "text": "So, this is Ghosty.",
+   "start": 16.96,
+   "duration": 4.04
+  },
+  {
+   "text": "Um Ghosty's the terminal I'm using. And",
+   "start": 18.56,
+   "duration": 5.28
+  },
+  {
+   "text": "Herder is I don't know exactly the point",
+   "start": 21.0,
+   "duration": 4.08
+  },
+  {
+   "text": "of like I don't know exactly how they",
+   "start": 23.84,
+   "duration": 3.6
+  },
+  {
+   "text": "classify Herder. But what it does for me",
+   "start": 25.08,
+   "duration": 4.2
+  },
+  {
+   "text": "is that it lets me break up my terminal",
+   "start": 27.44,
+   "duration": 3.72
+  },
+  {
+   "text": "into different work spaces.",
+   "start": 29.28,
+   "duration": 3.479
+  },
+  {
+   "text": "And I can create like, you know, a bunch",
+   "start": 31.16,
+   "duration": 3.72
+  },
+  {
+   "text": "of different work spaces. I can split",
+   "start": 32.759,
+   "duration": 3.401
+  },
+  {
+   "text": "the panes so I can have like two",
+   "start": 34.88,
+   "duration": 2.96
+  },
+  {
+   "text": "terminals running in one work space. I",
+   "start": 36.16,
+   "duration": 3.48
+  },
+  {
+   "text": "can leave that open. I can have tabs",
+   "start": 37.84,
+   "duration": 3.16
+  },
+  {
+   "text": "running in a work space and I can leave",
+   "start": 39.64,
+   "duration": 2.56
+  },
+  {
+   "text": "that open.",
+   "start": 41.0,
+   "duration": 3.52
+  },
+  {
+   "text": "Um if you're using Herder, the main hot",
+   "start": 42.2,
+   "duration": 4.36
+  },
+  {
+   "text": "key that you need to know is control B.",
+   "start": 44.52,
+   "duration": 3.88
+  },
+  {
+   "text": "Control B will open up this thing right",
+   "start": 46.56,
+   "duration": 2.88
+  },
+  {
+   "text": "here.",
+   "start": 48.4,
+   "duration": 2.4
+  },
+  {
+   "text": "Um then you can hit the question mark",
+   "start": 49.44,
+   "duration": 2.4
+  },
+  {
+   "text": "and you can see all the different key",
+   "start": 50.8,
+   "duration": 2.08
+  },
+  {
+   "text": "binds.",
+   "start": 51.84,
+   "duration": 3.18
+  },
+  {
+   "text": "Um so, you can like if you want",
+   "start": 52.88,
+   "duration": 3.16
+  },
+  {
+   "text": "[clears throat] to be like the person",
+   "start": 55.02,
+   "duration": 2.5
+  },
+  {
+   "text": "that just does it completely with the",
+   "start": 56.04,
+   "duration": 3.32
+  },
+  {
+   "text": "keyboard and navigates around in your",
+   "start": 57.52,
+   "duration": 3.2
+  },
+  {
+   "text": "terminal with that, like you can also",
+   "start": 59.36,
+   "duration": 3.72
+  },
+  {
+   "text": "you can learn all the hot keys. Um",
+   "start": 60.72,
+   "duration": 4.36
+  },
+  {
+   "text": "pretty easy. The ones that I actually",
+   "start": 63.08,
+   "duration": 3.96
+  },
+  {
+   "text": "care about for me",
+   "start": 65.08,
+   "duration": 3.28
+  },
+  {
+   "text": "are",
+   "start": 67.04,
+   "duration": 2.2
+  },
+  {
+   "text": "um",
+   "start": 68.36,
+   "duration": 3.56
+  },
+  {
+   "text": "if I do control B and then shift N, that",
+   "start": 69.24,
+   "duration": 4.6
+  },
+  {
+   "text": "makes a new work space. And then control",
+   "start": 71.92,
+   "duration": 5.24
+  },
+  {
+   "text": "B and shift W, that renames the work",
+   "start": 73.84,
+   "duration": 4.28
+  },
+  {
+   "text": "space.",
+   "start": 77.16,
+   "duration": 2.24
+  },
+  {
+   "text": "So, let's make this one like Twitter or",
+   "start": 78.12,
+   "duration": 2.36
+  },
+  {
+   "text": "something.",
+   "start": 79.4,
+   "duration": 3.08
+  },
+  {
+   "text": "Okay, so I have a work space here. And",
+   "start": 80.48,
+   "duration": 3.64
+  },
+  {
+   "text": "then inside the work space, I can fire",
+   "start": 82.48,
+   "duration": 3.88
+  },
+  {
+   "text": "off an agent. So, let's say I want to",
+   "start": 84.12,
+   "duration": 4.305
+  },
+  {
+   "text": "run um",
+   "start": 86.36,
+   "duration": 2.44
+  },
+  {
+   "text": ">> [clears throat]",
+   "start": 88.425,
+   "duration": 1.935
+  },
+  {
+   "text": ">> Prime Agent, right? This one just came",
+   "start": 88.8,
+   "duration": 2.44
+  },
+  {
+   "text": "out",
+   "start": 90.36,
+   "duration": 2.64
+  },
+  {
+   "text": "came out just now. So, let's say type in",
+   "start": 91.24,
+   "duration": 3.12
+  },
+  {
+   "text": "Prime Agent. You can see I have the",
+   "start": 93.0,
+   "duration": 4.12
+  },
+  {
+   "text": "agent loaded up. Um I can actually click",
+   "start": 94.36,
+   "duration": 4.92
+  },
+  {
+   "text": "through the agent",
+   "start": 97.12,
+   "duration": 3.36
+  },
+  {
+   "text": "in like I can click through all of the",
+   "start": 99.28,
+   "duration": 3.68
+  },
+  {
+   "text": "different agents on the side panel. And",
+   "start": 100.48,
+   "duration": 5.48
+  },
+  {
+   "text": "then when I connect to it on my phone,",
+   "start": 102.96,
+   "duration": 5.96
+  },
+  {
+   "text": "so let's make a connection here.",
+   "start": 105.96,
+   "duration": 5.28
+  },
+  {
+   "text": "I can actually um connect to the",
+   "start": 108.92,
+   "duration": 4.44
+  },
+  {
+   "text": "specific",
+   "start": 111.24,
+   "duration": 5.32
+  },
+  {
+   "text": "Herder work space from my phone.",
+   "start": 113.36,
+   "duration": 4.6
+  },
+  {
+   "text": "So, let's see. You can see the Twitter",
+   "start": 116.56,
+   "duration": 2.88
+  },
+  {
+   "text": "one just came up, right? So, let's let's",
+   "start": 117.96,
+   "duration": 3.12
+  },
+  {
+   "text": "jump on this one.",
+   "start": 119.44,
+   "duration": 2.92
+  },
+  {
+   "text": "And now I have access to the same",
+   "start": 121.08,
+   "duration": 2.6
+  },
+  {
+   "text": "workspace. If",
+   "start": 122.36,
+   "duration": 3.4
+  },
+  {
+   "text": "I say hi here, it's instantly available",
+   "start": 123.68,
+   "duration": 3.44
+  },
+  {
+   "text": "on my phone.",
+   "start": 125.76,
+   "duration": 2.6
+  },
+  {
+   "text": "Um and I can just pick up where I left",
+   "start": 127.12,
+   "duration": 2.44
+  },
+  {
+   "text": "off. So, I can close this at any given",
+   "start": 128.36,
+   "duration": 3.28
+  },
+  {
+   "text": "time. I can go for a walk.",
+   "start": 129.56,
+   "duration": 4.52
+  },
+  {
+   "text": "Um let's say if I lose connection,",
+   "start": 131.64,
+   "duration": 4.319
+  },
+  {
+   "text": "right? Like I can always come back here.",
+   "start": 134.08,
+   "duration": 4.08
+  },
+  {
+   "text": "I can also, just using like the",
+   "start": 135.959,
+   "duration": 3.801
+  },
+  {
+   "text": "touchscreen on your phone, like you can",
+   "start": 138.16,
+   "duration": 3.88
+  },
+  {
+   "text": "switch between the different workspaces",
+   "start": 139.76,
+   "duration": 4.32
+  },
+  {
+   "text": "while you're inside mobile. So, Hurder",
+   "start": 142.04,
+   "duration": 4.48
+  },
+  {
+   "text": "is completely mobile optimized. So, I",
+   "start": 144.08,
+   "duration": 3.92
+  },
+  {
+   "text": "can click in here and I can jump to a",
+   "start": 146.52,
+   "duration": 4.24
+  },
+  {
+   "text": "different workspace and it'll reflect on",
+   "start": 148.0,
+   "duration": 4.72
+  },
+  {
+   "text": "my terminal on my computer as well. So,",
+   "start": 150.76,
+   "duration": 4.28
+  },
+  {
+   "text": "I can just say like",
+   "start": 152.72,
+   "duration": 4.48
+  },
+  {
+   "text": "whatever. I can just do my work here.",
+   "start": 155.04,
+   "duration": 2.76
+  },
+  {
+   "text": "Um",
+   "start": 157.2,
+   "duration": 2.8
+  },
+  {
+   "text": "and then I can do that like while I'm",
+   "start": 157.8,
+   "duration": 3.8
+  },
+  {
+   "text": "out and about and then I can like come",
+   "start": 160.0,
+   "duration": 4.28
+  },
+  {
+   "text": "back and also just like continue and",
+   "start": 161.6,
+   "duration": 4.2
+  },
+  {
+   "text": "pick up the session where I left off,",
+   "start": 164.28,
+   "duration": 2.52
+  },
+  {
+   "text": "right?",
+   "start": 165.8,
+   "duration": 2.6
+  },
+  {
+   "text": "Um and I can also just create from here.",
+   "start": 166.8,
+   "duration": 2.8
+  },
+  {
+   "text": "Let's say I want to create a new tab,",
+   "start": 168.4,
+   "duration": 2.8
+  },
+  {
+   "text": "new workspace. I can do it really easily",
+   "start": 169.6,
+   "duration": 3.16
+  },
+  {
+   "text": "just with the touchscreen. Let's go and",
+   "start": 171.2,
+   "duration": 3.28
+  },
+  {
+   "text": "make a new workspace.",
+   "start": 172.76,
+   "duration": 3.32
+  },
+  {
+   "text": "They got Codex installed. Let's fire up",
+   "start": 174.48,
+   "duration": 3.04
+  },
+  {
+   "text": "Codex.",
+   "start": 176.08,
+   "duration": 3.24
+  },
+  {
+   "text": "Cool. And you can see it's like it's",
+   "start": 177.52,
+   "duration": 3.08
+  },
+  {
+   "text": "here. Um",
+   "start": 179.32,
+   "duration": 3.08
+  },
+  {
+   "text": "pretty cool. So, the way that like all",
+   "start": 180.6,
+   "duration": 4.16
+  },
+  {
+   "text": "of this is working is, of course,",
+   "start": 182.4,
+   "duration": 4.76
+  },
+  {
+   "text": "um my phone and my Mac mini, I'm on the",
+   "start": 184.76,
+   "duration": 5.52
+  },
+  {
+   "text": "Mac mini right now, they're on the same",
+   "start": 187.16,
+   "duration": 5.079
+  },
+  {
+   "text": "uh Tailscale network.",
+   "start": 190.28,
+   "duration": 3.4
+  },
+  {
+   "text": "So, you'll have to install Tailscale and",
+   "start": 192.239,
+   "duration": 3.561
+  },
+  {
+   "text": "basically what it does is it puts all of",
+   "start": 193.68,
+   "duration": 5.0
+  },
+  {
+   "text": "your devices on like its own VPN or like",
+   "start": 195.8,
+   "duration": 5.2
+  },
+  {
+   "text": "virtual private network. Basically,",
+   "start": 198.68,
+   "duration": 3.8
+  },
+  {
+   "text": "like if you can think of the internet as",
+   "start": 201.0,
+   "duration": 3.64
+  },
+  {
+   "text": "like this big network, a VPN is like a",
+   "start": 202.48,
+   "duration": 5.039
+  },
+  {
+   "text": "small subset network that's like gated",
+   "start": 204.64,
+   "duration": 4.12
+  },
+  {
+   "text": "from everyone else, but it's like a kind",
+   "start": 207.519,
+   "duration": 2.44
+  },
+  {
+   "text": "of like a private club for all your",
+   "start": 208.76,
+   "duration": 4.44
+  },
+  {
+   "text": "devices. So, uh Tailscale puts them all",
+   "start": 209.959,
+   "duration": 6.28
+  },
+  {
+   "text": "on their like on like a VPN together so",
+   "start": 213.2,
+   "duration": 4.28
+  },
+  {
+   "text": "that no matter where you are in the",
+   "start": 216.239,
+   "duration": 3.161
+  },
+  {
+   "text": "world, like you can access um all the",
+   "start": 217.48,
+   "duration": 3.68
+  },
+  {
+   "text": "different devices, right? So, my phone",
+   "start": 219.4,
+   "duration": 3.559
+  },
+  {
+   "text": "can access my Mac mini, my Mac mini can",
+   "start": 221.16,
+   "duration": 3.32
+  },
+  {
+   "text": "access my phone.",
+   "start": 222.959,
+   "duration": 4.241
+  },
+  {
+   "text": "Um my laptop can access all of these.",
+   "start": 224.48,
+   "duration": 3.92
+  },
+  {
+   "text": "So, you can just add like an unlimited",
+   "start": 227.2,
+   "duration": 3.08
+  },
+  {
+   "text": "amount of devices to your",
+   "start": 228.4,
+   "duration": 2.68
+  },
+  {
+   "text": "um",
+   "start": 230.28,
+   "duration": 2.8
+  },
+  {
+   "text": "to your Tailscale network or",
+   "start": 231.08,
+   "duration": 3.68
+  },
+  {
+   "text": "theoretically unlimited and you'll be",
+   "start": 233.08,
+   "duration": 3.84
+  },
+  {
+   "text": "able to like securely access all of",
+   "start": 234.76,
+   "duration": 4.92
+  },
+  {
+   "text": "them. So yeah, that's my setup. Um,",
+   "start": 236.92,
+   "duration": 4.2
+  },
+  {
+   "text": "there are still use cases where this is",
+   "start": 239.68,
+   "duration": 3.32
+  },
+  {
+   "text": "like not the best. For those I tend to",
+   "start": 241.12,
+   "duration": 5.0
+  },
+  {
+   "text": "use the chat GPT app with codex and the",
+   "start": 243.0,
+   "duration": 5.12
+  },
+  {
+   "text": "remote control feature.",
+   "start": 246.12,
+   "duration": 3.28
+  },
+  {
+   "text": "Um,",
+   "start": 248.12,
+   "duration": 3.12
+  },
+  {
+   "text": "but for most things that I do",
+   "start": 249.4,
+   "duration": 4.16
+  },
+  {
+   "text": "day-to-day, I prefer to use Hermes agent",
+   "start": 251.24,
+   "duration": 4.12
+  },
+  {
+   "text": "inside of this setup.",
+   "start": 253.56,
+   "duration": 3.16
+  },
+  {
+   "text": "Um, and then you know,",
+   "start": 255.36,
+   "duration": 3.12
+  },
+  {
+   "text": "you can see like just it just keeps",
+   "start": 256.72,
+   "duration": 4.0
+  },
+  {
+   "text": "everything persistent. I can come back",
+   "start": 258.48,
+   "duration": 4.04
+  },
+  {
+   "text": "to this whenever I want. I can start",
+   "start": 260.72,
+   "duration": 3.16
+  },
+  {
+   "text": "some work while I'm on the go and I can",
+   "start": 262.52,
+   "duration": 3.64
+  },
+  {
+   "text": "come back and pick it up. Um, and I can",
+   "start": 263.88,
+   "duration": 3.76
+  },
+  {
+   "text": "and I think the the big the biggest",
+   "start": 266.16,
+   "duration": 4.28
+  },
+  {
+   "text": "benefit for me is like let's say before",
+   "start": 267.64,
+   "duration": 4.92
+  },
+  {
+   "text": "with like typical SSH apps, unless you",
+   "start": 270.44,
+   "duration": 4.88
+  },
+  {
+   "text": "had team mux set up, uh, if you like",
+   "start": 272.56,
+   "duration": 4.92
+  },
+  {
+   "text": "started a session and you walked away,",
+   "start": 275.32,
+   "duration": 5.24
+  },
+  {
+   "text": "um, you would have to restart all over",
+   "start": 277.48,
+   "duration": 4.439
+  },
+  {
+   "text": "again, right? You'd basically lose the",
+   "start": 280.56,
+   "duration": 3.08
+  },
+  {
+   "text": "connection. So this kind of keeps it",
+   "start": 281.919,
+   "duration": 2.961
+  },
+  {
+   "text": "alive and lets me come back to it",
+   "start": 283.64,
+   "duration": 3.12
+  },
+  {
+   "text": "whenever I want. Uh, the other big",
+   "start": 284.88,
+   "duration": 3.84
+  },
+  {
+   "text": "benefit of this for me like with",
+   "start": 286.76,
+   "duration": 3.12
+  },
+  {
+   "text": "something like team mux, there was like",
+   "start": 288.72,
+   "duration": 2.32
+  },
+  {
+   "text": "all these like hot keys that I would",
+   "start": 289.88,
+   "duration": 2.92
+  },
+  {
+   "text": "have to know. It definitely was not",
+   "start": 291.04,
+   "duration": 4.16
+  },
+  {
+   "text": "touchscreen optimized like this one is.",
+   "start": 292.8,
+   "duration": 4.28
+  },
+  {
+   "text": "Uh, so that was like super annoying, but",
+   "start": 295.2,
+   "duration": 3.84
+  },
+  {
+   "text": "this is all kind of solved.",
+   "start": 297.08,
+   "duration": 4.76
+  },
+  {
+   "text": "Uh, so yeah guys, hope that explained",
+   "start": 299.04,
+   "duration": 4.36
+  },
+  {
+   "text": "the setup.",
+   "start": 301.84,
+   "duration": 3.28
+  },
+  {
+   "text": "And you can see",
+   "start": 303.4,
+   "duration": 3.96
+  },
+  {
+   "text": "I even have the Oh yeah, one of the",
+   "start": 305.12,
+   "duration": 4.28
+  },
+  {
+   "text": "limitations I found is um, I actually",
+   "start": 307.36,
+   "duration": 6.16
+  },
+  {
+   "text": "just fired up Muse which is like the new",
+   "start": 309.4,
+   "duration": 7.64
+  },
+  {
+   "text": "Harness. No, no, the new model from Meta",
+   "start": 313.52,
+   "duration": 5.24
+  },
+  {
+   "text": "and I was actually unable to get it to",
+   "start": 317.04,
+   "duration": 3.52
+  },
+  {
+   "text": "be detected inside of Herder. So I",
+   "start": 318.76,
+   "duration": 3.92
+  },
+  {
+   "text": "imagine that in a future update,",
+   "start": 320.56,
+   "duration": 4.359
+  },
+  {
+   "text": "um, this will be fixed. But that was",
+   "start": 322.68,
+   "duration": 4.12
+  },
+  {
+   "text": "like the only limitation I found.",
+   "start": 324.919,
+   "duration": 3.801
+  },
+  {
+   "text": "Also, you can't see it on my phone",
+   "start": 326.8,
+   "duration": 6.16
+  },
+  {
+   "text": "screen, but when you're on the Moshie",
+   "start": 328.72,
+   "duration": 5.84
+  },
+  {
+   "text": "app, oh, I forgot to mention the app",
+   "start": 332.96,
+   "duration": 2.52
+  },
+  {
+   "text": "that I'm using to connect is called",
+   "start": 334.56,
+   "duration": 4.48
+  },
+  {
+   "text": "Moshie and you can see I can just",
+   "start": 335.48,
+   "duration": 5.64
+  },
+  {
+   "text": "quickly, easily jump back and forth",
+   "start": 339.04,
+   "duration": 4.12
+  },
+  {
+   "text": "between all of my sessions.",
+   "start": 341.12,
+   "duration": 4.2
+  },
+  {
+   "text": "Um, and when you're using Moshie,",
+   "start": 343.16,
+   "duration": 4.64
+  },
+  {
+   "text": "there's like on your phone itself, uh,",
+   "start": 345.32,
+   "duration": 4.8
+  },
+  {
+   "text": "you can use like text to speech,",
+   "start": 347.8,
+   "duration": 4.04
+  },
+  {
+   "text": "no speech to text sorry. So you can just",
+   "start": 350.12,
+   "duration": 2.68
+  },
+  {
+   "text": "like turn on the microphone, you can",
+   "start": 351.84,
+   "duration": 2.72
+  },
+  {
+   "text": "talk to it the same way you talk to like",
+   "start": 352.8,
+   "duration": 4.28
+  },
+  {
+   "text": "WhisperFlow or SuperWhisper, and it",
+   "start": 354.56,
+   "duration": 4.04
+  },
+  {
+   "text": "works basically the same way. And it's",
+   "start": 357.08,
+   "duration": 3.0
+  },
+  {
+   "text": "completely on device as well, so the",
+   "start": 358.6,
+   "duration": 3.2
+  },
+  {
+   "text": "latency is super low.",
+   "start": 360.08,
+   "duration": 3.08
+  },
+  {
+   "text": "So I recommend you check out Moshi as",
+   "start": 361.8,
+   "duration": 3.64
+  },
+  {
+   "text": "well. Moshi is like built on top of this",
+   "start": 363.16,
+   "duration": 4.08
+  },
+  {
+   "text": "thing called Mosh. I don't know the",
+   "start": 365.44,
+   "duration": 3.68
+  },
+  {
+   "text": "specifics of it, but all together this",
+   "start": 367.24,
+   "duration": 3.92
+  },
+  {
+   "text": "just makes it a really really good setup",
+   "start": 369.12,
+   "duration": 3.76
+  },
+  {
+   "text": "and I'm able to just do a lot of things",
+   "start": 371.16,
+   "duration": 3.0
+  },
+  {
+   "text": "on the go.",
+   "start": 372.88,
+   "duration": 5.0
+  },
+  {
+   "text": "So yeah, thanks for watching guys.",
+   "start": 374.16,
+   "duration": 3.72
+  }
+ ],
+ "metadata": {
+  "title": "My Mobile AI Coding Setup: Tailscale, Herdr & Moshi",
+  "author_name": "imran",
+  "author_url": "https://www.youtube.com/channel/UCEaUGtqsogj7l2Ex97KWX2Q",
+  "thumbnail_url": "https://i.ytimg.com/vi_webp/9-tOItWRaiw/sddefault.webp"
+ },
+ "length_seconds": 377,
+ "lengthText": "6:17"
+}

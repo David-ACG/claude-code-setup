@@ -1,0 +1,74 @@
+{
+  "video_id": "9-tOItWRaiw",
+  "url": "https://www.youtube.com/watch?v=9-tOItWRaiw",
+  "title": "My Mobile AI Coding Setup: Tailscale, Herdr & Moshi",
+  "channel": "imran",
+  "channel_url": "https://www.youtube.com/channel/UCEaUGtqsogj7l2Ex97KWX2Q",
+  "channel_id": "UCEaUGtqsogj7l2Ex97KWX2Q",
+  "thumbnail_url": "https://i.ytimg.com/vi_webp/9-tOItWRaiw/sddefault.webp",
+  "published": "2026-08-06T12:10:17-07:00",
+  "published_date": "2026-08-06",
+  "duration_seconds": 377,
+  "duration_text": "6:17",
+  "view_count": 3608,
+  "genre": "Science & Technology",
+  "keywords": [
+    "Cryptocurrency Technology Entrepreneurship",
+    "Investing",
+    "Bitcoin",
+    "Litecoin",
+    "Ethereum",
+    "Altcoins",
+    "Dogecoin"
+  ],
+  "description": "Here’s a deeper look at the terminal setup I use to run AI coding agents from my Mac and seamlessly continue working from my phone.\n\nI walk through how I combine Ghostty, Herdr, Moshi, Hermes, and Tailscale to create persistent terminal workspaces that remain accessible wherever I am. I also demonstrate switching between sessions, running agents like Hermes and Codex, using on-device speech-to-text, and securely connecting everything through a private Tailscale network.\n\nChapters\n\n00:00 My terminal setup  \n00:14 Organizing workspaces with Herdr  \n00:42 Useful keyboard shortcuts  \n01:20 Running AI agents  \n01:45 Connecting from my phone  \n03:01 How Tailscale connects everything  \n03:59 Why I prefer this over traditional SSH  \n05:03 Current limitations  \n05:27 Moshi and on-device speech-to-text  \n\nIf you want to run persistent AI coding sessions from your computer and control them while you’re away, this setup is worth checking out.\n\nTake your idea to revenue: https://sessions.alif.build\n\nHaving trouble with agents, join my (free) agentmaxxing community: https://www.skool.com/agentmaxxing/about\n\n#AICoding #Tailscale #TerminalSetup",
+  "chapters": [
+    {
+      "start": 0.0,
+      "title": "My terminal setup"
+    },
+    {
+      "start": 14.0,
+      "title": "Organizing workspaces with Herdr"
+    },
+    {
+      "start": 42.0,
+      "title": "Useful keyboard shortcuts"
+    },
+    {
+      "start": 80.0,
+      "title": "Running AI agents"
+    },
+    {
+      "start": 105.0,
+      "title": "Connecting from my phone"
+    },
+    {
+      "start": 181.0,
+      "title": "How Tailscale connects everything"
+    },
+    {
+      "start": 239.0,
+      "title": "Why I prefer this over traditional SSH"
+    },
+    {
+      "start": 303.0,
+      "title": "Current limitations"
+    },
+    {
+      "start": 327.0,
+      "title": "Moshi and on-device speech-to-text"
+    }
+  ],
+  "language": "en",
+  "available_languages": [
+    "en",
+    "asr-en"
+  ],
+  "segment_count": 196,
+  "word_count": 1311,
+  "fetched_at": "2026-09-26T19:40:18+00:00",
+  "source": "transcriptapi.com v2",
+  "credit_used": true,
+  "scrape_error": null
+}

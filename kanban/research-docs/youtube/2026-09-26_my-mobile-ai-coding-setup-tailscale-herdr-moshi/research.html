@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Mobile AI Coding Setup: Tailscale, Herdr &amp; Moshi</title>
+<style>
+:root{--bg:#f7f6f2;--card:#ffffff;--ink:#1c1b18;--muted:#6b675e;--line:#e6e2d8;--accent:#8a3b12;--accent-soft:#fbeee4;--code:#f1efe9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+header.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:start;padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:28px}
+header.hero h1{font-size:2rem;line-height:1.2;margin:0 0 10px;letter-spacing:-.01em}
+header.hero .meta{color:var(--muted);font-size:.95rem;display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
+header.hero .meta span b{color:var(--ink);font-weight:600}
+header.hero img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+header.hero .thumb{position:relative}
+header.hero .thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;background:rgba(0,0,0,.35);color:#fff;border-radius:10px;opacity:0;transition:opacity .15s}
+header.hero .thumb:hover .play{opacity:1}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:0 0 28px;font-size:.95rem}
+nav.toc strong{display:block;margin-bottom:6px}
+nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid;margin:2px 0}
+article h2{font-size:1.45rem;margin:40px 0 12px;padding-top:8px;border-top:1px solid var(--line);letter-spacing:-.01em}
+article h2:first-child{border-top:0;margin-top:0}
+article h3{font-size:1.12rem;margin:26px 0 8px}
+article h4{font-size:1rem;margin:20px 0 6px}
+article p{margin:0 0 14px}
+article ul,article ol{padding-left:26px;margin:0 0 16px}article li{margin:4px 0}
+article blockquote{margin:16px 0;padding:10px 18px;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;color:#3a2a1e}
+article blockquote p{margin:0}
+article code{font:.9em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:1px 5px;border-radius:4px}
+article pre{background:#1f1e1b;color:#f2efe8;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+article pre code{background:none;padding:0;color:inherit}
+.tablewrap{overflow-x:auto;margin:0 0 18px}
+table{border-collapse:collapse;width:100%;font-size:.93rem;background:var(--card)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#f0ede6}
+a.ts{font:.82em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:4px;white-space:nowrap}
+details.transcript{margin-top:44px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+details.transcript summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:1.05rem}
+details.transcript .body{padding:4px 22px 18px;font-size:.95rem;color:#2b2925}
+details.transcript h4{margin:22px 0 8px;font-size:1rem}
+details.transcript p{margin:0 0 12px}
+footer{margin-top:48px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:720px){header.hero{grid-template-columns:1fr}header.hero .thumb{order:-1}nav.toc ol{columns:1}.wrap{padding:20px 16px 60px}}
+@media print{details.transcript{display:none}nav.toc{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <h1>My Mobile AI Coding Setup: Tailscale, Herdr &amp; Moshi</h1>
+    <p class="meta"><span>Channel <b><a href="https://www.youtube.com/channel/UCEaUGtqsogj7l2Ex97KWX2Q" target="_blank" rel="noopener">imran</a></b></span><span>Published <b>2026-08-06</b></span><span>Length <b>6:17</b></span><span>Views <b>3,608</b></span><span>Researched <b>2026-09-26</b></span><span>Focus <b>does this setup suit David and the way he works (third look at Herdr, after 6 Sep and 19 Sep)</b></span></p>
+    <p><a href="https://www.youtube.com/watch?v=9-tOItWRaiw" target="_blank" rel="noopener">https://www.youtube.com/watch?v=9-tOItWRaiw</a></p>
+  </div>
+  <a class="thumb" href="https://www.youtube.com/watch?v=9-tOItWRaiw" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi_webp/9-tOItWRaiw/sddefault.webp" alt=""><span class="play">Open on YouTube</span></a>
+</header>
+<nav class='toc'><strong>On this page</strong><ol><li><a href="#summary">Summary</a></li><li><a href="#does-it-suit-you">Does it suit you?</a></li><li><a href="#key-takeaways">Key takeaways</a></li><li><a href="#who-this-is-for-and-why-it-matters">Who this is for and why it matters</a></li><li><a href="#chapter-by-chapter">Chapter by chapter</a></li><li><a href="#claims-and-verification">Claims and verification</a></li><li><a href="#tools-products-and-people-mentioned">Tools, products and people mentioned</a></li><li><a href="#what-has-changed-since-the-video-was-published">What has changed since the video was published</a></li><li><a href="#related-material-worth-reading">Related material worth reading</a></li><li><a href="#open-questions-and-caveats">Open questions and caveats</a></li></ol></nav>
+<article>
+<h2 id="summary">Summary</h2>
+<p>A six-minute screen recording by a solo builder ("imran") showing how he keeps AI coding agents running on a Mac mini and picks them up from his iPhone. The pieces are Ghostty (a terminal), Herdr (a terminal multiplexer that knows about coding agents), Moshi (a phone terminal app built on the Mosh protocol), Tailscale (a private network joining his devices) and Hermes Agent (Nous Research's open-source agent). His point is that the session stays alive when he walks away, and that Herdr, unlike tmux, is usable with a thumb on a touchscreen. Research confirms the setup works as shown, and that Moshi now has an Android build, so it would run on your Pixel 9 Pro. The one limitation he mentions (Meta's Muse not detected) was fixed in Herdr 0.9.0 on 7 September. <strong>Verdict for you: it solves a problem you mostly do not have, in a form you have already said you do not want (typing into terminals, reading long output on a phone).</strong> Details under "Does it suit you?".</p>
+<h2 id="does-it-suit-you">Does it suit you?</h2>
+<p>This is the third time Herdr has come up, so this section builds on the two earlier write-ups rather than repeating them:</p>
+<ul>
+<li><strong>6 September, DHH's setup</strong> (Claude): <a href="https://hlab.taila51191.ts.net:9459/dhh-setup/">the DHH research page</a>. Verdict: do not make Herdr your cockpit; it is a terminal, and you work in the Claude Code desktop app for its voice input, paste and session list.</li>
+<li><strong>19 September, Herdr under Codex and Claude</strong> (Codex, bead <code>gwth-launch-1k1r</code>): <a href="https://hlab.taila51191.ts.net:9459/herdr-codex-claude-decision.html">the decision brief</a>. Verdict: a small pilot of Herdr on hlab as the place headless Codex and Claude sessions live, never as a replacement for Beads, the cockpit or the apps.</li>
+</ul>
+<p>This video is a different angle from both: not "many agents" but "my phone". So the question is whether the phone half fits you.</p>
+<h3 id="what-the-video-does-set-against-what-you-already-have">What the video does, set against what you already have</h3>
+<table>
+<thead>
+<tr>
+<th>What imran gets from the setup</th>
+<th>What you have today</th>
+<th>Gap?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agents run on an always-on box, not the laptop <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=181s" target="_blank" rel="noopener">3:01</a></td>
+<td>Every Claude Code desktop session already runs its engine on hlab; the Codex app is SSH-connected to hlab</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Phone, laptop and server on one private network <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=181s" target="_blank" rel="noopener">3:01</a></td>
+<td>Tailscale already joins hlab, x1eg3 and the Pixel 9 Pro (<code>pixel-9-pro</code> is on the tailnet today)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Session survives closing the laptop or losing signal <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=240s" target="_blank" rel="noopener">4:00</a></td>
+<td>Claude Code desktop's SSH engine keeps running through sleep, app quit and dropped SSH</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Pick up a running agent from the phone <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=106s" target="_blank" rel="noopener">1:46</a></td>
+<td>Claude mobile app / Remote Control for Claude sessions; Codex Remote for Codex threads (both GA, both documented in the 6 Sep research)</td>
+<td>Small: these show the conversation, not the raw terminal</td>
+</tr>
+<tr>
+<td>Voice input on the phone <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=327s" target="_blank" rel="noopener">5:27</a></td>
+<td>Android dictation, and the cockpit's TALK dictation on HTTPS pages</td>
+<td>None</td>
+</tr>
+<tr>
+<td>One list of which agents are working, waiting or done</td>
+<td>The cockpit Inbox (only what needs you and is still true), plus the desktop app's sidebar</td>
+<td>Small</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-it-clashes-with-how-you-have-said-you-work">Where it clashes with how you have said you work</h3>
+<ol>
+<li><strong>You are committed to the GUI, not the terminal.</strong> Your recorded preference (memory <code>gui-committed-workflow</code>) is that the desktop app's voice, paste and multi-session list are the point, and tmux-style tools are acceptable only as an invisible keep-alive on hlab. This whole video is a terminal workflow; Herdr's own shortcuts start with <code>ctrl+b</code> <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=42s" target="_blank" rel="noopener">0:42</a>.</li>
+<li><strong>You do not want to read or edit on the phone.</strong> On 24 September you said you only edit on the desktop, and the phone is for alerts, video, listening and the published check (memory <code>pipeline-desktop-edit-phone-companion</code>). Moshi's whole purpose is reading and typing into a terminal on a phone screen.</li>
+<li><strong>You pull, you do not want pushes.</strong> You moved alerts into the cockpit because you were ignoring Telegram. Moshi's "Agents feed" and push notifications would be a second inbox competing with the cockpit.</li>
+<li><strong>One machine, not five.</strong> Herdr 0.9.0 now shows several machines in one window, which removes one of the 6 September objections. But the value of that grows with the number of agent machines, and you have one (hlab).</li>
+</ol>
+<h3 id="where-it-could-still-earn-a-place">Where it could still earn a place</h3>
+<ul>
+<li><strong>The 19 September pilot is unchanged by this video.</strong> If you do want Herdr, the sensible role is still the invisible one: hlab's keep-alive for headless and overnight Codex/Claude runs, which the cockpit could read through Herdr's socket API. Moshi then becomes an occasional way to peek at those raw sessions from the Pixel.</li>
+<li><strong>A true emergency on the move.</strong> If an overnight run is stuck at a prompt that neither the Claude app nor the cockpit can answer (a raw shell, a <code>sudo</code> prompt, a test runner), a phone terminal is the only way in. Moshi's free tier does plain SSH over Tailscale, which is enough for that, at no cost.</li>
+</ul>
+<h3 id="cost-if-you-did-try-it">Cost if you did try it</h3>
+<ul>
+<li>Herdr: free, Apache-2.0, a single binary on hlab. Current release 0.9.1 (16 September).</li>
+<li>Moshi on Android: free for SSH, push and the agents feed; <strong>Pro</strong> is needed for Mosh (the "survives losing signal" part) and automatic Herdr reattach: $7.99/month, $69.99/year or $199 lifetime (offer prices until 1 October; normally $9.99 and $89.99), shared across up to three devices.</li>
+<li>hlab would also need <code>mosh-server</code> installed and UDP 60000-61000 reachable over Tailscale for the Pro Mosh mode.</li>
+<li>Your time: about 30 minutes to try, more to learn the shortcuts.</li>
+</ul>
+<h3 id="recommendation">Recommendation</h3>
+<p><strong>Keep what you have.</strong> The video's core promise (an agent that keeps running and that you can reach from the phone) is already true for you, through the desktop app and the Claude and Codex mobile apps, without asking you to read terminals on a phone. The only piece you lack is the raw terminal on the phone, and your own rules say you do not want to work that way. If a stuck overnight run ever needs a raw shell from the phone, install the free Moshi on the Pixel then; there is nothing to buy or set up in advance.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The setup is five pieces: Ghostty terminal, Herdr multiplexer, Moshi phone app, Tailscale network, and whichever agent you run (he uses Hermes and Codex) <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=14s" target="_blank" rel="noopener">0:14</a>, <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=181s" target="_blank" rel="noopener">3:01</a>, <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=327s" target="_blank" rel="noopener">5:27</a>.</li>
+<li>Herdr splits a terminal into named workspaces, panes and tabs, all of which stay running when you close the window <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=14s" target="_blank" rel="noopener">0:14</a>.</li>
+<li><code>ctrl+b</code> is Herdr's prefix key; <code>ctrl+b ?</code> lists every shortcut; <code>ctrl+b shift+N</code> makes a workspace and <code>ctrl+b shift+W</code> renames it <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=42s" target="_blank" rel="noopener">0:42</a>.</li>
+<li>On the phone, Moshi lists the Herdr workspaces and you can tap between them; changes show on the Mac at the same time <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=106s" target="_blank" rel="noopener">1:46</a>.</li>
+<li>His reason to prefer it over tmux is touch, not persistence: tmux also keeps sessions, but "it definitely was not touchscreen optimized" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=240s" target="_blank" rel="noopener">4:00</a>.</li>
+<li>For some jobs he still uses the ChatGPT app's Codex remote control rather than this setup <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=240s" target="_blank" rel="noopener">4:00</a>.</li>
+<li>The one limit he hit, Meta's Muse not being recognised, was fixed in Herdr 0.9.0 on 7 September (now outdated) <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=303s" target="_blank" rel="noopener">5:03</a>.</li>
+<li>Moshi's speech-to-text runs on the phone, so it is fast <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=327s" target="_blank" rel="noopener">5:27</a>; it offers Parakeet and Whisper local models.</li>
+<li>Moshi now ships on Android as well as iOS; the speaker's iPhone-only extras (Live Activities, Apple Watch) are the only platform gaps named.</li>
+</ul>
+<h2 id="who-this-is-for-and-why-it-matters">Who this is for and why it matters</h2>
+<p>The video is for people who already live in a terminal and want to keep working from a phone while away from the desk: a Mac mini at home, an iPhone in the pocket. It assumes you are comfortable with keyboard shortcuts and with an agent's raw terminal output.</p>
+<p>For you, it matters mainly as a third data point on Herdr, and because it adds Moshi, which neither earlier write-up covered in depth. The honest connection to GWTH is thin: it would change how you reach running agents, not what they build.</p>
+<h2 id="chapter-by-chapter">Chapter by chapter</h2>
+<h3 id="tslink0x0c00knilst-my-terminal-setup"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=0s" target="_blank" rel="noopener">0:00</a> My terminal setup</h3>
+<p>He made the video because someone asked about his setup. "The first part of the setup is this thing called Herder" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=1s" target="_blank" rel="noopener">0:01</a> (the transcript's "Herder" is Herdr throughout).</p>
+<h3 id="tslink14x0c14knilst-organizing-workspaces-with-herdr"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=14s" target="_blank" rel="noopener">0:14</a> Organizing workspaces with Herdr</h3>
+<p>Ghostty is the terminal; Herdr runs inside it. He is unsure how to classify Herdr, but for him it breaks the terminal into workspaces, each of which can hold split panes and tabs, and "I can leave that open" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=30s" target="_blank" rel="noopener">0:30</a>.</p>
+<h3 id="tslink42x0c42knilst-useful-keyboard-shortcuts"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=42s" target="_blank" rel="noopener">0:42</a> Useful keyboard shortcuts</h3>
+<p><code>ctrl+b</code> opens Herdr's command layer; <code>?</code> then lists every key binding. The two he uses are <code>ctrl+b shift+N</code> (new workspace) and <code>ctrl+b shift+W</code> (rename workspace); he names one "Twitter" for the demo <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=70s" target="_blank" rel="noopener">1:10</a>.</p>
+<h3 id="tslink80x1c20knilst-running-ai-agents"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=80s" target="_blank" rel="noopener">1:20</a> Running AI agents</h3>
+<p>Inside the workspace he starts an agent he calls "Prime Agent", which "just came out" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=85s" target="_blank" rel="noopener">1:25</a>. We could not identify this; it may be a transcription error. Every agent appears in Herdr's side panel and can be clicked through <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=98s" target="_blank" rel="noopener">1:38</a>.</p>
+<h3 id="tslink105x1c45knilst-connecting-from-my-phone"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=105s" target="_blank" rel="noopener">1:45</a> Connecting from my phone</h3>
+<p>He opens Moshi on the phone, which lists the Herdr workspaces; he picks "Twitter" and types "hi", which appears on the Mac too <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=115s" target="_blank" rel="noopener">1:55</a>. He can walk away, lose signal and come back; he can tap between workspaces on the phone and the Mac follows; he creates a new workspace from the phone and starts Codex in it <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=167s" target="_blank" rel="noopener">2:47</a>. His claim: "Herder is completely mobile optimized" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=140s" target="_blank" rel="noopener">2:20</a>.</p>
+<h3 id="tslink181x3c01knilst-how-tailscale-connects-everything"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=181s" target="_blank" rel="noopener">3:01</a> How Tailscale connects everything</h3>
+<p>Phone and Mac mini are on the same Tailscale network, which he explains as "a private club for all your devices" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=205s" target="_blank" rel="noopener">3:25</a>; any device can reach any other from anywhere. He says you can add "a theoretically unlimited" number of devices <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=225s" target="_blank" rel="noopener">3:45</a>.</p>
+<h3 id="tslink239x3c59knilst-why-i-prefer-this-over-traditional-ssh"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=239s" target="_blank" rel="noopener">3:59</a> Why I prefer this over traditional SSH</h3>
+<p>For some cases he still uses "the chat GPT app with codex and the remote control feature" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=245s" target="_blank" rel="noopener">4:05</a>, but day to day he runs Hermes Agent in this setup. The benefit over a plain SSH app is that the session survives walking away, "unless you had team mux set up" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=260s" target="_blank" rel="noopener">4:20</a>; the benefit over tmux is that he no longer needs to remember hotkeys and it is touch-friendly <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=285s" target="_blank" rel="noopener">4:45</a>.</p>
+<h3 id="tslink303x5c03knilst-current-limitations"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=303s" target="_blank" rel="noopener">5:03</a> Current limitations</h3>
+<p>Meta's new model, Muse, was not detected inside Herdr; he expects a fix. Fixed since: Herdr 0.9.0 added Muse detection.</p>
+<h3 id="tslink327x5c27knilst-moshi-and-on-device-speech-to-text"><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=327s" target="_blank" rel="noopener">5:27</a> Moshi and on-device speech-to-text</h3>
+<p>Moshi has a microphone button for dictation, which he compares to Wispr Flow and SuperWhisper, and it runs on the device so latency is low <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=340s" target="_blank" rel="noopener">5:40</a>. Moshi is "built on top of this thing called Mosh" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=360s" target="_blank" rel="noopener">6:00</a>.</p>
+<h2 id="claims-and-verification">Claims and verification</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Claim (timestamp)</th>
+<th>Status</th>
+<th>Evidence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Herdr's main hot key is <code>ctrl+b</code> <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=42s" target="_blank" rel="noopener">0:42</a></td>
+<td>Verified</td>
+<td>Docs give the prefix as <code>ctrl+b</code>, tmux-style</td>
+<td><a href="https://herdr.dev/docs/">Herdr docs</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ctrl+b ?</code> lists all key binds; <code>shift+N</code> new workspace, <code>shift+W</code> rename <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=50s" target="_blank" rel="noopener">0:50</a></td>
+<td>Unverified</td>
+<td>Shown on screen; not checked against the keybinding reference</td>
+<td><a href="https://herdr.dev/docs/">Herdr docs</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Herdr is "completely mobile optimized" <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=140s" target="_blank" rel="noopener">2:20</a></td>
+<td>Partly true</td>
+<td>Herdr is mouse-first (click panes, drag borders, right-click menus), which is what makes taps work through Moshi; there is no Herdr phone app</td>
+<td><a href="https://herdr.dev/docs/">Herdr docs</a>, <a href="https://getmoshi.app/docs">Moshi docs</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Switching workspace on the phone is reflected on the Mac <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=150s" target="_blank" rel="noopener">2:30</a></td>
+<td>Outdated</td>
+<td>True in August; since 0.9.0 several clients can view different workspaces independently</td>
+<td><a href="https://github.com/herdrdev/herdr/releases/tag/v0.9.0">Herdr v0.9.0 notes</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Muse (Meta) is not detected in Herdr <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=303s" target="_blank" rel="noopener">5:03</a></td>
+<td>Outdated</td>
+<td>0.9.0 (7 Sep 2026) "Added Muse agent detection for idle, working, approval, and question states"</td>
+<td><a href="https://github.com/herdrdev/herdr/releases/tag/v0.9.0">Herdr v0.9.0 notes</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tailscale allows a theoretically unlimited number of devices <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=225s" target="_blank" rel="noopener">3:45</a></td>
+<td>Verified</td>
+<td>Free Personal plan: up to 6 users, unlimited user devices</td>
+<td><a href="https://tailscale.com/pricing">Tailscale pricing</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Plain SSH apps lose the session when you walk away unless you run tmux <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=260s" target="_blank" rel="noopener">4:20</a></td>
+<td>Partly true</td>
+<td>Correct for SSH; Mosh and tmux/Herdr each solve a different half (network roaming vs process persistence)</td>
+<td><a href="https://getmoshi.app/docs">Moshi docs</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>The ChatGPT app has a Codex remote control feature <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=245s" target="_blank" rel="noopener">4:05</a></td>
+<td>Verified</td>
+<td>Codex Remote (QR-paired phone) GA 26 June 2026, per the 6 Sep research</td>
+<td><a href="https://hlab.taila51191.ts.net:9459/dhh-setup/">6 Sep research</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Hermes Agent is a usable daily coding agent <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=250s" target="_blank" rel="noopener">4:10</a></td>
+<td>Verified</td>
+<td>Nous Research, MIT licence, released Feb 2026; Hermes Desktop in preview since 2 June</td>
+<td><a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>"Prime Agent" just came out <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=85s" target="_blank" rel="noopener">1:25</a></td>
+<td>Unverified</td>
+<td>No product found under this name; likely a garble</td>
+<td>none</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Moshi's speech-to-text is on-device <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=340s" target="_blank" rel="noopener">5:40</a></td>
+<td>Verified</td>
+<td>Engines: Parakeet, Whisper, Apple or cloud; local models are downloaded; free tier includes 3 min/month of cloud dictation</td>
+<td><a href="https://getmoshi.app/">Moshi</a>, <a href="https://getmoshi.app/docs/subscription">Moshi subscription</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Moshi is built on Mosh <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=360s" target="_blank" rel="noopener">6:00</a></td>
+<td>Verified</td>
+<td>Native Mosh transport, but Pro-only</td>
+<td><a href="https://getmoshi.app/docs/subscription">Moshi subscription</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Moshi is the app to use (shown on iPhone) <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=327s" target="_blank" rel="noopener">5:27</a></td>
+<td>Verified, wider now</td>
+<td>Android build on Google Play; Pro licence shared across iOS and Android, up to 3 devices</td>
+<td><a href="https://play.google.com/store/apps/details?id=app.getmoshi.android">Google Play</a>, <a href="https://getmoshi.app/pricing">Moshi pricing</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tools-products-and-people-mentioned">Tools, products and people mentioned</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>What it is</th>
+<th>Role in the video</th>
+<th>Current status (as of 2026-09-26)</th>
+<th>Official link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Herdr</td>
+<td>Terminal multiplexer that detects coding agents and shows their state</td>
+<td>The workspace layer</td>
+<td>v0.9.1 (16 Sep 2026), preview builds to 21 Sep; Apache-2.0; ~40.9k GitHub stars, 365 open issues; multi-machine view since 0.9.0; "Herdr Cloud" announced as coming</td>
+<td><a href="https://herdr.dev/">herdr.dev</a></td>
+</tr>
+<tr>
+<td>Moshi</td>
+<td>SSH/Mosh terminal app for phones, aware of tmux, Zellij and Herdr</td>
+<td>How he connects from the phone</td>
+<td>iOS and Android; free tier; Pro $7.99/mo, $69.99/yr, $199 lifetime (offer to 1 Oct); host daemon <code>moshi-hook</code> for the agents feed</td>
+<td><a href="https://getmoshi.app/">getmoshi.app</a></td>
+</tr>
+<tr>
+<td>Mosh</td>
+<td>Mobile shell protocol over UDP that survives network changes</td>
+<td>Underneath Moshi</td>
+<td>Mature open-source; needs <code>mosh-server</code> on the host</td>
+<td><a href="https://mosh.org/">mosh.org</a></td>
+</tr>
+<tr>
+<td>Tailscale</td>
+<td>WireGuard-based private network</td>
+<td>Joins phone and Mac mini</td>
+<td>Free Personal plan: 6 users, unlimited devices</td>
+<td><a href="https://tailscale.com/">tailscale.com</a></td>
+</tr>
+<tr>
+<td>Ghostty</td>
+<td>Terminal emulator</td>
+<td>His Mac terminal</td>
+<td>Current, free</td>
+<td><a href="https://ghostty.org/">ghostty.org</a></td>
+</tr>
+<tr>
+<td>Hermes Agent</td>
+<td>Open-source agent by Nous Research with persistent memory and self-made skills</td>
+<td>His daily agent</td>
+<td>MIT; v0.15.x; Hermes Desktop preview</td>
+<td><a href="https://hermes-agent.nousresearch.com/">hermes-agent.nousresearch.com</a></td>
+</tr>
+<tr>
+<td>Codex CLI</td>
+<td>OpenAI's coding agent</td>
+<td>Started from the phone as a demo</td>
+<td>Current</td>
+<td><a href="https://developers.openai.com/codex">OpenAI Codex</a></td>
+</tr>
+<tr>
+<td>Muse</td>
+<td>Meta's new model/harness</td>
+<td>The one agent Herdr missed</td>
+<td>Detected since Herdr 0.9.0</td>
+<td>none checked</td>
+</tr>
+<tr>
+<td>Wispr Flow, SuperWhisper</td>
+<td>Desktop dictation apps</td>
+<td>Comparison for Moshi's dictation</td>
+<td>Not researched</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-has-changed-since-the-video-was-published">What has changed since the video was published</h2>
+<ul>
+<li><strong>Herdr 0.9.0 (7 Sep):</strong> one window can now hold several machines over SSH, with a combined agent list and independent reconnects. This removes the "one host per client" objection in the 6 September research. <a href="https://github.com/herdrdev/herdr/releases/tag/v0.9.0">Release notes</a></li>
+<li><strong>Herdr 0.9.0:</strong> Muse is now detected, which fixes the limitation in the video. Several clients (Mac and phone) can now look at different workspaces at once rather than mirroring each other.</li>
+<li><strong>Herdr 0.9.1 (16 Sep)</strong> is the current stable release; "Herdr Cloud" (connect machines without configuring SSH) is announced. <a href="https://herdr.dev/docs/">Herdr docs</a></li>
+<li><strong>Moshi on Android:</strong> a Google Play build exists and shares the Pro licence with iOS, so the setup is no longer iPhone-only. <a href="https://getmoshi.app/docs">Moshi docs</a></li>
+</ul>
+<h2 id="related-material-worth-reading">Related material worth reading</h2>
+<ul>
+<li><a href="https://hlab.taila51191.ts.net:9459/herdr-codex-claude-decision.html">Your 19 Sep Herdr decision brief</a>: the pilot design for Herdr under Codex and Claude, with the alternatives compared.</li>
+<li><a href="https://hlab.taila51191.ts.net:9459/dhh-setup/">Your 6 Sep DHH setup research</a>: why the cockpit is the desktop app, not Herdr; the Codex-on-laptop analysis; KVM options.</li>
+<li><a href="https://herdr.dev/docs/">Herdr docs</a>: the official reference, including agents, socket API and the new multi-machine commands.</li>
+<li><a href="https://getmoshi.app/docs">Moshi docs</a>: Herdr integration, <code>moshi-hook</code>, dictation engines and Tailscale guidance.</li>
+<li><a href="https://mariospina.com/blog/moshi-herdr-agents-from-my-phone/">Coding agents in my pocket: Moshi on iOS with Herdr on the Macs</a>: a second first-hand account of the same combination.</li>
+<li><a href="https://www.youtube.com/watch?v=Shqtk_2Jd3c">Dave Ebbelaar, "How to set up Herdr for multi-agent coding"</a>: a longer walkthrough already in your GWTH idea playlist.</li>
+</ul>
+<h2 id="open-questions-and-caveats">Open questions and caveats</h2>
+<ul>
+<li>Whether Moshi's Android build has full parity. Its docs name only iOS extras (Live Activities, Apple Watch) and say the Pro entitlement is identical, but we have not run it on the Pixel.</li>
+<li>Whether the Claude mobile app / Remote Control is actually part of your routine today. The table above says it is available; if you never use it, the phone gap is a little bigger than it looks.</li>
+<li>"Prime Agent" could not be identified.</li>
+<li>The video is a personal demo, not a tutorial; it does not cover security (Moshi keeps SSH keys on the phone, and a phone terminal can do anything your hlab user can).</li>
+</ul>
+</article>
+<details class='transcript'><summary>Full transcript (click a timestamp to open the video there)</summary><div class='body'><h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=0s" target="_blank" rel="noopener">0:00</a> My terminal setup</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=1s" target="_blank" rel="noopener">0:01</a> Okay, I wanted to make a quick video going more in-depth on uh my actual terminal setup because like someone asked me to make a video explaining it. So, uh the first part of the setup is this thing called Herder.</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=14s" target="_blank" rel="noopener">0:14</a> Organizing workspaces with Herdr</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=14s" target="_blank" rel="noopener">0:14</a> Um it&#x27;s running inside of my terminal. So, this is Ghosty. Um Ghosty&#x27;s the terminal I&#x27;m using. And Herder is I don&#x27;t know exactly the point of like I don&#x27;t know exactly how they classify Herder. But what it does for me is that it lets me break up my terminal into different work spaces. And I can create like, you know, a bunch of different work spaces. I can split the panes so I can have like two terminals running in one work space. I can leave that open. I can have tabs running in a work space and I can leave that open.</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=42s" target="_blank" rel="noopener">0:42</a> Useful keyboard shortcuts</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=42s" target="_blank" rel="noopener">0:42</a> Um if you&#x27;re using Herder, the main hot key that you need to know is control B. Control B will open up this thing right here. Um then you can hit the question mark and you can see all the different key binds. Um so, you can like if you want [clears throat] to be like the person that just does it completely with the keyboard and navigates around in your terminal with that, like you can also you can learn all the hot keys. Um pretty easy. The ones that I actually care about for me are um if I do control B and then shift N, that makes a new work space. And then control B and shift W, that renames the work space. So, let&#x27;s make this one like Twitter or something.</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=80s" target="_blank" rel="noopener">1:20</a> Running AI agents</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=80s" target="_blank" rel="noopener">1:20</a> Okay, so I have a work space here. And then inside the work space, I can fire off an agent. So, let&#x27;s say I want to run um &gt;&gt; [clears throat] &gt;&gt; Prime Agent, right? This one just came out came out just now. So, let&#x27;s say type in Prime Agent. You can see I have the agent loaded up. Um I can actually click through the agent in like I can click through all of the different agents on the side panel. And then when I connect to it on my phone,</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=105s" target="_blank" rel="noopener">1:45</a> Connecting from my phone</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=105s" target="_blank" rel="noopener">1:46</a> so let&#x27;s make a connection here. I can actually um connect to the specific Herder work space from my phone. So, let&#x27;s see. You can see the Twitter one just came up, right? So, let&#x27;s let&#x27;s jump on this one. And now I have access to the same workspace. If I say hi here, it&#x27;s instantly available on my phone. Um and I can just pick up where I left off. So, I can close this at any given time. I can go for a walk. Um let&#x27;s say if I lose connection, right? Like I can always come back here. I can also, just using like the touchscreen on your phone, like you can switch between the different workspaces while you&#x27;re inside mobile. So, Hurder is completely mobile optimized. So, I can click in here and I can jump to a different workspace and it&#x27;ll reflect on my terminal on my computer as well. So, I can just say like whatever. I can just do my work here. Um and then I can do that like while I&#x27;m out and about and then I can like come back and also just like continue and pick up the session where I left off, right?</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=166s" target="_blank" rel="noopener">2:47</a> Um and I can also just create from here. Let&#x27;s say I want to create a new tab, new workspace. I can do it really easily just with the touchscreen. Let&#x27;s go and make a new workspace. They got Codex installed. Let&#x27;s fire up Codex. Cool. And you can see it&#x27;s like it&#x27;s here. Um</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=181s" target="_blank" rel="noopener">3:01</a> How Tailscale connects everything</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=180s" target="_blank" rel="noopener">3:01</a> pretty cool. So, the way that like all of this is working is, of course, um my phone and my Mac mini, I&#x27;m on the Mac mini right now, they&#x27;re on the same uh Tailscale network. So, you&#x27;ll have to install Tailscale and basically what it does is it puts all of your devices on like its own VPN or like virtual private network. Basically, like if you can think of the internet as like this big network, a VPN is like a small subset network that&#x27;s like gated from everyone else, but it&#x27;s like a kind of like a private club for all your devices. So, uh Tailscale puts them all on their like on like a VPN together so that no matter where you are in the world, like you can access um all the different devices, right? So, my phone can access my Mac mini, my Mac mini can access my phone. Um my laptop can access all of these. So, you can just add like an unlimited amount of devices to your um to your Tailscale network or theoretically unlimited and you&#x27;ll be able to like securely access all of them. So yeah, that&#x27;s my setup. Um,</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=239s" target="_blank" rel="noopener">3:59</a> Why I prefer this over traditional SSH</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=239s" target="_blank" rel="noopener">4:00</a> there are still use cases where this is like not the best. For those I tend to use the chat GPT app with codex and the remote control feature. Um, but for most things that I do day-to-day, I prefer to use Hermes agent inside of this setup. Um, and then you know, you can see like just it just keeps everything persistent. I can come back to this whenever I want. I can start some work while I&#x27;m on the go and I can come back and pick it up. Um, and I can and I think the the big the biggest benefit for me is like let&#x27;s say before with like typical SSH apps, unless you had team mux set up, uh, if you like started a session and you walked away, um, you would have to restart all over again, right? You&#x27;d basically lose the connection. So this kind of keeps it alive and lets me come back to it whenever I want. Uh, the other big benefit of this for me like with something like team mux, there was like all these like hot keys that I would have to know. It definitely was not touchscreen optimized like this one is.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=295s" target="_blank" rel="noopener">4:55</a> Uh, so that was like super annoying, but this is all kind of solved. Uh, so yeah guys, hope that explained the setup.</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=303s" target="_blank" rel="noopener">5:03</a> Current limitations</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=303s" target="_blank" rel="noopener">5:03</a> And you can see I even have the Oh yeah, one of the limitations I found is um, I actually just fired up Muse which is like the new Harness. No, no, the new model from Meta and I was actually unable to get it to be detected inside of Herder. So I imagine that in a future update, um, this will be fixed. But that was like the only limitation I found.</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=327s" target="_blank" rel="noopener">5:27</a> Moshi and on-device speech-to-text</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&t=326s" target="_blank" rel="noopener">5:27</a> Also, you can&#x27;t see it on my phone screen, but when you&#x27;re on the Moshie app, oh, I forgot to mention the app that I&#x27;m using to connect is called Moshie and you can see I can just quickly, easily jump back and forth between all of my sessions. Um, and when you&#x27;re using Moshie, there&#x27;s like on your phone itself, uh, you can use like text to speech, no speech to text sorry. So you can just like turn on the microphone, you can talk to it the same way you talk to like WhisperFlow or SuperWhisper, and it works basically the same way. And it&#x27;s completely on device as well, so the latency is super low. So I recommend you check out Moshi as well. Moshi is like built on top of this thing called Mosh. I don&#x27;t know the specifics of it, but all together this just makes it a really really good setup and I&#x27;m able to just do a lot of things on the go. So yeah, thanks for watching guys.</p></div></details>
+<footer>Transcript via TranscriptAPI.com. Research compiled by Claude Code on 2026-09-26; verify prices and version numbers against the linked official sources before relying on them.</footer>
+</div>
+</body>
+</html>
