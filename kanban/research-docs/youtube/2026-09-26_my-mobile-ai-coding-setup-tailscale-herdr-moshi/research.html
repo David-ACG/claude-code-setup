@@ -58,7 +58,7 @@ footer{margin-top:48px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   </div>
   <a class="thumb" href="https://www.youtube.com/watch?v=9-tOItWRaiw" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi_webp/9-tOItWRaiw/sddefault.webp" alt=""><span class="play">Open on YouTube</span></a>
 </header>
-<nav class='toc'><strong>On this page</strong><ol><li><a href="#summary">Summary</a></li><li><a href="#does-it-suit-you">Does it suit you?</a></li><li><a href="#key-takeaways">Key takeaways</a></li><li><a href="#who-this-is-for-and-why-it-matters">Who this is for and why it matters</a></li><li><a href="#chapter-by-chapter">Chapter by chapter</a></li><li><a href="#claims-and-verification">Claims and verification</a></li><li><a href="#tools-products-and-people-mentioned">Tools, products and people mentioned</a></li><li><a href="#what-has-changed-since-the-video-was-published">What has changed since the video was published</a></li><li><a href="#related-material-worth-reading">Related material worth reading</a></li><li><a href="#open-questions-and-caveats">Open questions and caveats</a></li></ol></nav>
+<nav class='toc'><strong>On this page</strong><ol><li><a href="#summary">Summary</a></li><li><a href="#does-it-suit-you">Does it suit you?</a></li><li><a href="#alternatives-to-moshi-added-26-september">Alternatives to Moshi (added 26 September)</a></li><li><a href="#key-takeaways">Key takeaways</a></li><li><a href="#who-this-is-for-and-why-it-matters">Who this is for and why it matters</a></li><li><a href="#chapter-by-chapter">Chapter by chapter</a></li><li><a href="#claims-and-verification">Claims and verification</a></li><li><a href="#tools-products-and-people-mentioned">Tools, products and people mentioned</a></li><li><a href="#what-has-changed-since-the-video-was-published">What has changed since the video was published</a></li><li><a href="#related-material-worth-reading">Related material worth reading</a></li><li><a href="#open-questions-and-caveats">Open questions and caveats</a></li></ol></nav>
 <article>
 <h2 id="summary">Summary</h2>
 <p>A six-minute screen recording by a solo builder ("imran") showing how he keeps AI coding agents running on a Mac mini and picks them up from his iPhone. The pieces are Ghostty (a terminal), Herdr (a terminal multiplexer that knows about coding agents), Moshi (a phone terminal app built on the Mosh protocol), Tailscale (a private network joining his devices) and Hermes Agent (Nous Research's open-source agent). His point is that the session stays alive when he walks away, and that Herdr, unlike tmux, is usable with a thumb on a touchscreen. Research confirms the setup works as shown, and that Moshi now has an Android build, so it would run on your Pixel 9 Pro. The one limitation he mentions (Meta's Muse not detected) was fixed in Herdr 0.9.0 on 7 September. <strong>Verdict for you: it solves a problem you mostly do not have, in a form you have already said you do not want (typing into terminals, reading long output on a phone).</strong> Details under "Does it suit you?".</p>
@@ -132,6 +132,68 @@ footer{margin-top:48px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 </ul>
 <h3 id="recommendation">Recommendation</h3>
 <p><strong>Keep what you have.</strong> The video's core promise (an agent that keeps running and that you can reach from the phone) is already true for you, through the desktop app and the Claude and Codex mobile apps, without asking you to read terminals on a phone. The only piece you lack is the raw terminal on the phone, and your own rules say you do not want to work that way. If a stuck overnight run ever needs a raw shell from the phone, install the free Moshi on the Pixel then; there is nothing to buy or set up in advance.</p>
+<h2 id="alternatives-to-moshi-added-26-september">Alternatives to Moshi (added 26 September)</h2>
+<p>You tried Moshi and found it buggy, and asked what it costs and what else there is.</p>
+<h3 id="what-moshi-costs">What Moshi costs</h3>
+<p>The download is free and includes plain SSH, push notifications and the agents feed, with 2 saved connections and 3 minutes a month of cloud dictation. The parts that make the video's setup work, <strong>Mosh</strong> (surviving loss of signal) and <strong>automatic Herdr/tmux reattach</strong>, are Pro only. Pro is <strong>$7.99 a month, $69.99 a year or $199 lifetime</strong> at offer prices that end on 1 October; the normal prices are $9.99 a month and $89.99 a year. One licence covers up to 3 devices across iOS and Android. (<a href="https://getmoshi.app/pricing">Moshi pricing</a>, <a href="https://getmoshi.app/docs/subscription">free vs Pro</a>)</p>
+<h3 id="the-alternatives-for-an-android-phone">The alternatives, for an Android phone</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What it is</th>
+<th>Cost</th>
+<th>Mosh</th>
+<th>Fits how you work?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude app (Remote Control) + Codex Remote</strong></td>
+<td>The official phone apps, showing your running Claude and Codex sessions as a conversation</td>
+<td>Included in the plans you already pay for</td>
+<td>Not needed</td>
+<td><strong>Best.</strong> No terminal, no new install, dictation works, answers in plain chat</td>
+</tr>
+<tr>
+<td><strong>Collie</strong></td>
+<td>A free web page (installable on the home screen) that runs on hlab behind <code>tailscale serve</code> and shows your Herdr agents. It leads with what needs you, turns an agent's questions into buttons, gives an Esc/Ctrl+C key pad, and works with phone dictation</td>
+<td>Free, MIT licence, open source (~1,100 GitHub stars, active today)</td>
+<td>Not needed (it is a web page)</td>
+<td><strong>Good, if you ever adopt Herdr.</strong> It is a phone page, not a phone terminal; it needs Herdr on hlab. <a href="https://colliepwa.dev/demo">Live demo, no install</a></td>
+</tr>
+<tr>
+<td><strong>Haven</strong></td>
+<td>A full SSH app on F-Droid: tabs, tmux/Zellij reattach, Mosh, finds your Tailscale machines automatically, biometric-locked keys</td>
+<td>Free, open source (GPL), no ads or tracking; v5.89.0, 18 Sep 2026</td>
+<td>Yes, free</td>
+<td>Fair. The closest free equivalent of Moshi, but it is still a terminal</td>
+</tr>
+<tr>
+<td><strong>Termux</strong></td>
+<td>A Linux command line on the phone; you install <code>ssh</code> or <code>mosh</code> inside it and connect to hlab</td>
+<td>Free, open source (GPLv3); install from F-Droid, not Google Play</td>
+<td>Yes, free</td>
+<td>Poor. Powerful but fiddly: special keys are awkward on a soft keyboard</td>
+</tr>
+<tr>
+<td><strong>ConnectBot</strong></td>
+<td>The long-standing basic SSH app</td>
+<td>Free, open source</td>
+<td>No</td>
+<td>Poor. Plain SSH only; the session freezes when you change network</td>
+</tr>
+<tr>
+<td><strong>Termius</strong></td>
+<td>A polished commercial SSH app</td>
+<td>Free for one device; Pro about $10/month billed yearly</td>
+<td>Via a compatibility layer (third-party claim, unverified)</td>
+<td>Fair, but paid for sync and still a terminal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recommendation_1">Recommendation</h3>
+<p><strong>Stay with the Claude and Codex phone apps; do not buy Moshi.</strong> They are already paid for, they are not terminals, and they already show and let you answer your running sessions. If you later adopt Herdr on hlab (option C, the 19 September pilot), put <strong>Collie</strong> on top of it instead of Moshi: it is free, it is a web page you open over Tailscale like the cockpit, and it turns agent questions into buttons rather than making you type into a terminal. Keep <strong>Haven</strong> in mind as the free fallback if you ever genuinely need a raw terminal on the phone.</p>
 <h2 id="key-takeaways">Key takeaways</h2>
 <ul>
 <li>The setup is five pieces: Ghostty terminal, Herdr multiplexer, Moshi phone app, Tailscale network, and whichever agent you run (he uses Hermes and Codex) <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=14s" target="_blank" rel="noopener">0:14</a>, <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=181s" target="_blank" rel="noopener">3:01</a>, <a class="ts" href="https://www.youtube.com/watch?v=9-tOItWRaiw&amp;t=327s" target="_blank" rel="noopener">5:27</a>.</li>

@@ -59,6 +59,29 @@ This video is a different angle from both: not "many agents" but "my phone". So 
 
 **Keep what you have.** The video's core promise (an agent that keeps running and that you can reach from the phone) is already true for you, through the desktop app and the Claude and Codex mobile apps, without asking you to read terminals on a phone. The only piece you lack is the raw terminal on the phone, and your own rules say you do not want to work that way. If a stuck overnight run ever needs a raw shell from the phone, install the free Moshi on the Pixel then; there is nothing to buy or set up in advance.
 
+## Alternatives to Moshi (added 26 September)
+
+You tried Moshi and found it buggy, and asked what it costs and what else there is.
+
+### What Moshi costs
+
+The download is free and includes plain SSH, push notifications and the agents feed, with 2 saved connections and 3 minutes a month of cloud dictation. The parts that make the video's setup work, **Mosh** (surviving loss of signal) and **automatic Herdr/tmux reattach**, are Pro only. Pro is **$7.99 a month, $69.99 a year or $199 lifetime** at offer prices that end on 1 October; the normal prices are $9.99 a month and $89.99 a year. One licence covers up to 3 devices across iOS and Android. ([Moshi pricing](https://getmoshi.app/pricing), [free vs Pro](https://getmoshi.app/docs/subscription))
+
+### The alternatives, for an Android phone
+
+| Option | What it is | Cost | Mosh | Fits how you work? |
+|---|---|---|---|---|
+| **Claude app (Remote Control) + Codex Remote** | The official phone apps, showing your running Claude and Codex sessions as a conversation | Included in the plans you already pay for | Not needed | **Best.** No terminal, no new install, dictation works, answers in plain chat |
+| **Collie** | A free web page (installable on the home screen) that runs on hlab behind `tailscale serve` and shows your Herdr agents. It leads with what needs you, turns an agent's questions into buttons, gives an Esc/Ctrl+C key pad, and works with phone dictation | Free, MIT licence, open source (~1,100 GitHub stars, active today) | Not needed (it is a web page) | **Good, if you ever adopt Herdr.** It is a phone page, not a phone terminal; it needs Herdr on hlab. [Live demo, no install](https://colliepwa.dev/demo) |
+| **Haven** | A full SSH app on F-Droid: tabs, tmux/Zellij reattach, Mosh, finds your Tailscale machines automatically, biometric-locked keys | Free, open source (GPL), no ads or tracking; v5.89.0, 18 Sep 2026 | Yes, free | Fair. The closest free equivalent of Moshi, but it is still a terminal |
+| **Termux** | A Linux command line on the phone; you install `ssh` or `mosh` inside it and connect to hlab | Free, open source (GPLv3); install from F-Droid, not Google Play | Yes, free | Poor. Powerful but fiddly: special keys are awkward on a soft keyboard |
+| **ConnectBot** | The long-standing basic SSH app | Free, open source | No | Poor. Plain SSH only; the session freezes when you change network |
+| **Termius** | A polished commercial SSH app | Free for one device; Pro about $10/month billed yearly | Via a compatibility layer (third-party claim, unverified) | Fair, but paid for sync and still a terminal |
+
+### Recommendation
+
+**Stay with the Claude and Codex phone apps; do not buy Moshi.** They are already paid for, they are not terminals, and they already show and let you answer your running sessions. If you later adopt Herdr on hlab (option C, the 19 September pilot), put **Collie** on top of it instead of Moshi: it is free, it is a web page you open over Tailscale like the cockpit, and it turns agent questions into buttons rather than making you type into a terminal. Keep **Haven** in mind as the free fallback if you ever genuinely need a raw terminal on the phone.
+
 ## Key takeaways
 
 - The setup is five pieces: Ghostty terminal, Herdr multiplexer, Moshi phone app, Tailscale network, and whichever agent you run (he uses Hermes and Codex) [0:14], [3:01], [5:27].
@@ -246,6 +269,7 @@ Repos touched: none (it is machine setup). If it becomes the 19 Sep pilot, the c
 - WebSearch "Hermes Agent Nous Research": MIT, Feb 2026, Hermes Desktop preview.
 - WebFetch https://tailscale.com/pricing : Personal plan 6 users, unlimited devices.
 - Google Play page fetch returned no content (not used).
+- 2026-09-26 (follow-up): WebSearch Termius mosh/pricing (termai.sh, botmonster.com, getmoshi.app/compare/termius); Termux on F-Droid (f-droid.org/packages/com.termux, cosyra.com tmux guide); Collie (github.com/AltanS/collie, colliepwa.dev/demo, GitHub API: 1,101 stars, MIT, pushed 2026-09-26); Android SSH clients (f-droid.org/en/packages/sh.haven.app: Haven 5.89.0, 18 Sep 2026, GPL, mosh + tmux + Tailscale discovery).
 
 ## Appendix: Full transcript (agent)
 
