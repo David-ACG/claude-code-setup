@@ -17,7 +17,7 @@ status: analysis + recommendations, nothing built yet
 - **It is a poor fit for most GWTH work.** Cloud threads run in a 4 vCPU / 16 GB Ubuntu VM with no GPU, need a GitHub.com repo, and cannot see hlab, the P520 GPU, Kokoro/dots.tts, `/data`, Coolify or Tailscale. Threads on your own machine are possible through Remote Control, but they skip project memory, re-ask approval for every thread, and have open bugs (instructions cut off at 8 KB, the picker lists cloud environments only).
 - **The ideas are worth copying, and you already have about 70% of the plumbing.** Beads, the hub Run button, the cockpit, Firstmate, `ship.py` and `flash-worker` cover most of it. What Projects does better is put **one front door**, **one set of states**, **one shared memory** and **resumable workers** on top. What you already do better is **hard spending control**, **local hardware**, **mixing models** (flash-worker, Codex) and **proof before "done"**.
 - **My recommendation:** don't adopt Projects. Lift six patterns from it into the current setup, in this order:
-  1. Hard spending guards.
+  1. Hard spending guards that act on the numbers /usage already shows.
   2. One set of states and one "what needs you" page.
   3. Shared project memory for headless workers.
   4. A coordinator session.
@@ -126,7 +126,7 @@ Check again in a couple of months. It is the part that would make Projects relev
 | **Project instructions ≤ 16,000 characters** | A GWTH-launch-plan worker loads **about 86,000 characters** at start: project CLAUDE.md 53k (883 lines), global 11.5k, rules 21k. | 5x Anthropic's ceiling. It costs tokens on every run and dilutes attention. | **Yes** (R6) |
 | **Suggested threads**: Claude proposes, you click to start | Firstmate shows a DAG to approve. `whats_next.py` ranks beads. The 2026-09-07 rule: one decision at a time. | Already close. It needs to live behind the coordinator. | Folded into R4 |
 | **"What needs you" Overview** | The one-line hand-over rule (2026-09-25), the cockpit lanes, the `ship.py brief` hook. | Good. It just needs the single state model under it. | Folded into R2 |
-| **Per-thread usage view** | `usage_collector.py` covers Claude, Codex, OpenRouter and GPU at account level. The Claude lane has been stale since 2026-07-25. No per-run tokens. No `--max-turns` on workers. | You can't see what a bead cost, and the Claude meter itself may be wrong. | **Yes, first** (R1) |
+| **Per-thread usage view** | `/usage` (:8101) shows live Claude 5h/7d %, Codex, OpenRouter, GPU, burn-up, pace alerts and an agent monitor, at **account** level. The Claude lane is live (fixed 2026-09-12). No runner reads it before starting work. No per-run tokens. No `--max-turns` on workers. | It watches but doesn't act, and it can't say which job used the usage. | **Yes, first** (R1) |
 | **Auto-continue on limit reset** | A limit hit means a failed run and a retry next night. The collector knows reset times but nothing schedules against them. | It is a gap, but Projects' version is the dangerous one. | **Only opt-in and capped** (R1) |
 | **Branch or worktree per thread, one owner per PR** | Night, track and hub share one working tree per repo, serialised by locks. Only Firstmate uses worktrees (max 3). | Limits parallelism, but it is also what keeps spend low. | Later, and only for chosen lanes |
 | **Idle threads wake on CI or comments** | No equivalent. | The equivalent would be a cost trap. | **No** |
@@ -141,11 +141,11 @@ Each recommendation lists what to build, where it goes, the cost to build it, an
 ### R1. Hard spending guards before anything else
 *Projects' weakest point is your strongest. Make it explicit.*
 
-- **Fix the Claude usage lane first.** It has been stale since 2026-07-25, so every decision about spend is currently made blind. Re-auth on hlab, then confirm `usage_collector.py` reports live weekly and 5-hour percentages.
-- **Per-run budget.**
+- **Build on `/usage`, don't replace it.** It already shows live Claude 5h and 7d %, burn-up and pace alerts. Its Claude lane was fixed on 2026-09-12 (checked live 2026-10-17). What it lacks is anything that *acts* on those numbers, and any view by run.
+- **Per-run budget, shown on `/usage`.**
   - Every headless `claude -p` the board starts (`run_scheduled_prompt.sh`, `run_track_pipeline.sh`, `hub_run_session.sh`, Firstmate `run_worker.sh`) gets `--max-turns` plus the existing timeout.
   - Read the `usage` block from stream-json and record tokens per run in `hub_runs.yaml` against the bead id.
-  - That gives the "tokens by thread" view Projects has, but per **bead**.
+  - Add a "by run" table to `/usage`. That gives the "tokens by thread" view Projects has, but per **bead**.
 - **A start gate.** No new worker starts while the weekly Claude meter is above a threshold you choose (say 80%), or the 5-hour one above 90%. This is enforced in code, in one shared helper called by every runner. It is not a prompt.
 - **A Pause-all switch.** One cockpit button and one CLI flag that stop the queues from starting anything and leave running jobs to finish. This is Projects' "Pause project", across all lanes.
 - **Resume-at-reset, opt-in per job.** A job can carry `resume_at_reset: true` with a spend ceiling. The watchdog arms it at the reset time from the collector. The default stays as it is today: a limit hit is a failure, and you decide.
@@ -254,7 +254,7 @@ Record the weekly-limit % before and after. **I don't recommend doing this now.*
 
 | Step | What | Size | Usage effect |
 |---|---|---|---|
-| 1 | R1 Spending guards (fix the meter, per-run tokens, start gate, Pause-all) | ~1 day | Saves |
+| 1 | R1 Spending guards (start gate reading `/usage` data, per-run tokens on `/usage`, Pause-all) | ~1 day | Saves |
 | 2 | R6 Slim instructions to ≤ 20k characters | ~½ day | Saves on every run |
 | 3 | R3 Project memory read and written by workers | ~1 day | Saves over time |
 | 4 | R2 One set of states and the "Waiting on you" view | 1 to 2 days | Neutral |

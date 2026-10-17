@@ -226,7 +226,7 @@ footer{color:var(--ink-3);font-size:13px;margin-top:56px;border-top:1px solid va
 <tr><td><strong>One set of states</strong></td><td>Six vocabularies: board, beads, ship ledger, verify, Firstmate <code>escalated</code>, cockpit <code>needs_input</code>.</td><td>The same item shows a different state in each place.</td><td><span class="tag t-yes">Yes · R2</span></td></tr>
 <tr><td><strong>Project memory</strong> that workers read and write</td><td>CLAUDE.md, bible, wiki, <code>bd remember</code>. Headless workers never write memory back.</td><td>Whatever a night run learns is lost with it.</td><td><span class="tag t-yes">Yes · R3</span></td></tr>
 <tr><td><strong>Instructions ≤ 16k characters</strong></td><td>About 86k characters loaded at the start of every GWTH-launch-plan worker. CLAUDE.md alone is 53k across 883 lines.</td><td>5× Anthropic's ceiling. It costs tokens on every run.</td><td><span class="tag t-yes">Yes · R6</span></td></tr>
-<tr><td><strong>Usage per thread</strong></td><td>Account-level meter only. The Claude lane has been stale since 25 Jul. No per-run token count. No <code>--max-turns</code> on workers.</td><td>You can't see what a bead cost.</td><td><span class="tag t-yes">Yes · R1</span></td></tr>
+<tr><td><strong>Usage per thread</strong></td><td><a href="https://hlab.taila51191.ts.net:8101/usage">/usage</a> shows live 5h and 7d %, burn-up, pace alerts and an agent monitor, for the whole account. No runner reads it before starting. No per-run token count. No <code>--max-turns</code> on workers.</td><td>It watches but doesn't act, and you can't see what a bead cost.</td><td><span class="tag t-yes">Yes · R1</span></td></tr>
 <tr><td><strong>Suggested threads</strong> (propose, then click)</td><td>Firstmate's approve-the-plan step. <code>whats_next.py</code>. The one-decision rule.</td><td>Close already. It belongs with the coordinator.</td><td><span class="tag t-have">In R4</span></td></tr>
 <tr><td><strong>Auto-continue when limits reset</strong></td><td>A run that hits the limit fails and is retried the next night.</td><td>A real gap, but Projects' version is the risky one.</td><td><span class="tag t-maybe">Opt-in only · R1</span></td></tr>
 <tr><td><strong>A branch for each thread</strong></td><td>One shared working tree per repo, locked. Only Firstmate uses worktrees, up to 3.</td><td>Less parallelism, which is also why spend stays low.</td><td><span class="tag t-maybe">Later</span></td></tr>
@@ -244,8 +244,8 @@ footer{color:var(--ink-3);font-size:13px;margin-top:56px;border-top:1px solid va
   <h3><span class="num">R1</span> Hard spending guards, before anything else</h3>
   <div class="why">This is where Projects is weakest and you are strongest. Make it explicit.</div>
   <ul class="tight">
-    <li><strong>Fix the Claude usage meter first.</strong> It has been stale since 25 Jul, so every spend decision today is made blind. Log in again on hlab, then confirm <code>usage_collector.py</code> shows live weekly and 5-hour %.</li>
-    <li><strong>Per-run budget.</strong> Every headless <code>claude -p</code> (night, track, hub, Firstmate) gets <code>--max-turns</code> on top of its timeout. Record the tokens from stream-json in <code>hub_runs.yaml</code> against the bead. That is Projects' Usage tab, but per <em>bead</em>.</li>
+    <li><strong>Build on <a href="https://hlab.taila51191.ts.net:8101/usage">/usage</a>, don't replace it.</strong> It already shows live 5h and 7d %, burn-up and pace alerts; the Claude lane has been live since 12 Sep. What's missing is anything that <em>acts</em> on those numbers, and a view by run.</li>
+    <li><strong>Per-run budget.</strong> Every headless <code>claude -p</code> (night, track, hub, Firstmate) gets <code>--max-turns</code> on top of its timeout. Record the tokens from stream-json in <code>hub_runs.yaml</code> against the bead. Show it as a "by run" table on <code>/usage</code>: Projects' Usage tab, but per <em>bead</em>.</li>
     <li><strong>Start gate.</strong> No new worker starts while the weekly meter is above a threshold you choose (say 80%). It lives in code, as one helper called by every runner.</li>
     <li><strong>Pause-all.</strong> One cockpit button and one CLI flag stop every queue from starting new work.</li>
     <li><strong>Resume-at-reset, opt-in per job</strong> (<code>resume_at_reset: true</code> plus a spend ceiling). The default stays as it is now: hitting the limit counts as a failure.</li>
@@ -352,7 +352,7 @@ footer{color:var(--ink-3);font-size:13px;margin-top:56px;border-top:1px solid va
 <section id="order">
 <h2>Suggested order and size</h2>
 <div class="card"><ol class="steps">
-  <li><div><strong>R1 Spending guards</strong><br><span style="color:var(--ink-2)">Fix the meter, count tokens per run, add the start gate and Pause-all</span></div><span class="sz">~1 day · saves</span></li>
+  <li><div><strong>R1 Spending guards</strong><br><span style="color:var(--ink-2)">A start gate that reads the <code>/usage</code> numbers, tokens per run on <code>/usage</code>, and Pause-all</span></div><span class="sz">~1 day · saves</span></li>
   <li><div><strong>R6 Slim instructions</strong><br><span style="color:var(--ink-2)">Get always-loaded instructions down to ≤ 20k characters</span></div><span class="sz">~½ day · saves every run</span></li>
   <li><div><strong>R3 Project memory</strong><br><span style="color:var(--ink-2)">Workers read and propose; one writer commits</span></div><span class="sz">~1 day · saves over time</span></li>
   <li><div><strong>R2 One set of states</strong><br><span style="color:var(--ink-2)">The "Waiting on you" view; blockers become questions</span></div><span class="sz">1–2 days · neutral</span></li>
