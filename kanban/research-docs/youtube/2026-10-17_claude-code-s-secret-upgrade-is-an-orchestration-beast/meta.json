@@ -1,0 +1,80 @@
+{
+  "video_id": "mKjxGy6vCnY",
+  "url": "https://www.youtube.com/watch?v=mKjxGy6vCnY",
+  "title": "Claude Code’s Secret Upgrade Is an Orchestration Beast",
+  "channel": "Chase AI",
+  "channel_url": "https://www.youtube.com/channel/UCoy6cTJ7Tg0dqS-DI-_REsA",
+  "channel_id": "UCoy6cTJ7Tg0dqS-DI-_REsA",
+  "thumbnail_url": "https://i.ytimg.com/vi_webp/mKjxGy6vCnY/sddefault.webp",
+  "published": "2026-10-16T15:28:23-07:00",
+  "published_date": "2026-10-16",
+  "duration_seconds": 1129,
+  "duration_text": "18:49",
+  "view_count": 70669,
+  "genre": "Science & Technology",
+  "keywords": [],
+  "description": "⚡Master Claude Code + Codex: https://www.skool.com/chase-ai\n🔥FREE community: https://www.skool.com/chase-ai-community\n💻Get 1:1 help: https://chaseai.io\n\nClaude Projects turns Claude Code into a multi agent cloud orchestrating beast.\n\n⏰TIMESTAMPS:\n\n0:00 - Intro\n0:36 - What Projects Does\n3:42 - When To Use It\n6:51 - Demo + Setup\n\n\nRESOURCES FROM THIS VIDEO:\n➡️ Master Claude Code + Codex: https://www.skool.com/chase-ai\n➡️ My Website: https://www.chaseai.io\n➡️ Projects Waitlist: https://claude.com/form/projects\n➡️ Projects Docs: https://code.claude.com/docs/en/claude-projects\n\n#claude",
+  "chapters": [
+    {
+      "start": 0.0,
+      "title": "Intro"
+    },
+    {
+      "start": 36.0,
+      "title": "What Projects Does"
+    },
+    {
+      "start": 222.0,
+      "title": "When To Use It"
+    },
+    {
+      "start": 411.0,
+      "title": "Demo + Setup"
+    }
+  ],
+  "language": "en",
+  "available_languages": [
+    "ar",
+    "asr-ar",
+    "bn",
+    "asr-bn",
+    "nl",
+    "asr-nl",
+    "en",
+    "asr-en",
+    "fr",
+    "asr-fr",
+    "de",
+    "asr-de",
+    "iw",
+    "asr-iw",
+    "hi",
+    "asr-hi",
+    "it",
+    "asr-it",
+    "ja",
+    "asr-ja",
+    "ko",
+    "asr-ko",
+    "pt",
+    "asr-pt",
+    "pa",
+    "asr-pa",
+    "ru",
+    "asr-ru",
+    "es",
+    "asr-es",
+    "ta",
+    "asr-ta",
+    "te",
+    "asr-te",
+    "uk",
+    "asr-uk"
+  ],
+  "segment_count": 562,
+  "word_count": 4073,
+  "fetched_at": "2026-10-17T18:46:58+00:00",
+  "source": "transcriptapi.com v2",
+  "credit_used": true,
+  "scrape_error": null
+}

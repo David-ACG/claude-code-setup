@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code&#x27;s Secret Upgrade Is an Orchestration Beast</title>
+<style>
+:root{--bg:#f7f6f2;--card:#ffffff;--ink:#1c1b18;--muted:#6b675e;--line:#e6e2d8;--accent:#8a3b12;--accent-soft:#fbeee4;--code:#f1efe9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+header.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:start;padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:28px}
+header.hero h1{font-size:2rem;line-height:1.2;margin:0 0 10px;letter-spacing:-.01em}
+header.hero .meta{color:var(--muted);font-size:.95rem;display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px}
+header.hero .meta span b{color:var(--ink);font-weight:600}
+header.hero img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+header.hero .thumb{position:relative}
+header.hero .thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1rem;background:rgba(0,0,0,.35);color:#fff;border-radius:10px;opacity:0;transition:opacity .15s}
+header.hero .thumb:hover .play{opacity:1}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:0 0 28px;font-size:.95rem}
+nav.toc strong{display:block;margin-bottom:6px}
+nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid;margin:2px 0}
+article h2{font-size:1.45rem;margin:40px 0 12px;padding-top:8px;border-top:1px solid var(--line);letter-spacing:-.01em}
+article h2:first-child{border-top:0;margin-top:0}
+article h3{font-size:1.12rem;margin:26px 0 8px}
+article h4{font-size:1rem;margin:20px 0 6px}
+article p{margin:0 0 14px}
+article ul,article ol{padding-left:26px;margin:0 0 16px}article li{margin:4px 0}
+article blockquote{margin:16px 0;padding:10px 18px;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;color:#3a2a1e}
+article blockquote p{margin:0}
+article code{font:.9em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:1px 5px;border-radius:4px}
+article pre{background:#1f1e1b;color:#f2efe8;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+article pre code{background:none;padding:0;color:inherit}
+.tablewrap{overflow-x:auto;margin:0 0 18px}
+table{border-collapse:collapse;width:100%;font-size:.93rem;background:var(--card)}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#f0ede6}
+a.ts{font:.82em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:4px;white-space:nowrap}
+details.transcript{margin-top:44px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+details.transcript summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:1.05rem}
+details.transcript .body{padding:4px 22px 18px;font-size:.95rem;color:#2b2925}
+details.transcript h4{margin:22px 0 8px;font-size:1rem}
+details.transcript p{margin:0 0 12px}
+footer{margin-top:48px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:720px){header.hero{grid-template-columns:1fr}header.hero .thumb{order:-1}nav.toc ol{columns:1}.wrap{padding:20px 16px 60px}}
+@media print{details.transcript{display:none}nav.toc{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <h1>Claude Code&#x27;s Secret Upgrade Is an Orchestration Beast</h1>
+    <p class="meta"><span>Channel <b><a href="https://www.youtube.com/channel/UCoy6cTJ7Tg0dqS-DI-_REsA" target="_blank" rel="noopener">Chase AI</a></b></span><span>Published <b>2026-10-16</b></span><span>Length <b>18:49</b></span><span>Views <b>70,669</b></span><span>Researched <b>2026-10-17</b></span><span>Focus <b>Claude Code Projects concepts for GWTH; usage/credit burn</b></span></p>
+    <p><a href="https://www.youtube.com/watch?v=mKjxGy6vCnY" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mKjxGy6vCnY</a></p>
+  </div>
+  <a class="thumb" href="https://www.youtube.com/watch?v=mKjxGy6vCnY" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi_webp/mKjxGy6vCnY/sddefault.webp" alt=""><span class="play">Open on YouTube</span></a>
+</header>
+<nav class='toc'><strong>On this page</strong><ol><li><a href="#summary">Summary</a></li><li><a href="#key-takeaways">Key takeaways</a></li><li><a href="#who-this-is-for-and-why-it-matters">Who this is for and why it matters</a></li><li><a href="#chapter-by-chapter">Chapter by chapter</a></li><li><a href="#claims-and-verification">Claims and verification</a></li><li><a href="#tools-products-and-people-mentioned">Tools, products and people mentioned</a></li><li><a href="#what-has-changed-since-the-video-was-published">What has changed since the video was published</a></li><li><a href="#related-material-worth-reading">Related material worth reading</a></li><li><a href="#open-questions-and-caveats">Open questions and caveats</a></li></ol></nav>
+<article>
+<h2 id="summary">Summary</h2>
+<p>Chase AI introduces <strong>Claude Code Projects</strong>, which he calls "Claude projects". It puts one coordinator conversation in front of a set of persistent "threads": full Claude Code sessions, mostly in Anthropic's cloud. He explains when it is worth using, walks through the settings, and builds an "AI Creator Radar" dashboard in a 25-minute demo. The mechanics hold up against the official docs. The coordinator defaults to Opus at low effort, threads keep their own context, there are project instructions and project memory, usage comes out of your subscription, local threads are possible, and secrets live in a cloud environment.</p>
+<p>He gets four things wrong or overstates them:</p>
+<ul>
+<li>He dates the launch ("a couple months ago"). It launched on 17 Sep 2026.</li>
+<li>He says the rollout is open to everyone. The docs still say gradual, with a waitlist.</li>
+<li>He says threads run "24/7, never shut off". Sandboxes pause between turns, and idle threads resolve after a week.</li>
+<li>He says threads "share context". They share instructions and memory, not context windows.</li>
+</ul>
+<p>He also understates the usage risk. Threads default to Opus at <strong>high</strong> effort, and a thread that hits the limit continues automatically when it resets.</p>
+<p>The full analysis for GWTH is in <a href="../../claude-projects/2026-10-17_claude-projects-lessons.md">the Claude Projects lessons report</a>.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><strong>One coordinator, many full sessions.</strong> You talk to one agent. It runs "full-blown Claude sessions", not subagents. Each has its own context, and you can message it directly <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=90s" target="_blank" rel="noopener">1:30</a> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=357s" target="_blank" rel="noopener">5:57</a>.</li>
+<li><strong>Usage comes out of your plan, not API billing</strong> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=90s" target="_blank" rel="noopener">1:30</a>. This is verified, but projects use the plan "faster", and threads that hit the limit continue on their own at reset (see Verification).</li>
+<li><strong>Don't use it for quick tasks, or for work that has to touch files on your machine</strong> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=222s" target="_blank" rel="noopener">3:42</a>. Local threads exist but "that isn't what it's really built for" <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=260s" target="_blank" rel="noopener">4:20</a>.</li>
+<li><strong>Leave the coordinator on low effort. Run threads on Opus medium, or Sonnet, to save usage</strong> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=500s" target="_blank" rel="noopener">8:20</a> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=535s" target="_blank" rel="noopener">8:55</a>. The docs' default for threads is high.</li>
+<li><strong>Project instructions are read by every thread. Keep them short: "less is more"</strong> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=580s" target="_blank" rel="noopener">9:40</a>.</li>
+<li><strong>Project auto memory works like Claude Code's auto memory</strong> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=605s" target="_blank" rel="noopener">10:05</a>. Verified: a <code>MEMORY.md</code> index that every cloud thread reads.</li>
+<li><strong>Each project needs a GitHub repo.</strong> Secrets and API keys go in a custom cloud environment, whose network access ranges from none to full <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=620s" target="_blank" rel="noopener">10:20</a> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=648s" target="_blank" rel="noopener">10:48</a>.</li>
+<li><strong>Blocked threads come back to you to answer.</strong> In the demo, three of five threads were blocked on keys or decisions <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=800s" target="_blank" rel="noopener">13:20</a>.</li>
+<li><strong>Debug access lets one project look at another whose context has gone bad</strong> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=710s" target="_blank" rel="noopener">11:50</a>. Unverified in the docs.</li>
+</ul>
+<h2 id="who-this-is-for-and-why-it-matters">Who this is for and why it matters</h2>
+<p>It is aimed at Claude Code users on Pro or Max who run long, cloud-friendly projects and want them to keep going while their own machine is off. You need a GitHub repo and some comfort with cloud environments and secrets.</p>
+<p>For David, Projects itself is a poor fit, because GWTH depends on hlab's GPU, local files, Coolify, Tailscale and his <code>~/.claude</code> rules. The concepts map well onto his existing board, cockpit and worker setup, though: a single coordinator, one set of states, shared project memory, resumable workers, and per-thread usage. The lessons report turns these into six ranked recommendations.</p>
+<h2 id="chapter-by-chapter">Chapter by chapter</h2>
+<h3 id="tslink0x0c00knilst-intro"><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=0s" target="_blank" rel="noopener">0:00</a> Intro</h3>
+<p>He frames Projects as one agent controlling "a fleet of fullyfledged Claude sessions that run 24/7", which "share context, they share memory and they never shut off". He pitches it at people building complicated applications outside their local environment.</p>
+<h3 id="tslink36x0c36knilst-what-projects-does"><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=36s" target="_blank" rel="noopener">0:36</a> What Projects Does</h3>
+<p>Normally you manage the terminals and agents yourself, and work stops when your machine is off. With Projects, Claude becomes the project manager, running in Anthropic's cloud on your subscription ("pulling from your max plan"). The workers are full sessions, not subagents. Access is through a waitlist, which he says now clears within 24 hours. Projects shows up as "Projects beta" in the desktop app's sidebar, and is distinct from the old chat Projects.</p>
+<h3 id="tslink222x3c42knilst-when-to-use-it"><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=222s" target="_blank" rel="noopener">3:42</a> When To Use It</h3>
+<p>Don't use it:
+- for quick single-session tasks;
+- for work on local files that can't live in a GitHub repo;
+- for teams (not yet on Team or Enterprise).</p>
+<p>Use it for complicated, long-running work that splits into parts, and as a backlog for ideas. Against subagents, the difference is persistence: threads keep their own context, own PRs, can be messaged directly, and are managed by Claude rather than by you.</p>
+<h3 id="tslink411x6c51knilst-demo-setup"><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=411s" target="_blank" rel="noopener">6:51</a> Demo + Setup</h3>
+<p>Settings he covers:
+- <strong>New project:</strong> a name, an optional goal, optional context.
+- <strong>Project settings, General:</strong> coordinator model (default Opus 5.5, low effort) and thread model. He advises Opus medium, or Sonnet.
+- <strong>Auto-continue when usage limits reset.</strong>
+- <strong>Pause, restart or archive.</strong>
+- <strong>Memory:</strong> project instructions and auto memory.
+- <strong>Environment:</strong> a project repository on GitHub, plus a cloud environment (network access from none to full, secrets).
+- <strong>Local settings:</strong> "let Claude use your device" and pre-approved folders.
+- <strong>Usage tab.</strong>
+- <strong>Debug access</strong> between projects.</p>
+<p>The demo prompt split into five threads: dashboard and hosting, X scanner, YouTube coverage, content packs, and Claude Code news. After 25 minutes, two were ready for review and three were blocked. He fixed the key blockers by adding a cloud environment with a YouTube key as a network secret and telling the coordinator. The X scanner ran locally using the in-app browser's logged-in session and created a local scheduled routine. The finished dashboard shows trending X stories with no YouTube coverage, content packs for each story, and a refresh log.</p>
+<h2 id="claims-and-verification">Claims and verification</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Claim (timestamp)</th>
+<th>Status</th>
+<th>Evidence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Projects uses your Max plan usage, not API billing <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=90s" target="_blank" rel="noopener">1:30</a></td>
+<td>Verified</td>
+<td>"counts against the same plan limits as your other Claude Code sessions". It goes past them only if usage credits are on.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Workers are full sessions, not subagents <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=90s" target="_blank" rel="noopener">1:30</a> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=357s" target="_blank" rel="noopener">5:57</a></td>
+<td>Verified</td>
+<td>Threads are "a separate session with its own context window".</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Threads "share context" and memory <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=0s" target="_blank" rel="noopener">0:00</a> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=290s" target="_blank" rel="noopener">4:50</a></td>
+<td>Partly true</td>
+<td>They share project instructions and project memory (<code>MEMORY.md</code>). The coordinator "sees what threads report back, not every step". Context windows are separate.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Runs 24/7, "never shut off" <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=0s" target="_blank" rel="noopener">0:00</a></td>
+<td>Partly true</td>
+<td>Cloud threads continue with the laptop closed. Sandboxes pause between turns, a lost sandbox can drop uncommitted work, and idle threads resolve after a week.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a>, <a href="https://code.claude.com/docs/en/cloud-environments">Cloud envs</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>"First came out a couple months ago" <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=156s" target="_blank" rel="noopener">2:36</a></td>
+<td>Wrong</td>
+<td>Launched 17 Sep 2026, a month before the video.</td>
+<td><a href="https://claude.com/blog/projects-redesigned">Launch post</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>"They let everybody off the wait list" <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=156s" target="_blank" rel="noopener">2:36</a></td>
+<td>Partly true</td>
+<td>The docs still say "rolling out gradually" and link a waitlist.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Not on Team or Enterprise yet <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=269s" target="_blank" rel="noopener">4:29</a></td>
+<td>Verified</td>
+<td>"They aren't available on Team or Enterprise plans yet."</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Boris Cherny uses Projects as his backlog <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=290s" target="_blank" rel="noopener">4:50</a></td>
+<td>Unverified</td>
+<td>No primary source found.</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Coordinator defaults to Opus 5.5 at low effort <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=500s" target="_blank" rel="noopener">8:20</a></td>
+<td>Verified</td>
+<td>"Opus everywhere, with high effort for threads and low effort for the conversation".</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Projects can burn usage quickly; Opus medium for threads "should be totally fine" <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=535s" target="_blank" rel="noopener">8:55</a></td>
+<td>Verified (with a caveat)</td>
+<td>The docs say it "uses them faster", and the default thread setting (Opus high) "draws on your plan fastest". The only hard cap is 200 new threads a day.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Auto-continues when usage limits reset <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=551s" target="_blank" rel="noopener">9:11</a></td>
+<td>Verified</td>
+<td>A thread "waits and continues on its own when the limit resets". Routine-started threads stop instead. He presents it as a setting; the docs describe it as default behaviour.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Project instructions are read in every thread <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=580s" target="_blank" rel="noopener">9:40</a></td>
+<td>Verified</td>
+<td>Sent to each new thread and to the coordinator, up to 16,000 characters.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Auto memory works like Claude Code auto memory <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=605s" target="_blank" rel="noopener">10:05</a></td>
+<td>Verified</td>
+<td>Project memory is files with a <code>MEMORY.md</code> index, separate from local auto memory. Local threads don't load it.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Needs a GitHub repo <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=605s" target="_blank" rel="noopener">10:05</a></td>
+<td>Verified</td>
+<td>GitHub.com only, and the Claude GitHub App is required.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Cloud environment network access from none to full, plus secrets <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=648s" target="_blank" rel="noopener">10:48</a></td>
+<td>Verified</td>
+<td>The levels are None, Trusted (default), Custom and Full. Network secrets are injected by a proxy.</td>
+<td><a href="https://code.claude.com/docs/en/cloud-environments">Cloud envs</a></td>
+</tr>
+<tr>
+<td>16</td>
+<td>Threads can run on your machine in pre-approved folders <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=680s" target="_blank" rel="noopener">11:20</a> <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=900s" target="_blank" rel="noopener">15:00</a></td>
+<td>Verified</td>
+<td>"Work locally" goes through Remote Control. The thread runs only while the machine is awake and doesn't get project memory.</td>
+<td><a href="https://code.claude.com/docs/en/claude-projects">Docs</a>, <a href="https://code.claude.com/docs/en/remote-control">Remote Control</a></td>
+</tr>
+<tr>
+<td>17</td>
+<td>Debug access between projects <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=710s" target="_blank" rel="noopener">11:50</a></td>
+<td>Unverified</td>
+<td>Not found in the Projects docs page as checked.</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Earlier Anthropic cloud options drew on the API <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=1052s" target="_blank" rel="noopener">17:32</a></td>
+<td>Unverified</td>
+<td>Cloud sessions (Claude Code on the web) have used subscription limits; the claim is not supported as stated.</td>
+<td><a href="https://code.claude.com/docs/en/costs">Costs</a></td>
+</tr>
+<tr>
+<td>19</td>
+<td>Opus 5.5 is more token-efficient than Fable 5.1 <a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&amp;t=1106s" target="_blank" rel="noopener">18:26</a></td>
+<td>Unverified</td>
+<td>Opinion. No benchmark cited.</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tools-products-and-people-mentioned">Tools, products and people mentioned</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>What it is</th>
+<th>Role in the video</th>
+<th>Current status (as of 2026-10-17)</th>
+<th>Official link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code Projects</td>
+<td>A coordinator plus parallel threads for Claude Code</td>
+<td>The subject</td>
+<td>Public beta, Pro and Max, gradual rollout</td>
+<td>https://code.claude.com/docs/en/claude-projects</td>
+</tr>
+<tr>
+<td>Claude Code cloud environments</td>
+<td>Sandboxed Ubuntu VMs for cloud sessions</td>
+<td>Holds the secrets and network settings</td>
+<td>Current</td>
+<td>https://code.claude.com/docs/en/cloud-environments</td>
+</tr>
+<tr>
+<td>Remote Control</td>
+<td>Connects claude.ai to a session on your own machine</td>
+<td>How local threads run</td>
+<td>Current; local threads need v2.1.280 or later</td>
+<td>https://code.claude.com/docs/en/remote-control</td>
+</tr>
+<tr>
+<td>Routines</td>
+<td>Scheduled Claude Code runs</td>
+<td>The X scanner created a local routine</td>
+<td>Research preview</td>
+<td>https://code.claude.com/docs/en/routines</td>
+</tr>
+<tr>
+<td>Opus 5.5 / Sonnet / Fable 5.1</td>
+<td>Claude models</td>
+<td>Coordinator and thread model choices</td>
+<td>Current</td>
+<td>https://docs.anthropic.com</td>
+</tr>
+<tr>
+<td>Boris Cherny</td>
+<td>Creator of Claude Code</td>
+<td>Said to use Projects as a backlog</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>Code hosting</td>
+<td>Required repo for threads and PRs</td>
+<td>GitHub.com only (no GHES, GitLab or Bitbucket)</td>
+<td>https://github.com</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-has-changed-since-the-video-was-published">What has changed since the video was published</h2>
+<ul>
+<li>Nothing material found in the single day between publication and research. Since launch, the "Work locally" option has been added; the press at launch called it "coming very soon" (<a href="https://www.implicator.ai/anthropic-claude-code-projects-opus-default/">Implicator</a>).</li>
+<li>Open GitHub issues as of 17 Oct affect local threads and reliability: <a href="https://github.com/anthropics/claude-code/issues/101398">#101398</a>, <a href="https://github.com/anthropics/claude-code/issues/101539">#101539</a>, <a href="https://github.com/anthropics/claude-code/issues/101368">#101368</a> and <a href="https://github.com/anthropics/claude-code/issues/99091">#99091</a>.</li>
+</ul>
+<h2 id="related-material-worth-reading">Related material worth reading</h2>
+<ul>
+<li><a href="https://code.claude.com/docs/en/claude-projects">Claude Code Projects docs</a>. The authoritative reference; the "Usage and cost" section matters most.</li>
+<li><a href="https://claude.com/blog/projects-redesigned">Launch post: projects redesigned</a>. Anthropic's framing.</li>
+<li><a href="https://code.claude.com/docs/en/agents">Run agents in parallel</a>. Compares subagents, agent teams, workflows and Projects.</li>
+<li><a href="https://code.claude.com/docs/en/costs">Costs</a>. Plan limits, usage credits and cache lifetime.</li>
+<li><a href="https://venturebeat.com/orchestration/anthropic-launches-claude-code-projects-an-always-on-conversation-that-remembers-and-delegates-your-long-running-dev-work">VentureBeat launch coverage</a></li>
+<li><a href="https://www.theregister.com/a/5297532">The Register: "work and pay in parallel"</a>. A sceptical take on cost.</li>
+<li><a href="../../claude-projects/2026-10-17_claude-projects-lessons.md">GWTH lessons report</a>. How these patterns apply to David's setup.</li>
+</ul>
+<h2 id="open-questions-and-caveats">Open questions and caveats</h2>
+<ul>
+<li>No credible third-party measurement of how much a project uses (weekly % per thread) was found.</li>
+<li>Whether a headless Linux box such as hlab can serve local threads through <code>claude remote-control</code> is undocumented.</li>
+<li>The "debug access" panel and the "auto-continue" toggle the video shows were not found in the docs as checked. They may be UI the docs don't cover.</li>
+</ul>
+</article>
+<details class='transcript'><summary>Full transcript (click a timestamp to open the video there)</summary><div class='body'><h4><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=0s" target="_blank" rel="noopener">0:00</a> Intro</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=0s" target="_blank" rel="noopener">0:00</a> Claude has a secret feature hidden behind a weight list that turns it into a master of cloud orchestration. You just talk to one agent and it controls a fleet of fullyfledged Claude sessions that run 24/7. They share context, they share memory and they never shut off. It&#x27;s called Claude projects and it&#x27;s the ultimate hack if you&#x27;re someone who is working on complicated applications and you need to do so outside of your local environment. So today I&#x27;m going to show you how to get access to this feature, how it actually works, and then we&#x27;re going to run through a quick demo so you can start using it right away. Now</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=36s" target="_blank" rel="noopener">0:36</a> What Projects Does</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=36s" target="_blank" rel="noopener">0:36</a> before I show you how to get access to Cloud Code projects, let me explain why you should even care about this at all. The big cell is that with Claude projects, Claude is now the project manager. You talk to one agent and it controls everything versus the normal setup. When we are normally inside of claude, when you&#x27;re just sitting there on the desktop app or inside of the terminal, you are in charge of everything. And that means you are in charge of managing all of these different terminals and all of these different agents and you&#x27;re also in charge of keeping them all on the same page. On top of that, unless you are running something either in the cloud or you have some sort of like Mac Mini setup that&#x27;s always on, when you start shutting things down, whether that&#x27;s your laptop or your computer, your machine just literally is not on, your work stops. Compare that to clawed projects, which runs in Anthropics Cloud and importantly also uses your usage.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=90s" target="_blank" rel="noopener">1:30</a> It&#x27;s not a cloud situation where now we&#x27;re paying API cost. This is pulling from your max plan. So we get pretty much all the advantages of the cloud with all the advantages of the subscription plan which hasn&#x27;t always been the case when we talk about Enthropic in the cloud. So instead of you being in charge of managing all of these separate threads, guess who does it? Well, Claude does it. We just talk to one orchestrator and it then does said orchestration. On top of that, these are not sub agents. It&#x27;s controlling full-blown Claude sessions that also share context and memory between each other and the orchestrator. And because it&#x27;s in the cloud, it&#x27;s always going to run no matter where we are, whether that&#x27;s overnight. I can check in remotely from my phone. So, if you are someone who deals with complicated projects that you want access to 24/7, no matter where you are at, well, this Cloud project makes total sense. It makes it super easy to manage multiple agents. So, how do you get access? Well, right now, you need to submit an application on this page right here, and I will put a link to it in the description. It puts you on a wait list.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=156s" target="_blank" rel="noopener">2:36</a> Now, when this first came out a couple months ago and it was like very limited release, it was kind of hard to get off the wait list, but as of now, if you put your name in on this wait list, you&#x27;re going to get access to it probably within 24 hours. I know it was less than 24 hours for me. And a couple weeks ago, they let everybody off the wait list. So, there&#x27;s really no excuse not to get this up and running on your Claude. Now, once you get access, it will populate inside of your desktop app over here on the left, and it says projects beta. Remember, we used to have projects back in the day, especially with the chat app, where those were essentially just like folders and you&#x27;d have conversations that were all about some specific subject. This is much different than that. Like I said, this is running in the cloud. This is all about multi-agent orchestration. So, before we jump into the next part, a quick word from today&#x27;s sponsor, me. I just released an updated cloud code masterass, and it is the number one way to go from zero to AI dev, no matter your technical background. So, it doesn&#x27;t matter where you are starting from your technical journey. It could be literally zero. I will bring you up to speed on the most powerful AI tools in the game today. I update this every single week. So, if you want to get your hands on this, you can find it inside of Chase AI Plus. I will put a link in the</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=222s" target="_blank" rel="noopener">3:42</a> When To Use It</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=222s" target="_blank" rel="noopener">3:42</a> pin comment. So, if Cloud Code Projects is all about multi-agent orchestration in the cloud, when should we actually use this and when shouldn&#x27;t we use this? Well, starting with the don&#x27;ts, if we&#x27;re just talking about quick tasks that you can just knock out in a single chat session, then obviously no. We don&#x27;t need to use cloud code projects for this. We also need to be wary if we&#x27;re talking about work that needs to be done on our machine. If it&#x27;s manipulating files and folders that quite literally live on our computer, it&#x27;s not something that can be in the cloud. It&#x27;s not something that can be in a GitHub repo, then we aren&#x27;t going to want to use cloud code projects because this is all again operating inside of the cloud. Ideally, it&#x27;s connected to some sort of GitHub repo. Now caveat I will say you do have the ability to spawn sessions you know that your orchestrator controls that do live on your local machine but that isn&#x27;t what it&#x27;s really built for.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=268s" target="_blank" rel="noopener">4:29</a> Also this isn&#x27;t something that&#x27;s on team or enterprise yet. So when we talk about you know team projects this isn&#x27;t what it&#x27;s really built for either. So what should we use it for? Well we want to use it if we have some sort of project or an area that we&#x27;re going to continue to feed. If it&#x27;s a complicated build that we can split into different parts. Think of all these sub sessions controlled by the orchestrator being in charge of certain sections of a task. And Boris Churnney, the guy who actually created Cloud Code, pretty much said he stopped managing sessions inside of his Cloud Code desktop app and really just uses projects as like this backlog, this dumping ground of any ideas or tasks that come into his head. He dumps it into projects because remember projects and all of the subsessions beneath it that the orchestrator controls all share memory, all share context. So if it&#x27;s complicated, it&#x27;s long running, and is it something that can work best in a cloud environment, we&#x27;re going to want to use projects. Otherwise, we probably don&#x27;t need it. So just keep that in mind. And lastly, before we jump into the demo and we actually see projects in action, what is really the difference between projects and sub aents? We keep talking about we have these sub sessions with context and memory. How is that any different than just one session with sub aents being spawned? Well, a lot of it has to do with persistence. When we spawn some sort of sub agent in a normal cloud code session, it&#x27;s going to do whatever it&#x27;s been tasked to do. It&#x27;s going to create a summary of all the work it&#x27;s done. It&#x27;s going to send it back to that main session you&#x27;re working in, and it&#x27;s just going to continue to fill up the context of that one session.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=356s" target="_blank" rel="noopener">5:57</a> Versus in a project, that single session, that orchestrator up top that we&#x27;re talking to, these quote unquote sub aents it&#x27;s creating. And they&#x27;re not really sub agents. They&#x27;re full sessions because they have their own context window. Furthermore, they&#x27;re persistent. They&#x27;ll own their own pull requests. And because these workers are persistent and they maintain context throughout, we can also message them as much as we want. I can actually go in there and talk to worker one or worker two as if I&#x27;m talking to the primary orchestrator. So, there&#x27;s a lot of things listed here in terms of the differences. The biggest ones you need to remember is in terms of who is managing it. Normally you do all the management in terms of projects. Claude is managing it all and dealing out the work accordingly. Secondly, persistence projects. Those sub workers are never shutting off. And so ultimately sessions with the sub aents is best when we&#x27;re just doing one task at a time. And these projects are great if we have a stream of work we just</p>
+<h4><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=411s" target="_blank" rel="noopener">6:51</a> Demo + Setup</h4>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=410s" target="_blank" rel="noopener">6:51</a> don&#x27;t want to babysit. So now let&#x27;s hop into the demo. If you go into your cloud desktop on the top left, you will see something that says projects beta. We simply click on this and you will see this page pop up. Now, if you have projects that have been sitting in Claude for the past several years, potentially back from like just the chat days and they were just projects were basically just folders, it&#x27;s going to ask you, hey, do you want to delete these or you want to archive all these? You can just archive all of them till you get to, you know, essentially a clean slate. So, we are going to click new projects. Then, we&#x27;re going to give it a name. We will call this projects demo. You have the ability to give it a goal. So some sort of overarching thing it&#x27;s trying to achieve. In this case, we will leave it blank. And I also have the ability to give it context. So if I already had, you know, certain documentation or files and folders that I want this project to already sort of bring on board, I can do that here as well. Then I&#x27;m just going to hit create project.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=465s" target="_blank" rel="noopener">7:46</a> And we&#x27;re going to get a page that looks like this. Now the first thing I want you to do is come up here to the top where we have this little gear icon. And we&#x27;re going to take a look at our project settings. So again, we can edit the goal at any point in time. We also have the models that we can choose from. And the big things we want to pay attention to are the coordinator model and the thread model. So the threads are essentially the workers that the coordinator spins up. In reality, threads themselves can have multiple workers, but just think of it as like coordinator and then threads/workers underneath it. So, the coordinator model is going to by default go to Opus 5.5 on a low effort setting. You might be like, &quot;Hey, do I really want it on a low effort setting? What do I want to put it on at least like medium or high if it&#x27;s doing all these things?&quot; Well, in reality, it&#x27;s not really the one doing the work. It&#x27;s just the one coordinating and diving out the work. So, not really an issue to keep it on low. If for whatever reason you feel like it&#x27;s not doing a good job of coordinating, you could always bump this up to medium or high. But if usage starts to become a problem because usage is something that projects can burn up pretty quickly because we could be you know similar to dynamic workflows you could have 5 10 15 sessions or threads or workers all doing stuff at the same time 24/7. So we want to keep an eye on that thread model opus 5.5 on medium should be totally fine for you. But if you even want to switch this to something like sauna that works too.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=551s" target="_blank" rel="noopener">9:11</a> We also have the ability to have it auto continue when usage limits resets. So let&#x27;s say you burn through all 100%. When the week rolls over and we get a fresh reset, well, it&#x27;s just going to pick up from where it left off. We also can pause the project, restart Claude or archive the project from here, too. Then we have memory. So the big one we want to pay attention to is project instructions. This is similar to agents or claw.md. This can be very powerful because they&#x27;re pretty much going to read this in every single thread. But, you know, I wouldn&#x27;t blow this. Like, similar to how we approach agents.mmd these days, less is more. If there&#x27;s something where you&#x27;re like, I really want it to always do the specific thing in a specific way every single thread, then maybe this makes sense to fill it up here. Otherwise, if you&#x27;re not sure, just leave it blank. It also has auto memory, and that works pretty much the same way as automemory inside of clawed code. as you tell it to do things throughout your sessions, it has its own little scratch pad where if it thinks it&#x27;s something it should remember, it will just automatically add essentially a little sticky note to its memory. Next, we have the environment tab. So, the first thing we need to do is designate a project repository. All these workers, all these sessions are going to be in the cloud and they need a GitHub repo where they can communicate and send their PRs. So, to do that, we just need to select a particular GitHub repo. Mine is going to be AI Creator Radar because I&#x27;m creating this thing that goes out on the web, goes out on Twitter, sees trending AI news, and then turns that into a dashboard which says, &quot;Hey, here&#x27;s things that haven&#x27;t been talked about on YouTube. Here&#x27;s how we can turn them into short form. Here&#x27;s how we turn to</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=638s" target="_blank" rel="noopener">10:39</a> carousels.&quot; That type of thing. So, you can either create this manually inside of GitHub or just hop into a normal cloud code session and say, &quot;Can you create a GitHub repository for me that I&#x27;m going to use inside my project?&quot; Next, we have the cloud environment. So if you just keep this as is where it says select the cloud environment, it&#x27;s just going to use the default anthropic cloud environment, you also have the ability to add a cloud environment. So I could give it some sort of name. I can define the network access everywhere from none to full. And then I can start uploading secrets and environmental variables. So if I am doing something that requires, you know, API keys and secrets, I&#x27;m going to need to add a cloud environment for it to be able to work there. Now, we are going to leave it on select a cloud environment. And you will see later it&#x27;s going to prompt us to essentially change our cloud environment to add some keys. And I&#x27;ll walk you through that. Next, we have some local settings. Let cloud use your device. Yes. Pre-approved folders. If you have a session or a worker that is going to need to work on your local computer or access access it, that&#x27;s something we can do. By default, it&#x27;s always going to be in the cloud, but it can actually, you know, go on your machine. And so to do that, you just need to select this to yes. And then we want to give it some sort of folder it can work in. In this case, I set my radar-local folder. Then we have a usage tab followed by debug access. So let&#x27;s say you have two projects, project A, project B totally doing different things. You can let project B take a look at project A and vice versa to help debug because perhaps you&#x27;re running into problems where maybe project A can&#x27;t debug on its own. Maybe we have like some issue with the memory. Like</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=733s" target="_blank" rel="noopener">12:13</a> something is poisoning its context. Well, how about we get a fresh set of bias to take a look at what&#x27;s going on. We can do that by simply giving it access via the debug access panel. Probably won&#x27;t use this a lot, but know it&#x27;s there. So, let&#x27;s go ahead and give it our prompt. So, we&#x27;re saying we&#x27;re creating the AI creator radar. We&#x27;ve given it kind of an end state we&#x27;re looking for. Again, I want it to be able to scrape things off of X, and then I want it to be able to take a look at YouTube, see what&#x27;s working, see what hasn&#x27;t been touched on, see where there&#x27;s some sort of gaps, and I wanted to do it on a dashboard where I can just see it all in one place. So, let&#x27;s go ahead and put it to work. and see what happens. And as this is working, you&#x27;ll kind of see this has begun to populate over here are the threads. So coordinator main page right here, I can talk to everything and like do everything from this one window. But if I want to kind of like click inside of here and see what&#x27;s going on at individual thread or even worker level, I have that ability too. So after letting it run for about 25 minutes, here is where we are at. First of all, after we gave it the prompt, it split into five parallel threads, and each thread was given some piece of the pie that it needed to execute on. We had something working on the dashboard and hosting, one working on the Xcanner, one on YouTube coverage, one on content packs, and one on cloud code news. If we go over here to the right on the threads, we can see I have two that are now ready for review. I have three that have some sort of blocker that require me to come in and either make some sort of decision or give it some more information. And then we also have the idle thread. Now at any point in time I can click on any of these threads and</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=827s" target="_blank" rel="noopener">13:48</a> see what this particular worker is doing at a more granular level. I can click here and see the blockers. And so it&#x27;s really easy me to go really easy for me to go into each individual session and actually talk to it because as you see when I click into here I do have an ability to steer that thread. I also can view these threads from the orchestrator panel right here in the middle. So I just click view thread and it pops up. Also I can just handle everything through here through the orchestrator. So instead of going into each individual thread like I would with sessions, you know, when I&#x27;m sort of just normally operating inside of cloud code, I can just talk to the single agent and it will handle it all for me. And the whole time they&#x27;re operating inside of my GitHub repo, which we see right here. If I hop into the pull requests, we can see what all these individual threads, individual workers are actually sending.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=874s" target="_blank" rel="noopener">14:34</a> So let&#x27;s handle some of these blockers. The first one is related to the cloud environment. Remember I mentioned how earlier if we need API keys as part of our project, we need to edit the actual environment. Well, let&#x27;s go ahead and do that. So go up to project settings, go to environments, and we&#x27;re going to add a cloud environment. Going to call this demo environment. For network access, we&#x27;ll throw it to full. And now we need to add a network secret. And so I put in all the correct information and then I just hit add. And now it&#x27;s working in a cloud environment that has my particular secret. So then I can say, hey, I just updated the cloud environment with the YouTube key as a network secret. And the coordinator is going to send that information to that particular thread. And now I&#x27;m just going to repeat this process for the rest of the blockers. And that&#x27;s kind of how you would run this. All right. So we got rid of the blockers and right now it&#x27;s finishing up. One thing that&#x27;s kind of cool is like I said, you can tell certain sessions that you want it to be local. We did that with the session that had to do with scanning X because X was actually logged into my account on my cookies. So it used the inapp browser inside of cloud code desktop to do that.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=941s" target="_blank" rel="noopener">15:41</a> And so it actually built a local scheduled routine. So you can see on theuler it created this routine. It&#x27;s inside of that folder that we designated earlier is like the local folder it can play around with. And you can see kind of the instructions it gave it. And so here&#x27;s a look at the dashboard it created. It shows me which stories are trending on Twitter but really have no coverage in the YouTube space. For each of these, like, hey, Claude writes about 90% of Claude Code&#x27;s code. It shows me potential content pack, what the video could look like, what a short could look like, what a carousel could look like, as well as what an X post could also look like. It also gives me kind of a breakdown of what&#x27;s going on with X. So like the top story right now is DeepSeek version 4.1 Flash and GLM 5.3 Flash go free in open code. So it shows me like the posts per hour, the views. I can actually click on the posts themselves and it will bring it up. And it also gives me more stats about my channel as well as like some Clawude Code specific news. Lastly, at the bottom, I can see kind of a refresh log. And so overall, this is pretty solid work considering it was kind of a oneshot and this is just the first pass that Claude Code Projects has done on this. And the real cell for projects at this point isn&#x27;t the singular thing it created. It&#x27;s the fact that this is now something that is living in the cloud. I can access it at any time and I have all of these threads that still are sharing and maintaining context. So I can work on this whenever I want. I can constantly feed it new information. it can run even when my computer is shut down and I can continue to add more and more complexity to it all through a single orchestrator. So while I do have the ability to you know click on individual threads and handle</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=1052s" target="_blank" rel="noopener">17:32</a> it one at a time I can just talk to one agent from any place and have it control everything. The last thing I&#x27;ll mention and I will also link this in the description is the documentation on cloud code projects. It is very extensive. So, if there&#x27;s anything you feel like I didn&#x27;t cover enough or you want to go deeper and I highly suggest you take a look at the documentation, but besides that, that&#x27;s all I have for you today. Highly suggest if nothing else, you hop on that weight list because you will get access very, very quick. I think this is a really cool feature inside of Cloud Code. Kind of niche, really depends on the type of projects you&#x27;re working on. And if you&#x27;re someone who really does need that 247 access, if that&#x27;s not you, no problem. But if it is, it&#x27;s great because you know in the past when we&#x27;ve had these sort of anthropic cloud options, they&#x27;ve always been draining from the API. Now it just comes straight from usage, which for many of us, I feel like we have a lot of usage remaining.</p>
+<p><a class="ts" href="https://www.youtube.com/watch?v=mKjxGy6vCnY&t=1106s" target="_blank" rel="noopener">18:26</a> Like Opus 5.5 has been pretty token efficient, especially compared to something like Fable 5.1. So having the option to go into the cloud, stay on usage, and always have complicated projects running is a great value ad. So as always, let me know what you thought. Make sure to check out Chase AI Plus if you want to get your hands on my cloud code masterass.</p></div></details>
+<footer>Transcript via TranscriptAPI.com. Research compiled by Claude Code on 2026-10-17; verify prices and version numbers against the linked official sources before relying on them.</footer>
+</div>
+</body>
+</html>

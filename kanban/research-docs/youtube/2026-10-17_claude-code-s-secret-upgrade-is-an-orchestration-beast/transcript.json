@@ -1,0 +1,2824 @@
+{
+ "video_id": "mKjxGy6vCnY",
+ "language": "en",
+ "transcript": [
+  {
+   "text": "Claude has a secret feature hidden",
+   "start": 0.08,
+   "duration": 4.719
+  },
+  {
+   "text": "behind a weight list that turns it into",
+   "start": 2.24,
+   "duration": 5.119
+  },
+  {
+   "text": "a master of cloud orchestration. You",
+   "start": 4.799,
+   "duration": 4.88
+  },
+  {
+   "text": "just talk to one agent and it controls a",
+   "start": 7.359,
+   "duration": 5.36
+  },
+  {
+   "text": "fleet of fullyfledged Claude sessions",
+   "start": 9.679,
+   "duration": 6.481
+  },
+  {
+   "text": "that run 24/7. They share context, they",
+   "start": 12.719,
+   "duration": 6.241
+  },
+  {
+   "text": "share memory and they never shut off.",
+   "start": 16.16,
+   "duration": 4.959
+  },
+  {
+   "text": "It's called Claude projects and it's the",
+   "start": 18.96,
+   "duration": 4.159
+  },
+  {
+   "text": "ultimate hack if you're someone who is",
+   "start": 21.119,
+   "duration": 4.4
+  },
+  {
+   "text": "working on complicated applications and",
+   "start": 23.119,
+   "duration": 4.48
+  },
+  {
+   "text": "you need to do so outside of your local",
+   "start": 25.519,
+   "duration": 3.76
+  },
+  {
+   "text": "environment. So today I'm going to show",
+   "start": 27.599,
+   "duration": 3.44
+  },
+  {
+   "text": "you how to get access to this feature,",
+   "start": 29.279,
+   "duration": 3.601
+  },
+  {
+   "text": "how it actually works, and then we're",
+   "start": 31.039,
+   "duration": 3.601
+  },
+  {
+   "text": "going to run through a quick demo so you",
+   "start": 32.88,
+   "duration": 3.6
+  },
+  {
+   "text": "can start using it right away. Now",
+   "start": 34.64,
+   "duration": 3.28
+  },
+  {
+   "text": "before I show you how to get access to",
+   "start": 36.48,
+   "duration": 3.2
+  },
+  {
+   "text": "Cloud Code projects, let me explain why",
+   "start": 37.92,
+   "duration": 3.52
+  },
+  {
+   "text": "you should even care about this at all.",
+   "start": 39.68,
+   "duration": 3.84
+  },
+  {
+   "text": "The big cell is that with Claude",
+   "start": 41.44,
+   "duration": 4.72
+  },
+  {
+   "text": "projects, Claude is now the project",
+   "start": 43.52,
+   "duration": 4.8
+  },
+  {
+   "text": "manager. You talk to one agent and it",
+   "start": 46.16,
+   "duration": 5.6
+  },
+  {
+   "text": "controls everything versus the normal",
+   "start": 48.32,
+   "duration": 5.28
+  },
+  {
+   "text": "setup. When we are normally inside of",
+   "start": 51.76,
+   "duration": 3.119
+  },
+  {
+   "text": "claude, when you're just sitting there",
+   "start": 53.6,
+   "duration": 3.04
+  },
+  {
+   "text": "on the desktop app or inside of the",
+   "start": 54.879,
+   "duration": 4.32
+  },
+  {
+   "text": "terminal, you are in charge of",
+   "start": 56.64,
+   "duration": 4.719
+  },
+  {
+   "text": "everything. And that means you are in",
+   "start": 59.199,
+   "duration": 4.16
+  },
+  {
+   "text": "charge of managing all of these",
+   "start": 61.359,
+   "duration": 3.44
+  },
+  {
+   "text": "different terminals and all of these",
+   "start": 63.359,
+   "duration": 2.961
+  },
+  {
+   "text": "different agents and you're also in",
+   "start": 64.799,
+   "duration": 2.961
+  },
+  {
+   "text": "charge of keeping them all on the same",
+   "start": 66.32,
+   "duration": 4.24
+  },
+  {
+   "text": "page. On top of that, unless you are",
+   "start": 67.76,
+   "duration": 4.719
+  },
+  {
+   "text": "running something either in the cloud or",
+   "start": 70.56,
+   "duration": 3.28
+  },
+  {
+   "text": "you have some sort of like Mac Mini",
+   "start": 72.479,
+   "duration": 3.521
+  },
+  {
+   "text": "setup that's always on, when you start",
+   "start": 73.84,
+   "duration": 3.84
+  },
+  {
+   "text": "shutting things down, whether that's",
+   "start": 76.0,
+   "duration": 3.28
+  },
+  {
+   "text": "your laptop or your computer, your",
+   "start": 77.68,
+   "duration": 3.68
+  },
+  {
+   "text": "machine just literally is not on, your",
+   "start": 79.28,
+   "duration": 4.56
+  },
+  {
+   "text": "work stops. Compare that to clawed",
+   "start": 81.36,
+   "duration": 5.36
+  },
+  {
+   "text": "projects, which runs in Anthropics Cloud",
+   "start": 83.84,
+   "duration": 6.56
+  },
+  {
+   "text": "and importantly also uses your usage.",
+   "start": 86.72,
+   "duration": 5.28
+  },
+  {
+   "text": "It's not a cloud situation where now",
+   "start": 90.4,
+   "duration": 3.679
+  },
+  {
+   "text": "we're paying API cost. This is pulling",
+   "start": 92.0,
+   "duration": 4.4
+  },
+  {
+   "text": "from your max plan. So we get pretty",
+   "start": 94.079,
+   "duration": 3.68
+  },
+  {
+   "text": "much all the advantages of the cloud",
+   "start": 96.4,
+   "duration": 2.64
+  },
+  {
+   "text": "with all the advantages of the",
+   "start": 97.759,
+   "duration": 2.881
+  },
+  {
+   "text": "subscription plan which hasn't always",
+   "start": 99.04,
+   "duration": 3.119
+  },
+  {
+   "text": "been the case when we talk about",
+   "start": 100.64,
+   "duration": 3.6
+  },
+  {
+   "text": "Enthropic in the cloud. So instead of",
+   "start": 102.159,
+   "duration": 4.24
+  },
+  {
+   "text": "you being in charge of managing all of",
+   "start": 104.24,
+   "duration": 4.32
+  },
+  {
+   "text": "these separate threads, guess who does",
+   "start": 106.399,
+   "duration": 4.641
+  },
+  {
+   "text": "it? Well, Claude does it. We just talk",
+   "start": 108.56,
+   "duration": 5.36
+  },
+  {
+   "text": "to one orchestrator and it then does",
+   "start": 111.04,
+   "duration": 5.439
+  },
+  {
+   "text": "said orchestration. On top of that,",
+   "start": 113.92,
+   "duration": 4.32
+  },
+  {
+   "text": "these are not sub agents. It's",
+   "start": 116.479,
+   "duration": 3.761
+  },
+  {
+   "text": "controlling full-blown Claude sessions",
+   "start": 118.24,
+   "duration": 4.08
+  },
+  {
+   "text": "that also share context and memory",
+   "start": 120.24,
+   "duration": 4.4
+  },
+  {
+   "text": "between each other and the orchestrator.",
+   "start": 122.32,
+   "duration": 3.839
+  },
+  {
+   "text": "And because it's in the cloud, it's",
+   "start": 124.64,
+   "duration": 3.679
+  },
+  {
+   "text": "always going to run no matter where we",
+   "start": 126.159,
+   "duration": 4.001
+  },
+  {
+   "text": "are, whether that's overnight. I can",
+   "start": 128.319,
+   "duration": 4.881
+  },
+  {
+   "text": "check in remotely from my phone. So, if",
+   "start": 130.16,
+   "duration": 4.4
+  },
+  {
+   "text": "you are someone who deals with",
+   "start": 133.2,
+   "duration": 2.96
+  },
+  {
+   "text": "complicated projects that you want",
+   "start": 134.56,
+   "duration": 4.0
+  },
+  {
+   "text": "access to 24/7, no matter where you are",
+   "start": 136.16,
+   "duration": 6.24
+  },
+  {
+   "text": "at, well, this Cloud project makes total",
+   "start": 138.56,
+   "duration": 6.24
+  },
+  {
+   "text": "sense. It makes it super easy to manage",
+   "start": 142.4,
+   "duration": 4.4
+  },
+  {
+   "text": "multiple agents. So, how do you get",
+   "start": 144.8,
+   "duration": 3.84
+  },
+  {
+   "text": "access? Well, right now, you need to",
+   "start": 146.8,
+   "duration": 4.159
+  },
+  {
+   "text": "submit an application on this page right",
+   "start": 148.64,
+   "duration": 4.48
+  },
+  {
+   "text": "here, and I will put a link to it in the",
+   "start": 150.959,
+   "duration": 5.041
+  },
+  {
+   "text": "description. It puts you on a wait list.",
+   "start": 153.12,
+   "duration": 4.64
+  },
+  {
+   "text": "Now, when this first came out a couple",
+   "start": 156.0,
+   "duration": 3.519
+  },
+  {
+   "text": "months ago and it was like very limited",
+   "start": 157.76,
+   "duration": 2.88
+  },
+  {
+   "text": "release, it was kind of hard to get off",
+   "start": 159.519,
+   "duration": 2.641
+  },
+  {
+   "text": "the wait list, but as of now, if you put",
+   "start": 160.64,
+   "duration": 2.72
+  },
+  {
+   "text": "your name in on this wait list, you're",
+   "start": 162.16,
+   "duration": 2.48
+  },
+  {
+   "text": "going to get access to it probably",
+   "start": 163.36,
+   "duration": 2.959
+  },
+  {
+   "text": "within 24 hours. I know it was less than",
+   "start": 164.64,
+   "duration": 3.84
+  },
+  {
+   "text": "24 hours for me. And a couple weeks ago,",
+   "start": 166.319,
+   "duration": 4.56
+  },
+  {
+   "text": "they let everybody off the wait list.",
+   "start": 168.48,
+   "duration": 4.479
+  },
+  {
+   "text": "So, there's really no excuse not to get",
+   "start": 170.879,
+   "duration": 4.481
+  },
+  {
+   "text": "this up and running on your Claude. Now,",
+   "start": 172.959,
+   "duration": 4.241
+  },
+  {
+   "text": "once you get access, it will populate",
+   "start": 175.36,
+   "duration": 3.44
+  },
+  {
+   "text": "inside of your desktop app over here on",
+   "start": 177.2,
+   "duration": 3.84
+  },
+  {
+   "text": "the left, and it says projects beta.",
+   "start": 178.8,
+   "duration": 4.4
+  },
+  {
+   "text": "Remember, we used to have projects back",
+   "start": 181.04,
+   "duration": 3.279
+  },
+  {
+   "text": "in the day, especially with the chat",
+   "start": 183.2,
+   "duration": 2.24
+  },
+  {
+   "text": "app, where those were essentially just",
+   "start": 184.319,
+   "duration": 2.64
+  },
+  {
+   "text": "like folders and you'd have",
+   "start": 185.44,
+   "duration": 3.6
+  },
+  {
+   "text": "conversations that were all about some",
+   "start": 186.959,
+   "duration": 3.761
+  },
+  {
+   "text": "specific subject. This is much different",
+   "start": 189.04,
+   "duration": 2.96
+  },
+  {
+   "text": "than that. Like I said, this is running",
+   "start": 190.72,
+   "duration": 2.48
+  },
+  {
+   "text": "in the cloud. This is all about",
+   "start": 192.0,
+   "duration": 3.519
+  },
+  {
+   "text": "multi-agent orchestration. So, before we",
+   "start": 193.2,
+   "duration": 3.92
+  },
+  {
+   "text": "jump into the next part, a quick word",
+   "start": 195.519,
+   "duration": 4.08
+  },
+  {
+   "text": "from today's sponsor, me. I just",
+   "start": 197.12,
+   "duration": 4.24
+  },
+  {
+   "text": "released an updated cloud code",
+   "start": 199.599,
+   "duration": 3.521
+  },
+  {
+   "text": "masterass, and it is the number one way",
+   "start": 201.36,
+   "duration": 4.32
+  },
+  {
+   "text": "to go from zero to AI dev, no matter",
+   "start": 203.12,
+   "duration": 4.24
+  },
+  {
+   "text": "your technical background. So, it",
+   "start": 205.68,
+   "duration": 3.12
+  },
+  {
+   "text": "doesn't matter where you are starting",
+   "start": 207.36,
+   "duration": 3.04
+  },
+  {
+   "text": "from your technical journey. It could be",
+   "start": 208.8,
+   "duration": 3.76
+  },
+  {
+   "text": "literally zero. I will bring you up to",
+   "start": 210.4,
+   "duration": 4.0
+  },
+  {
+   "text": "speed on the most powerful AI tools in",
+   "start": 212.56,
+   "duration": 4.08
+  },
+  {
+   "text": "the game today. I update this every",
+   "start": 214.4,
+   "duration": 3.759
+  },
+  {
+   "text": "single week. So, if you want to get your",
+   "start": 216.64,
+   "duration": 3.12
+  },
+  {
+   "text": "hands on this, you can find it inside of",
+   "start": 218.159,
+   "duration": 3.921
+  },
+  {
+   "text": "Chase AI Plus. I will put a link in the",
+   "start": 219.76,
+   "duration": 4.16
+  },
+  {
+   "text": "pin comment. So, if Cloud Code Projects",
+   "start": 222.08,
+   "duration": 3.519
+  },
+  {
+   "text": "is all about multi-agent orchestration",
+   "start": 223.92,
+   "duration": 3.36
+  },
+  {
+   "text": "in the cloud, when should we actually",
+   "start": 225.599,
+   "duration": 3.441
+  },
+  {
+   "text": "use this and when shouldn't we use this?",
+   "start": 227.28,
+   "duration": 3.519
+  },
+  {
+   "text": "Well, starting with the don'ts, if we're",
+   "start": 229.04,
+   "duration": 3.199
+  },
+  {
+   "text": "just talking about quick tasks that you",
+   "start": 230.799,
+   "duration": 3.281
+  },
+  {
+   "text": "can just knock out in a single chat",
+   "start": 232.239,
+   "duration": 3.761
+  },
+  {
+   "text": "session, then obviously no. We don't",
+   "start": 234.08,
+   "duration": 3.2
+  },
+  {
+   "text": "need to use cloud code projects for",
+   "start": 236.0,
+   "duration": 3.2
+  },
+  {
+   "text": "this. We also need to be wary if we're",
+   "start": 237.28,
+   "duration": 3.679
+  },
+  {
+   "text": "talking about work that needs to be done",
+   "start": 239.2,
+   "duration": 3.92
+  },
+  {
+   "text": "on our machine. If it's manipulating",
+   "start": 240.959,
+   "duration": 3.601
+  },
+  {
+   "text": "files and folders that quite literally",
+   "start": 243.12,
+   "duration": 3.119
+  },
+  {
+   "text": "live on our computer, it's not something",
+   "start": 244.56,
+   "duration": 2.879
+  },
+  {
+   "text": "that can be in the cloud. It's not",
+   "start": 246.239,
+   "duration": 2.801
+  },
+  {
+   "text": "something that can be in a GitHub repo,",
+   "start": 247.439,
+   "duration": 2.8
+  },
+  {
+   "text": "then we aren't going to want to use",
+   "start": 249.04,
+   "duration": 3.52
+  },
+  {
+   "text": "cloud code projects because this is all",
+   "start": 250.239,
+   "duration": 4.321
+  },
+  {
+   "text": "again operating inside of the cloud.",
+   "start": 252.56,
+   "duration": 3.76
+  },
+  {
+   "text": "Ideally, it's connected to some sort of",
+   "start": 254.56,
+   "duration": 5.12
+  },
+  {
+   "text": "GitHub repo. Now caveat I will say you",
+   "start": 256.32,
+   "duration": 6.08
+  },
+  {
+   "text": "do have the ability to spawn sessions",
+   "start": 259.68,
+   "duration": 4.239
+  },
+  {
+   "text": "you know that your orchestrator controls",
+   "start": 262.4,
+   "duration": 4.079
+  },
+  {
+   "text": "that do live on your local machine but",
+   "start": 263.919,
+   "duration": 4.881
+  },
+  {
+   "text": "that isn't what it's really built for.",
+   "start": 266.479,
+   "duration": 4.241
+  },
+  {
+   "text": "Also this isn't something that's on team",
+   "start": 268.8,
+   "duration": 3.839
+  },
+  {
+   "text": "or enterprise yet. So when we talk about",
+   "start": 270.72,
+   "duration": 4.96
+  },
+  {
+   "text": "you know team projects this isn't what",
+   "start": 272.639,
+   "duration": 4.881
+  },
+  {
+   "text": "it's really built for either. So what",
+   "start": 275.68,
+   "duration": 3.76
+  },
+  {
+   "text": "should we use it for? Well we want to",
+   "start": 277.52,
+   "duration": 3.36
+  },
+  {
+   "text": "use it if we have some sort of project",
+   "start": 279.44,
+   "duration": 2.88
+  },
+  {
+   "text": "or an area that we're going to continue",
+   "start": 280.88,
+   "duration": 3.52
+  },
+  {
+   "text": "to feed. If it's a complicated build",
+   "start": 282.32,
+   "duration": 3.68
+  },
+  {
+   "text": "that we can split into different parts.",
+   "start": 284.4,
+   "duration": 3.28
+  },
+  {
+   "text": "Think of all these sub sessions",
+   "start": 286.0,
+   "duration": 3.6
+  },
+  {
+   "text": "controlled by the orchestrator being in",
+   "start": 287.68,
+   "duration": 4.72
+  },
+  {
+   "text": "charge of certain sections of a task.",
+   "start": 289.6,
+   "duration": 4.8
+  },
+  {
+   "text": "And Boris Churnney, the guy who actually",
+   "start": 292.4,
+   "duration": 4.16
+  },
+  {
+   "text": "created Cloud Code, pretty much said he",
+   "start": 294.4,
+   "duration": 4.239
+  },
+  {
+   "text": "stopped managing sessions inside of his",
+   "start": 296.56,
+   "duration": 3.6
+  },
+  {
+   "text": "Cloud Code desktop app and really just",
+   "start": 298.639,
+   "duration": 3.921
+  },
+  {
+   "text": "uses projects as like this backlog, this",
+   "start": 300.16,
+   "duration": 3.84
+  },
+  {
+   "text": "dumping ground of any ideas or tasks",
+   "start": 302.56,
+   "duration": 3.199
+  },
+  {
+   "text": "that come into his head. He dumps it",
+   "start": 304.0,
+   "duration": 4.08
+  },
+  {
+   "text": "into projects because remember projects",
+   "start": 305.759,
+   "duration": 4.401
+  },
+  {
+   "text": "and all of the subsessions beneath it",
+   "start": 308.08,
+   "duration": 4.08
+  },
+  {
+   "text": "that the orchestrator controls all share",
+   "start": 310.16,
+   "duration": 4.16
+  },
+  {
+   "text": "memory, all share context. So if it's",
+   "start": 312.16,
+   "duration": 3.84
+  },
+  {
+   "text": "complicated, it's long running, and is",
+   "start": 314.32,
+   "duration": 3.2
+  },
+  {
+   "text": "it something that can work best in a",
+   "start": 316.0,
+   "duration": 2.88
+  },
+  {
+   "text": "cloud environment, we're going to want",
+   "start": 317.52,
+   "duration": 3.519
+  },
+  {
+   "text": "to use projects. Otherwise, we probably",
+   "start": 318.88,
+   "duration": 4.319
+  },
+  {
+   "text": "don't need it. So just keep that in",
+   "start": 321.039,
+   "duration": 3.761
+  },
+  {
+   "text": "mind. And lastly, before we jump into",
+   "start": 323.199,
+   "duration": 3.521
+  },
+  {
+   "text": "the demo and we actually see projects in",
+   "start": 324.8,
+   "duration": 3.6
+  },
+  {
+   "text": "action, what is really the difference",
+   "start": 326.72,
+   "duration": 4.24
+  },
+  {
+   "text": "between projects and sub aents? We keep",
+   "start": 328.4,
+   "duration": 4.079
+  },
+  {
+   "text": "talking about we have these sub sessions",
+   "start": 330.96,
+   "duration": 3.28
+  },
+  {
+   "text": "with context and memory. How is that any",
+   "start": 332.479,
+   "duration": 4.401
+  },
+  {
+   "text": "different than just one session with sub",
+   "start": 334.24,
+   "duration": 4.48
+  },
+  {
+   "text": "aents being spawned? Well, a lot of it",
+   "start": 336.88,
+   "duration": 4.48
+  },
+  {
+   "text": "has to do with persistence. When we",
+   "start": 338.72,
+   "duration": 5.199
+  },
+  {
+   "text": "spawn some sort of sub agent in a normal",
+   "start": 341.36,
+   "duration": 4.08
+  },
+  {
+   "text": "cloud code session, it's going to do",
+   "start": 343.919,
+   "duration": 3.28
+  },
+  {
+   "text": "whatever it's been tasked to do. It's",
+   "start": 345.44,
+   "duration": 3.28
+  },
+  {
+   "text": "going to create a summary of all the",
+   "start": 347.199,
+   "duration": 3.601
+  },
+  {
+   "text": "work it's done. It's going to send it",
+   "start": 348.72,
+   "duration": 4.319
+  },
+  {
+   "text": "back to that main session you're working",
+   "start": 350.8,
+   "duration": 3.679
+  },
+  {
+   "text": "in, and it's just going to continue to",
+   "start": 353.039,
+   "duration": 3.921
+  },
+  {
+   "text": "fill up the context of that one session.",
+   "start": 354.479,
+   "duration": 4.801
+  },
+  {
+   "text": "Versus in a project, that single",
+   "start": 356.96,
+   "duration": 4.239
+  },
+  {
+   "text": "session, that orchestrator up top that",
+   "start": 359.28,
+   "duration": 4.8
+  },
+  {
+   "text": "we're talking to, these quote unquote",
+   "start": 361.199,
+   "duration": 4.641
+  },
+  {
+   "text": "sub aents it's creating. And they're not",
+   "start": 364.08,
+   "duration": 4.239
+  },
+  {
+   "text": "really sub agents. They're full sessions",
+   "start": 365.84,
+   "duration": 4.4
+  },
+  {
+   "text": "because they have their own context",
+   "start": 368.319,
+   "duration": 4.32
+  },
+  {
+   "text": "window. Furthermore, they're persistent.",
+   "start": 370.24,
+   "duration": 5.28
+  },
+  {
+   "text": "They'll own their own pull requests. And",
+   "start": 372.639,
+   "duration": 5.28
+  },
+  {
+   "text": "because these workers are persistent and",
+   "start": 375.52,
+   "duration": 4.16
+  },
+  {
+   "text": "they maintain context throughout, we can",
+   "start": 377.919,
+   "duration": 3.761
+  },
+  {
+   "text": "also message them as much as we want. I",
+   "start": 379.68,
+   "duration": 3.2
+  },
+  {
+   "text": "can actually go in there and talk to",
+   "start": 381.68,
+   "duration": 3.04
+  },
+  {
+   "text": "worker one or worker two as if I'm",
+   "start": 382.88,
+   "duration": 3.52
+  },
+  {
+   "text": "talking to the primary orchestrator. So,",
+   "start": 384.72,
+   "duration": 3.28
+  },
+  {
+   "text": "there's a lot of things listed here in",
+   "start": 386.4,
+   "duration": 3.2
+  },
+  {
+   "text": "terms of the differences. The biggest",
+   "start": 388.0,
+   "duration": 3.28
+  },
+  {
+   "text": "ones you need to remember is in terms of",
+   "start": 389.6,
+   "duration": 4.08
+  },
+  {
+   "text": "who is managing it. Normally you do all",
+   "start": 391.28,
+   "duration": 4.4
+  },
+  {
+   "text": "the management in terms of projects.",
+   "start": 393.68,
+   "duration": 4.16
+  },
+  {
+   "text": "Claude is managing it all and dealing",
+   "start": 395.68,
+   "duration": 4.4
+  },
+  {
+   "text": "out the work accordingly. Secondly,",
+   "start": 397.84,
+   "duration": 4.56
+  },
+  {
+   "text": "persistence projects. Those sub workers",
+   "start": 400.08,
+   "duration": 4.0
+  },
+  {
+   "text": "are never shutting off. And so",
+   "start": 402.4,
+   "duration": 3.359
+  },
+  {
+   "text": "ultimately sessions with the sub aents",
+   "start": 404.08,
+   "duration": 3.2
+  },
+  {
+   "text": "is best when we're just doing one task",
+   "start": 405.759,
+   "duration": 3.361
+  },
+  {
+   "text": "at a time. And these projects are great",
+   "start": 407.28,
+   "duration": 3.44
+  },
+  {
+   "text": "if we have a stream of work we just",
+   "start": 409.12,
+   "duration": 3.28
+  },
+  {
+   "text": "don't want to babysit. So now let's hop",
+   "start": 410.72,
+   "duration": 3.199
+  },
+  {
+   "text": "into the demo. If you go into your cloud",
+   "start": 412.4,
+   "duration": 3.76
+  },
+  {
+   "text": "desktop on the top left, you will see",
+   "start": 413.919,
+   "duration": 4.4
+  },
+  {
+   "text": "something that says projects beta. We",
+   "start": 416.16,
+   "duration": 3.52
+  },
+  {
+   "text": "simply click on this and you will see",
+   "start": 418.319,
+   "duration": 2.961
+  },
+  {
+   "text": "this page pop up. Now, if you have",
+   "start": 419.68,
+   "duration": 2.799
+  },
+  {
+   "text": "projects that have been sitting in",
+   "start": 421.28,
+   "duration": 3.12
+  },
+  {
+   "text": "Claude for the past several years,",
+   "start": 422.479,
+   "duration": 4.081
+  },
+  {
+   "text": "potentially back from like just the chat",
+   "start": 424.4,
+   "duration": 3.919
+  },
+  {
+   "text": "days and they were just projects were",
+   "start": 426.56,
+   "duration": 3.28
+  },
+  {
+   "text": "basically just folders, it's going to",
+   "start": 428.319,
+   "duration": 2.561
+  },
+  {
+   "text": "ask you, hey, do you want to delete",
+   "start": 429.84,
+   "duration": 2.4
+  },
+  {
+   "text": "these or you want to archive all these?",
+   "start": 430.88,
+   "duration": 3.2
+  },
+  {
+   "text": "You can just archive all of them till",
+   "start": 432.24,
+   "duration": 3.679
+  },
+  {
+   "text": "you get to, you know, essentially a",
+   "start": 434.08,
+   "duration": 4.959
+  },
+  {
+   "text": "clean slate. So, we are going to click",
+   "start": 435.919,
+   "duration": 5.441
+  },
+  {
+   "text": "new projects.",
+   "start": 439.039,
+   "duration": 3.681
+  },
+  {
+   "text": "Then, we're going to give it a name. We",
+   "start": 441.36,
+   "duration": 4.399
+  },
+  {
+   "text": "will call this projects demo. You have",
+   "start": 442.72,
+   "duration": 5.12
+  },
+  {
+   "text": "the ability to give it a goal. So some",
+   "start": 445.759,
+   "duration": 5.041
+  },
+  {
+   "text": "sort of overarching thing it's trying to",
+   "start": 447.84,
+   "duration": 4.56
+  },
+  {
+   "text": "achieve. In this case, we will leave it",
+   "start": 450.8,
+   "duration": 2.799
+  },
+  {
+   "text": "blank. And I also have the ability to",
+   "start": 452.4,
+   "duration": 4.079
+  },
+  {
+   "text": "give it context. So if I already had,",
+   "start": 453.599,
+   "duration": 5.201
+  },
+  {
+   "text": "you know, certain documentation",
+   "start": 456.479,
+   "duration": 4.481
+  },
+  {
+   "text": "or files and folders that I want this",
+   "start": 458.8,
+   "duration": 3.519
+  },
+  {
+   "text": "project to already sort of bring on",
+   "start": 460.96,
+   "duration": 3.359
+  },
+  {
+   "text": "board, I can do that here as well. Then",
+   "start": 462.319,
+   "duration": 3.6
+  },
+  {
+   "text": "I'm just going to hit create project.",
+   "start": 464.319,
+   "duration": 3.041
+  },
+  {
+   "text": "And we're going to get a page that looks",
+   "start": 465.919,
+   "duration": 3.761
+  },
+  {
+   "text": "like this. Now the first thing I want",
+   "start": 467.36,
+   "duration": 4.239
+  },
+  {
+   "text": "you to do is come up here to the top",
+   "start": 469.68,
+   "duration": 3.919
+  },
+  {
+   "text": "where we have this little gear icon. And",
+   "start": 471.599,
+   "duration": 2.88
+  },
+  {
+   "text": "we're going to take a look at our",
+   "start": 473.599,
+   "duration": 3.761
+  },
+  {
+   "text": "project settings. So again, we can edit",
+   "start": 474.479,
+   "duration": 5.361
+  },
+  {
+   "text": "the goal at any point in time. We also",
+   "start": 477.36,
+   "duration": 4.32
+  },
+  {
+   "text": "have the models that we can choose from.",
+   "start": 479.84,
+   "duration": 3.28
+  },
+  {
+   "text": "And the big things we want to pay",
+   "start": 481.68,
+   "duration": 3.12
+  },
+  {
+   "text": "attention to are the coordinator model",
+   "start": 483.12,
+   "duration": 4.799
+  },
+  {
+   "text": "and the thread model. So the threads are",
+   "start": 484.8,
+   "duration": 6.079
+  },
+  {
+   "text": "essentially the workers that the",
+   "start": 487.919,
+   "duration": 5.761
+  },
+  {
+   "text": "coordinator spins up. In reality,",
+   "start": 490.879,
+   "duration": 4.72
+  },
+  {
+   "text": "threads themselves can have multiple",
+   "start": 493.68,
+   "duration": 3.68
+  },
+  {
+   "text": "workers, but just think of it as like",
+   "start": 495.599,
+   "duration": 4.401
+  },
+  {
+   "text": "coordinator and then threads/workers",
+   "start": 497.36,
+   "duration": 5.279
+  },
+  {
+   "text": "underneath it. So, the coordinator model",
+   "start": 500.0,
+   "duration": 5.039
+  },
+  {
+   "text": "is going to by default go to Opus 5.5 on",
+   "start": 502.639,
+   "duration": 3.68
+  },
+  {
+   "text": "a low effort setting. You might be like,",
+   "start": 505.039,
+   "duration": 2.56
+  },
+  {
+   "text": "\"Hey, do I really want it on a low",
+   "start": 506.319,
+   "duration": 2.56
+  },
+  {
+   "text": "effort setting? What do I want to put it",
+   "start": 507.599,
+   "duration": 2.961
+  },
+  {
+   "text": "on at least like medium or high if it's",
+   "start": 508.879,
+   "duration": 2.88
+  },
+  {
+   "text": "doing all these things?\" Well, in",
+   "start": 510.56,
+   "duration": 2.399
+  },
+  {
+   "text": "reality, it's not really the one doing",
+   "start": 511.759,
+   "duration": 3.681
+  },
+  {
+   "text": "the work. It's just the one coordinating",
+   "start": 512.959,
+   "duration": 4.64
+  },
+  {
+   "text": "and diving out the work. So, not really",
+   "start": 515.44,
+   "duration": 3.599
+  },
+  {
+   "text": "an issue to keep it on low. If for",
+   "start": 517.599,
+   "duration": 2.961
+  },
+  {
+   "text": "whatever reason you feel like it's not",
+   "start": 519.039,
+   "duration": 2.961
+  },
+  {
+   "text": "doing a good job of coordinating, you",
+   "start": 520.56,
+   "duration": 3.2
+  },
+  {
+   "text": "could always bump this up to medium or",
+   "start": 522.0,
+   "duration": 5.36
+  },
+  {
+   "text": "high. But if usage starts to become a",
+   "start": 523.76,
+   "duration": 5.759
+  },
+  {
+   "text": "problem because usage is something that",
+   "start": 527.36,
+   "duration": 4.08
+  },
+  {
+   "text": "projects can burn up pretty quickly",
+   "start": 529.519,
+   "duration": 4.241
+  },
+  {
+   "text": "because we could be you know similar to",
+   "start": 531.44,
+   "duration": 5.92
+  },
+  {
+   "text": "dynamic workflows you could have 5 10 15",
+   "start": 533.76,
+   "duration": 6.079
+  },
+  {
+   "text": "sessions or threads or workers all doing",
+   "start": 537.36,
+   "duration": 5.36
+  },
+  {
+   "text": "stuff at the same time 24/7. So we want",
+   "start": 539.839,
+   "duration": 6.0
+  },
+  {
+   "text": "to keep an eye on that thread model opus",
+   "start": 542.72,
+   "duration": 5.36
+  },
+  {
+   "text": "5.5 on medium should be totally fine for",
+   "start": 545.839,
+   "duration": 3.68
+  },
+  {
+   "text": "you. But if you even want to switch this",
+   "start": 548.08,
+   "duration": 3.04
+  },
+  {
+   "text": "to something like sauna that works too.",
+   "start": 549.519,
+   "duration": 3.44
+  },
+  {
+   "text": "We also have the ability to have it auto",
+   "start": 551.12,
+   "duration": 3.52
+  },
+  {
+   "text": "continue when usage limits resets. So",
+   "start": 552.959,
+   "duration": 3.521
+  },
+  {
+   "text": "let's say you burn through all 100%.",
+   "start": 554.64,
+   "duration": 3.44
+  },
+  {
+   "text": "When the week rolls over and we get a",
+   "start": 556.48,
+   "duration": 3.28
+  },
+  {
+   "text": "fresh reset, well, it's just going to",
+   "start": 558.08,
+   "duration": 4.24
+  },
+  {
+   "text": "pick up from where it left off. We also",
+   "start": 559.76,
+   "duration": 4.96
+  },
+  {
+   "text": "can pause the project, restart Claude or",
+   "start": 562.32,
+   "duration": 4.72
+  },
+  {
+   "text": "archive the project from here, too. Then",
+   "start": 564.72,
+   "duration": 3.92
+  },
+  {
+   "text": "we have memory. So the big one we want",
+   "start": 567.04,
+   "duration": 2.96
+  },
+  {
+   "text": "to pay attention to is project",
+   "start": 568.64,
+   "duration": 3.199
+  },
+  {
+   "text": "instructions. This is similar to agents",
+   "start": 570.0,
+   "duration": 3.6
+  },
+  {
+   "text": "or claw.md.",
+   "start": 571.839,
+   "duration": 2.961
+  },
+  {
+   "text": "This can be very powerful because",
+   "start": 573.6,
+   "duration": 2.239
+  },
+  {
+   "text": "they're pretty much going to read this",
+   "start": 574.8,
+   "duration": 5.36
+  },
+  {
+   "text": "in every single thread. But, you know, I",
+   "start": 575.839,
+   "duration": 5.921
+  },
+  {
+   "text": "wouldn't blow this. Like, similar to how",
+   "start": 580.16,
+   "duration": 3.84
+  },
+  {
+   "text": "we approach agents.mmd these days, less",
+   "start": 581.76,
+   "duration": 3.519
+  },
+  {
+   "text": "is more. If there's something where",
+   "start": 584.0,
+   "duration": 2.64
+  },
+  {
+   "text": "you're like, I really want it to always",
+   "start": 585.279,
+   "duration": 3.12
+  },
+  {
+   "text": "do the specific thing in a specific way",
+   "start": 586.64,
+   "duration": 4.0
+  },
+  {
+   "text": "every single thread, then maybe this",
+   "start": 588.399,
+   "duration": 3.44
+  },
+  {
+   "text": "makes sense to fill it up here.",
+   "start": 590.64,
+   "duration": 2.72
+  },
+  {
+   "text": "Otherwise, if you're not sure, just",
+   "start": 591.839,
+   "duration": 3.761
+  },
+  {
+   "text": "leave it blank. It also has auto memory,",
+   "start": 593.36,
+   "duration": 3.28
+  },
+  {
+   "text": "and that works pretty much the same way",
+   "start": 595.6,
+   "duration": 3.359
+  },
+  {
+   "text": "as automemory inside of clawed code. as",
+   "start": 596.64,
+   "duration": 4.4
+  },
+  {
+   "text": "you tell it to do things throughout your",
+   "start": 598.959,
+   "duration": 4.0
+  },
+  {
+   "text": "sessions, it has its own little scratch",
+   "start": 601.04,
+   "duration": 3.359
+  },
+  {
+   "text": "pad where if it thinks it's something it",
+   "start": 602.959,
+   "duration": 2.88
+  },
+  {
+   "text": "should remember, it will just",
+   "start": 604.399,
+   "duration": 3.361
+  },
+  {
+   "text": "automatically add essentially a little",
+   "start": 605.839,
+   "duration": 4.641
+  },
+  {
+   "text": "sticky note to its memory. Next, we have",
+   "start": 607.76,
+   "duration": 4.48
+  },
+  {
+   "text": "the environment tab. So, the first thing",
+   "start": 610.48,
+   "duration": 4.0
+  },
+  {
+   "text": "we need to do is designate a project",
+   "start": 612.24,
+   "duration": 4.48
+  },
+  {
+   "text": "repository. All these workers, all these",
+   "start": 614.48,
+   "duration": 3.2
+  },
+  {
+   "text": "sessions are going to be in the cloud",
+   "start": 616.72,
+   "duration": 2.72
+  },
+  {
+   "text": "and they need a GitHub repo where they",
+   "start": 617.68,
+   "duration": 4.56
+  },
+  {
+   "text": "can communicate and send their PRs. So,",
+   "start": 619.44,
+   "duration": 4.959
+  },
+  {
+   "text": "to do that, we just need to select a",
+   "start": 622.24,
+   "duration": 3.76
+  },
+  {
+   "text": "particular GitHub repo. Mine is going to",
+   "start": 624.399,
+   "duration": 4.161
+  },
+  {
+   "text": "be AI Creator Radar because I'm creating",
+   "start": 626.0,
+   "duration": 4.0
+  },
+  {
+   "text": "this thing that goes out on the web,",
+   "start": 628.56,
+   "duration": 3.279
+  },
+  {
+   "text": "goes out on Twitter, sees trending AI",
+   "start": 630.0,
+   "duration": 3.2
+  },
+  {
+   "text": "news, and then turns that into a",
+   "start": 631.839,
+   "duration": 2.641
+  },
+  {
+   "text": "dashboard which says, \"Hey, here's",
+   "start": 633.2,
+   "duration": 2.72
+  },
+  {
+   "text": "things that haven't been talked about on",
+   "start": 634.48,
+   "duration": 2.799
+  },
+  {
+   "text": "YouTube. Here's how we can turn them",
+   "start": 635.92,
+   "duration": 2.88
+  },
+  {
+   "text": "into short form. Here's how we turn to",
+   "start": 637.279,
+   "duration": 3.441
+  },
+  {
+   "text": "carousels.\" That type of thing. So, you",
+   "start": 638.8,
+   "duration": 4.56
+  },
+  {
+   "text": "can either create this manually inside",
+   "start": 640.72,
+   "duration": 4.72
+  },
+  {
+   "text": "of GitHub or just hop into a normal",
+   "start": 643.36,
+   "duration": 4.479
+  },
+  {
+   "text": "cloud code session and say, \"Can you",
+   "start": 645.44,
+   "duration": 4.56
+  },
+  {
+   "text": "create a GitHub repository for me that",
+   "start": 647.839,
+   "duration": 4.881
+  },
+  {
+   "text": "I'm going to use inside my project?\"",
+   "start": 650.0,
+   "duration": 4.8
+  },
+  {
+   "text": "Next, we have the cloud environment. So",
+   "start": 652.72,
+   "duration": 3.44
+  },
+  {
+   "text": "if you just keep this as is where it",
+   "start": 654.8,
+   "duration": 2.719
+  },
+  {
+   "text": "says select the cloud environment, it's",
+   "start": 656.16,
+   "duration": 3.359
+  },
+  {
+   "text": "just going to use the default anthropic",
+   "start": 657.519,
+   "duration": 4.161
+  },
+  {
+   "text": "cloud environment, you also have the",
+   "start": 659.519,
+   "duration": 4.081
+  },
+  {
+   "text": "ability to add a cloud environment. So I",
+   "start": 661.68,
+   "duration": 4.56
+  },
+  {
+   "text": "could give it some sort of name. I can",
+   "start": 663.6,
+   "duration": 4.4
+  },
+  {
+   "text": "define the network access everywhere",
+   "start": 666.24,
+   "duration": 3.52
+  },
+  {
+   "text": "from none to full. And then I can start",
+   "start": 668.0,
+   "duration": 3.519
+  },
+  {
+   "text": "uploading secrets and environmental",
+   "start": 669.76,
+   "duration": 4.48
+  },
+  {
+   "text": "variables. So if I am doing something",
+   "start": 671.519,
+   "duration": 5.201
+  },
+  {
+   "text": "that requires, you know, API keys and",
+   "start": 674.24,
+   "duration": 4.88
+  },
+  {
+   "text": "secrets, I'm going to need to add a",
+   "start": 676.72,
+   "duration": 4.08
+  },
+  {
+   "text": "cloud environment for it to be able to",
+   "start": 679.12,
+   "duration": 4.24
+  },
+  {
+   "text": "work there. Now, we are going to leave",
+   "start": 680.8,
+   "duration": 4.0
+  },
+  {
+   "text": "it on select a cloud environment. And",
+   "start": 683.36,
+   "duration": 2.8
+  },
+  {
+   "text": "you will see later it's going to prompt",
+   "start": 684.8,
+   "duration": 2.88
+  },
+  {
+   "text": "us to essentially change our cloud",
+   "start": 686.16,
+   "duration": 3.679
+  },
+  {
+   "text": "environment to add some keys. And I'll",
+   "start": 687.68,
+   "duration": 3.839
+  },
+  {
+   "text": "walk you through that. Next, we have",
+   "start": 689.839,
+   "duration": 3.521
+  },
+  {
+   "text": "some local settings. Let cloud use your",
+   "start": 691.519,
+   "duration": 4.401
+  },
+  {
+   "text": "device. Yes. Pre-approved folders. If",
+   "start": 693.36,
+   "duration": 4.32
+  },
+  {
+   "text": "you have a session or a worker that is",
+   "start": 695.92,
+   "duration": 3.52
+  },
+  {
+   "text": "going to need to work on your local",
+   "start": 697.68,
+   "duration": 3.76
+  },
+  {
+   "text": "computer or access access it, that's",
+   "start": 699.44,
+   "duration": 4.32
+  },
+  {
+   "text": "something we can do. By default, it's",
+   "start": 701.44,
+   "duration": 3.519
+  },
+  {
+   "text": "always going to be in the cloud, but it",
+   "start": 703.76,
+   "duration": 2.4
+  },
+  {
+   "text": "can actually, you know, go on your",
+   "start": 704.959,
+   "duration": 2.481
+  },
+  {
+   "text": "machine. And so to do that, you just",
+   "start": 706.16,
+   "duration": 4.239
+  },
+  {
+   "text": "need to select this to yes. And then we",
+   "start": 707.44,
+   "duration": 4.32
+  },
+  {
+   "text": "want to give it some sort of folder it",
+   "start": 710.399,
+   "duration": 3.12
+  },
+  {
+   "text": "can work in. In this case, I set my",
+   "start": 711.76,
+   "duration": 4.16
+  },
+  {
+   "text": "radar-local folder. Then we have a usage",
+   "start": 713.519,
+   "duration": 4.641
+  },
+  {
+   "text": "tab followed by debug access. So let's",
+   "start": 715.92,
+   "duration": 3.84
+  },
+  {
+   "text": "say you have two projects, project A,",
+   "start": 718.16,
+   "duration": 3.6
+  },
+  {
+   "text": "project B totally doing different",
+   "start": 719.76,
+   "duration": 4.16
+  },
+  {
+   "text": "things. You can let project B take a",
+   "start": 721.76,
+   "duration": 4.16
+  },
+  {
+   "text": "look at project A and vice versa to help",
+   "start": 723.92,
+   "duration": 3.52
+  },
+  {
+   "text": "debug because perhaps you're running",
+   "start": 725.92,
+   "duration": 4.24
+  },
+  {
+   "text": "into problems where maybe project A",
+   "start": 727.44,
+   "duration": 4.24
+  },
+  {
+   "text": "can't debug on its own. Maybe we have",
+   "start": 730.16,
+   "duration": 3.04
+  },
+  {
+   "text": "like some issue with the memory. Like",
+   "start": 731.68,
+   "duration": 3.2
+  },
+  {
+   "text": "something is poisoning its context.",
+   "start": 733.2,
+   "duration": 2.879
+  },
+  {
+   "text": "Well, how about we get a fresh set of",
+   "start": 734.88,
+   "duration": 2.959
+  },
+  {
+   "text": "bias to take a look at what's going on.",
+   "start": 736.079,
+   "duration": 4.32
+  },
+  {
+   "text": "We can do that by simply giving it",
+   "start": 737.839,
+   "duration": 4.641
+  },
+  {
+   "text": "access via the debug access panel.",
+   "start": 740.399,
+   "duration": 3.521
+  },
+  {
+   "text": "Probably won't use this a lot, but know",
+   "start": 742.48,
+   "duration": 3.44
+  },
+  {
+   "text": "it's there. So, let's go ahead and give",
+   "start": 743.92,
+   "duration": 4.08
+  },
+  {
+   "text": "it our prompt. So, we're saying we're",
+   "start": 745.92,
+   "duration": 4.159
+  },
+  {
+   "text": "creating the AI creator radar. We've",
+   "start": 748.0,
+   "duration": 3.36
+  },
+  {
+   "text": "given it kind of an end state we're",
+   "start": 750.079,
+   "duration": 2.801
+  },
+  {
+   "text": "looking for. Again, I want it to be able",
+   "start": 751.36,
+   "duration": 3.12
+  },
+  {
+   "text": "to scrape things off of X, and then I",
+   "start": 752.88,
+   "duration": 2.639
+  },
+  {
+   "text": "want it to be able to take a look at",
+   "start": 754.48,
+   "duration": 3.039
+  },
+  {
+   "text": "YouTube, see what's working, see what",
+   "start": 755.519,
+   "duration": 3.601
+  },
+  {
+   "text": "hasn't been touched on, see where",
+   "start": 757.519,
+   "duration": 3.44
+  },
+  {
+   "text": "there's some sort of gaps, and I wanted",
+   "start": 759.12,
+   "duration": 3.519
+  },
+  {
+   "text": "to do it on a dashboard where I can just",
+   "start": 760.959,
+   "duration": 4.641
+  },
+  {
+   "text": "see it all in one place. So, let's go",
+   "start": 762.639,
+   "duration": 5.361
+  },
+  {
+   "text": "ahead and put it to work. and see what",
+   "start": 765.6,
+   "duration": 4.56
+  },
+  {
+   "text": "happens. And as this is working, you'll",
+   "start": 768.0,
+   "duration": 3.6
+  },
+  {
+   "text": "kind of see this has begun to populate",
+   "start": 770.16,
+   "duration": 3.52
+  },
+  {
+   "text": "over here are the threads. So",
+   "start": 771.6,
+   "duration": 4.16
+  },
+  {
+   "text": "coordinator main page right here, I can",
+   "start": 773.68,
+   "duration": 4.159
+  },
+  {
+   "text": "talk to everything and like do",
+   "start": 775.76,
+   "duration": 4.72
+  },
+  {
+   "text": "everything from this one window. But if",
+   "start": 777.839,
+   "duration": 4.641
+  },
+  {
+   "text": "I want to kind of like click inside of",
+   "start": 780.48,
+   "duration": 3.52
+  },
+  {
+   "text": "here and see what's going on at",
+   "start": 782.48,
+   "duration": 3.919
+  },
+  {
+   "text": "individual thread or even worker level,",
+   "start": 784.0,
+   "duration": 4.079
+  },
+  {
+   "text": "I have that ability too. So after",
+   "start": 786.399,
+   "duration": 3.521
+  },
+  {
+   "text": "letting it run for about 25 minutes,",
+   "start": 788.079,
+   "duration": 4.241
+  },
+  {
+   "text": "here is where we are at. First of all,",
+   "start": 789.92,
+   "duration": 5.2
+  },
+  {
+   "text": "after we gave it the prompt, it split",
+   "start": 792.32,
+   "duration": 5.36
+  },
+  {
+   "text": "into five parallel threads, and each",
+   "start": 795.12,
+   "duration": 4.719
+  },
+  {
+   "text": "thread was given some piece of the pie",
+   "start": 797.68,
+   "duration": 4.24
+  },
+  {
+   "text": "that it needed to execute on. We had",
+   "start": 799.839,
+   "duration": 3.68
+  },
+  {
+   "text": "something working on the dashboard and",
+   "start": 801.92,
+   "duration": 3.919
+  },
+  {
+   "text": "hosting, one working on the Xcanner, one",
+   "start": 803.519,
+   "duration": 4.0
+  },
+  {
+   "text": "on YouTube coverage, one on content",
+   "start": 805.839,
+   "duration": 4.0
+  },
+  {
+   "text": "packs, and one on cloud code news. If we",
+   "start": 807.519,
+   "duration": 3.601
+  },
+  {
+   "text": "go over here to the right on the",
+   "start": 809.839,
+   "duration": 3.041
+  },
+  {
+   "text": "threads, we can see I have two that are",
+   "start": 811.12,
+   "duration": 4.0
+  },
+  {
+   "text": "now ready for review. I have three that",
+   "start": 812.88,
+   "duration": 3.759
+  },
+  {
+   "text": "have some sort of blocker that require",
+   "start": 815.12,
+   "duration": 3.12
+  },
+  {
+   "text": "me to come in and either make some sort",
+   "start": 816.639,
+   "duration": 3.281
+  },
+  {
+   "text": "of decision or give it some more",
+   "start": 818.24,
+   "duration": 4.24
+  },
+  {
+   "text": "information. And then we also have the",
+   "start": 819.92,
+   "duration": 5.76
+  },
+  {
+   "text": "idle thread. Now at any point in time I",
+   "start": 822.48,
+   "duration": 5.12
+  },
+  {
+   "text": "can click on any of these threads and",
+   "start": 825.68,
+   "duration": 3.839
+  },
+  {
+   "text": "see what this particular worker is doing",
+   "start": 827.6,
+   "duration": 4.08
+  },
+  {
+   "text": "at a more granular level. I can click",
+   "start": 829.519,
+   "duration": 4.081
+  },
+  {
+   "text": "here and see the blockers. And so it's",
+   "start": 831.68,
+   "duration": 3.76
+  },
+  {
+   "text": "really easy me to go really easy for me",
+   "start": 833.6,
+   "duration": 4.239
+  },
+  {
+   "text": "to go into each individual session and",
+   "start": 835.44,
+   "duration": 3.68
+  },
+  {
+   "text": "actually talk to it because as you see",
+   "start": 837.839,
+   "duration": 3.36
+  },
+  {
+   "text": "when I click into here I do have an",
+   "start": 839.12,
+   "duration": 4.48
+  },
+  {
+   "text": "ability to steer that thread. I also can",
+   "start": 841.199,
+   "duration": 4.481
+  },
+  {
+   "text": "view these threads from the orchestrator",
+   "start": 843.6,
+   "duration": 4.08
+  },
+  {
+   "text": "panel right here in the middle. So I",
+   "start": 845.68,
+   "duration": 4.64
+  },
+  {
+   "text": "just click view thread and it pops up.",
+   "start": 847.68,
+   "duration": 5.04
+  },
+  {
+   "text": "Also I can just handle everything",
+   "start": 850.32,
+   "duration": 4.079
+  },
+  {
+   "text": "through here through the orchestrator.",
+   "start": 852.72,
+   "duration": 3.28
+  },
+  {
+   "text": "So instead of going into each individual",
+   "start": 854.399,
+   "duration": 3.44
+  },
+  {
+   "text": "thread like I would with sessions, you",
+   "start": 856.0,
+   "duration": 2.959
+  },
+  {
+   "text": "know, when I'm sort of just normally",
+   "start": 857.839,
+   "duration": 2.881
+  },
+  {
+   "text": "operating inside of cloud code, I can",
+   "start": 858.959,
+   "duration": 3.44
+  },
+  {
+   "text": "just talk to the single agent and it",
+   "start": 860.72,
+   "duration": 3.44
+  },
+  {
+   "text": "will handle it all for me. And the whole",
+   "start": 862.399,
+   "duration": 3.841
+  },
+  {
+   "text": "time they're operating inside of my",
+   "start": 864.16,
+   "duration": 4.4
+  },
+  {
+   "text": "GitHub repo, which we see right here. If",
+   "start": 866.24,
+   "duration": 4.48
+  },
+  {
+   "text": "I hop into the pull requests, we can see",
+   "start": 868.56,
+   "duration": 3.68
+  },
+  {
+   "text": "what all these individual threads,",
+   "start": 870.72,
+   "duration": 3.679
+  },
+  {
+   "text": "individual workers are actually sending.",
+   "start": 872.24,
+   "duration": 3.92
+  },
+  {
+   "text": "So let's handle some of these blockers.",
+   "start": 874.399,
+   "duration": 4.081
+  },
+  {
+   "text": "The first one is related to the cloud",
+   "start": 876.16,
+   "duration": 3.52
+  },
+  {
+   "text": "environment. Remember I mentioned how",
+   "start": 878.48,
+   "duration": 3.68
+  },
+  {
+   "text": "earlier if we need API keys as part of",
+   "start": 879.68,
+   "duration": 4.32
+  },
+  {
+   "text": "our project, we need to edit the actual",
+   "start": 882.16,
+   "duration": 3.679
+  },
+  {
+   "text": "environment. Well, let's go ahead and do",
+   "start": 884.0,
+   "duration": 4.639
+  },
+  {
+   "text": "that. So go up to project settings, go",
+   "start": 885.839,
+   "duration": 5.36
+  },
+  {
+   "text": "to environments, and we're going to add",
+   "start": 888.639,
+   "duration": 5.44
+  },
+  {
+   "text": "a cloud environment. Going to call this",
+   "start": 891.199,
+   "duration": 5.601
+  },
+  {
+   "text": "demo environment. For network access,",
+   "start": 894.079,
+   "duration": 4.401
+  },
+  {
+   "text": "we'll throw it to full. And now we need",
+   "start": 896.8,
+   "duration": 4.159
+  },
+  {
+   "text": "to add a network secret. And so I put in",
+   "start": 898.48,
+   "duration": 3.919
+  },
+  {
+   "text": "all the correct information and then I",
+   "start": 900.959,
+   "duration": 3.201
+  },
+  {
+   "text": "just hit add. And now it's working in a",
+   "start": 902.399,
+   "duration": 3.68
+  },
+  {
+   "text": "cloud environment that has my particular",
+   "start": 904.16,
+   "duration": 4.72
+  },
+  {
+   "text": "secret. So then I can say, hey, I just",
+   "start": 906.079,
+   "duration": 4.56
+  },
+  {
+   "text": "updated the cloud environment with the",
+   "start": 908.88,
+   "duration": 5.84
+  },
+  {
+   "text": "YouTube key as a network secret.",
+   "start": 910.639,
+   "duration": 5.361
+  },
+  {
+   "text": "And the coordinator is going to send",
+   "start": 914.72,
+   "duration": 3.6
+  },
+  {
+   "text": "that information to that particular",
+   "start": 916.0,
+   "duration": 4.0
+  },
+  {
+   "text": "thread. And now I'm just going to repeat",
+   "start": 918.32,
+   "duration": 3.36
+  },
+  {
+   "text": "this process for the rest of the",
+   "start": 920.0,
+   "duration": 2.8
+  },
+  {
+   "text": "blockers. And that's kind of how you",
+   "start": 921.68,
+   "duration": 2.64
+  },
+  {
+   "text": "would run this. All right. So we got rid",
+   "start": 922.8,
+   "duration": 2.96
+  },
+  {
+   "text": "of the blockers and right now it's",
+   "start": 924.32,
+   "duration": 3.12
+  },
+  {
+   "text": "finishing up. One thing that's kind of",
+   "start": 925.76,
+   "duration": 3.28
+  },
+  {
+   "text": "cool is like I said, you can tell",
+   "start": 927.44,
+   "duration": 3.12
+  },
+  {
+   "text": "certain sessions that you want it to be",
+   "start": 929.04,
+   "duration": 3.44
+  },
+  {
+   "text": "local. We did that with the session that",
+   "start": 930.56,
+   "duration": 5.2
+  },
+  {
+   "text": "had to do with scanning X because X was",
+   "start": 932.48,
+   "duration": 4.799
+  },
+  {
+   "text": "actually logged into my account on my",
+   "start": 935.76,
+   "duration": 3.439
+  },
+  {
+   "text": "cookies. So it used the inapp browser",
+   "start": 937.279,
+   "duration": 4.081
+  },
+  {
+   "text": "inside of cloud code desktop to do that.",
+   "start": 939.199,
+   "duration": 5.2
+  },
+  {
+   "text": "And so it actually built a local",
+   "start": 941.36,
+   "duration": 5.36
+  },
+  {
+   "text": "scheduled routine. So you can see on",
+   "start": 944.399,
+   "duration": 5.36
+  },
+  {
+   "text": "theuler it created this routine. It's",
+   "start": 946.72,
+   "duration": 5.039
+  },
+  {
+   "text": "inside of that folder that we designated",
+   "start": 949.759,
+   "duration": 3.681
+  },
+  {
+   "text": "earlier is like the local folder it can",
+   "start": 951.759,
+   "duration": 3.44
+  },
+  {
+   "text": "play around with. And you can see kind",
+   "start": 953.44,
+   "duration": 3.519
+  },
+  {
+   "text": "of the instructions it gave it. And so",
+   "start": 955.199,
+   "duration": 3.041
+  },
+  {
+   "text": "here's a look at the dashboard it",
+   "start": 956.959,
+   "duration": 4.721
+  },
+  {
+   "text": "created. It shows me which stories are",
+   "start": 958.24,
+   "duration": 5.599
+  },
+  {
+   "text": "trending on Twitter but really have no",
+   "start": 961.68,
+   "duration": 4.719
+  },
+  {
+   "text": "coverage in the YouTube space. For each",
+   "start": 963.839,
+   "duration": 4.8
+  },
+  {
+   "text": "of these, like, hey, Claude writes about",
+   "start": 966.399,
+   "duration": 4.641
+  },
+  {
+   "text": "90% of Claude Code's code. It shows me",
+   "start": 968.639,
+   "duration": 5.521
+  },
+  {
+   "text": "potential content pack, what the video",
+   "start": 971.04,
+   "duration": 4.88
+  },
+  {
+   "text": "could look like, what a short could look",
+   "start": 974.16,
+   "duration": 3.84
+  },
+  {
+   "text": "like, what a carousel could look like,",
+   "start": 975.92,
+   "duration": 4.0
+  },
+  {
+   "text": "as well as what an X post could also",
+   "start": 978.0,
+   "duration": 3.759
+  },
+  {
+   "text": "look like. It also gives me kind of a",
+   "start": 979.92,
+   "duration": 4.08
+  },
+  {
+   "text": "breakdown of what's going on with X. So",
+   "start": 981.759,
+   "duration": 4.88
+  },
+  {
+   "text": "like the top story right now is DeepSeek",
+   "start": 984.0,
+   "duration": 5.6
+  },
+  {
+   "text": "version 4.1 Flash and GLM 5.3 Flash go",
+   "start": 986.639,
+   "duration": 5.44
+  },
+  {
+   "text": "free in open code. So it shows me like",
+   "start": 989.6,
+   "duration": 4.96
+  },
+  {
+   "text": "the posts per hour, the views. I can",
+   "start": 992.079,
+   "duration": 4.88
+  },
+  {
+   "text": "actually click on the posts themselves",
+   "start": 994.56,
+   "duration": 4.719
+  },
+  {
+   "text": "and it will bring it up. And it also",
+   "start": 996.959,
+   "duration": 5.44
+  },
+  {
+   "text": "gives me more stats about my channel as",
+   "start": 999.279,
+   "duration": 5.761
+  },
+  {
+   "text": "well as like some Clawude Code specific",
+   "start": 1002.399,
+   "duration": 5.36
+  },
+  {
+   "text": "news. Lastly, at the bottom, I can see",
+   "start": 1005.04,
+   "duration": 5.52
+  },
+  {
+   "text": "kind of a refresh log. And so overall,",
+   "start": 1007.759,
+   "duration": 5.361
+  },
+  {
+   "text": "this is pretty solid work considering it",
+   "start": 1010.56,
+   "duration": 5.36
+  },
+  {
+   "text": "was kind of a oneshot and this is just",
+   "start": 1013.12,
+   "duration": 5.04
+  },
+  {
+   "text": "the first pass that Claude Code Projects",
+   "start": 1015.92,
+   "duration": 4.24
+  },
+  {
+   "text": "has done on this. And the real cell for",
+   "start": 1018.16,
+   "duration": 3.76
+  },
+  {
+   "text": "projects at this point isn't the",
+   "start": 1020.16,
+   "duration": 3.76
+  },
+  {
+   "text": "singular thing it created. It's the fact",
+   "start": 1021.92,
+   "duration": 3.919
+  },
+  {
+   "text": "that this is now something that is",
+   "start": 1023.92,
+   "duration": 4.639
+  },
+  {
+   "text": "living in the cloud. I can access it at",
+   "start": 1025.839,
+   "duration": 5.84
+  },
+  {
+   "text": "any time and I have all of these threads",
+   "start": 1028.559,
+   "duration": 6.0
+  },
+  {
+   "text": "that still are sharing and maintaining",
+   "start": 1031.679,
+   "duration": 5.201
+  },
+  {
+   "text": "context. So I can work on this whenever",
+   "start": 1034.559,
+   "duration": 4.081
+  },
+  {
+   "text": "I want. I can constantly feed it new",
+   "start": 1036.88,
+   "duration": 3.76
+  },
+  {
+   "text": "information. it can run even when my",
+   "start": 1038.64,
+   "duration": 4.48
+  },
+  {
+   "text": "computer is shut down and I can continue",
+   "start": 1040.64,
+   "duration": 5.279
+  },
+  {
+   "text": "to add more and more complexity to it",
+   "start": 1043.12,
+   "duration": 5.28
+  },
+  {
+   "text": "all through a single orchestrator. So",
+   "start": 1045.919,
+   "duration": 4.161
+  },
+  {
+   "text": "while I do have the ability to you know",
+   "start": 1048.4,
+   "duration": 3.76
+  },
+  {
+   "text": "click on individual threads and handle",
+   "start": 1050.08,
+   "duration": 4.56
+  },
+  {
+   "text": "it one at a time I can just talk to one",
+   "start": 1052.16,
+   "duration": 5.44
+  },
+  {
+   "text": "agent from any place and have it control",
+   "start": 1054.64,
+   "duration": 4.88
+  },
+  {
+   "text": "everything. The last thing I'll mention",
+   "start": 1057.6,
+   "duration": 3.439
+  },
+  {
+   "text": "and I will also link this in the",
+   "start": 1059.52,
+   "duration": 3.68
+  },
+  {
+   "text": "description is the documentation on",
+   "start": 1061.039,
+   "duration": 4.88
+  },
+  {
+   "text": "cloud code projects. It is very",
+   "start": 1063.2,
+   "duration": 4.96
+  },
+  {
+   "text": "extensive. So, if there's anything you",
+   "start": 1065.919,
+   "duration": 4.161
+  },
+  {
+   "text": "feel like I didn't cover enough or you",
+   "start": 1068.16,
+   "duration": 3.12
+  },
+  {
+   "text": "want to go deeper and I highly suggest",
+   "start": 1070.08,
+   "duration": 3.12
+  },
+  {
+   "text": "you take a look at the documentation,",
+   "start": 1071.28,
+   "duration": 4.96
+  },
+  {
+   "text": "but besides that, that's all I have for",
+   "start": 1073.2,
+   "duration": 4.96
+  },
+  {
+   "text": "you today. Highly suggest if nothing",
+   "start": 1076.24,
+   "duration": 3.12
+  },
+  {
+   "text": "else, you hop on that weight list",
+   "start": 1078.16,
+   "duration": 2.639
+  },
+  {
+   "text": "because you will get access very, very",
+   "start": 1079.36,
+   "duration": 3.6
+  },
+  {
+   "text": "quick. I think this is a really cool",
+   "start": 1080.799,
+   "duration": 4.081
+  },
+  {
+   "text": "feature inside of Cloud Code. Kind of",
+   "start": 1082.96,
+   "duration": 4.0
+  },
+  {
+   "text": "niche, really depends on the type of",
+   "start": 1084.88,
+   "duration": 3.28
+  },
+  {
+   "text": "projects you're working on. And if",
+   "start": 1086.96,
+   "duration": 2.64
+  },
+  {
+   "text": "you're someone who really does need that",
+   "start": 1088.16,
+   "duration": 4.879
+  },
+  {
+   "text": "247 access, if that's not you, no",
+   "start": 1089.6,
+   "duration": 5.28
+  },
+  {
+   "text": "problem. But if it is, it's great",
+   "start": 1093.039,
+   "duration": 3.281
+  },
+  {
+   "text": "because you know in the past when we've",
+   "start": 1094.88,
+   "duration": 3.76
+  },
+  {
+   "text": "had these sort of anthropic cloud",
+   "start": 1096.32,
+   "duration": 3.92
+  },
+  {
+   "text": "options, they've always been draining",
+   "start": 1098.64,
+   "duration": 3.279
+  },
+  {
+   "text": "from the API. Now it just comes straight",
+   "start": 1100.24,
+   "duration": 4.4
+  },
+  {
+   "text": "from usage, which for many of us, I feel",
+   "start": 1101.919,
+   "duration": 4.321
+  },
+  {
+   "text": "like we have a lot of usage remaining.",
+   "start": 1104.64,
+   "duration": 5.44
+  },
+  {
+   "text": "Like Opus 5.5 has been pretty token",
+   "start": 1106.24,
+   "duration": 5.2
+  },
+  {
+   "text": "efficient, especially compared to",
+   "start": 1110.08,
+   "duration": 3.839
+  },
+  {
+   "text": "something like Fable 5.1. So having the",
+   "start": 1111.44,
+   "duration": 4.0
+  },
+  {
+   "text": "option to go into the cloud, stay on",
+   "start": 1113.919,
+   "duration": 3.841
+  },
+  {
+   "text": "usage, and always have complicated",
+   "start": 1115.44,
+   "duration": 6.08
+  },
+  {
+   "text": "projects running is a great value ad. So",
+   "start": 1117.76,
+   "duration": 5.2
+  },
+  {
+   "text": "as always, let me know what you thought.",
+   "start": 1121.52,
+   "duration": 2.88
+  },
+  {
+   "text": "Make sure to check out Chase AI Plus if",
+   "start": 1122.96,
+   "duration": 2.64
+  },
+  {
+   "text": "you want to get your hands on my cloud",
+   "start": 1124.4,
+   "duration": 4.32
+  },
+  {
+   "text": "code masterass.",
+   "start": 1125.6,
+   "duration": 3.12
+  }
+ ],
+ "metadata": {
+  "title": "Claude Code’s Secret Upgrade Is an Orchestration Beast",
+  "author_name": "Chase AI",
+  "author_url": "https://www.youtube.com/channel/UCoy6cTJ7Tg0dqS-DI-_REsA",
+  "thumbnail_url": "https://i.ytimg.com/vi_webp/mKjxGy6vCnY/sddefault.webp"
+ },
+ "length_seconds": 1129,
+ "lengthText": "18:49"
+}
