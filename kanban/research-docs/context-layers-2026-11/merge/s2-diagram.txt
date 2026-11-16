@@ -1,0 +1,55 @@
+Diagram for "What the terms mean": how the 13 terms nest and connect
+=====================================================================
+
+Ten boxes. Labels are at most 26 characters; each note is exactly five words.
+Layout: one large outer box (the context layer) with six boxes inside it, one box sitting on its
+top edge (MCP), and one wide box underneath it (data access). Boxes 2 and 3 are nested.
+
+BOXES
+-----
+#   Label (max 26 chars)        Note (5 words)                            Position
+1   Context layer               Superset that agents draw from            Large outer box; fills most of the canvas
+2   Semantic layer              Executes governed queries at runtime      Inside 1, centre, drawn with a heavier border (the only box that computes)
+3   Metrics layer               Measure definitions compiled to SQL       Inside 2, as its core
+4   Data catalog + dictionary   Inventory of tables and columns           Inside 1, top left
+5   Business glossary           Agreed meaning of business words          Inside 1, top right
+6   Ontology / knowledge graph  Entities, relationships, rules, permitted actions   Inside 1, right of 2
+7   MDM and entity resolution   One ID per real thing                     Inside 1, bottom left
+8   Context graph / memory      Agent working memory, kept separate       Inside 1, bottom right, inside a dashed sub-border
+9   Data products / federation  Owned datasets, copied or virtualised     Wide box below 1, outside it (where the data lives)
+10  MCP interface               Protocol agents use to call               Narrow box straddling the top edge of 1, with "AI agents" written above it (text, not a box)
+
+CONTAINMENT
+-----------
+- Box 1 contains boxes 2, 4, 5, 6, 7 and 8.
+- Box 2 contains box 3. Draw 3 filling most of 2: in practice most products sold as a semantic layer are metrics layers.
+- The data dictionary is drawn as part of box 4 (it is the column-level part of the catalog), not as its own box.
+- Data virtualisation is drawn as part of box 9 (one of the two ways data is reached), not as its own box.
+- Box 9 is outside box 1: the context layer holds definitions and bindings, not the data itself.
+- Box 8 sits inside box 1 but behind a dashed line, to show it is context the agent uses but not approved knowledge.
+
+ARROWS (solid = definitions or identities flow; dashed = rule or warning)
+-------------------------------------------------------------------------
+a. 5 -> 4    solid, label "terms linked to assets"
+b. 7 -> 6    solid, label "IDs and crosswalks"
+c. 7 -> 2    solid, label "IDs and crosswalks"
+d. 6 -> 2    solid, label "references metrics, never copies"
+e. 2 -> 9    solid, label "compiles queries"
+f. 6 -> 9    solid, label "data bindings"
+g. 10 <-> 2, 10 <-> 4, 10 <-> 6   solid, double-headed, one shared label "tools exposed to agents"
+h. 8 - - -> 5   dashed, label "must not overwrite"
+
+OPTIONAL SIDE NOTE (small text box at the right margin, not counted as a box)
+------------------------------------------------------------------------------
+"a16z: context layer is a superset of the semantic layer.
+ Cube: the semantic layer is the one part that executes.
+ Same picture, different seat."
+
+SOURCES FOR THE STRUCTURE
+-------------------------
+- Superset framing: a16z, https://a16z.com/your-data-agents-need-context/
+- Executable vs descriptive; memory in the harness: Cube, https://cube.dev/blog/the-context-layer-needs-a-semantic-layer
+- Ontology references metrics and binds to data without becoming a data store: Microsoft Learn,
+  https://learn.microsoft.com/en-us/fabric/iq/ontology/overview
+- Approved knowledge vs agent working memory boundary: Astra report section 8.3 (Palantir, dbt MCP, Ramp)
+- MCP as protocol, not control: https://modelcontextprotocol.io/specification/2025-11-25

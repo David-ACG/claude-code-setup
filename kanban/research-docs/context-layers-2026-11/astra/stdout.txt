@@ -1,0 +1,7 @@
+[/home/david/projects/claude-code-setup/kanban/research-docs/context-layers-2026-11/astra/report.md](/home/david/projects/claude-code-setup/kanban/research-docs/context-layers-2026-11/astra/report.md)
+
+- 12,512 words covering all nine questions, with 101 opened sources.
+- Maps semantic engines, context platforms, ontologies and industry tools.
+- Details named deployments, timelines, outcomes and evidence gaps.
+- Includes published pricing, explicit cost estimates and three reference architectures.
+- Saved locally; commit/push blocked by read-only repository permissions.

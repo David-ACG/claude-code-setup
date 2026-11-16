@@ -1,0 +1,23 @@
+[
+  {
+    "option": "Lean semantic layer",
+    "model": "Opus",
+    "low_musd": 11.3,
+    "high_musd": 29.9,
+    "note": "Opus estimate, 3-year TCO for a 40,000-data-user company; excludes the existing lakehouse bill and BI licences. Astra gave no comparable 3-year option totals (only an annual global programme envelope of $4.7m-$14.1m), so no Astra rows."
+  },
+  {
+    "option": "Full catalog + semantic layer + knowledge graph",
+    "model": "Opus",
+    "low_musd": 26.7,
+    "high_musd": 68.2,
+    "note": "Opus estimate, 3-year TCO for a 40,000-data-user company; excludes the existing lakehouse bill and BI licences. Excludes optional MDM ($3m-$9m) and Glean-class search ($8.1m-$11.7m)."
+  },
+  {
+    "option": "Palantir-style ontology platform",
+    "model": "Opus",
+    "low_musd": 31.6,
+    "high_musd": 112.0,
+    "note": "Opus estimate, 3-year TCO for a 40,000-data-user company; excludes the existing lakehouse bill and BI licences."
+  }
+]
