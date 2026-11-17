@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Maps P: -> \\hlab\P520Projects on any of David's Windows laptops, permanently (generic copy of windows-map-p-drive.ps1).
+  Maps P: -> \\hlab\P520Projects on any of David's Windows laptops, permanently (generic copy of x1eg3-fix-p-drive.ps1).
 
 .DESCRIPTION
   Fixes three separate faults that together cause:
