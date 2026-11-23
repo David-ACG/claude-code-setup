@@ -35,6 +35,8 @@ python3 $S status                        # did it land? (per laptop)
    the N sessions in the sidebar."* Add that this chat closes too and will be
    back in the sidebar, because it is on hlab. Closing the window is not enough:
    the app keeps running in the tray, and the copy waits until it has fully quit.
+   Restarting the laptop works too (proven 2026-11-23): the copy lands as
+   Windows closes Claude, and the startup run tidies up the task.
 4. **Confirm** when he is back (his next message): `python3 $S status` should show
    `result: {"ok": true, "copied": [...]}` for the laptop he is on. Then run the
    dry run again: that laptop should show 0 missing.

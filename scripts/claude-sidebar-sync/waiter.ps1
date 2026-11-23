@@ -38,5 +38,7 @@ if ($Relaunch -and $wasRunning) {
   Start-ScheduledTask -TaskName 'ClaudeSidebarSync-Relaunch' -ErrorAction SilentlyContinue
   Log 'reopened Claude'
 }
+# Log first: removing its own task can end this process, and a shutdown can
+# cut it off here. Either way the startup trigger finds result.json and tidies up.
+Log 'done; removing task'
 Unregister-ScheduledTask -TaskName 'ClaudeSidebarSync' -Confirm:$false -ErrorAction SilentlyContinue
-Log 'done; task removed'
